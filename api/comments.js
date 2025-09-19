@@ -1,5 +1,5 @@
-// api/comments.js - Memory-based storage (no file system)
-let commentsStore = { comments: {}, lastUpdated: new Date().toISOString() };
+// api/comments.js - Using Vercel KV Database
+import { kv } from '@vercel/kv';
 
 export default async function handler(req, res) {
     // Enable CORS
@@ -13,7 +13,12 @@ export default async function handler(req, res) {
 
     try {
         if (req.method === 'GET') {
-            return res.status(200).json(commentsStore);
+            // Get comments from KV database
+            const data = await kv.get('presentation-comments') || { 
+                comments: {}, 
+                lastUpdated: new Date().toISOString() 
+            };
+            return res.status(200).json(data);
         }
         
         if (req.method === 'POST') {
@@ -23,14 +28,17 @@ export default async function handler(req, res) {
                 return res.status(400).json({ error: 'Comments data is required' });
             }
             
-            commentsStore = {
+            const data = {
                 comments: comments,
                 lastUpdated: new Date().toISOString()
             };
             
+            // Save permanently to KV database
+            await kv.set('presentation-comments', data);
+            
             return res.status(200).json({ 
                 success: true, 
-                message: 'Comments saved successfully',
+                message: 'Comments saved permanently to database',
                 totalComments: Object.keys(comments).length
             });
         }
