@@ -3503,13 +3503,12 @@
                 updateCommentBadge();
             }
         }
-    
         // Save comments to Vercel API
         async function saveCommentsToStorage() {
             console.log('=== SAVE COMMENTS DEBUG ===');
             console.log('Saving comments to API:', comments);
             try {
-                const response = await fetch('https://presentation-lime.vercel.app/api/comments', {
+                const response = await fetch('https://final-ppt.vercel.app/api/comments', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
