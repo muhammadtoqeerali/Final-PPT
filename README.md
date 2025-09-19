@@ -3470,17 +3470,18 @@
         }
     
         // Load comments from Vercel API
+        // Load comments from Vercel API - FIXED for MongoDB
         async function loadCommentsFromStorage() {
             console.log('=== LOAD COMMENTS FROM API DEBUG ===');
             try {
                 const response = await fetch('https://final-ppt.vercel.app/api/comments');
                 console.log('API response status:', response.status);
-                presentation-indol-eight.vercel.app
-
+        
                 if (response.ok) {
                     const data = await response.json();
                     console.log('API response data:', data);
                     
+                    // Handle both MongoDB format (with _id) and regular format
                     comments = data.comments || {};
                     console.log('Comments loaded:', comments);
                     
@@ -3535,7 +3536,6 @@
                 showNotification('Comments saved locally as backup', 'warning');
             }
         }
-        console.log('Script version 3 loaded');
         // Auto-refresh comments every 30 seconds to see others' comments
         // FIXED: Remove the conflicting condition
         setInterval(async () => {
