@@ -1,5 +1,16 @@
-// api/comments.js - Using Vercel KV Database
-import { kv } from '@vercel/kv';
+// api/comments.js - Using MongoDB
+import { MongoClient } from 'mongodb';
+
+// MongoDB connection
+const uri = process.env.MONGODB_URI;
+let client;
+let clientPromise;
+
+if (!global._mongoClientPromise) {
+    client = new MongoClient(uri);
+    global._mongoClientPromise = client.connect();
+}
+clientPromise = global._mongoClientPromise;
 
 export default async function handler(req, res) {
     // Enable CORS
@@ -12,12 +23,19 @@ export default async function handler(req, res) {
     }
 
     try {
+        const client = await clientPromise;
+        const db = client.db('presentation');
+        const collection = db.collection('comments');
+
         if (req.method === 'GET') {
-            // Get comments from KV database
-            const data = await kv.get('presentation-comments') || { 
+            // Get comments from MongoDB
+            const result = await collection.findOne({ _id: 'presentation-comments' });
+            
+            const data = result || { 
                 comments: {}, 
                 lastUpdated: new Date().toISOString() 
             };
+            
             return res.status(200).json(data);
         }
         
@@ -29,16 +47,21 @@ export default async function handler(req, res) {
             }
             
             const data = {
+                _id: 'presentation-comments',
                 comments: comments,
                 lastUpdated: new Date().toISOString()
             };
             
-            // Save permanently to KV database
-            await kv.set('presentation-comments', data);
+            // Save to MongoDB (upsert - update if exists, insert if not)
+            await collection.replaceOne(
+                { _id: 'presentation-comments' },
+                data,
+                { upsert: true }
+            );
             
             return res.status(200).json({ 
                 success: true, 
-                message: 'Comments saved permanently to database',
+                message: 'Comments saved permanently to MongoDB',
                 totalComments: Object.keys(comments).length
             });
         }
@@ -46,9 +69,9 @@ export default async function handler(req, res) {
         return res.status(405).json({ error: 'Method not allowed' });
         
     } catch (error) {
-        console.error('API Error:', error);
+        console.error('MongoDB Error:', error);
         return res.status(500).json({ 
-            error: 'Internal server error', 
+            error: 'Database connection failed', 
             details: error.message 
         });
     }
