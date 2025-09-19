@@ -3348,18 +3348,40 @@
             }
             
             let html = '';
-            slideComments.forEach(comment => {
+            slideComments.forEach((comment, index) => {
                 html += `
                     <div class="comment-item">
-                        <div class="comment-author">${escapeHtml(comment.author)}</div>
-                        <div class="comment-time">${comment.timestamp}</div>
-                        <div class="comment-text">${escapeHtml(comment.text)}</div>
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div style="flex: 1;">
+                                <div class="comment-author">${escapeHtml(comment.author)}</div>
+                                <div class="comment-time">${comment.timestamp}</div>
+                                <div class="comment-text">${escapeHtml(comment.text)}</div>
+                            </div>
+                            <button onclick="deleteComment(${index})" style="background: #ff4757; color: white; border: none; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; font-size: 12px; margin-left: 10px;">×</button>
+                        </div>
                     </div>
                 `;
             });
             
             console.log('Generated HTML:', html);
             commentList.innerHTML = html;
+        }
+        
+        // Add this new function
+        async function deleteComment(commentIndex) {
+            if (confirm('Delete this comment?')) {
+                comments[currentSlideIndex].splice(commentIndex, 1);
+                
+                // If no comments left for this slide, remove the slide key
+                if (comments[currentSlideIndex].length === 0) {
+                    delete comments[currentSlideIndex];
+                }
+                
+                await saveCommentsToStorage();
+                loadCommentsForCurrentSlide();
+                updateCommentBadge();
+                showNotification('Comment deleted!', 'success');
+            }
         }
     
         // Add new comment
