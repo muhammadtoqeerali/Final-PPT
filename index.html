@@ -2702,6 +2702,131 @@
                     </div>
                 </div>
             </div>
+
+            
+            <!-- Slide 25: Detailed Results Analysis -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h2>📊 Detailed Performance Analysis & Results</h2>
+                    <div class="slide-number">25/31</div>
+                </div>
+                <div class="slide-content">
+                    <div class="highlight-box" style="text-align: center; margin-bottom: 20px;">
+                        <h3>🔍 Comprehensive Evaluation: Augmentation Strategies & Classification Methods</h3>
+                        <p>Detailed analysis of performance improvements across different augmentation techniques and classification approaches</p>
+                    </div>
+                    
+                    <!-- First Row: Accuracy and Misclassification Charts -->
+                    <div style="display: flex; justify-content: space-between; gap: 20px; margin: 20px 0;">
+                        <div style="flex: 1;">
+                            <div class="figure-placeholder">
+                                <img src="./bar_Accuracy.png" alt="Accuracy Analysis by Augmentation Type" width="48%" height="auto" style="display: inline-block;">
+                                <img src="./bar_Misclassification.png" alt="Misclassification Analysis by Augmentation Type" width="48%" height="auto" style="display: inline-block; margin-left: 2%;">
+                            </div>
+                            <div class="figure-caption">Figure 10a & 10b: (a) Accuracy comparison by augmentation type and class showing consistent 99%+ performance across VAE, GAN, and VAE-GAN approaches for both activity and falling detection. (b) Misclassification rates demonstrating significant reduction in false alarms with event-level Random Forest classification compared to segment-based approaches.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Second Row: F1-Score and Event Level Comparisons -->
+                    <div style="display: flex; justify-content: space-between; gap: 20px; margin: 20px 0;">
+                        <div style="flex: 1;">
+                            <div class="figure-placeholder">
+                                <img src="./heat_Augmentation.png" alt="Augmentation Strategy F1-Score Heatmap" width="48%" height="auto" style="display: inline-block;">
+                                <img src="./heat_Event_Level.png" alt="Event-Level vs Methodology Heatmap" width="48%" height="auto" style="display: inline-block; margin-left: 2%;">
+                            </div>
+                            <div class="figure-caption">Figure 10c & 10d: (c) F1-score heatmap showing performance across different augmentation strategies (Basic, GAN, VAE-GAN, VAE) with Random Forest consistently achieving 95%+ scores. (d) Event-level methodology comparison demonstrating breakthrough performance improvement from segment-based (91.39%) to event-based Random Forest (99.53%) classification.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Key Findings Analysis -->
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin: 30px 0;">
+                        <div class="achievement-box">
+                            <h3>📈 Augmentation Strategy Impact</h3>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🧬</div>
+                                <div><strong>VAE Performance:</strong> 95.55% F1-score with controlled generation</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">⚡</div>
+                                <div><strong>GAN Strategy:</strong> 95.47% F1-score with adversarial training</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🔄</div>
+                                <div><strong>VAE-GAN Hybrid:</strong> 95.58% F1-score combining best approaches</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">📊</div>
+                                <div><strong>Key Insight:</strong> All augmentation methods achieve similar performance (~95.5%)</div>
+                            </div>
+                        </div>
+                        
+                        <div class="highlight-box">
+                            <h3>🎯 Classification Method Revolution</h3>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">❌</div>
+                                <div><strong>Segment-Based Limit:</strong> 91.39% F1-score ceiling</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🌳</div>
+                                <div><strong>Event-Level Breakthrough:</strong> 99.53% F1-score achievement</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">📈</div>
+                                <div><strong>Performance Gain:</strong> +8.14% improvement magnitude</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">⚡</div>
+                                <div><strong>False Alarm Reduction:</strong> Dramatic misclassification decrease</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Performance Comparison Table -->
+                    <table class="comparison-table" style="margin: 20px 0;">
+                        <tr>
+                            <th>Performance Aspect</th>
+                            <th>Segment-Based Approach</th>
+                            <th>Event-Level Random Forest</th>
+                            <th>Improvement</th>
+                            <th>Real-World Impact</th>
+                        </tr>
+                        <tr style="background-color: #e8f5e8;">
+                            <td><strong>Overall F1-Score</strong></td>
+                            <td>91.39%</td>
+                            <td><strong>99.53%</strong></td>
+                            <td>+8.14%</td>
+                            <td>Commercial deployment ready</td>
+                        </tr>
+                        <tr style="background-color: #e3f2fd;">
+                            <td><strong>Activity Classification</strong></td>
+                            <td>High false positive rate</td>
+                            <td><strong>99%+ accuracy</strong></td>
+                            <td>Substantial</td>
+                            <td>Construction site approved</td>
+                        </tr>
+                        <tr style="background-color: #fff3e0;">
+                            <td><strong>Fall Detection</strong></td>
+                            <td>Moderate sensitivity</td>
+                            <td><strong>99%+ sensitivity</strong></td>
+                            <td>Major improvement</td>
+                            <td>Safety standard compliance</td>
+                        </tr>
+                        <tr style="background-color: #f3e5f5;">
+                            <td><strong>Augmentation Impact</strong></td>
+                            <td>Limited data variety</td>
+                            <td><strong>Robust generalization</strong></td>
+                            <td>Enhanced</td>
+                            <td>Multiple environment deployment</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="conclusion-highlight">
+                        <h2>🎯 Critical Performance Insights</h2>
+                        <p><strong>Methodology Revolution:</strong> The transition from segment-based to event-level classification represents the decisive breakthrough, achieving 99.5%+ performance across all metrics. While augmentation strategies (VAE/GAN/Hybrid) provide consistent improvements, the classification methodology innovation was the key to commercial viability.</p>
+                    </div>
+                </div>
+            </div>
+        
         <!-- Slide 17: Performance Benchmarking -->
         <div class="slide">
             <div class="slide-header">
@@ -3957,6 +4082,7 @@
     </script>
 </body>
 </html> 
+
 
 
 
