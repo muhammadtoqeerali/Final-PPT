@@ -3189,6 +3189,131 @@
         </div>
     </div>
 </div>
+
+
+
+
+        <!-- Slide 28: Video Documentary -->
+<div class="slide">
+    <div class="slide-header">
+        <h2>🎬 Project Video Documentary</h2>
+        <div class="slide-number">31/31</div>
+    </div>
+    <div class="slide-content">
+        <div class="highlight-box" style="text-align: center; margin-bottom: 20px;">
+            <h3>📽️ Complete Project Journey: From Dataset Collection to Deployment</h3>
+            <p>Comprehensive visual documentation of the entire PhD research process, showcasing real-world implementation and breakthrough achievements</p>
+        </div>
+        
+        <div class="video-container" style="position: relative; width: 100%; max-width: 900px; margin: 0 auto; background: #000; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.3);">
+            <video 
+                id="projectVideo" 
+                controls 
+                style="width: 100%; height: auto; display: block;"
+              
+                preload="metadata"
+            >
+                <source src="./documentry.MP4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- Custom play button overlay -->
+            <div id="customPlayBtn" class="custom-play-button" onclick="playVideo()" style="
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 80px;
+                height: 80px;
+                background: linear-gradient(135deg, #2c5aa0, #764ba2);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(44,90,160,0.4);
+                transition: all 0.3s ease;
+                opacity: 0.9;
+            ">
+                <div style="
+                    width: 0;
+                    height: 0;
+                    border-left: 25px solid white;
+                    border-top: 15px solid transparent;
+                    border-bottom: 15px solid transparent;
+                    margin-left: 5px;
+                "></div>
+            </div>
+            
+            <!-- Fullscreen button -->
+            <button onclick="toggleVideoFullscreen()" style="
+                position: absolute;
+                bottom: 15px;
+                right: 15px;
+                background: rgba(44,90,160,0.8);
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 12px;
+                backdrop-filter: blur(5px);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            " class="fullscreen-btn">⛶ Fullscreen</button>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+            <div class="achievement-box" style="flex: 1;">
+                <h3>🎯 Video Content Highlights</h3>
+                <div class="bullet-point">
+                    <div class="bullet-icon">📊</div>
+                    <div><strong>Dataset Collection:</strong> Real construction site data gathering process</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">🧠</div>
+                    <div><strong>AI Model Training:</strong> CNN architecture development and testing</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">⚡</div>
+                    <div><strong>STM32 Deployment:</strong> Real-time embedded system implementation</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">🦺</div>
+                    <div><strong>Safety Jacket Integration:</strong> Complete wearable system demonstration</div>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="flex: 1;">
+                <h3>🎬 Documentary Specifications</h3>
+                <div class="bullet-point">
+                    <div class="bullet-icon">⏱️</div>
+                    <div><strong>Duration:</strong> Comprehensive project overview</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">🔍</div>
+                    <div><strong>Quality:</strong> HD recording with detailed demonstrations</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">📈</div>
+                    <div><strong>Coverage:</strong> Full development lifecycle visualization</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">🎯</div>
+                    <div><strong>Focus:</strong> Real-world deployment validation</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="conclusion-highlight">
+            <h2>📽️ Visual Proof of Concept Excellence</h2>
+            <p>This documentary provides comprehensive visual evidence of the complete research-to-deployment pipeline, demonstrating both technical innovation and practical implementation success in real-world construction environments.</p>
+        </div>
+    </div>
+</div>
+
+        
+        
 <!-- References Slide -->
 <div class="slide">
     <div class="slide-header">
@@ -3779,9 +3904,64 @@
             }
         `;
         document.head.appendChild(style);
+
+                // Video control functions
+        function playVideo() {
+            const video = document.getElementById('projectVideo');
+            const playBtn = document.getElementById('customPlayBtn');
+            
+            video.play();
+            playBtn.style.opacity = '0';
+            
+            // Show fullscreen button on hover
+            const container = video.parentElement;
+            const fullscreenBtn = container.querySelector('.fullscreen-btn');
+            
+            container.addEventListener('mouseenter', () => {
+                fullscreenBtn.style.opacity = '1';
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                fullscreenBtn.style.opacity = '0';
+            });
+        }
+        
+        function toggleVideoFullscreen() {
+            const video = document.getElementById('projectVideo');
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen();
+            } else if (video.mozRequestFullScreen) {
+                video.mozRequestFullScreen();
+            }
+        }
+        
+        // Auto-hide custom play button when video starts
+        document.getElementById('projectVideo').addEventListener('play', function() {
+            document.getElementById('customPlayBtn').style.display = 'none';
+        });
+        
+        document.getElementById('projectVideo').addEventListener('pause', function() {
+            if (this.currentTime === 0) {
+                document.getElementById('customPlayBtn').style.display = 'flex';
+            }
+        });
+        
+        // Reset video when leaving slide
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' || e.key === ' ') {
+                const video = document.getElementById('projectVideo');
+                if (video && !video.paused) {
+                    video.pause();
+                }
+            }
+        });
+        
     </script>
 </body>
 </html> 
+
 
 
 
