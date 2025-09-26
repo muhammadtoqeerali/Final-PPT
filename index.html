@@ -3736,22 +3736,22 @@
                 <div class="decision-rules">
                     <h4 style="color: #2c5aa0; font-size: 0.9em; margin-bottom: 8px; text-align: center;">🧠 RF Decision Rules</h4>
                     
-                    <div class="rule-item falling-rule">
-                        <div class="rule-label">🚨 FALLING if:</div>
-                        <div class="rule-formula">φ₅≥0.7 OR φ₆≥0.7</div>
-                        <div class="rule-description">Strong up-crossing pattern</div>
+                    <div class="rule-item">
+                      <div class="rule-label">🚨 FALLING detection:</div>
+                      <div class="rule-formula">Learned splits on φ₁…φ₆</div>
+                      <div class="rule-description">RF combines mean level, peak position, occupancy, and up-crossings to classify events.</div>
                     </div>
                     
-                    <div class="rule-item activity-rule">
-                        <div class="rule-label">✅ ACTIVITY if:</div>
-                        <div class="rule-formula">φ₅≤0.2 AND φ₆≤0.2</div>
-                        <div class="rule-description">No significant confidence increase</div>
+                    <div class="rule-item">
+                      <div class="rule-label">✅ ACTIVITY detection:</div>
+                      <div class="rule-formula">No fixed thresholds</div>
+                      <div class="rule-description">RF learns decision boundaries automatically from training data.</div>
                     </div>
-                    
+
                     <div class="rule-item key-insight">
                         <div class="rule-label">🔑 Key:</div>
-                        <div class="rule-formula">Up-crossing = Low→High confidence</div>
-                        <div class="rule-description">Captures fall signature pattern</div>
+                        <div class="rule-formula">Features φ₁–φ₆</div>
+                        <div class="rule-description">φ₁: mean level, φ₂: peak position (0.0 or 0.5), φ₃–φ₄: occupancy at 0.5/0.7, φ₅–φ₆: up-crossings at 0.5/0.7</div>
                     </div>
                 </div>
             </div>
@@ -4103,6 +4103,7 @@
         <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next ▶</button>
         <button class="nav-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
     </div>
+
 
     <script>
         // Global variables
@@ -4527,12 +4528,6 @@
             if (navigation) navigation.style.opacity = '1';
             if (slideIndicator) slideIndicator.style.opacity = '1';
             
-            navigationTimeout = setTimeout(() => {
-                if (document.fullscreenElement) {
-                    if (navigation) navigation.style.opacity = '0.3';
-                    if (slideIndicator) slideIndicator.style.opacity = '0.3';
-                }
-            }, 3000);
         }
     
         document.addEventListener('mousemove', resetNavigationTimeout);
@@ -4545,12 +4540,14 @@
                 document.body.classList.add('presentation-mode');
                 if (navigation) navigation.style.display = 'none';
                 if (slideIndicator) slideIndicator.style.display = 'none';
+
             } else {
                 document.body.classList.remove('presentation-mode');
                 if (navigation) navigation.style.display = 'flex';  // restores the buttons
                 if (slideIndicator) slideIndicator.style.display = 'block';
             }
         });
+
     
         // Initiali
         document.addEventListener('DOMContentLoaded', initPresentation);
@@ -4672,7 +4669,7 @@
             features.phi1 = (p1 + p2) / 2;
             
             // φ₂: Peak position (normalized)
-            features.phi2 = p1 > p2 ? 0.5 : 1.0;
+            features.phi2 = p1 > p2 ? 0.0 : 0.5;
             
             // φ₃: Fraction above 0.5
             const above05 = (p1 >= 0.5 ? 1 : 0) + (p2 >= 0.5 ? 1 : 0);
@@ -4700,7 +4697,7 @@
             document.getElementById('calc_p2').textContent = data.p2;
             document.getElementById('result_phi1').textContent = features.phi1.toFixed(2);
             
-            document.getElementById('peak_pos').textContent = data.p1 > data.p2 ? '1' : '2';
+            document.getElementById('peak_pos').textContent = data.p1 > data.p2 ? '0' : '1';
             document.getElementById('result_phi2').textContent = features.phi2.toFixed(1);
             
             const count05 = (data.p1 >= 0.5 ? 1 : 0) + (data.p2 >= 0.5 ? 1 : 0);
@@ -4860,9 +4857,6 @@
     </script>
 </body>
 </html> 
-
-
-
 
 
 
