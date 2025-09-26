@@ -1450,7 +1450,849 @@
         }
     }
 
+
+
+
+
+
+        /* Pipeline Animation Styles */
+        .pipeline-container {
+            position: relative;
+            width: 100%;
+            height: calc(100% - 100px);
+            overflow: visible;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            padding: 15px;
+            z-index: 1;
+        }
+
+
+        .data-packet {
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.8s ease;
+            z-index: 200;
+        }
+
+        .data-packet.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .data-packet.moving {
+            transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .packet-icon {
+            font-size: 1.5em;
+            margin-bottom: 2px;
+        }
+
+        .packet-label {
+            font-size: 0.7em;
+            text-align: center;
+        }
+
+        .pipeline-stage {
+            position: absolute;
+            background: white;
+            border: 2px solid #2c5aa0;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(44, 90, 160, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            z-index: 10;
+        }
+
+        .pipeline-stage.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .pipeline-stage.highlight {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 25px rgba(255, 107, 107, 0.6);
+            transform: scale(1.05);
+        }
+
+
+
+        /* Stage Positioning - Row 1: All stages 1-4, Row 2: Stage 5 centered */
+        /* First Row: Stages 1, 2, 3, 4 */
+        .stage-1 {
+            top: 30px;
+            left: 30px;
+            width: 220px;
+            height: 160px;
+        }
+
+        .stage-2 {
+            top: 30px;
+            left: 270px;
+            width: 280px;
+            height: 160px;
+        }
+
+        .stage-3 {
+            top: 30px;
+            left: 570px;
+            width: 280px;
+            height: 160px;
+        }
+
+        .stage-4 {
+            top: 30px;
+            left: 870px;
+            width: 320px;
+            height: 160px;
+        }
+
+        /* Second Row: Stage 5 centered with large gap */
+        .stage-5 {
+            top: 280px;
+            left: 400px;
+            width: 400px;
+            height: 180px;
+        }
+
+        .stage-header {
+            text-align: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+        }
+
+        .stage-header h3 {
+            font-size: 1.1em;
+            color: #2c5aa0;
+            margin: 0;
+        }
+
+        .stage-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: calc(100% - 50px);
+        }
+
+        /* Stage 1: Data Acquisition */
+        .human-body {
+            position: relative;
+            margin: 10px 0;
+        }
+
+        .body-icon {
+            font-size: 3em;
+            color: #2c5aa0;
+        }
+
+        .sensor-position {
+            position: absolute;
+            top: 10px;
+            right: -10px;
+            font-size: 1.2em;
+            animation: sensorPulse 2s infinite;
+        }
+
+        @keyframes sensorPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+        }
+
+        .data-streams {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+        }
+
+        .stream {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .stream-label {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 5px;
+        }
+
+        .stream-waves {
+            width: 60px;
+            height: 20px;
+            background: linear-gradient(90deg, #2c5aa0, #764ba2);
+            border-radius: 3px;
+            animation: waveFlow 1.5s infinite;
+        }
+
+        @keyframes waveFlow {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Stage 2: Signal Processing */
+        .processing-chain {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .process-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border: 2px solid #2c5aa0;
+            border-radius: 10px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .box-icon {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .box-label {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #2c5aa0;
+        }
+
+        .box-detail {
+            font-size: 0.7em;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        .arrow {
+            font-size: 1.5em;
+            color: #2c5aa0;
+            font-weight: bold;
+        }
+
+        /* Stage 3: CNN */
+        .cnn-pipeline {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        /* Stage 3: CNN Training Updates - Smaller sizing */
+        .cnn-pipeline {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 8px 0;
+        }
+
+        .segmented-data {
+            text-align: center;
+            padding: 6px;
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 6px;
+            min-width: 70px;
+            max-width: 70px;
+        }
+
+        .segment-info {
+            font-size: 0.7em;
+            font-weight: bold;
+            color: #2196f3;
+            margin-bottom: 1px;
+        }
+
+        .segment-detail {
+            font-size: 0.6em;
+            color: #666;
+        }
+
+        .augmentation-block {
+            text-align: center;
+            padding: 6px;
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            max-width: 90px;
+        }
+
+        .aug-title {
+            font-size: 0.7em;
+            font-weight: bold;
+            color: #ff9800;
+            margin-bottom: 4px;
+        }
+
+        .aug-methods {
+            display: flex;
+            gap: 2px;
+            margin-bottom: 3px;
+            justify-content: center;
+        }
+
+        .aug-method {
+            background: #ff9800;
+            color: white;
+            padding: 1px 3px;
+            border-radius: 2px;
+            font-size: 0.55em;
+            font-weight: bold;
+        }
+
+        .aug-note {
+            font-size: 0.55em;
+            color: #666;
+            font-style: italic;
+            line-height: 1.0;
+        }
+
+        .cnn-training-block {
+            text-align: center;
+            padding: 6px;
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 6px;
+            min-width: 80px;
+            max-width: 90px;
+        }
+
+        .cnn-title {
+            font-size: 0.7em;
+            font-weight: bold;
+            color: #4caf50;
+            margin-bottom: 4px;
+        }
+
+        .cnn-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            margin-bottom: 4px;
+        }
+
+        .layer {
+            background: #4caf50;
+            color: white;
+            padding: 1px 4px;
+            border-radius: 2px;
+            font-size: 0.55em;
+            font-weight: bold;
+        }
+
+        .cv-info {
+            font-size: 0.6em;
+            color: #4caf50;
+            margin: 2px 0;
+            font-weight: bold;
+        }
+
+        .cnn-output {
+            font-size: 0.65em;
+            color: #4caf50;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        /* Stage 4: Event-Level Updates - Compact for row 1 */
+        .event-pipeline {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin: 6px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cnn-outputs {
+            text-align: center;
+            padding: 4px;
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 6px;
+            min-width: 50px;
+            max-width: 60px;
+        }
+
+        .outputs-title {
+            font-size: 0.6em;
+            font-weight: bold;
+            color: #4caf50;
+            margin-bottom: 3px;
+        }
+
+        .model-outputs {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .fold-output {
+            background: #4caf50;
+            color: white;
+            padding: 1px 2px;
+            border-radius: 1px;
+            font-size: 0.5em;
+            font-weight: bold;
+        }
+
+        .prob-processing {
+            text-align: center;
+            padding: 4px;
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 6px;
+            min-width: 50px;
+            max-width: 60px;
+        }
+
+        .prob-title {
+            font-size: 0.6em;
+            font-weight: bold;
+            color: #2196f3;
+            margin-bottom: 3px;
+        }
+
+        .prob-values {
+            display: flex;
+            gap: 2px;
+            justify-content: center;
+        }
+
+        .prob-val {
+            background: #2196f3;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 2px;
+            font-size: 0.6em;
+            font-weight: bold;
+        }
+
+        .feature-extraction {
+            text-align: center;
+            padding: 4px;
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 6px;
+            max-width: 100px;
+            min-width: 90px;
+        }
+
+        .feature-title {
+            font-size: 0.6em;
+            font-weight: bold;
+            color: #9c27b0;
+            margin-bottom: 3px;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+        }
+
+        .feature {
+            font-size: 0.5em;
+            color: #9c27b0;
+            font-weight: 500;
+            text-align: left;
+            padding: 0px 1px;
+        }
         
+        .rf-training-block {
+            text-align: center;
+            padding: 4px;
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 6px;
+            min-width: 60px;
+            max-width: 70px;
+        }
+
+        .rf-title {
+            font-size: 0.6em;
+            font-weight: bold;
+            color: #ff9800;
+            margin-bottom: 2px;
+        }
+
+        .rf-icon {
+            font-size: 1.0em;
+            margin-bottom: 2px;
+        }
+
+        .rf-cv {
+            font-size: 0.55em;
+            color: #ff9800;
+            margin: 2px 0;
+            font-weight: bold;
+        }
+
+        .rf-output {
+            font-size: 0.6em;
+            color: #ff9800;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .augmentation-block {
+            text-align: center;
+            padding: 10px;
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+        }
+
+        .aug-title {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #ff9800;
+            margin-bottom: 8px;
+        }
+
+        .aug-methods {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        .aug-method {
+            background: #ff9800;
+            color: white;
+            padding: 3px 6px;
+            border-radius: 5px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
+        .aug-note {
+            font-size: 0.7em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .cnn-block {
+            text-align: center;
+            padding: 10px;
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+        }
+
+        .cnn-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-bottom: 8px;
+        }
+
+        .layer {
+            background: #4caf50;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
+        .cnn-output {
+            font-size: 0.8em;
+            color: #4caf50;
+            font-weight: bold;
+        }
+
+        /* Stage 4: Event Features */
+        .event-pipeline {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .prob-trace {
+            text-align: center;
+            padding: 10px;
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 10px;
+        }
+
+        .trace-title {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #2196f3;
+            margin-bottom: 8px;
+        }
+
+        .prob-values {
+            display: flex;
+            gap: 8px;
+        }
+
+        .prob-val {
+            background: #2196f3;
+            color: white;
+            padding: 5px 8px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .feature-extraction {
+            text-align: center;
+            padding: 10px;
+            background: #f3e5f5;
+            border: 2px solid #9c27b0;
+            border-radius: 10px;
+            max-width: 180px;
+        }
+
+        .feature-title {
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #9c27b0;
+            margin-bottom: 8px;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .feature {
+            font-size: 0.65em;
+            color: #9c27b0;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .rf-block {
+            text-align: center;
+            padding: 10px;
+            background: #e8f5e8;
+            border: 2px solid #4caf50;
+            border-radius: 10px;
+        }
+
+        .rf-icon {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+
+        .rf-label {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #4caf50;
+            margin-bottom: 5px;
+        }
+
+        .rf-params {
+            font-size: 0.7em;
+            color: #666;
+        }
+        /* Stage 5: Deployment */
+        .deployment-chain {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .stm32-chip {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+        }
+
+        .chip-icon {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .chip-label {
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .deployment-flow {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .flow-step {
+            background: #e3f2fd;
+            border: 1px solid #2c5aa0;
+            color: #2c5aa0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        .flow-step.decision {
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            color: white;
+            border-color: #4caf50;
+        }
+
+        .flow-arrow {
+            font-size: 1.2em;
+            color: #2c5aa0;
+            font-weight: bold;
+        }
+
+        .latency-info {
+            text-align: center;
+            padding: 10px;
+            background: #fff3e0;
+            border: 2px solid #ff9800;
+            border-radius: 10px;
+        }
+
+        .latency-value {
+            font-size: 1em;
+            font-weight: bold;
+            color: #ff9800;
+            margin-bottom: 3px;
+        }
+
+        .latency-label {
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .stage-params {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .param {
+            background: #2c5aa0;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 5px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+
+        .animation-controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 300;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            box-shadow: 0 4px 8px rgba(44,90,160,0.3);
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(44,90,160,0.4);
+        }
+
+        /* Animation States */
+        @keyframes dataFlow {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(var(--target-x)) translateY(var(--target-y)); }
+        }
+
+        @keyframes stageActivate {
+            0% { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.9); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+
+        @keyframes pulseHighlight {
+            0%, 100% { 
+                border-color: #2c5aa0; 
+                box-shadow: 0 4px 12px rgba(44, 90, 160, 0.1); 
+            }
+            50% { 
+                border-color: #ff6b6b; 
+                box-shadow: 0 0 25px rgba(255, 107, 107, 0.6); 
+            }
+        }
+
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 400;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
     </style>
 </head>
 <body>
@@ -3277,6 +4119,210 @@
                 </div>
             </div>
         
+
+            <div class="slide">
+        <div class="slide-header">
+            <h2>🚀 Complete Methodology Pipeline: From Raw Data to Deployment</h2>
+            <div class="slide-number">31/33</div>
+        </div>
+        <div class="slide-content">
+            <div class="pipeline-container">
+                <!-- Data Packet Animation -->
+                <div class="data-packet" id="dataPacket">
+                    <div class="packet-icon">📊</div>
+                    <div class="packet-label">IMU Data</div>
+                </div>
+
+                <!-- Stage 1: Raw Data Acquisition -->
+                <div class="pipeline-stage stage-1" id="stage1">
+                    <div class="stage-header">
+                        <h3>📡 Stage 1: Raw Data Acquisition</h3>
+                    </div>
+                    <div class="stage-content">
+                        <div class="human-body">
+                            <div class="body-icon">👤</div>
+                            <div class="sensor-position">📱</div>
+                        </div>
+                        <div class="data-streams">
+                            <div class="stream acc-stream">
+                                <span class="stream-label">Accelerometer</span>
+                                <div class="stream-waves"></div>
+                            </div>
+                            <div class="stream gyro-stream">
+                                <span class="stream-label">Gyroscope</span>
+                                <div class="stream-waves"></div>
+                            </div>
+                        </div>
+                        <div class="stage-params">
+                            <div class="param">Fs = 100 Hz</div>
+                            <div class="param">Tri-axial ACC + GYRO</div>
+                            <div class="param">STM32 on back</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2: Signal Refinement -->
+                <div class="pipeline-stage stage-2" id="stage2">
+                    <div class="stage-header">
+                        <h3>🔧 Stage 2: Signal Refinement</h3>
+                    </div>
+                    <div class="stage-content">
+                        <div class="processing-chain">
+                            <div class="process-box filter-box">
+                                <div class="box-icon">📈</div>
+                                <div class="box-label">Butterworth LPF</div>
+                                <div class="box-detail">5 Hz cutoff</div>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="process-box norm-box">
+                                <div class="box-icon">⚖️</div>
+                                <div class="box-label">Z-Score Norm</div>
+                                <div class="box-detail">Per channel</div>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="process-box window-box">
+                                <div class="box-icon">🪟</div>
+                                <div class="box-label">Windowing</div>
+                                <div class="box-detail">300ms, 50% overlap</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3: Segment-Level CNN -->
+                <div class="pipeline-stage stage-3" id="stage3">
+                    <div class="stage-header">
+                        <h3>🧠 Stage 3: Segment-Level CNN Training</h3>
+                    </div>
+                    <div class="stage-content">
+                        <div class="cnn-pipeline">
+                            <div class="segmented-data">
+                                <div class="segment-info">300ms segments</div>
+                                <div class="segment-detail">50% overlap</div>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="augmentation-block">
+                                <div class="aug-title">Data Augmentation</div>
+                                <div class="aug-methods">
+                                    <span class="aug-method vae">VAE</span>
+                                    <span class="aug-method gan">GAN</span>
+                                    <span class="aug-method hybrid">VAE-GAN</span>
+                                </div>
+                                <div class="aug-note">One method used<br>Falling class only</div>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="cnn-training-block">
+                                <div class="cnn-title">CNN Training</div>
+                                <div class="cnn-layers">
+                                    <div class="layer conv">Conv1D</div>
+                                    <div class="layer pool">MaxPool</div>
+                                    <div class="layer dense">Dense</div>
+                                </div>
+                                <div class="cv-info">5-fold CV</div>
+                                <div class="cnn-output">5 best models</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 4: Event Features → Random Forest -->
+                <div class="pipeline-stage stage-4" id="stage4">
+                    <div class="stage-header">
+                        <h3>🌳 Stage 4: Event-Level Random Forest</h3>
+                    </div>
+                    <div class="stage-content">
+                        <div class="event-pipeline">
+                            <div class="cnn-outputs">
+                                <div class="outputs-title">CNN Outputs</div>
+                                <div class="model-outputs">
+                                    <div class="fold-output">Fold 1</div>
+                                    <div class="fold-output">Fold 2</div>
+                                    <div class="fold-output">Fold 3</div>
+                                    <div class="fold-output">Fold 4</div>
+                                    <div class="fold-output">Fold 5</div>
+                                </div>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="prob-processing">
+                                <div class="prob-title">M=2 Resampling</div>
+                                <div class="prob-values">
+                                    <span class="prob-val">p₁</span>
+                                    <span class="prob-val">p₂</span>
+                                </div>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="feature-extraction">
+                                <div class="feature-title">6D Features</div>
+                                <div class="feature-list">
+                                    <div class="feature">φ₁: mean level</div>
+                                    <div class="feature">φ₂: peak position</div>
+                                    <div class="feature">φ₃: fraction ≥ 0.5</div>
+                                    <div class="feature">φ₄: fraction ≥ 0.7</div>
+                                    <div class="feature">φ₅: up-crossing @ 0.5</div>
+                                    <div class="feature">φ₆: up-crossing @ 0.7</div>
+                                </div>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="rf-training-block">
+                                <div class="rf-title">RF Training</div>
+                                <div class="rf-icon">🌲🌲🌲</div>
+                                <div class="rf-cv">5-fold OOF</div>
+                                <div class="rf-output">Final RF Model</div>
+                            </div>
+                        </div>
+                        <div class="stage-params">
+                            <div class="param">Testing Phase</div>
+                            <div class="param">Performance Evaluation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 5: Deployment -->
+                <div class="pipeline-stage stage-5" id="stage5">
+                    <div class="stage-header">
+                        <h3>⚡ Stage 5: STM32 Deployment</h3>
+                    </div>
+                    <div class="stage-content">
+                        <div class="deployment-chain">
+                            <div class="stm32-chip">
+                                <div class="chip-icon">💾</div>
+                                <div class="chip-label">STM32F722RET6</div>
+                            </div>
+                            <div class="deployment-flow">
+                                <div class="flow-step">IMU</div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">CNN</div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">Features</div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">RF</div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step decision">Decision</div>
+                            </div>
+                            <div class="latency-info">
+                                <div class="latency-value">⏱️ 450ms ± 5ms</div>
+                                <div class="latency-label">Decision Latency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Animation Control -->
+                <div class="animation-controls">
+                    <button class="control-btn" onclick="startPipelineAnimation()">▶️ Start Animation</button>
+                    <button class="control-btn" onclick="resetPipelineAnimation()">🔄 Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="navigation">
+        <button class="nav-btn" onclick="resetPipelineAnimation()">🔄 Reset Animation</button>
+        <button class="nav-btn" onclick="startPipelineAnimation()">▶️ Play Animation</button>
+    </div>
+
+    
         <!-- Slide 20: Year 3 Overview & Breakthrough -->
 <div class="slide">
     <div class="slide-header">
@@ -3854,8 +4900,6 @@
             <button class="control-btn" onclick="changeData()">🎲 New Scenario</button>
         </div>
     </div>
-
-
 
 
 
@@ -4854,10 +5898,285 @@
             updateCalculations(initialData);
         });
 
+        // Pipeline Animation Functions
+        let pipelineAnimationActive = false;
+        let pipelineTimeouts = [];
+
+        function startPipelineAnimation() {
+            if (pipelineAnimationActive) return;
+            
+            pipelineAnimationActive = true;
+            resetPipelineAnimation();
+            
+            // Stage 1: Show data packet and first stage
+            pipelineTimeouts.push(setTimeout(() => {
+                const dataPacket = document.getElementById('dataPacket');
+                const stage1 = document.getElementById('stage1');
+                
+                dataPacket.classList.add('active');
+                stage1.classList.add('active');
+                stage1.classList.add('highlight');
+                
+                // Remove highlight after 2 seconds
+                pipelineTimeouts.push(setTimeout(() => {
+                    stage1.classList.remove('highlight');
+                }, 2000));
+            }, 500));
+
+            // Stage 2: Move packet and activate stage 2
+            pipelineTimeouts.push(setTimeout(() => {
+                const dataPacket = document.getElementById('dataPacket');
+                const stage2 = document.getElementById('stage2');
+                
+                // Move packet to stage 2 (same row)
+                dataPacket.style.left = '320px';
+                dataPacket.style.top = '60px';
+                
+                stage2.classList.add('active');
+                stage2.classList.add('highlight');
+                
+                pipelineTimeouts.push(setTimeout(() => {
+                    stage2.classList.remove('highlight');
+                }, 2000));
+            }, 3000));
+
+            // Stage 3: Move to CNN stage (same row)
+            pipelineTimeouts.push(setTimeout(() => {
+                const dataPacket = document.getElementById('dataPacket');
+                const stage3 = document.getElementById('stage3');
+                
+                dataPacket.style.left = '620px';
+                dataPacket.style.top = '60px';
+                
+                stage3.classList.add('active');
+                stage3.classList.add('highlight');
+                
+                // Animate augmentation methods (only one will be used)
+                const augMethods = stage3.querySelectorAll('.aug-method');
+                // Highlight one method at a time to show selection
+                augMethods.forEach((method, index) => {
+                    pipelineTimeouts.push(setTimeout(() => {
+                        method.style.animation = 'pulseHighlight 1s ease';
+                        method.style.transform = 'scale(1.2)';
+                        // Reset others
+                        augMethods.forEach((other, otherIndex) => {
+                            if (otherIndex !== index) {
+                                other.style.opacity = '0.3';
+                            }
+                        });
+                        
+                        // Reset after selection
+                        pipelineTimeouts.push(setTimeout(() => {
+                            method.style.transform = 'scale(1)';
+                            augMethods.forEach(other => {
+                                other.style.opacity = '1';
+                            });
+                        }, 800));
+                    }, index * 600));
+                });
+                
+                // Animate CNN training process
+                pipelineTimeouts.push(setTimeout(() => {
+                    const foldInfo = stage3.querySelector('.cv-info');
+                    if (foldInfo) {
+                        foldInfo.style.animation = 'pulseHighlight 2s ease';
+                    }
+                }, 2000));
+                
+                pipelineTimeouts.push(setTimeout(() => {
+                    stage3.classList.remove('highlight');
+                }, 3000));
+            }, 5500));
+
+            // Stage 4: Event-level processing (still in row 1)
+            pipelineTimeouts.push(setTimeout(() => {
+                const dataPacket = document.getElementById('dataPacket');
+                const stage4 = document.getElementById('stage4');
+                
+                // Move to stage 4 (end of row 1)
+                dataPacket.style.left = '920px';
+                dataPacket.style.top = '60px';
+                
+                stage4.classList.add('active');
+                stage4.classList.add('highlight');
+                
+                // Animate CNN outputs (5 folds)
+                const foldOutputs = stage4.querySelectorAll('.fold-output');
+                foldOutputs.forEach((fold, index) => {
+                    pipelineTimeouts.push(setTimeout(() => {
+                        fold.style.background = '#2196f3';
+                        fold.style.transform = 'scale(1.1)';
+                        pipelineTimeouts.push(setTimeout(() => {
+                            fold.style.background = '#4caf50';
+                            fold.style.transform = 'scale(1)';
+                        }, 300));
+                    }, index * 200));
+                });
+                
+                // Animate feature extraction
+                const features = stage4.querySelectorAll('.feature');
+                features.forEach((feature, index) => {
+                    pipelineTimeouts.push(setTimeout(() => {
+                        feature.style.background = '#9c27b0';
+                        feature.style.color = 'white';
+                        feature.style.padding = '2px 4px';
+                        feature.style.borderRadius = '3px';
+                        pipelineTimeouts.push(setTimeout(() => {
+                            feature.style.background = '';
+                            feature.style.color = '#9c27b0';
+                            feature.style.padding = '0px 1px';
+                            feature.style.borderRadius = '';
+                        }, 500));
+                    }, 1000 + index * 200));
+                });
+                
+                // Animate RF training
+                pipelineTimeouts.push(setTimeout(() => {
+                    const rfCv = stage4.querySelector('.rf-cv');
+                    if (rfCv) {
+                        rfCv.style.animation = 'pulseHighlight 1.5s ease';
+                    }
+                }, 2500));
+                
+                pipelineTimeouts.push(setTimeout(() => {
+                    stage4.classList.remove('highlight');
+                }, 3500));
+            }, 9000));
+
+            // Stage 5: Final deployment (centered in row 2)
+            pipelineTimeouts.push(setTimeout(() => {
+                const dataPacket = document.getElementById('dataPacket');
+                const stage5 = document.getElementById('stage5');
+                
+                // Move to center of row 2
+                dataPacket.style.left = '600px';
+                dataPacket.style.top = '310px';
+                
+                stage5.classList.add('active');
+                stage5.classList.add('highlight');
+                
+                // Animate deployment flow
+                const flowSteps = stage5.querySelectorAll('.flow-step');
+                flowSteps.forEach((step, index) => {
+                    pipelineTimeouts.push(setTimeout(() => {
+                        step.style.background = 'linear-gradient(135deg, #4caf50, #2e7d32)';
+                        step.style.color = 'white';
+                        step.style.transform = 'scale(1.1)';
+                        pipelineTimeouts.push(setTimeout(() => {
+                            if (!step.classList.contains('decision')) {
+                                step.style.background = '#e3f2fd';
+                                step.style.color = '#2c5aa0';
+                            }
+                            step.style.transform = 'scale(1)';
+                        }, 600));
+                    }, index * 300));
+                });
+                
+                // Final pulse animation for the data packet
+                pipelineTimeouts.push(setTimeout(() => {
+                    const dataPacket = document.getElementById('dataPacket');
+                    dataPacket.style.animation = 'pulseHighlight 2s infinite';
+                    // Change packet to show final result
+                    const packetIcon = dataPacket.querySelector('.packet-icon');
+                    const packetLabel = dataPacket.querySelector('.packet-label');
+                    packetIcon.textContent = '✅';
+                    packetLabel.textContent = 'Decision';
+                    dataPacket.style.background = 'linear-gradient(135deg, #4caf50, #2e7d32)';
+                }, 1800));
+                
+                pipelineTimeouts.push(setTimeout(() => {
+                    stage5.classList.remove('highlight');
+                }, 3000));
+            }, 10500));
+
+            // Mark animation as complete
+            pipelineTimeouts.push(setTimeout(() => {
+                pipelineAnimationActive = false;
+            }, 14000));
+        }
+
+        function resetPipelineAnimation() {
+            // Clear all timeouts
+            pipelineTimeouts.forEach(timeout => clearTimeout(timeout));
+            pipelineTimeouts = [];
+            
+            // Reset data packet
+            const dataPacket = document.getElementById('dataPacket');
+            if (dataPacket) {
+                dataPacket.classList.remove('active', 'moving');
+                dataPacket.style.left = '50px';
+                dataPacket.style.top = '50px';
+                dataPacket.style.animation = '';
+                dataPacket.style.background = 'linear-gradient(135deg, #ff6b6b, #ee5a24)';
+                
+                const packetIcon = dataPacket.querySelector('.packet-icon');
+                const packetLabel = dataPacket.querySelector('.packet-label');
+                if (packetIcon) packetIcon.textContent = '📊';
+                if (packetLabel) packetLabel.textContent = 'IMU Data';
+            }
+            
+            // Reset all stages
+            const stages = document.querySelectorAll('.pipeline-stage');
+            stages.forEach(stage => {
+                stage.classList.remove('active', 'highlight');
+            });
+            
+            // Reset all enhanced elements
+            const augMethods = document.querySelectorAll('.aug-method');
+            augMethods.forEach(method => {
+                method.style.animation = '';
+            });
+            
+            const features = document.querySelectorAll('.feature');
+            features.forEach(feature => {
+                feature.style.background = '';
+                feature.style.color = '#9c27b0';
+                feature.style.padding = '';
+                feature.style.borderRadius = '';
+            });
+            
+            const flowSteps = document.querySelectorAll('.flow-step');
+            flowSteps.forEach(step => {
+                if (!step.classList.contains('decision')) {
+                    step.style.background = '#e3f2fd';
+                    step.style.color = '#2c5aa0';
+                }
+                step.style.transform = 'scale(1)';
+            });
+            
+            pipelineAnimationActive = false;
+        }
+
+        // Auto-start animation on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                startPipelineAnimation();
+            }, 1000);
+        });
+
+        // Keyboard controls
+        document.addEventListener('keydown', function(e) {
+            switch(e.key) {
+                case ' ':
+                case 'Enter':
+                    e.preventDefault();
+                    if (pipelineAnimationActive) {
+                        resetPipelineAnimation();
+                    } else {
+                        startPipelineAnimation();
+                    }
+                    break;
+                case 'r':
+                case 'R':
+                    e.preventDefault();
+                    resetPipelineAnimation();
+                    break;
+            }
+        });
+
     </script>
 </body>
 </html> 
-
 
 
 
