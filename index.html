@@ -1012,6 +1012,317 @@
                 transform: translateX(50%);
             }
         }
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0f23, #1a1a3a, #2d1b69);
+            color: white;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .story-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .story-header {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .story-header h1 {
+            font-size: 2em;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+
+        .story-stage {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 20px;
+            position: relative;
+            overflow: visible;
+            height: calc(100vh - 180px);
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            text-align: center;
+            color: #4ecdc4;
+        }
+
+        /* Data Section */
+        .sample-data {
+            display: flex;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+
+        .data-point {
+            width: 70px;
+            height: 80px;
+            background: rgba(69, 183, 209, 0.3);
+            border: 2px solid #45b7d1;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .data-point.highlight {
+            background: rgba(255, 107, 107, 0.4);
+            border-color: #ff6b6b;
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .confidence-value {
+            font-weight: bold;
+            color: #feca57;
+            font-size: 1.1em;
+        }
+
+        .segment-label {
+            font-size: 0.7em;
+            color: #ccc;
+            margin-top: 5px;
+        }
+
+        .scenario-info {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.9em;
+        }
+
+        /* Calculations Section */
+        .calculation-display {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            height: calc(100vh - 280px);
+            overflow: visible;
+        }
+
+        .calculation-step {
+            margin: 8px 0;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.6s ease;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .calculation-step.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .calculation-step.highlight {
+            background: rgba(255, 107, 107, 0.2);
+            border-left: 3px solid #ff6b6b;
+            padding-left: 10px;
+        }
+
+        .formula {
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .result-value {
+            color: #feca57;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        /* Results Section */
+        .feature-result {
+            background: rgba(78, 205, 196, 0.15);
+            border: 1px solid #4ecdc4;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 8px 0;
+            text-align: center;
+            transform: scale(0);
+            transition: all 0.6s ease;
+        }
+
+        .feature-result.show {
+            transform: scale(1);
+        }
+
+        .feature-name {
+            font-size: 0.9em;
+            color: #4ecdc4;
+            font-weight: bold;
+        }
+
+        .feature-value {
+            font-size: 1.4em;
+            color: #feca57;
+            font-weight: bold;
+            margin: 3px 0;
+        }
+
+        .feature-explanation {
+            font-size: 0.75em;
+            color: #ccc;
+        }
+
+        /* Final Decision Display */
+        .final-decision {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(78, 205, 196, 0.3));
+            border: 3px solid;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+            transform: scale(0);
+            transition: all 0.8s ease;
+        }
+
+        .final-decision.show {
+            transform: scale(1);
+        }
+
+        .final-decision.falling {
+            border-color: #ff6b6b;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.4), rgba(255, 107, 107, 0.2));
+        }
+
+        .final-decision.activity {
+            border-color: #4ecdc4;
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.4), rgba(78, 205, 196, 0.2));
+        }
+
+        .decision-label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #ccc;
+        }
+
+        .decision-result {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .decision-confidence {
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        /* Control Panel */
+        .control-panel {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Math Character */
+        .math-character {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            transition: all 0.8s ease;
+            z-index: 10;
+        }
+
+        .math-character.working {
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Progress bar */
+        .progress-container {
+            margin: 15px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+            width: 0%;
+            transition: width 0.8s ease;
+        }
+
+        .responsive-text {
+            font-size: 0.85em;
+        }
+
+        
     </style>
 </head>
 <body>
@@ -3259,6 +3570,145 @@
 
 
 
+            <div class="slide">
+        <!-- Header -->
+        <div class="slide-heade">
+            <h1>🎯 Random Forest Decision Process: From Features to Classification</h1>
+            <div class="slide-number">31/33</div>
+            <p class="responsive-text">Watch live calculation of φ₁-φ₆ features → Random Forest → Final Decision</p>
+        </div>
+
+        <!-- Main Story Stage -->
+        <div class="story-stage">
+            <!-- Data Input Section -->
+            <div class="section">
+                <div class="math-character" id="mathChar">🤖</div>
+                <h3 class="section-title">📊 Input: CNN Confidences</h3>
+                
+                <div class="scenario-info" id="scenarioInfo">
+                    <strong>Scenario:</strong> <span id="scenarioName">Late Fall Detection</span>
+                </div>
+                
+                <div class="sample-data">
+                    <div class="data-point" id="segment1">
+                        <div class="confidence-value" id="p1Value">p₁ = 0.3</div>
+                        <div class="segment-label">300ms</div>
+                    </div>
+                    <div class="data-point" id="segment2">
+                        <div class="confidence-value" id="p2Value">p₂ = 0.8</div>
+                        <div class="segment-label">300ms</div>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="responsive-text">Calculation Progress:</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Calculations Section -->
+            <div class="section">
+                <h3 class="section-title">⚡ Live Feature Extraction</h3>
+                
+                <div class="calculation-display" id="calculations">
+                    <div class="calculation-step" id="step1">
+                        <span class="formula">φ₁ = μ =</span> (1/M) × Σ p̃ᵢ
+                    </div>
+                    <div class="calculation-step" id="step2">
+                        φ₁ = (1/2) × (<span id="calc_p1">0.3</span> + <span id="calc_p2">0.8</span>) = <span class="result-value" id="result_phi1">0.55</span>
+                    </div>
+                    
+                    <div class="calculation-step" id="step3">
+                        <span class="formula">φ₂ = π =</span> (arg max p̃ᵢ) / M
+                    </div>
+                    <div class="calculation-step" id="step4">
+                        φ₂ = <span id="peak_pos">2</span>/2 = <span class="result-value" id="result_phi2">1.0</span>
+                    </div>
+                    
+                    <div class="calculation-step" id="step5">
+                        <span class="formula">φ₃ = q₀.₅ =</span> (1/M) × count(p̃ᵢ ≥ 0.5)
+                    </div>
+                    <div class="calculation-step" id="step6">
+                        φ₃ = (1/2) × <span id="count_05">1</span> = <span class="result-value" id="result_phi3">0.5</span>
+                    </div>
+                    
+                    <div class="calculation-step" id="step7">
+                        <span class="formula">φ₄ = q₀.₇ =</span> (1/M) × count(p̃ᵢ ≥ 0.7)  
+                    </div>
+                    <div class="calculation-step" id="step8">
+                        φ₄ = (1/2) × <span id="count_07">1</span> = <span class="result-value" id="result_phi4">0.5</span>
+                    </div>
+                    
+                    <div class="calculation-step" id="step9">
+                        <span class="formula">φ₅ = c₀.₅ =</span> Up-crossings at 0.5
+                    </div>
+                    <div class="calculation-step" id="step10">
+                        φ₅ = <span id="cross_05">1</span>/(M-1) = <span class="result-value" id="result_phi5">1.0</span>
+                    </div>
+                    
+                    <div class="calculation-step" id="step11">
+                        <span class="formula">φ₆ = c₀.₇ =</span> Up-crossings at 0.7
+                    </div>
+                    <div class="calculation-step" id="step12">
+                        φ₆ = <span id="cross_07">1</span>/(M-1) = <span class="result-value" id="result_phi6">1.0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results & Decision Section -->
+            <div class="section">
+                <h3 class="section-title">🎯 Features → RF Decision</h3>
+                
+                <div id="featureResults">
+                    <div class="feature-result" id="result1">
+                        <div class="feature-name">φ₁ - Mean</div>
+                        <div class="feature-value" id="display_phi1">0.55</div>
+                    </div>
+                    <div class="feature-result" id="result2">
+                        <div class="feature-name">φ₂ - Peak</div>
+                        <div class="feature-value" id="display_phi2">1.0</div>
+                    </div>
+                    <div class="feature-result" id="result3">
+                        <div class="feature-name">φ₃ - Above 0.5</div>
+                        <div class="feature-value" id="display_phi3">0.5</div>
+                    </div>
+                    <div class="feature-result" id="result4">
+                        <div class="feature-name">φ₄ - Above 0.7</div>
+                        <div class="feature-value" id="display_phi4">0.5</div>
+                    </div>
+                    <div class="feature-result" id="result5">
+                        <div class="feature-name">φ₅ - Cross 0.5</div>
+                        <div class="feature-value" id="display_phi5">1.0</div>
+                    </div>
+                    <div class="feature-result" id="result6">
+                        <div class="feature-name">φ₆ - Cross 0.7</div>
+                        <div class="feature-value" id="display_phi6">1.0</div>
+                    </div>
+                </div>
+
+                <div class="final-decision" id="finalDecision">
+                    <div class="decision-label">🌳 Random Forest Decision:</div>
+                    <div class="decision-result" id="decisionText">FALLING</div>
+                    <div class="decision-confidence" id="decisionConfidence">Confidence: 89%</div>
+                    <div style="font-size: 0.8em; margin-top: 8px; color: #ccc;" id="decisionReason">
+                        Strong up-crossing pattern detected
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <button class="control-btn" onclick="startStory()">▶️ Calculate</button>
+            <button class="control-btn" onclick="resetStory()">🔄 Reset</button>
+            <button class="control-btn" onclick="changeData()">🎲 New Scenario</button>
+        </div>
+    </div>
+
+        
+
         <!-- Slide 28: Video Documentary -->
 <div class="slide">
     <div class="slide-header">
@@ -4019,10 +4469,244 @@
                 }
             }
         });
-        
+                let currentStep = 0;
+        let storyRunning = false;
+        let currentFeatures = {phi1: 0, phi2: 0, phi3: 0, phi4: 0, phi5: 0, phi6: 0};
+
+        const sampleDataSets = [
+            {
+                p1: 0.3, p2: 0.8, 
+                scenario: "Late Fall Detection",
+                expected: "FALLING",
+                confidence: 89,
+                reason: "Strong up-crossing pattern detected"
+            },
+            {
+                p1: 0.9, p2: 0.2, 
+                scenario: "Early False Alarm", 
+                expected: "ACTIVITY",
+                confidence: 76,
+                reason: "Peak too early, likely false positive"
+            },
+            {
+                p1: 0.7, p2: 0.95, 
+                scenario: "Strong Fall Pattern",
+                expected: "FALLING", 
+                confidence: 94,
+                reason: "High confidence with strong progression"
+            },
+            {
+                p1: 0.2, p2: 0.4, 
+                scenario: "Normal Activity",
+                expected: "ACTIVITY",
+                confidence: 91,
+                reason: "Low confidence throughout, normal movement"
+            },
+            {
+                p1: 0.1, p2: 0.9,
+                scenario: "Sudden Impact Fall",
+                expected: "FALLING",
+                confidence: 87,
+                reason: "Dramatic confidence increase indicates fall"
+            }
+        ];
+        let currentDataSet = 0;
+
+        function calculateFeatures(p1, p2) {
+            const features = {};
+            
+            // φ₁: Mean confidence
+            features.phi1 = (p1 + p2) / 2;
+            
+            // φ₂: Peak position (normalized)
+            features.phi2 = p1 > p2 ? 0.5 : 1.0;
+            
+            // φ₃: Fraction above 0.5
+            const above05 = (p1 >= 0.5 ? 1 : 0) + (p2 >= 0.5 ? 1 : 0);
+            features.phi3 = above05 / 2;
+            
+            // φ₄: Fraction above 0.7
+            const above07 = (p1 >= 0.7 ? 1 : 0) + (p2 >= 0.7 ? 1 : 0);
+            features.phi4 = above07 / 2;
+            
+            // φ₅: Up-crossing 0.5
+            features.phi5 = (p1 < 0.5 && p2 >= 0.5) ? 1.0 : 0.0;
+            
+            // φ₆: Up-crossing 0.7
+            features.phi6 = (p1 < 0.7 && p2 >= 0.7) ? 1.0 : 0.0;
+            
+            return features;
+        }
+
+        function updateCalculations(data) {
+            const features = calculateFeatures(data.p1, data.p2);
+            currentFeatures = features;
+            
+            // Update all calculation displays
+            document.getElementById('calc_p1').textContent = data.p1;
+            document.getElementById('calc_p2').textContent = data.p2;
+            document.getElementById('result_phi1').textContent = features.phi1.toFixed(2);
+            
+            document.getElementById('peak_pos').textContent = data.p1 > data.p2 ? '1' : '2';
+            document.getElementById('result_phi2').textContent = features.phi2.toFixed(1);
+            
+            const count05 = (data.p1 >= 0.5 ? 1 : 0) + (data.p2 >= 0.5 ? 1 : 0);
+            document.getElementById('count_05').textContent = count05;
+            document.getElementById('result_phi3').textContent = features.phi3.toFixed(1);
+            
+            const count07 = (data.p1 >= 0.7 ? 1 : 0) + (data.p2 >= 0.7 ? 1 : 0);
+            document.getElementById('count_07').textContent = count07;
+            document.getElementById('result_phi4').textContent = features.phi4.toFixed(1);
+            
+            document.getElementById('cross_05').textContent = features.phi5 === 1.0 ? '1' : '0';
+            document.getElementById('result_phi5').textContent = features.phi5.toFixed(1);
+            
+            document.getElementById('cross_07').textContent = features.phi6 === 1.0 ? '1' : '0';
+            document.getElementById('result_phi6').textContent = features.phi6.toFixed(1);
+            
+            // Update feature result displays
+            document.getElementById('display_phi1').textContent = features.phi1.toFixed(2);
+            document.getElementById('display_phi2').textContent = features.phi2.toFixed(1);
+            document.getElementById('display_phi3').textContent = features.phi3.toFixed(1);
+            document.getElementById('display_phi4').textContent = features.phi4.toFixed(1);
+            document.getElementById('display_phi5').textContent = features.phi5.toFixed(1);
+            document.getElementById('display_phi6').textContent = features.phi6.toFixed(1);
+        }
+
+        function startStory() {
+            if (storyRunning) return;
+            storyRunning = true;
+            currentStep = 0;
+            
+            document.getElementById('mathChar').classList.add('working');
+            
+            // Start the animation sequence
+            animateStory();
+        }
+
+        function animateStory() {
+            const steps = [
+                () => highlightData(),
+                () => showSteps(1, 2),
+                () => showSteps(3, 4), 
+                () => showSteps(5, 6),
+                () => showSteps(7, 8),
+                () => showSteps(9, 10),
+                () => showSteps(11, 12),
+                () => showFeatureResults(),
+                () => showFinalDecision(),
+                () => completeStory()
+            ];
+
+            if (currentStep < steps.length) {
+                steps[currentStep]();
+                currentStep++;
+                setTimeout(animateStory, 1800);
+            }
+        }
+
+        function highlightData() {
+            document.getElementById('segment1').classList.add('highlight');
+            document.getElementById('segment2').classList.add('highlight');
+            updateProgress(10);
+        }
+
+        function showSteps(step1, step2) {
+            document.getElementById(`step${step1}`).classList.add('visible');
+            setTimeout(() => {
+                document.getElementById(`step${step2}`).classList.add('visible', 'highlight');
+            }, 600);
+            updateProgress(10 + currentStep * 10);
+        }
+
+        function showFeatureResults() {
+            const results = document.querySelectorAll('.feature-result');
+            results.forEach((result, index) => {
+                setTimeout(() => {
+                    result.classList.add('show');
+                }, index * 200);
+            });
+            updateProgress(85);
+        }
+
+        function showFinalDecision() {
+            const data = sampleDataSets[currentDataSet];
+            const decision = document.getElementById('finalDecision');
+            
+            decision.classList.remove('falling', 'activity');
+            decision.classList.add(data.expected.toLowerCase());
+            
+            document.getElementById('decisionText').textContent = data.expected;
+            document.getElementById('decisionText').style.color = data.expected === 'FALLING' ? '#ff6b6b' : '#4ecdc4';
+            document.getElementById('decisionConfidence').textContent = `Confidence: ${data.confidence}%`;
+            document.getElementById('decisionReason').textContent = data.reason;
+            
+            decision.classList.add('show');
+            updateProgress(100);
+        }
+
+        function completeStory() {
+            document.getElementById('mathChar').classList.remove('working');
+            document.getElementById('mathChar').innerHTML = '✅';
+            
+            setTimeout(() => {
+                storyRunning = false;
+                document.getElementById('mathChar').innerHTML = '🤖';
+            }, 2000);
+        }
+
+        function updateProgress(percent) {
+            document.getElementById('progressFill').style.width = percent + '%';
+        }
+
+        function resetStory() {
+            storyRunning = false;
+            currentStep = 0;
+            
+            // Reset all elements
+            document.querySelectorAll('.calculation-step').forEach(step => {
+                step.classList.remove('visible', 'highlight');
+            });
+            
+            document.querySelectorAll('.feature-result').forEach(result => {
+                result.classList.remove('show');
+            });
+            
+            document.querySelectorAll('.data-point').forEach(point => {
+                point.classList.remove('highlight');
+            });
+            
+            document.getElementById('finalDecision').classList.remove('show', 'falling', 'activity');
+            document.getElementById('mathChar').classList.remove('working');
+            document.getElementById('mathChar').innerHTML = '🤖';
+            
+            updateProgress(0);
+        }
+
+        function changeData() {
+            currentDataSet = (currentDataSet + 1) % sampleDataSets.length;
+            const data = sampleDataSets[currentDataSet];
+            
+            // Update data display
+            document.getElementById('p1Value').textContent = `p₁ = ${data.p1}`;
+            document.getElementById('p2Value').textContent = `p₂ = ${data.p2}`;
+            document.getElementById('scenarioName').textContent = data.scenario;
+            
+            // Update calculations
+            updateCalculations(data);
+            
+            resetStory();
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            const initialData = sampleDataSets[0];
+            updateCalculations(initialData);
+        });
     </script>
 </body>
 </html> 
+
 
 
 
