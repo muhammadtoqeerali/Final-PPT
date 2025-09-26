@@ -3713,6 +3713,8 @@
             </div>
 
 <!-- Slide 31: Random Forest Decision Process -->
+
+<!-- Slide 31: Random Forest Decision Process -->
 <div class="slide">
     <div class="slide-header">
         <h2>🎯 Random Forest Decision Process: From Features to Classification</h2>
@@ -3760,7 +3762,47 @@
                     <h3 class="section-title">⚡ Live Feature Extraction</h3>
                     
                     <div class="calculation-display" id="calculations">
-                        <!-- All your calculation steps here -->
+                        <div class="calculation-step" id="step1">
+                            <span class="formula">φ₁ = μ =</span> (1/M) × Σ p̃ᵢ
+                        </div>
+                        <div class="calculation-step" id="step2">
+                            φ₁ = (1/2) × (<span id="calc_p1">0.3</span> + <span id="calc_p2">0.8</span>) = <span class="result-value" id="result_phi1">0.55</span>
+                        </div>
+                        
+                        <div class="calculation-step" id="step3">
+                            <span class="formula">φ₂ = π =</span> (arg max p̃ᵢ) / M
+                        </div>
+                        <div class="calculation-step" id="step4">
+                            φ₂ = <span id="peak_pos">2</span>/2 = <span class="result-value" id="result_phi2">1.0</span>
+                        </div>
+                        
+                        <div class="calculation-step" id="step5">
+                            <span class="formula">φ₃ = q₀.₅ =</span> (1/M) × count(p̃ᵢ ≥ 0.5)
+                        </div>
+                        <div class="calculation-step" id="step6">
+                            φ₃ = (1/2) × <span id="count_05">1</span> = <span class="result-value" id="result_phi3">0.5</span>
+                        </div>
+                        
+                        <div class="calculation-step" id="step7">
+                            <span class="formula">φ₄ = q₀.₇ =</span> (1/M) × count(p̃ᵢ ≥ 0.7)  
+                        </div>
+                        <div class="calculation-step" id="step8">
+                            φ₄ = (1/2) × <span id="count_07">1</span> = <span class="result-value" id="result_phi4">0.5</span>
+                        </div>
+                        
+                        <div class="calculation-step" id="step9">
+                            <span class="formula">φ₅ = c₀.₅ =</span> Up-crossings at 0.5
+                        </div>
+                        <div class="calculation-step" id="step10">
+                            φ₅ = <span id="cross_05">1</span>/(M-1) = <span class="result-value" id="result_phi5">1.0</span>
+                        </div>
+                        
+                        <div class="calculation-step" id="step11">
+                            <span class="formula">φ₆ = c₀.₇ =</span> Up-crossings at 0.7
+                        </div>
+                        <div class="calculation-step" id="step12">
+                            φ₆ = <span id="cross_07">1</span>/(M-1) = <span class="result-value" id="result_phi6">1.0</span>
+                        </div>
                     </div>
                 </div>
 
@@ -3769,7 +3811,30 @@
                     <h3 class="section-title">🎯 Features → RF Decision</h3>
                     
                     <div id="featureResults">
-                        <!-- All your feature results here -->
+                        <div class="feature-result" id="result1">
+                            <div class="feature-name">φ₁ - Mean</div>
+                            <div class="feature-value" id="display_phi1">0.55</div>
+                        </div>
+                        <div class="feature-result" id="result2">
+                            <div class="feature-name">φ₂ - Peak</div>
+                            <div class="feature-value" id="display_phi2">1.0</div>
+                        </div>
+                        <div class="feature-result" id="result3">
+                            <div class="feature-name">φ₃ - Above 0.5</div>
+                            <div class="feature-value" id="display_phi3">0.5</div>
+                        </div>
+                        <div class="feature-result" id="result4">
+                            <div class="feature-name">φ₄ - Above 0.7</div>
+                            <div class="feature-value" id="display_phi4">0.5</div>
+                        </div>
+                        <div class="feature-result" id="result5">
+                            <div class="feature-name">φ₅ - Cross 0.5</div>
+                            <div class="feature-value" id="display_phi5">1.0</div>
+                        </div>
+                        <div class="feature-result" id="result6">
+                            <div class="feature-name">φ₆ - Cross 0.7</div>
+                            <div class="feature-value" id="display_phi6">1.0</div>
+                        </div>
                     </div>
 
                     <div class="final-decision" id="finalDecision">
@@ -3791,8 +3856,7 @@
             </div>
         </div>
     </div>
-</div>
-        
+</div>  
 
         <!-- Slide 28: Video Documentary -->
 <div class="slide">
@@ -4791,6 +4855,7 @@
     </script>
 </body>
 </html> 
+
 
 
 
