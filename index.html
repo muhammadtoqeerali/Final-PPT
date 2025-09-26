@@ -4543,6 +4543,8 @@
         document.addEventListener('fullscreenchange', function() {
             if (document.fullscreenElement) {
                 document.body.classList.add('presentation-mode');
+                if (navigation) navigation.style.display = 'none';
+                if (slideIndicator) slideIndicator.style.display = 'none';
             } else {
                 document.body.classList.remove('presentation-mode');
                 if (navigation) navigation.style.opacity = '1';
@@ -4858,6 +4860,7 @@
     </script>
 </body>
 </html> 
+
 
 
 
