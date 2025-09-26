@@ -1365,7 +1365,69 @@
         width: 0%;
         transition: width 0.8s ease;
     }
+    /* Decision Rules Styles */
+    .decision-rules {
+        background: linear-gradient(135deg, #f8f9fa, #e8f4f8);
+        border: 2px solid #2c5aa0;
+        border-radius: 10px;
+        padding: 12px;
+        margin: 15px 0;
+        font-size: 0.8em;
+    }
 
+    .rule-item {
+        display: flex;
+        align-items: center;
+        margin: 6px 0;
+        padding: 6px 8px;
+        border-radius: 6px;
+        transition: all 0.3s ease;
+    }
+
+    .rule-item:hover {
+        transform: translateX(3px);
+    }
+
+    .falling-rule {
+        background: rgba(255, 107, 107, 0.1);
+        border-left: 3px solid #ff6b6b;
+    }
+
+    .activity-rule {
+        background: rgba(76, 175, 80, 0.1);
+        border-left: 3px solid #4caf50;
+    }
+
+    .key-insight {
+        background: rgba(44, 90, 160, 0.1);
+        border-left: 3px solid #2c5aa0;
+    }
+
+    .rule-label {
+        font-weight: bold;
+        min-width: 70px;
+        color: #333;
+        font-size: 0.85em;
+    }
+
+    .rule-formula {
+        font-family: 'Courier New', monospace;
+        background: rgba(255, 255, 255, 0.7);
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin: 0 8px;
+        color: #2c5aa0;
+        font-weight: bold;
+        flex: 1;
+    }
+
+    .rule-description {
+        color: #666;
+        font-style: italic;
+        font-size: 0.75em;
+        min-width: 100px;
+    }
+     
     @keyframes slideIn {
         from {
             opacity: 0;
@@ -3643,7 +3705,7 @@
         </div>
 
             <div class="story-stage">
-            <!-- Data Input Section -->
+                <!-- Data Input Section -->
             <div class="section">
                 <div class="math-character" id="mathChar">🤖</div>
                 <h3 class="section-title">📊 Input: CNN Confidences</h3>
@@ -3662,11 +3724,34 @@
                         <div class="segment-label">300ms</div>
                     </div>
                 </div>
-
+    
                 <div class="progress-container">
                     <div class="responsive-text">Calculation Progress:</div>
                     <div class="progress-bar">
                         <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+    
+                <!-- Decision Rules Box -->
+                <div class="decision-rules">
+                    <h4 style="color: #2c5aa0; font-size: 0.9em; margin-bottom: 8px; text-align: center;">🧠 RF Decision Rules</h4>
+                    
+                    <div class="rule-item falling-rule">
+                        <div class="rule-label">🚨 FALLING if:</div>
+                        <div class="rule-formula">φ₅≥0.7 OR φ₆≥0.7</div>
+                        <div class="rule-description">Strong up-crossing pattern</div>
+                    </div>
+                    
+                    <div class="rule-item activity-rule">
+                        <div class="rule-label">✅ ACTIVITY if:</div>
+                        <div class="rule-formula">φ₅≤0.2 AND φ₆≤0.2</div>
+                        <div class="rule-description">No significant confidence increase</div>
+                    </div>
+                    
+                    <div class="rule-item key-insight">
+                        <div class="rule-label">🔑 Key:</div>
+                        <div class="rule-formula">Up-crossing = Low→High confidence</div>
+                        <div class="rule-description">Captures fall signature pattern</div>
                     </div>
                 </div>
             </div>
@@ -4773,6 +4858,7 @@
     </script>
 </body>
 </html> 
+
 
 
 
