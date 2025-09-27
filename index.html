@@ -2392,6 +2392,438 @@
           .s3-card::after{ display: none; }
         }
 
+
+  /* New */
+
+
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .method-btn {
+            padding: 12px 24px;
+            border: 2px solid #e2e8f0;
+            border-radius: 25px;
+            background: white;
+            color: #64748b;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .method-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .method-btn.active {
+            border-color: #3b82f6;
+            background: #3b82f6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59,130,246,0.3);
+        }
+
+        .method-btn[data-method="gan"].active {
+            border-color: #f97316;
+            background: #f97316;
+            box-shadow: 0 4px 12px rgba(249,115,22,0.3);
+        }
+
+        .method-btn[data-method="hybrid"].active {
+            border-color: #8b5cf6;
+            background: #8b5cf6;
+            box-shadow: 0 4px 12px rgba(139,92,246,0.3);
+        }
+
+        .stats-overview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .stat-card.synthetic-highlight {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border: 1px solid #22c55e;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card.synthetic-highlight::before {
+            background: linear-gradient(90deg, #22c55e 0%, #16a34a 100%);
+        }
+
+        .stat-card.synthetic-highlight::after {
+            content: '✨';
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 1.2em;
+            opacity: 0.7;
+            animation: sparkle 2s infinite;
+        }
+
+        .synthetic-value {
+            color: #16a34a !important;
+            text-shadow: 0 1px 2px rgba(22, 163, 74, 0.2);
+            font-weight: 800 !important;
+        }
+
+        .stat-card.synthetic-highlight:hover {
+            background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+            border-color: #16a34a;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(34, 197, 94, 0.25);
+        }
+
+        .stat-card.synthetic-highlight .stat-label {
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { 
+                opacity: 0.4; 
+                transform: scale(1) rotate(0deg);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.1) rotate(10deg);
+            }
+        }
+
+        .stat-value {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 4px;
+            letter-spacing: -0.5px;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.75em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 32px;
+        }
+
+        .folds-section h2 {
+            color: #1e293b;
+            margin-bottom: 24px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .folds-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .fold-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .fold-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .fold-header {
+            background: #f1f5f9;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 12px;
+        }
+
+        .subject-info {
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 6px 8px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            text-align: center;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .data-section {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .before-section, .after-section {
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .before-section {
+            background: #fef2f2;
+            border-left: 3px solid #ef4444;
+        }
+
+        .after-section {
+            background: #f0fdf4;
+            border-left: 3px solid #22c55e;
+        }
+
+        .section-title {
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .before-section .section-title {
+            color: #dc2626;
+        }
+
+        .after-section .section-title {
+            color: #16a34a;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 3px 0;
+            font-size: 0.8em;
+        }
+
+        .data-label {
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .data-value {
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .activity-value {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .falling-value {
+            background: #fecaca;
+            color: #dc2626;
+        }
+
+        .synthetic-value {
+            background: #fed7aa;
+            color: #ea580c;
+        }
+
+        .total-value {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .ratio-value {
+            background: #f3e8ff;
+            color: #7c3aed;
+        }
+
+        .details-panel {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 16px;
+            height: fit-content;
+        }
+
+        .details-panel h2 {
+            color: #1e293b;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-align: center;
+            padding: 8px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 8px;
+            margin: -16px -16px 12px -16px;
+        }
+
+        .config-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .model-params {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .model-params h3 {
+            color: #374151;
+            font-size: 0.8em;
+            margin-bottom: 6px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .model-params h3::before {
+            content: '⚙️';
+            font-size: 0.7em;
+        }
+
+        .param-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2px 0;
+            padding: 1px 0;
+            font-size: 0.7em;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .param-row:last-child {
+            border-bottom: none;
+        }
+
+        .param-label {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .param-value {
+            color: #111827;
+            font-weight: 600;
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #f1f5f9;
+            padding: 1px 3px;
+            border-radius: 2px;
+            font-size: 0.85em;
+        }
+
+        .metrics-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .metrics-section h3 {
+            color: #374151;
+            font-size: 0.8em;
+            margin-bottom: 6px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .metrics-section h3::before {
+            content: '📊';
+            font-size: 0.7em;
+        }
+
+        .metric-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2px 0;
+            padding: 1px 0;
+            font-size: 0.7em;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .metric-item:last-child {
+            border-bottom: none;
+        }
+
+        .metric-name {
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .metric-value {
+            font-weight: 600;
+            font-size: 0.85em;
+            color: #111827;
+            font-family: 'Monaco', 'Menlo', monospace;
+            background: #f1f5f9;
+            padding: 1px 3px;
+            border-radius: 2px;
+        }
+
+        .processing {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .folds-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+        }
     </style>
 </head>
 <body>
@@ -3891,6 +4323,83 @@
                 </div>
             </div>
         </div>
+
+
+    <div class="slide">
+        <div class="slide-header">
+            <h1>
+                📊 Complete 5-Fold Cross-Validation Augmentation Analysis
+            </h1>
+            <div class="slide-number">23/34</div>
+        </div>
+
+        <div class="main-content">
+            <!-- Method Controls -->
+            <div class="controls">
+                <button class="method-btn active" data-method="vae">
+                    🧠 VAE
+                </button>
+                <button class="method-btn" data-method="gan">
+                    ⚡ TimeGAN
+                </button>
+                <button class="method-btn" data-method="hybrid">
+                    🔄 VAE-GAN
+                </button>
+            </div>
+
+            <!-- Overview Statistics -->
+            <div class="stats-overview">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalSubjects">71</div>
+                    <div class="stat-label">Total Subjects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalActivity">2,947,168</div>
+                    <div class="stat-label">Activity Segments</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalFalls">32,806</div>
+                    <div class="stat-label">Original Falls</div>
+                </div>
+                <div class="stat-card synthetic-highlight">
+                    <div class="stat-value synthetic-value" id="avgSynthetic">+65,612</div>
+                    <div class="stat-label">Avg Synthetic</div>
+                </div>
+            </div>
+
+            <!-- Main Content Grid -->
+            <div class="content-grid">
+                <!-- Folds Results -->
+                <div class="folds-section">
+                    <h2>5-Fold Results</h2>
+                    <div class="folds-grid" id="foldsContainer">
+                        <!-- Fold cards will be generated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Details Panel -->
+                <div class="details-panel">
+                    <h2 id="methodTitle">VAE Configuration</h2>
+                    
+                    <div class="config-row">
+                        <div class="model-params">
+                            <h3>Model Parameters</h3>
+                            <div id="modelParams">
+                                <!-- Parameters will be loaded by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="metrics-section">
+                            <h3>Performance Metrics</h3>
+                            <div id="performanceMetrics">
+                                <!-- Metrics will be loaded by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 <div class="slide">
     <div class="slide-header">
@@ -6274,10 +6783,305 @@
             }
         });
 
+
+
+
+
+        // Data structure with real implementation results
+        const augmentationData = {
+            vae: {
+                name: "VAE",
+                title: "VAE Configuration",
+                color: "#3b82f6",
+                folds: [
+                    { activity: 588646, original: 6662, synthetic: 13324, total: 33310, ratio: "17.7:1", beforeRatio: "88.3:1" },
+                    { activity: 660284, original: 6516, synthetic: 13032, total: 32580, ratio: "20.3:1", beforeRatio: "101.3:1" },
+                    { activity: 578530, original: 6346, synthetic: 12692, total: 31730, ratio: "18.2:1", beforeRatio: "91.2:1" },
+                    { activity: 893222, original: 5933, synthetic: 11866, total: 29665, ratio: "30.1:1", beforeRatio: "150.5:1" },
+                    { activity: 517556, original: 6295, synthetic: 12590, total: 31475, ratio: "16.4:1", beforeRatio: "82.2:1" }
+                ],
+                totalActivity: "3,238,238",
+                totalFalls: "31,752",
+                avgSynthetic: "+63,504",
+                params: {
+                    "Model Params": "59.7K",
+                    "Model Size": "0.239 MB",
+                    "Training Modules": "21",
+                    "Batch Size": "128",
+                    "Learning Rate": "0.001079",
+                    "Alpha Value": "0.01397",
+                    "Architecture": "CNN + VAE Augmentation"
+                },
+                metrics: {
+                    "Average MMD": "0.004374",
+                    "Average FID": "57.54",
+                    "MMD Range": "0.003672 - 0.005542",
+                    "FID Range": "47.33 - 73.02",
+                    "Generation Ratio": "2:1",
+                    "Quality Filter": "Reconstruction Error"
+                }
+            },
+            gan: {
+                name: "TimeGAN",
+                title: "TimeGAN Configuration",
+                color: "#f97316",
+                folds: [
+                    { activity: 588646, original: 6662, synthetic: 6595, total: 26581, ratio: "22.1:1", beforeRatio: "88.3:1" },
+                    { activity: 660284, original: 6516, synthetic: 6448, total: 25996, ratio: "25.4:1", beforeRatio: "101.3:1" },
+                    { activity: 578530, original: 6346, synthetic: 6272, total: 25310, ratio: "22.9:1", beforeRatio: "91.2:1" },
+                    { activity: 893222, original: 5933, synthetic: 5873, total: 23672, ratio: "37.7:1", beforeRatio: "150.5:1" },
+                    { activity: 517556, original: 6295, synthetic: 6232, total: 25117, ratio: "20.6:1", beforeRatio: "82.2:1" }
+                ],
+                totalActivity: "3,238,238",
+                totalFalls: "31,752",
+                avgSynthetic: "+31,420",
+                params: {
+                    "Model Params": "59.7K",
+                    "Model Size": "0.239 MB",
+                    "Training Modules": "21",
+                    "Batch Size": "128",
+                    "Learning Rate": "0.001079",
+                    "Alpha Value": "0.01397",
+                    "Architecture": "CNN + TimeGAN Augmentation"
+                },
+                metrics: {
+                    "Training Steps": "3-Phase Process",
+                    "Step 1": "Pretraining Embedder",
+                    "Step 2": "Training Supervisor", 
+                    "Step 3": "Adversarial Training",
+                    "Generation Ratio": "~1:1",
+                    "Quality Filter": "Temporal Coherence"
+                }
+            },
+            hybrid: {
+                name: "VAE-GAN",
+                title: "VAE-GAN Hybrid Configuration", 
+                color: "#8b5cf6",
+                folds: [
+                    { activity: 588646, original: 6662, synthetic: 33310, total: 39972, ratio: "14.7:1", beforeRatio: "88.3:1" },
+                    { activity: 660284, original: 6516, synthetic: 32580, total: 39096, ratio: "16.9:1", beforeRatio: "101.3:1" },
+                    { activity: 578530, original: 6346, synthetic: 31730, total: 38076, ratio: "15.2:1", beforeRatio: "91.2:1" },
+                    { activity: 893222, original: 5933, synthetic: 29665, total: 35598, ratio: "25.1:1", beforeRatio: "150.5:1" },
+                    { activity: 517556, original: 6295, synthetic: 31475, total: 37770, ratio: "13.7:1", beforeRatio: "82.2:1" }
+                ],
+                totalActivity: "3,238,238",
+                totalFalls: "31,752",
+                avgSynthetic: "+158,760",
+                params: {
+                    "Model Params": "59.7K",
+                    "Model Size": "0.239 MB",
+                    "Training Modules": "21",
+                    "Batch Size": "128",
+                    "Learning Rate": "0.001079",
+                    "Alpha Value": "0.01397",
+                    "Architecture": "CNN + VAE-GAN Hybrid"
+                },
+                metrics: {
+                    "VAE MMD": "0.005940",
+                    "GAN MMD": "0.705657",
+                    "VAE FID": "78.38",
+                    "GAN FID": "350.15",
+                    "Generation Ratio": "5:1",
+                    "Quality Filter": "Combined VAE+GAN"
+                }
+            }
+        };
+
+        let currentMethod = 'vae';
+        let isAnimating = false;
+
+        // Initialize the application
+        function init() {
+            console.log('Initializing application...');
+            createFoldCards();
+            updateDisplay();
+            setupEventListeners();
+            console.log('Application initialized successfully');
+        }
+
+        // Create fold cards
+        function createFoldCards() {
+            const container = document.getElementById('foldsContainer');
+            container.innerHTML = '';
+
+            for (let i = 1; i <= 5; i++) {
+                const foldCard = document.createElement('div');
+                foldCard.className = 'fold-card';
+                foldCard.innerHTML = `
+                    <div class="fold-header">📁 Fold ${i}</div>
+                    <div class="subject-info">Train: 44 | Val: 12 | Test: 15</div>
+                    <div class="data-section">
+                        <div class="before-section">
+                            <div class="section-title">⚠️ Before</div>
+                            <div class="data-row">
+                                <span class="data-label">Activity:</span>
+                                <span class="data-value activity-value" data-activity="${i}">0</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Falling:</span>
+                                <span class="data-value falling-value" data-before-falling="${i}">0</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Ratio:</span>
+                                <span class="data-value ratio-value" data-before-ratio="${i}">0:1</span>
+                            </div>
+                        </div>
+                        <div class="after-section">
+                            <div class="section-title">✅ After</div>
+                            <div class="data-row">
+                                <span class="data-label">Original:</span>
+                                <span class="data-value falling-value" data-original="${i}">0</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Synthetic:</span>
+                                <span class="data-value synthetic-value" data-synthetic="${i}">+0</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Total:</span>
+                                <span class="data-value total-value" data-total="${i}">0</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="data-label">Ratio:</span>
+                                <span class="data-value ratio-value" data-after-ratio="${i}">0:1</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(foldCard);
+            }
+        }
+
+        // Update display based on current method
+        function updateDisplay() {
+            console.log(`Updating display for method: ${currentMethod}`);
+            const data = augmentationData[currentMethod];
+            
+            if (!data) {
+                console.error(`No data found for method: ${currentMethod}`);
+                return;
+            }
+
+            // Update overview stats
+            document.getElementById('totalSubjects').textContent = '71';
+            document.getElementById('totalActivity').textContent = data.totalActivity;
+            document.getElementById('totalFalls').textContent = data.totalFalls;
+            document.getElementById('avgSynthetic').textContent = data.avgSynthetic;
+
+            // Update method title
+            document.getElementById('methodTitle').textContent = data.title;
+
+            // Update model parameters
+            const paramsContainer = document.getElementById('modelParams');
+            paramsContainer.innerHTML = '';
+            Object.entries(data.params).forEach(([key, value]) => {
+                const paramRow = document.createElement('div');
+                paramRow.className = 'param-row';
+                paramRow.innerHTML = `
+                    <span class="param-label">${key}:</span>
+                    <span class="param-value">${value}</span>
+                `;
+                paramsContainer.appendChild(paramRow);
+            });
+
+            // Update performance metrics
+            const metricsContainer = document.getElementById('performanceMetrics');
+            metricsContainer.innerHTML = '';
+            Object.entries(data.metrics).forEach(([key, value]) => {
+                const metricItem = document.createElement('div');
+                metricItem.className = 'metric-item';
+                metricItem.innerHTML = `
+                    <span class="metric-name">${key}</span>
+                    <span class="metric-value">${value}</span>
+                `;
+                metricsContainer.appendChild(metricItem);
+            });
+
+            // Update fold data
+            data.folds.forEach((fold, index) => {
+                const foldIndex = index + 1;
+                
+                // Update all data points for this fold
+                const activityEl = document.querySelector(`[data-activity="${foldIndex}"]`);
+                const beforeFallingEl = document.querySelector(`[data-before-falling="${foldIndex}"]`);
+                const beforeRatioEl = document.querySelector(`[data-before-ratio="${foldIndex}"]`);
+                const originalEl = document.querySelector(`[data-original="${foldIndex}"]`);
+                const syntheticEl = document.querySelector(`[data-synthetic="${foldIndex}"]`);
+                const totalEl = document.querySelector(`[data-total="${foldIndex}"]`);
+                const afterRatioEl = document.querySelector(`[data-after-ratio="${foldIndex}"]`);
+
+                if (activityEl) activityEl.textContent = fold.activity.toLocaleString();
+                if (beforeFallingEl) beforeFallingEl.textContent = fold.original.toLocaleString();
+                if (beforeRatioEl) beforeRatioEl.textContent = fold.beforeRatio;
+                if (originalEl) originalEl.textContent = fold.original.toLocaleString();
+                if (syntheticEl) syntheticEl.textContent = `+${fold.synthetic.toLocaleString()}`;
+                if (totalEl) totalEl.textContent = fold.total.toLocaleString();
+                if (afterRatioEl) afterRatioEl.textContent = fold.ratio;
+            });
+
+            // Update active button
+            document.querySelectorAll('.method-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            const activeBtn = document.querySelector(`[data-method="${currentMethod}"]`);
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+            }
+
+            console.log('Display updated successfully');
+        }
+
+        // Animate folds
+        function animateFolds() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            const foldCards = document.querySelectorAll('.fold-card');
+            foldCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('processing');
+                    setTimeout(() => {
+                        card.classList.remove('processing');
+                    }, 1000);
+                }, index * 200);
+            });
+
+            setTimeout(() => {
+                isAnimating = false;
+            }, 2000);
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            console.log('Setting up event listeners...');
+            
+            // Method buttons
+            document.querySelectorAll('.method-btn').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const method = this.getAttribute('data-method');
+                    console.log(`Method button clicked: ${method}`);
+                    
+                    if (method && method !== currentMethod) {
+                        currentMethod = method;
+                        updateDisplay();
+                        animateFolds();
+                    }
+                });
+            });
+
+            console.log('Event listeners setup complete');
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing...');
+            init();
+        });
+
+
     </script>
 </body>
 </html> 
-
 
 
 
