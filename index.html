@@ -1539,11 +1539,12 @@
         }
 
         .stage-3 {
-            top: 30px; left: 770px; width: 280px; height: 190px;
+            top: 30px; left: 700px; width: 580px; height: 190px;
+
         }
 
         .stage-4 {
-            top: 30px; left: 1170px; width: 320px; height: 190px;
+            top: 30px; left: 1300px; width: 320px; height: 190px;
         }
 
         /* Second Row: Stage 5 centered with large gap */
@@ -2275,6 +2276,122 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
+
+                        /* NEEEEW==== Augmentation baseline card + badges ==== */
+        .baseline-box{
+          border:2px dashed #bdbdbd;
+          border-radius:8px;
+          padding:6px 8px;
+          margin-bottom:6px;
+          background:#fffdf7;
+        }
+        .baseline-title{
+          font-size:.58em; font-weight:700; color:#795548; margin-bottom:4px; text-transform:uppercase;
+        }
+        .base-list{display:flex; flex-wrap:wrap; gap:4px; justify-content:center}
+        .base-chip{
+          font-size:.55em; background:#ffe0b2; color:#6d4c41; padding:2px 6px; border-radius:999px; border:1px solid #ffcc80;
+        }
+        .sep-label{
+          font-size:.58em; color:#9e9e9e; text-transform:uppercase; letter-spacing:.06em; margin:3px 0 4px; border-top:1px dashed #e0e0e0; padding-top:4px;
+        }
+
+        /* small badges we’ll reuse */
+        .badge{
+          display:inline-block; background:#e3f2fd; color:#1565c0; border:1px solid #90caf9;
+          padding:2px 6px; border-radius:999px; font-size:.6em; font-weight:700;
+        }
+
+        /* tiny input ribbon for Stage 5 */
+        .input-ribbon{
+          position:absolute; top:6px; left:10px;
+          background:linear-gradient(135deg,#2c5aa0,#764ba2); color:#fff;
+          padding:3px 8px; border-radius:6px; font-size:.62em; font-weight:700; box-shadow:0 2px 6px rgba(0,0,0,.15);
+        }
+
+        /* ===== Stage 3: 2x2 grid layout ===== */
+        /* ===== Stage 3: single row 4-column layout ===== */
+        .stage3-row{
+          max-width:1000px; margin:0 auto;
+          border:2px solid #244e9b; border-radius:16px;
+          background:#fff; box-shadow:0 8px 18px rgba(0,0,0,.08);
+          padding:14px 18px;
+        }
+        .stage3-row .hdr{
+          text-align:center; font-weight:800; color:#244e9b; margin-bottom:12px; font-size:1.05rem
+        }
+        .stage3-row .grid{
+          display:grid; grid-template-columns:repeat(4,1fr); gap:14px;
+        }
+
+        .s3-card{
+          border-radius:12px; padding:10px; color:#fff; text-align:center;
+          font-size:.85rem; font-weight:700; display:flex; flex-direction:column; justify-content:center; align-items:center;
+        }
+        .s3-sub{font-size:.72rem; font-weight:400; margin-top:2px}
+        .pills{display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:6px}
+        .pill{background:rgba(255,255,255,.2); border:1px solid rgba(255,255,255,.5); padding:2px 8px; border-radius:999px; font-size:.7rem; font-weight:600}
+
+        .cv{background:linear-gradient(180deg,#ffb74d,#fb8c00)}
+        .aug{background:linear-gradient(180deg,#64b5f6,#1976d2)}
+        .adv{background:linear-gradient(180deg,#b39ddb,#7e57c2)}
+        .trn{background:linear-gradient(180deg,#81c784,#43a047)}
+
+        .badge{background:#fff3e0;color:#e65100;border:1px solid #ffcc80;padding:1px 6px;border-radius:999px;font-size:.7rem;font-weight:700;margin-top:4px}
+
+        .stage3-note{font-size:.72rem;color:#2e7d32;background:#e8f5e9;border:1px solid #c8e6c9;padding:4px 8px;border-radius:8px;display:inline-block;margin:6px auto 0}
+
+        /* --- connectors between the four Stage-3 cards (no layout impact) --- */
+        :root{
+          --s3-gap: 14px;          /* keep in sync with .stage3-row .grid gap */
+          --s3-line: rgba(0,0,0,.22);
+          --s3-head: rgba(0,0,0,.38);
+        }
+
+        .stage3-row .grid{
+          position: relative;
+          gap: var(--s3-gap);      /* already set; just make sure we use the var */
+        }
+
+        .s3-card{
+          position: relative;      /* host the pseudo-elements */
+          z-index: 1;              /* above the white background frame */
+        }
+
+        /* horizontal connector line (appears in the gap), for cards 1..3 only */
+        .s3-card:not(:last-child)::before{
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: calc(-1 * var(--s3-gap) / 2 - 14px);  /* extends into the gap */
+          width: calc(var(--s3-gap) / 2 + 14px);
+          height: 2px;
+          background: var(--s3-line);
+          transform: translateY(-50%);
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        /* arrow head at the end of each connector */
+        .s3-card:not(:last-child)::after{
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: calc(-1 * var(--s3-gap) / 2 - 6px);
+          width: 10px; height: 10px;
+          border-right: 3px solid var(--s3-head);
+          border-top: 3px solid var(--s3-head);
+          transform: translateY(-50%) rotate(45deg);
+          pointer-events: none;
+          z-index: 2;
+        }
+
+        /* Optional: mute/hide connectors on narrow screens where cards might wrap */
+        @media (max-width: 1100px){
+          .s3-card::before,
+          .s3-card::after{ display: none; }
+        }
+
     </style>
 </head>
 <body>
@@ -4171,40 +4288,46 @@
                     </div>
                 </div>
 
-                <!-- Stage 3: Segment-Level CNN -->
+               <!-- Stage 3: Segment-Level CNN -->
                 <div class="pipeline-stage stage-3" id="stage3">
-                    <div class="stage-header">
-                        <h3>🧠 Stage 3: Segment-Level CNN Training</h3>
-                    </div>
-                    <div class="stage-content">
-                        <div class="cnn-pipeline">
-                            <div class="segmented-data">
-                                <div class="segment-info">300ms segments</div>
-                                <div class="segment-detail">50% overlap</div>
-                            </div>
-                            <div class="arrow">→</div>
-                            <div class="augmentation-block">
-                                <div class="aug-title">Data Augmentation</div>
-                                <div class="aug-methods">
-                                    <span class="aug-method vae">VAE</span>
-                                    <span class="aug-method gan">GAN</span>
-                                    <span class="aug-method hybrid">VAE-GAN</span>
-                                </div>
-                                <div class="aug-note">One method used<br>Falling class only</div>
-                            </div>
-                            <div class="arrow">→</div>
-                            <div class="cnn-training-block">
-                                <div class="cnn-title">CNN Training</div>
-                                <div class="cnn-layers">
-                                    <div class="layer conv">Conv1D</div>
-                                    <div class="layer pool">MaxPool</div>
-                                    <div class="layer dense">Dense</div>
-                                </div>
-                                <div class="cv-info">5-fold CV</div>
-                                <div class="cnn-output">5 best models</div>
-                            </div>
+                    <div class="stage3-row" id="stage3Row">
+                      <div class="hdr">🧠 Stage 3: Segment-Level CNN Training</div>
+                      <div class="grid">
+                        <div class="s3-card cv">
+                          <div>5-Fold Subject-Wise CV</div>
+                          <div class="s3-sub">Train / Val / Test splits</div>
+                          <div class="badge">subject-based</div>
                         </div>
+                        
+                        <div class="s3-card aug">
+                          <div>Data Augmentation Pipeline</div>
+                          <div class="pills">
+                            <span class="pill">Time Warp</span>
+                            <span class="pill">Win. Slice</span>
+                            <span class="pill">Falling</span>
+                            <span class="pill">Win. Wrap</span>
+                          </div>
+                        </div>
+                
+                        <div class="s3-card adv">
+                          <div>Advanced Sampling Architecture</div>
+                          <div class="s3-sub">(Select One)</div>
+                          <div class="pills">
+                            <span class="pill">VAE</span>
+                            <span class="pill">GAN</span>
+                            <span class="pill">VAE-GAN</span>
+                          </div>
+                        </div>
+
+                        <div class="s3-card trn">
+                          <div>Lightweight 1D-CNN Training</div>
+                          <div class="s3-sub">Class-weighted CE, Early stopping</div>
+                          <div class="s3-sub"><b>Best checkpoint per fold → 5 best</b></div>
+                        </div>
+                      </div>
                     </div>
+                    <div class="stage3-note">These 5 best checkpoints are used as input to Stage 4 (Event-level).</div>
+
                 </div>
 
                 <!-- Stage 4: Event Features → Random Forest -->
@@ -5970,7 +6093,7 @@
                 const stage4 = document.getElementById('stage4');
                 
                 // Move to stage 4 (end of row 1)
-                dataPacket.style.left = '1170px';
+                dataPacket.style.left = '1400px';
                 dataPacket.style.top = '60px';
                 
                 stage4.classList.add('active');
@@ -6154,6 +6277,7 @@
     </script>
 </body>
 </html> 
+
 
 
 
