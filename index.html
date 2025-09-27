@@ -1450,11 +1450,6 @@
         }
     }
 
-
-
-
-
-
         /* Pipeline Animation Styles */
         .pipeline-container {
             position: relative;
@@ -1521,6 +1516,7 @@
             z-index: 10;
         }
 
+
         .pipeline-stage.active {
             opacity: 1;
             transform: translateY(0);
@@ -1532,44 +1528,30 @@
             transform: scale(1.05);
         }
 
-
-
         /* Stage Positioning - Row 1: All stages 1-4, Row 2: Stage 5 centered */
         /* First Row: Stages 1, 2, 3, 4 */
         .stage-1 {
-            top: 30px;
-            left: 30px;
-            width: 220px;
-            height: 160px;
+            top: 30px; left: 30px;  width: 220px; height: 190px;
         }
 
         .stage-2 {
-            top: 30px;
-            left: 270px;
-            width: 280px;
-            height: 160px;
+            top: 30px; left: 370px; width: 280px; height: 190px;
         }
 
         .stage-3 {
-            top: 30px;
-            left: 570px;
-            width: 280px;
-            height: 160px;
+            top: 30px; left: 770px; width: 280px; height: 190px;
         }
 
         .stage-4 {
-            top: 30px;
-            left: 870px;
-            width: 320px;
-            height: 160px;
+            top: 30px; left: 1170px; width: 320px; height: 190px;
         }
 
         /* Second Row: Stage 5 centered with large gap */
         .stage-5 {
-            top: 280px;
-            left: 400px;
+            top: 380px;          /* ← was 280px */
+            left: 600px;
             width: 400px;
-            height: 180px;
+           height: 200px; 
         }
 
         .stage-header {
@@ -1580,7 +1562,7 @@
         }
 
         .stage-header h3 {
-            font-size: 1.1em;
+            font-size: 1.2em;
             color: #2c5aa0;
             margin: 0;
         }
@@ -1923,7 +1905,7 @@
             text-align: left;
             padding: 0px 1px;
         }
-        
+
         .rf-training-block {
             text-align: center;
             padding: 4px;
@@ -2116,6 +2098,7 @@
             font-size: 0.7em;
             color: #666;
         }
+
         /* Stage 5: Deployment */
         .deployment-chain {
             display: flex;
@@ -2292,7 +2275,6 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0,0,0,0.3);
         }
-
     </style>
 </head>
 <body>
@@ -4316,13 +4298,6 @@
         </div>
     </div>
 
-    <!-- Navigation Controls -->
-    <div class="navigation">
-        <button class="nav-btn" onclick="resetPipelineAnimation()">🔄 Reset Animation</button>
-        <button class="nav-btn" onclick="startPipelineAnimation()">▶️ Play Animation</button>
-    </div>
-
-    
         <!-- Slide 20: Year 3 Overview & Breakthrough -->
 <div class="slide">
     <div class="slide-header">
@@ -5909,6 +5884,7 @@
             resetPipelineAnimation();
             
             // Stage 1: Show data packet and first stage
+            // Stage 1: Show data packet and first stage
             pipelineTimeouts.push(setTimeout(() => {
                 const dataPacket = document.getElementById('dataPacket');
                 const stage1 = document.getElementById('stage1');
@@ -5927,9 +5903,9 @@
             pipelineTimeouts.push(setTimeout(() => {
                 const dataPacket = document.getElementById('dataPacket');
                 const stage2 = document.getElementById('stage2');
-                
+
                 // Move packet to stage 2 (same row)
-                dataPacket.style.left = '320px';
+                dataPacket.style.left = '370px';
                 dataPacket.style.top = '60px';
                 
                 stage2.classList.add('active');
@@ -5945,7 +5921,7 @@
                 const dataPacket = document.getElementById('dataPacket');
                 const stage3 = document.getElementById('stage3');
                 
-                dataPacket.style.left = '620px';
+                dataPacket.style.left = '770px';
                 dataPacket.style.top = '60px';
                 
                 stage3.classList.add('active');
@@ -5994,7 +5970,7 @@
                 const stage4 = document.getElementById('stage4');
                 
                 // Move to stage 4 (end of row 1)
-                dataPacket.style.left = '920px';
+                dataPacket.style.left = '1170px';
                 dataPacket.style.top = '60px';
                 
                 stage4.classList.add('active');
@@ -6042,6 +6018,7 @@
                     stage4.classList.remove('highlight');
                 }, 3500));
             }, 9000));
+
 
             // Stage 5: Final deployment (centered in row 2)
             pipelineTimeouts.push(setTimeout(() => {
