@@ -4604,12 +4604,171 @@
                 </div>
             </div>
 
+        
+  <div class="slide">
+        <!-- Header -->
+        <div class="slide-header">
+            <h2>🎯 Random Forest Decision Process: From Features to Classification</h2>
+            <div class="slide-number">26/35</div>
+        </div>
+
+            <div class="story-stage">
+                <!-- Data Input Section -->
+            <div class="section">
+                <div class="math-character" id="mathChar">🤖</div>
+                <h3 class="section-title">📊 Input: CNN Confidences</h3>
+                
+                <div class="scenario-info" id="scenarioInfo">
+                    <strong>Scenario:</strong> <span id="scenarioName">Late Fall Detection</span>
+                </div>
+                
+                <div class="sample-data">
+                    <div class="data-point" id="segment1">
+                        <div class="confidence-value" id="p1Value">p₁ = 0.3</div>
+                        <div class="segment-label">300ms</div>
+                    </div>
+                    <div class="data-point" id="segment2">
+                        <div class="confidence-value" id="p2Value">p₂ = 0.8</div>
+                        <div class="segment-label">300ms</div>
+                    </div>
+                </div>
+    
+                <div class="progress-container">
+                    <div class="responsive-text">Calculation Progress:</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+    
+                <!-- Decision Rules Box -->
+                <div class="decision-rules">
+                    <h4 style="color: #2c5aa0; font-size: 0.9em; margin-bottom: 8px; text-align: center;">🧠 RF Decision Rules</h4>
+                    
+                    <div class="rule-item">
+                      <div class="rule-label">🚨 FALLING detection:</div>
+                      <div class="rule-formula">Learned splits on φ₁…φ₆</div>
+                      <div class="rule-description">RF combines mean level, peak position, occupancy, and up-crossings to classify events.</div>
+                    </div>
+                    
+                    <div class="rule-item">
+                      <div class="rule-label">✅ ACTIVITY detection:</div>
+                      <div class="rule-formula">No fixed thresholds</div>
+                      <div class="rule-description">RF learns decision boundaries automatically from training data.</div>
+                    </div>
+
+                    <div class="rule-item key-insight">
+                        <div class="rule-label">🔑 Key:</div>
+                        <div class="rule-formula">Features φ₁–φ₆</div>
+                        <div class="rule-description">φ₁: mean level, φ₂: peak position (0.0 or 0.5), φ₃–φ₄: occupancy at 0.5/0.7, φ₅–φ₆: up-crossings at 0.5/0.7</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feature Calculations Section -->
+            <div class="section">
+                <h3 class="section-title">⚡ Live Feature Extraction</h3>
+                
+                <div class="calculation-display" id="calculations">
+                    <div class="calculation-step" id="step1">
+                        <span class="formula">φ₁ = μ =</span> (1/M) × Σ p̃ᵢ
+                    </div>
+                    <div class="calculation-step" id="step2">
+                        φ₁ = (1/2) × (<span id="calc_p1">0.3</span> + <span id="calc_p2">0.8</span>) = <span class="result-value" id="result_phi1">0.55</span>
+                    </div>
+                    
+                    <div class="calculation-step" id="step3">
+                        <span class="formula">φ₂ = π =</span> (arg max p̃ᵢ) / M
+                    </div>
+                    <div class="calculation-step" id="step4">
+                        φ₂ = <span id="peak_pos">2</span>/2 = <span class="result-value" id="result_phi2">1.0</span>
+                    </div>
+                    
+                    <div class="calculation-step" id="step5">
+                        <span class="formula">φ₃ = q₀.₅ =</span> (1/M) × count(p̃ᵢ ≥ 0.5)
+                    </div>
+                    <div class="calculation-step" id="step6">
+                        φ₃ = (1/2) × <span id="count_05">1</span> = <span class="result-value" id="result_phi3">0.5</span>
+                    </div>
+                    
+                    <div class="calculation-step" id="step7">
+                        <span class="formula">φ₄ = q₀.₇ =</span> (1/M) × count(p̃ᵢ ≥ 0.7)  
+                    </div>
+                    <div class="calculation-step" id="step8">
+                        φ₄ = (1/2) × <span id="count_07">1</span> = <span class="result-value" id="result_phi4">0.5</span>
+                    </div>
+                    
+                    <div class="calculation-step" id="step9">
+                        <span class="formula">φ₅ = c₀.₅ =</span> Up-crossings at 0.5
+                    </div>
+                    <div class="calculation-step" id="step10">
+                        φ₅ = <span id="cross_05">1</span>/(M-1) = <span class="result-value" id="result_phi5">1.0</span>
+                    </div>
+                    
+                    <div class="calculation-step" id="step11">
+                        <span class="formula">φ₆ = c₀.₇ =</span> Up-crossings at 0.7
+                    </div>
+                    <div class="calculation-step" id="step12">
+                        φ₆ = <span id="cross_07">1</span>/(M-1) = <span class="result-value" id="result_phi6">1.0</span>
+                    </div>
+                </div>
+            </div>
+           
+            <!-- Results & Decision Section -->
+            <div class="section">
+                <h3 class="section-title">🎯 Features → RF Decision</h3>
+                
+                <div id="featureResults">
+                    <div class="feature-result" id="result1">
+                        <div class="feature-name">φ₁ - Mean</div>
+                        <div class="feature-value" id="display_phi1">0.55</div>
+                    </div>
+                    <div class="feature-result" id="result2">
+                        <div class="feature-name">φ₂ - Peak</div>
+                        <div class="feature-value" id="display_phi2">1.0</div>
+                    </div>
+                    <div class="feature-result" id="result3">
+                        <div class="feature-name">φ₃ - Above 0.5</div>
+                        <div class="feature-value" id="display_phi3">0.5</div>
+                    </div>
+                    <div class="feature-result" id="result4">
+                        <div class="feature-name">φ₄ - Above 0.7</div>
+                        <div class="feature-value" id="display_phi4">0.5</div>
+                    </div>
+                    <div class="feature-result" id="result5">
+                        <div class="feature-name">φ₅ - Cross 0.5</div>
+                        <div class="feature-value" id="display_phi5">1.0</div>
+                    </div>
+                    <div class="feature-result" id="result6">
+                        <div class="feature-name">φ₆ - Cross 0.7</div>
+                        <div class="feature-value" id="display_phi6">1.0</div>
+                    </div>
+                </div>
+
+                <div class="final-decision" id="finalDecision">
+                    <div class="decision-label">🌳 Random Forest Decision:</div>
+                    <div class="decision-result" id="decisionText">FALLING</div>
+                    <div class="decision-confidence" id="decisionConfidence">Confidence: 89%</div>
+                    <div style="font-size: 0.8em; margin-top: 8px; color: #2c5aa0;" id="decisionReason">
+                        Strong up-crossing pattern detected
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <button class="control-btn" onclick="startStory()">▶️ Calculate</button>
+            <button class="control-btn" onclick="resetStory()">🔄 Reset</button>
+            <button class="control-btn" onclick="changeData()">🎲 New Scenario</button>
+        </div>
+    </div>
+
             
             <!-- Slide 25: Detailed Results Analysis -->
             <div class="slide">
                 <div class="slide-header">
                     <h2>📊 Detailed Performance Analysis & Results</h2>
-                    <div class="slide-number">26/35</div>
+                    <div class="slide-number">27/35</div>
                 </div>
                 <div class="slide-content">
                     <div class="highlight-box" style="text-align: center; margin-bottom: 20px;">
@@ -4732,7 +4891,7 @@
             <div class="slide">
         <div class="slide-header">
             <h2>🚀 Complete Methodology Pipeline: From Raw Data to Deployment</h2>
-            <div class="slide-number">27/35</div>
+            <div class="slide-number">28/35</div>
         </div>
         <div class="slide-content">
             <div class="pipeline-container">
@@ -4935,7 +5094,7 @@
 <div class="slide">
     <div class="slide-header">
         <h2>🚀 Year 3 (2024-2025): Breakthrough Performance</h2>
-        <div class="slide-number">28/35</div>
+        <div class="slide-number">29/35</div>
     </div>
     <div class="slide-content">
         <div class="year-section">
@@ -5010,7 +5169,7 @@
         <div class="slide">
             <div class="slide-header">
                 <h2>🌍 International Research Collaboration Network</h2>
-                <div class="slide-number">29/35</div>
+                <div class="slide-number">30/35</div>
             </div>
             <div class="slide-content">
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 28px; margin-bottom: 40px;">
@@ -5140,7 +5299,7 @@
         <div class="slide">
             <div class="slide-header">
                 <h2>Publications and Academic Recognition</h2>
-                <div class="slide-number">30/35</div>
+                <div class="slide-number">31/35</div>
             </div>
             <div class="slide-content">
                 <div class="publication-card">
@@ -5197,7 +5356,7 @@
         <div class="slide">
             <div class="slide-header">
                 <h2>Conclusion</h2>
-                <div class="slide-number">31/35</div>
+                <div class="slide-number">32/35</div>
             </div>
             <div class="slide-content conclusion-slide">
                 <div class="conclusion-highlight">
@@ -5264,7 +5423,7 @@
         <div class="slide">
     <div class="slide-header">
         <h2>🚀 Future Work & Research Directions</h2>
-        <div class="slide-number">32/35</div>
+        <div class="slide-number">33/35</div>
     </div>
     <div class="slide-content">
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin: 20px 0;">
@@ -5350,164 +5509,6 @@
 </div>
 
 
-
-  <div class="slide">
-        <!-- Header -->
-        <div class="slide-header">
-            <h2>🎯 Random Forest Decision Process: From Features to Classification</h2>
-            <div class="slide-number">33/35</div>
-        </div>
-
-            <div class="story-stage">
-                <!-- Data Input Section -->
-            <div class="section">
-                <div class="math-character" id="mathChar">🤖</div>
-                <h3 class="section-title">📊 Input: CNN Confidences</h3>
-                
-                <div class="scenario-info" id="scenarioInfo">
-                    <strong>Scenario:</strong> <span id="scenarioName">Late Fall Detection</span>
-                </div>
-                
-                <div class="sample-data">
-                    <div class="data-point" id="segment1">
-                        <div class="confidence-value" id="p1Value">p₁ = 0.3</div>
-                        <div class="segment-label">300ms</div>
-                    </div>
-                    <div class="data-point" id="segment2">
-                        <div class="confidence-value" id="p2Value">p₂ = 0.8</div>
-                        <div class="segment-label">300ms</div>
-                    </div>
-                </div>
-    
-                <div class="progress-container">
-                    <div class="responsive-text">Calculation Progress:</div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                </div>
-    
-                <!-- Decision Rules Box -->
-                <div class="decision-rules">
-                    <h4 style="color: #2c5aa0; font-size: 0.9em; margin-bottom: 8px; text-align: center;">🧠 RF Decision Rules</h4>
-                    
-                    <div class="rule-item">
-                      <div class="rule-label">🚨 FALLING detection:</div>
-                      <div class="rule-formula">Learned splits on φ₁…φ₆</div>
-                      <div class="rule-description">RF combines mean level, peak position, occupancy, and up-crossings to classify events.</div>
-                    </div>
-                    
-                    <div class="rule-item">
-                      <div class="rule-label">✅ ACTIVITY detection:</div>
-                      <div class="rule-formula">No fixed thresholds</div>
-                      <div class="rule-description">RF learns decision boundaries automatically from training data.</div>
-                    </div>
-
-                    <div class="rule-item key-insight">
-                        <div class="rule-label">🔑 Key:</div>
-                        <div class="rule-formula">Features φ₁–φ₆</div>
-                        <div class="rule-description">φ₁: mean level, φ₂: peak position (0.0 or 0.5), φ₃–φ₄: occupancy at 0.5/0.7, φ₅–φ₆: up-crossings at 0.5/0.7</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature Calculations Section -->
-            <div class="section">
-                <h3 class="section-title">⚡ Live Feature Extraction</h3>
-                
-                <div class="calculation-display" id="calculations">
-                    <div class="calculation-step" id="step1">
-                        <span class="formula">φ₁ = μ =</span> (1/M) × Σ p̃ᵢ
-                    </div>
-                    <div class="calculation-step" id="step2">
-                        φ₁ = (1/2) × (<span id="calc_p1">0.3</span> + <span id="calc_p2">0.8</span>) = <span class="result-value" id="result_phi1">0.55</span>
-                    </div>
-                    
-                    <div class="calculation-step" id="step3">
-                        <span class="formula">φ₂ = π =</span> (arg max p̃ᵢ) / M
-                    </div>
-                    <div class="calculation-step" id="step4">
-                        φ₂ = <span id="peak_pos">2</span>/2 = <span class="result-value" id="result_phi2">1.0</span>
-                    </div>
-                    
-                    <div class="calculation-step" id="step5">
-                        <span class="formula">φ₃ = q₀.₅ =</span> (1/M) × count(p̃ᵢ ≥ 0.5)
-                    </div>
-                    <div class="calculation-step" id="step6">
-                        φ₃ = (1/2) × <span id="count_05">1</span> = <span class="result-value" id="result_phi3">0.5</span>
-                    </div>
-                    
-                    <div class="calculation-step" id="step7">
-                        <span class="formula">φ₄ = q₀.₇ =</span> (1/M) × count(p̃ᵢ ≥ 0.7)  
-                    </div>
-                    <div class="calculation-step" id="step8">
-                        φ₄ = (1/2) × <span id="count_07">1</span> = <span class="result-value" id="result_phi4">0.5</span>
-                    </div>
-                    
-                    <div class="calculation-step" id="step9">
-                        <span class="formula">φ₅ = c₀.₅ =</span> Up-crossings at 0.5
-                    </div>
-                    <div class="calculation-step" id="step10">
-                        φ₅ = <span id="cross_05">1</span>/(M-1) = <span class="result-value" id="result_phi5">1.0</span>
-                    </div>
-                    
-                    <div class="calculation-step" id="step11">
-                        <span class="formula">φ₆ = c₀.₇ =</span> Up-crossings at 0.7
-                    </div>
-                    <div class="calculation-step" id="step12">
-                        φ₆ = <span id="cross_07">1</span>/(M-1) = <span class="result-value" id="result_phi6">1.0</span>
-                    </div>
-                </div>
-            </div>
-           
-            <!-- Results & Decision Section -->
-            <div class="section">
-                <h3 class="section-title">🎯 Features → RF Decision</h3>
-                
-                <div id="featureResults">
-                    <div class="feature-result" id="result1">
-                        <div class="feature-name">φ₁ - Mean</div>
-                        <div class="feature-value" id="display_phi1">0.55</div>
-                    </div>
-                    <div class="feature-result" id="result2">
-                        <div class="feature-name">φ₂ - Peak</div>
-                        <div class="feature-value" id="display_phi2">1.0</div>
-                    </div>
-                    <div class="feature-result" id="result3">
-                        <div class="feature-name">φ₃ - Above 0.5</div>
-                        <div class="feature-value" id="display_phi3">0.5</div>
-                    </div>
-                    <div class="feature-result" id="result4">
-                        <div class="feature-name">φ₄ - Above 0.7</div>
-                        <div class="feature-value" id="display_phi4">0.5</div>
-                    </div>
-                    <div class="feature-result" id="result5">
-                        <div class="feature-name">φ₅ - Cross 0.5</div>
-                        <div class="feature-value" id="display_phi5">1.0</div>
-                    </div>
-                    <div class="feature-result" id="result6">
-                        <div class="feature-name">φ₆ - Cross 0.7</div>
-                        <div class="feature-value" id="display_phi6">1.0</div>
-                    </div>
-                </div>
-
-                <div class="final-decision" id="finalDecision">
-                    <div class="decision-label">🌳 Random Forest Decision:</div>
-                    <div class="decision-result" id="decisionText">FALLING</div>
-                    <div class="decision-confidence" id="decisionConfidence">Confidence: 89%</div>
-                    <div style="font-size: 0.8em; margin-top: 8px; color: #2c5aa0;" id="decisionReason">
-                        Strong up-crossing pattern detected
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Control Panel -->
-        <div class="control-panel">
-            <button class="control-btn" onclick="startStory()">▶️ Calculate</button>
-            <button class="control-btn" onclick="resetStory()">🔄 Reset</button>
-            <button class="control-btn" onclick="changeData()">🎲 New Scenario</button>
-        </div>
-    </div>
 
 
 
@@ -7083,6 +7084,7 @@
     </script>
 </body>
 </html> 
+
 
 
 
