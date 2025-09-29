@@ -2825,6 +2825,415 @@
                 grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             }
         }
+
+
+
+
+
+
+
+
+                .slide-header h2 {
+            font-size: 2.5em;
+            color: #2c5aa0;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .slide-header h2::before {
+            content: '◆';
+            position: absolute;
+            left: -40px;
+            color: #764ba2;
+            animation: spin 4s linear infinite;
+        }
+
+        .slide-header h2::after {
+            content: '◆';
+            position: absolute;
+            right: -40px;
+            color: #764ba2;
+            animation: spin 4s linear infinite reverse;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.2);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #2c5aa0;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .toc-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .toc-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 25px;
+            border-left: 5px solid #2c5aa0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toc-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(44,90,160,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transition: all 0.5s ease;
+        }
+
+        .toc-section:hover::before {
+            top: -30%;
+            right: -30%;
+            width: 250px;
+            height: 250px;
+        }
+
+        .toc-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(44,90,160,0.2);
+        }
+
+        .toc-section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #dee2e6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .toc-icon {
+            font-size: 1.5em;
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: float 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(5deg);
+            }
+        }
+
+        .toc-items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        .toc-item:hover {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f0f4ff 100%);
+            transform: translateX(8px);
+            box-shadow: 0 4px 12px rgba(44,90,160,0.15);
+        }
+
+        .toc-item::after {
+            content: '→';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%) translateX(-10px);
+            opacity: 0;
+            color: #2c5aa0;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .toc-item:hover::after {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        .toc-slide-num {
+            min-width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9em;
+            flex-shrink: 0;
+            position: relative;
+            box-shadow: 0 3px 8px rgba(44,90,160,0.3);
+        }
+
+        .toc-slide-num::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: inherit;
+            z-index: -1;
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.3);
+                opacity: 0;
+            }
+        }
+
+        .toc-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #2c5aa0, transparent);
+            transform: translateY(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .toc-item {
+            position: relative;
+        }
+
+        .toc-item:hover::before {
+            width: 8px;
+        }
+
+        .toc-section::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #2c5aa0, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .toc-section:hover::after {
+            opacity: 1;
+        }
+
+        .toc-item-text {
+            flex: 1;
+            font-size: 1.05em;
+            color: #333;
+            line-height: 1.5;
+            padding-top: 6px;
+            position: relative;
+        }
+
+        .toc-item-text::before {
+            content: '▸';
+            position: absolute;
+            left: -8px;
+            color: #2c5aa0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .toc-item:hover .toc-item-text::before {
+            opacity: 1;
+            left: -18px;
+        }
+
+        @media (max-width: 1200px) {
+            .toc-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .journey-outcome {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+            position: relative;
+            overflow: hidden;
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(102,126,234,0.3);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(102,126,234,0.5), 0 0 20px rgba(102,126,234,0.2);
+            }
+        }
+
+        .journey-outcome::before {
+            content: '★';
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 3em;
+            color: rgba(255,255,255,0.2);
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        .journey-outcome::after {
+            content: '★';
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 3em;
+            color: rgba(255,255,255,0.2);
+            animation: twinkle 2s ease-in-out infinite 1s;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.2;
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(1.2) rotate(180deg);
+            }
+        }
+
+        .journey-outcome h3 {
+            color: white;
+            font-size: 1.6em;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            line-height: 1.5;
+            animation: slideInUp 1s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .journey-outcome .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+
+        .journey-outcome .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(255,255,255,0.8);
+            animation: sparkleFloat 4s ease-in-out infinite;
+        }
+
+        .sparkle:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .sparkle:nth-child(2) {
+            top: 60%;
+            left: 20%;
+            animation-delay: 1s;
+        }
+
+        .sparkle:nth-child(3) {
+            top: 40%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .sparkle:nth-child(4) {
+            top: 70%;
+            right: 25%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateY(-20px) scale(1.5);
+                opacity: 1;
+            }
+        }
+
+
+
+        
     </style>
 </head>
 <body>
@@ -2881,143 +3290,185 @@
             </div>
         </div>
 
-<!-- Updated Table of Contents with Correct Slide Alignment -->
-        <div class="slide">
-            <div class="slide-header">
-                <h2>📚 Table of Contents</h2>
-                <div class="slide-number">2/35</div>
-            </div>
-            <div class="slide-content">
-                <div class="toc-grid">
-                    <div class="toc-section">
-                        <h3><div class="toc-icon">🎯</div>Foundation & Goals</h3>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">3</div>
-                            <div>PhD Goals & PNRR Alignment</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">4</div>
-                            <div>Research Evolution Timeline</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">5</div>
-                            <div>Strategic Pivot Justification</div>
-                        </div>
-                    </div>
-                    
-                    <div class="toc-section">
-                        <h3><div class="toc-icon">📚</div>Year 1 (2022-2023)</h3>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">6</div>
-                            <div>Systematic Literature Review</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">7</div>
-                            <div>PRISMA Flow Diagram</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">8</div>
-                            <div>IEEE Access Publication</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">9</div>
-                            <div>Technology Domain Analysis</div>
-                        </div>
-                    </div>
-                    
-                    <div class="toc-section">
-                        <h3><div class="toc-icon">🎯</div>Year 2 (2023-2024)</h3>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">10</div>
-                            <div>Strategic Pivot to Fall Detection</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">11-13</div>
-                            <div>Fall Stages & Pre-Impact Innovation</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">14-16</div>
-                            <div>Lightweight CNN Development</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">17-19</div>
-                            <div>Implementation & Results</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">19</div>
-                            <div>DATE 2025 Best Paper Award</div>
-                        </div>
-                    </div>
-                    
-                    <div class="toc-section">
-                        <h3><div class="toc-icon">🚧</div>Year 2→3 Transition</h3>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">20</div>
-                            <div>Real-World Challenge Discovery</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">21</div>
-                            <div>Field Testing Issues Analysis</div>
-                        </div>
-                    </div>
-                    
-                    <div class="toc-section">
-                        <h3><div class="toc-icon">🚀</div>Year 3 (2024-2025)</h3>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">22</div>
-                            <div>Updated Methodology Pipeline</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">23-24</div>
-                            <div>Advanced Data Augmentation</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">25-26</div>
-                            <div>Event-Level Classification</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">27</div>
-                            <div>Breakthrough Performance Results</div>
-                        </div>
-                    </div>
-                    
-                    <div class="toc-section">
-                        <h3><div class="toc-icon">🌍</div>Collaboration & Impact</h3>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">28</div>
-                            <div>International Collaboration Network</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">29</div>
-                            <div>Publications and Recognition</div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">30</div>
-                            <div>Conclusion & Mission Accomplished</div>
-                        </div>
+    <div class="slide">
+        <div class="slide-header">
+            <h2>📚 Table of Contents</h2>
+            <div class="slide-number">2/35</div>
+        </div>
 
-                        <div class="bullet-point">
-                            <div class="bullet-icon">31</div>
-                            <div>Project Video Documentary</div>
-                        </div>
-                        
-                        <div class="bullet-point">
-                            <div class="bullet-icon">🚀</div>
-                            <div>Future Work & Research Directions </div>
-                        </div>
-                        <div class="bullet-point">
-                            <div class="bullet-icon">32</div>
-                            <div>Thank You & Questions</div>
-                        </div>
+        <div class="toc-container">
+            <!-- Foundation & Goals Section -->
+            <div class="toc-section">
+                <div class="toc-section-title">
+                    <span class="toc-icon">🎯</span>
+                    Foundation & Goals
+                </div>
+                <div class="toc-items">
+                    <div class="toc-item">
+                        <div class="toc-slide-num">3</div>
+                        <div class="toc-item-text">PhD Goals & PNRR Alignment</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">4</div>
+                        <div class="toc-item-text">Research Evolution Timeline</div>
                     </div>
                 </div>
-                
-                <div class="highlight-box" style="text-align: center;">
-                    <h3>🎯 Journey Outcome: From Research Foundation to Commercial-Ready Technology</h3>
+            </div>
+
+            <!-- Year 1: Foundation & Discovery -->
+            <div class="toc-section">
+                <div class="toc-section-title">
+                    <span class="toc-icon">🔬</span>
+                    Year 1: Foundation (2022-2023)
+                </div>
+                <div class="toc-items">
+                    <div class="toc-item">
+                        <div class="toc-slide-num">5</div>
+                        <div class="toc-item-text">Year 1 Overview & Discovery</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">6-9</div>
+                        <div class="toc-item-text">Systematic Review & Technology Domains</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">10-11</div>
+                        <div class="toc-item-text">Sleep Monitoring BAN Design</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">12</div>
+                        <div class="toc-item-text">Strategic Decision Point & Pivot to Falls</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Year 2: Strategic Innovation -->
+            <div class="toc-section">
+                <div class="toc-section-title">
+                    <span class="toc-icon">🚀</span>
+                    Year 2: Innovation (2023-2024)
+                </div>
+                <div class="toc-items">
+                    <div class="toc-item">
+                        <div class="toc-slide-num">13</div>
+                        <div class="toc-item-text">Year 2 Overview & Innovation</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">14-15</div>
+                        <div class="toc-item-text">Pre-Impact Fall Detection Paradigm</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">16</div>
+                        <div class="toc-item-text">Lightweight CNN Architecture</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">17</div>
+                        <div class="toc-item-text">Year 2 Performance Results</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">18</div>
+                        <div class="toc-item-text">DATE 2025 Best Paper Award</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">19</div>
+                        <div class="toc-item-text">Transition: Real-World Challenge</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Year 3: Breakthrough Performance -->
+            <div class="toc-section">
+                <div class="toc-section-title">
+                    <span class="toc-icon">🏆</span>
+                    Year 3: Breakthrough (2024-2025)
+                </div>
+                <div class="toc-items">
+                    <div class="toc-item">
+                        <div class="toc-slide-num">20-21</div>
+                        <div class="toc-item-text">Advanced Pipeline & Methodology</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">22</div>
+                        <div class="toc-item-text">Dataset Imbalance & Augmentation</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">23</div>
+                        <div class="toc-item-text">5-Fold Cross-Validation Results</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">24</div>
+                        <div class="toc-item-text">Dataset Collection & Validation</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">25-26</div>
+                        <div class="toc-item-text">Random Forest Intelligence & Decision Process</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">27-28</div>
+                        <div class="toc-item-text">Performance Analysis & Insights</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">29</div>
+                        <div class="toc-item-text">Year 3 Breakthrough Achievement</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collaboration & Recognition -->
+            <div class="toc-section">
+                <div class="toc-section-title">
+                    <span class="toc-icon">🌍</span>
+                    Collaboration & Recognition
+                </div>
+                <div class="toc-items">
+                    <div class="toc-item">
+                        <div class="toc-slide-num">30</div>
+                        <div class="toc-item-text">International Research Network</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">31</div>
+                        <div class="toc-item-text">Publications & Academic Recognition</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusion & Future -->
+            <div class="toc-section">
+                <div class="toc-section-title">
+                    <span class="toc-icon">🎓</span>
+                    Conclusion & Future
+                </div>
+                <div class="toc-items">
+                    <div class="toc-item">
+                        <div class="toc-slide-num">32</div>
+                        <div class="toc-item-text">Mission Accomplished</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">33</div>
+                        <div class="toc-item-text">Future Work & Research Directions</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">34</div>
+                        <div class="toc-item-text">Project Video Documentary</div>
+                    </div>
+                    <div class="toc-item">
+                        <div class="toc-slide-num">35</div>
+                        <div class="toc-item-text">References</div>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Journey Outcome Highlight -->
+        <div class="journey-outcome">
+            <div class="sparkles">
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+                <div class="sparkle"></div>
+            </div>
+            <h3>🎯 Journey Outcome: From Research Foundation to Commercial-Ready Technology</h3>
+        </div>
+    </div>
         <!-- Slide 3: PhD Goals and PNRR Alignment -->
         <div class="slide">
             <div class="slide-header">
@@ -7084,7 +7535,6 @@
     </script>
 </body>
 </html> 
-
 
 
 
