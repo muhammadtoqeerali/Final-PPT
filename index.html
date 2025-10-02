@@ -158,12 +158,33 @@
             font-weight: 600;
         }
 
+         /* Enhanced Title Slide Styles */
         .title-slide {
-            text-align: center;
+            position: relative;
+            padding: 30px !important;
+            min-height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            height: 100%;
+        }
+
+        .title-slide h1 {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* Smooth animations for title slide */
+        .slide.active .title-slide > div {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .main-title {
@@ -3234,6 +3255,86 @@
 
 
 
+        /* Floating Methodology Indicator */
+        .floating-methodology {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            padding: 15px;
+            width: 280px;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+
+        .floating-methodology.visible {
+            opacity: 0.95;
+            pointer-events: auto;
+        }
+
+        /* Add hover effect to keep it visible when hovering */
+        .floating-methodology.visible:hover {
+            opacity: 1;
+        }
+
+        .floating-methodology h4 {
+            color: #2c3e50;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #667eea;
+            text-align: center;
+        }
+
+        .methodology-mini-step {
+            display: flex;
+            align-items: center;
+            padding: 8px;
+            margin: 6px 0;
+            border-radius: 8px;
+            background: #f8f9fa;
+            border-left: 4px solid #ddd;
+            transition: all 0.3s ease;
+            font-size: 0.75em;
+        }
+
+        .methodology-mini-step.active {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            border-left: 4px solid #667eea;
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+
+        .methodology-mini-step .step-icon {
+            font-size: 1.3em;
+            margin-right: 8px;
+            min-width: 25px;
+        }
+
+        .methodology-mini-step .step-text {
+            flex: 1;
+        }
+
+        .methodology-mini-step .step-text strong {
+            display: block;
+            color: #2c3e50;
+            font-size: 0.95em;
+        }
+
+        .methodology-mini-step .step-text small {
+            color: #666;
+            font-size: 0.85em;
+        }
+
+        .methodology-mini-step.active .step-text strong {
+            color: #667eea;
+        }
+
     </style>
 </head>
 <body>
@@ -3264,28 +3365,112 @@
     </div>
 
     <div class="presentation-container">
+
         <div class="slide-indicator">
             Slide <span id="currentSlide">1</span> of <span id="totalSlides">34</span>
         </div>
 
         <!-- Slide 1: Title -->
-        <div class="slide active">
-            <div class="slide-content title-slide">
-                <div class="university-header">
-                    UNIVERSITÀ DI VERONA<br>
-                    Department of Engineering for Innovation Medicine<br>
-                    PhD Program in Computer Science
+<div class="slide active">
+    <div class="slide-content title-slide">
+        <!-- Main Content - Centered -->
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 70vh;">
+            
+            <!-- PhD Badge -->
+ 
+            
+            <!-- Main Title -->
+            <h1 style="font-size: 3.2em; color: #2c3e50; text-align: center; margin: 20px 0; font-weight: 700; line-height: 1.3; max-width: 900px;">
+                Assistive Solutions for Frail People
+            </h1>
+            
+            <!-- Subtitle with gradient -->
+            <div style="font-size: 1.4em; color: #666; text-align: center; margin: 15px 0; max-width: 800px; line-height: 1.6;">
+                From Sleep Monitoring to Pre-Impact Fall Detection<br>
+                <span style="background: linear-gradient(135deg, #2c5aa0, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600;">
+                    A Complete PhD Journey
+                </span>
+            </div>
+            
+            <!-- Decorative Line -->
+            <div style="width: 150px; height: 3px; background: linear-gradient(90deg, transparent, #2c5aa0, #764ba2, transparent); margin: 30px 0;"></div>
+            
+            <!-- Author Information -->
+            <div style="text-align: center; margin: 30px 0;">
+                <div style="font-size: 1.5em; color: #2c5aa0; font-weight: bold; margin-bottom: 20px;">
+                    Muhammad Toqeer Ali
                 </div>
-                <h1 class="main-title">Assistive Solutions for Frail People</h1>
-                <div class="subtitle">From Sleep Monitoring to Pre-Impact Fall Detection<br>A Complete PhD Journey</div>
-                <div class="author-info">
-                    <strong>Author:</strong> Muhammad Toqeer Ali<br>
-                    <strong>Supervisor:</strong> Prof. Graziano Pravadelli<br>
-                    <strong>Co-Supervisor:</strong> Dr. Florenc Demrozi<br>
-                    <strong>Academic Year:</strong> 2022-2025
+                
+                <div style="display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; font-size: 0.95em; color: #555;">
+                    <div>
+                        <span style="color: #888;">Supervisor:</span><br>
+                        <strong style="color: #2c5aa0;">Prof. Graziano Pravadelli</strong>
+                    </div>
+                    <div>
+                        <span style="color: #888;">Co-Supervisor:</span><br>
+                        <strong style="color: #2c5aa0;">Dr. Florenc Demrozi</strong>
+                    </div>
                 </div>
-                <div style="margin-top: 30px; font-size: 1.1em; color: #2c5aa0; font-weight: bold;">
-                    October 2025
+            </div>
+            
+            <!-- Date Badge -->
+            <div style="margin-top: 20px; padding: 10px 30px; background: #f8f9fa; border-radius: 20px; border: 2px solid #e0e0e0;">
+                <span style="font-size: 1em; color: #2c5aa0; font-weight: 600;">
+                    📅 October 2025
+                </span>
+            </div>
+        </div>
+        
+        <!-- University Footer - At Bottom -->
+        <div style="position: absolute; bottom: 30px; left: 0; right: 0; text-align: center; padding: 20px; border-top: 2px solid #e0e0e0; background: linear-gradient(to top, #ffffff, transparent);">
+            <div style="font-size: 1.1em; color: #2c5aa0; font-weight: 700; margin-bottom: 5px;">
+                UNIVERSITÀ DI VERONA
+            </div>
+            <div style="font-size: 0.9em; color: #666;">
+                Department of Engineering for Innovation Medicine
+            </div>
+            <div style="font-size: 0.85em; color: #888; margin-top: 3px;">
+                PhD Program in Computer Science | Academic Year 2022-2025
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- Floating Methodology Indicator -->
+        <div id="floatingMethodology" class="floating-methodology">
+            <h4>📊 Current Pipeline Stage</h4>
+            <div class="methodology-mini-step" data-stage="acquisition">
+                <div class="step-icon">📊</div>
+                <div class="step-text">
+                    <strong>Data Acquisition</strong>
+                    <small>STM32 + 6-ch IMU</small>
+                </div>
+            </div>
+            <div class="methodology-mini-step" data-stage="preprocessing">
+                <div class="step-icon">🔄</div>
+                <div class="step-text">
+                    <strong>Preprocessing</strong>
+                    <small>Filtering & Segmentation</small>
+                </div>
+            </div>
+            <div class="methodology-mini-step" data-stage="augmentation">
+                <div class="step-icon">🎯</div>
+                <div class="step-text">
+                    <strong>Data Augmentation</strong>
+                    <small>VAE, GAN, Hybrid</small>
+                </div>
+            </div>
+            <div class="methodology-mini-step" data-stage="training">
+                <div class="step-icon">🧠</div>
+                <div class="step-text">
+                    <strong>AI Training</strong>
+                    <small>CNN + Random Forest</small>
+                </div>
+            </div>
+            <div class="methodology-mini-step" data-stage="deployment">
+                <div class="step-icon">⚡</div>
+                <div class="step-text">
+                    <strong>Optimization</strong>
+                    <small>Quantization & Deploy</small>
                 </div>
             </div>
         </div>
@@ -3388,7 +3573,7 @@
                     </div>
                     <div class="toc-item">
                         <div class="toc-slide-num">22</div>
-                        <div class="toc-item-text">Dataset Imbalance & Augmentation</div>
+                        <div class="toc-item-text">Dataset Characteristics & Augmentation Strategy</div>
                     </div>
                     <div class="toc-item">
                         <div class="toc-slide-num">23</div>
@@ -3548,7 +3733,7 @@
                     <div class="timeline-item">
                         <div class="timeline-marker"></div>
                         <div class="timeline-year">2024-2025: Real-World Challenges & Breakthrough</div>
-                        <p><strong>Challenge Identified:</strong> Year 2 field testing revealed false alarms from sudden construction movements</p>
+                        <p><strong>Challenge Identified:</strong> Year 2 field testing revealed false alarms from abrupt work-related movements</p>
                         <p><strong>Systematic Solutions:</strong> New construction dataset + Prof. Fadi collaboration (Norway) + Event-level classification</p>
                         <p><strong>Final Success:</strong> 99.56% F1-score with real-world validation + IEEE Sensors manuscript ready <cite>[4]</cite></p>
                     </div>
@@ -3985,9 +4170,14 @@
                     </div>
                 </div>
                 
+
                 <div class="conclusion-highlight" style="background: linear-gradient(135deg, #ffebee, #fce4ec);">
                     <h2>🎯 Strategic Decision Point</h2>
                     <p>While technically fascinating, the enhanced sleep monitoring system exceeded PhD scope constraints. This realization prompted systematic evaluation of alternative approaches, leading to the successful fall detection pivot.</p>
+                    <div class="bullet-point" style="margin-top: 15px;">
+                        <div class="bullet-icon">📄</div>
+                        <div><strong>Future Contribution:</strong> Although not implemented, the extensive literature review and design work on sleep monitoring BAN architecture forms the basis for a planned review paper submission, ensuring this research effort contributes valuable knowledge to the field.</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -4702,30 +4892,75 @@
         </div>
 
 
-        <!-- Slide 2: Dataset Class Imbalance & Augmentation Strategy -->
-        <div class="slide">
+        <!-- Slide 22: Dataset Characteristics & Augmentation Strategy -->
+       
+        <div class="slide" data-methodology-stage="acquisition">
             <div class="slide-header">
-                <h2>⚖️ Dataset Class Imbalance Challenge & Augmentation Strategy</h2>
+                <h2>⚖️ Dataset Characteristics & Augmentation Strategy</h2>
                 <div class="slide-number">22/35</div>
             </div>
             <div class="slide-content">
-                <div style="display: flex; gap: 30px; margin: 30px 0;">
+                <div style="display: flex; gap: 25px; margin: 20px 0;">
+                    <!-- Class Imbalance -->
                     <div style="flex: 1;">
                         <div class="figure-placeholder">
-                            <img src="./overall_class_count.png" alt="Advanced Fall Detection Pipeline" width="750" height="400">
+                            <img src="./overall_class_count.png" alt="Class Distribution" width="100%" height="300">
                         </div>
-                        <div class="figure-caption">Figure 10:
-                            Class distribution showing extreme imbalance: 99.24% activity vs. 0.76% falling segments, highlighting the critical need for targeted augmentation approaches <cite>[4]</cite>.
-                        </div>
+                        <div class="figure-caption" style="font-size: 0.85em;">Figure 10a: Extreme class imbalance - 99.24% activity vs. 0.76% falling segments <cite>[4]</cite></div>
                         
-                        <div class="performance-metric" style="background: #ffebee; border-color: #f44336;">
-                            <div class="metric-number" style="color: #f44336;">131:1</div>
+                        <div class="performance-metric" style="background: #ffebee; border-color: #f44336; margin-top: 15px;">
+                            <div class="metric-number" style="color: #f44336; font-size: 2em;">131:1</div>
                             <div class="metric-label">Activity to Fall Ratio</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Duration Distribution -->
+                    <div style="flex: 1;">
+                        <div class="figure-placeholder">
+                            <img src="./dual_axis_stacked.png" alt="Duration Distribution" width="100%" height="300">
+                        </div>
+                        <div class="figure-caption" style="font-size: 0.85em;">Figure 10b: Event duration distributions showing temporal characteristics of both classes <cite>[4]</cite></div>
+                        
+                        <div style="display: flex; gap: 10px; margin-top: 15px;">
+                            <div style="flex: 1; background: #e3f2fd; border: 2px solid #2196f3; border-radius: 8px; padding: 10px;">
+                                <h4 style="color: #1976d2; margin: 0 0 8px 0; font-size: 0.95em;">📊 Activity Events</h4>
+                                <div style="font-size: 0.85em;">
+                                    <strong>Mean:</strong> 3639.7 ± 3118.3 ms<br>
+                                    <strong>Range:</strong> 150ms - 31.8s<br>
+                                    <strong>IQR:</strong> 2.5s - 3.8s
+                                </div>
+                            </div>
+                            <div style="flex: 1; background: #ffebee; border: 2px solid #f44336; border-radius: 8px; padding: 10px;">
+                                <h4 style="color: #d32f2f; margin: 0 0 8px 0; font-size: 0.95em;">⚡ Falling Events</h4>
+                                <div style="font-size: 0.85em;">
+                                    <strong>Mean:</strong> 504.1 ± 164.5 ms<br>
+                                    <strong>Range:</strong> 150ms - 1.2s<br>
+                                    <strong>IQR:</strong> 450ms - 600ms
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="highlight-box">
+                <div class="highlight-box" style="margin-top: 20px;">
+                    <h3>🎯 Key Dataset Insights</h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 15px;">
+                        <div class="bullet-point" style="background: transparent; padding: 5px; border: none;">
+                            <div class="bullet-icon">📊</div>
+                            <div><strong>Numerical Imbalance:</strong> Falls represent only 0.76% of all segments</div>
+                        </div>
+                        <div class="bullet-point" style="background: transparent; padding: 5px; border: none;">
+                            <div class="bullet-icon">⏱️</div>
+                            <div><strong>Temporal Disparity:</strong> Falls are 7× shorter with much less variability</div>
+                        </div>
+                        <div class="bullet-point" style="background: transparent; padding: 5px; border: none;">
+                            <div class="bullet-icon">🎯</div>
+                            <div><strong>Detection Window:</strong> Narrow 450-600ms window for pre-impact detection</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box" style="margin-top: 15px;">
                     <h3>🧬 Advanced Augmentation Strategy Implementation</h3>
                     <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
                         <div style="background: #e3f2fd; border: 2px solid #1976d2; border-radius: 10px; padding: 15px;">
@@ -4735,49 +4970,57 @@
                                 <div><strong>Probabilistic:</strong> Latent space learning</div>
                             </div>
                             <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
-                                <div class="bullet-icon" style="background: #1976d2;">🔧</div>
-                                <div><strong>Quality Control:</strong> Reconstruction error filtering</div>
+                                <div class="bullet-icon" style="background: #1976d2;">✓</div>
+                                <div><strong>Quality:</strong> Noise filtering, smooth generation</div>
                             </div>
-                            <p style="margin: 10px 0; font-size: 0.9em;"><strong>Result:</strong> 99.49% F1-score</p>
+                            <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
+                                <div class="bullet-icon" style="background: #1976d2;">✓</div>
+                                <div><strong>Multiplier:</strong> 2× synthetic falls</div>
+                            </div>
                         </div>
                         
-                        <div style="background: #e8f5e8; border: 2px solid #388e3c; border-radius: 10px; padding: 15px;">
-                            <h4 style="color: #388e3c; margin-bottom: 10px;">⚡ GAN/TimeGAN</h4>
+                        <div style="background: #f3e5f5; border: 2px solid #9c27b0; border-radius: 10px; padding: 15px;">
+                            <h4 style="color: #7b1fa2; margin-bottom: 10px;">⚡ GAN Approach</h4>
                             <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
-                                <div class="bullet-icon" style="background: #388e3c;">🎭</div>
-                                <div><strong>Adversarial:</strong> Temporal pattern synthesis</div>
+                                <div class="bullet-icon" style="background: #9c27b0;">✓</div>
+                                <div><strong>Adversarial:</strong> Generator vs. Discriminator</div>
                             </div>
                             <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
-                                <div class="bullet-icon" style="background: #388e3c;">⏱️</div>
-                                <div><strong>Temporal Coherence:</strong> Realistic dynamics</div>
+                                <div class="bullet-icon" style="background: #9c27b0;">✓</div>
+                                <div><strong>Diversity:</strong> High variation, edge cases</div>
                             </div>
-                            <p style="margin: 10px 0; font-size: 0.9em;"><strong>Result:</strong> 99.43% F1-score</p>
+                            <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
+                                <div class="bullet-icon" style="background: #9c27b0;">✓</div>
+                                <div><strong>Multiplier:</strong> 2× synthetic falls</div>
+                            </div>
                         </div>
                         
-                        <div style="background: #fff3e0; border: 2px solid #f57c00; border-radius: 10px; padding: 15px;">
-                            <h4 style="color: #f57c00; margin-bottom: 10px;">🔄 VAE-GAN Hybrid</h4>
+                        <div style="background: #e8f5e9; border: 2px solid #4caf50; border-radius: 10px; padding: 15px;">
+                            <h4 style="color: #2e7d32; margin-bottom: 10px;">🔄 Hybrid VAE-GAN</h4>
                             <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
-                                <div class="bullet-icon" style="background: #f57c00;">🤝</div>
+                                <div class="bullet-icon" style="background: #4caf50;">✓</div>
                                 <div><strong>Combined:</strong> Best of both approaches</div>
                             </div>
                             <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
-                                <div class="bullet-icon" style="background: #f57c00;">📏</div>
-                                <div><strong>Controlled:</strong> Equal synthetic mixing</div>
+                                <div class="bullet-icon" style="background: #4caf50;">✓</div>
+                                <div><strong>Balanced:</strong> Quality + diversity coverage</div>
                             </div>
-                            <p style="margin: 10px 0; font-size: 0.9em;"><strong>Result:</strong> 99.49% F1-score</p>
+                            <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
+                                <div class="bullet-icon" style="background: #4caf50;">✓</div>
+                                <div><strong>Multiplier:</strong> 2× VAE + 2× GAN</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="year-section">
-                    <h3>💡 Key Insight: Controlled Quality over Quantity</h3>
-                    <p>All three augmentation strategies achieved statistically indistinguishable performance (~99.5% F1-score). The success demonstrates that <strong>controlled, high-quality synthetic data generation with volume restrictions (1×-2× multipliers)</strong> is more critical than the specific generative modeling approach used.</p>
+                    
+                    <div style="background: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; margin-top: 15px; border-radius: 5px;">
+                        <p style="margin: 0;"><strong>⚠️ Augmentation Strategy:</strong> Synthetic samples capped at 1×-2× multipliers to prevent unrealistic sample over-generation while maintaining real-synthetic distribution balance</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-
-    <div class="slide">
+    
+    <div class="slide" data-methodology-stage="augmentation">
         <div class="slide-header">
             <h1>
                 📊 Complete 5-Fold Cross-Validation Augmentation Analysis
@@ -4853,7 +5096,7 @@
         </div>
     </div>
 
-<div class="slide">
+<div class="slide" data-methodology-stage="augmentation">
     <div class="slide-header">
         <h2>🏗️ Dataset Collection & Validation</h2>
         <div class="slide-number">24/35</div>
@@ -4916,7 +5159,7 @@
 </div>
 
             <!-- Slide 3: From Threshold-Based to Random Forest Intelligence -->
-            <div class="slide">
+            <div class="slide" data-methodology-stage="training">
                 <div class="slide-header">
                     <h2>🌳 From Threshold-Based to Random Forest Intelligence</h2>
                     <div class="slide-number">25/35</div>
@@ -5056,7 +5299,7 @@
             </div>
 
         
-  <div class="slide">
+  <div class="slide" data-methodology-stage="training">
         <!-- Header -->
         <div class="slide-header">
             <h2>🎯 Random Forest Decision Process: From Features to Classification</h2>
@@ -5216,7 +5459,7 @@
 
             
             <!-- Slide 25: Detailed Results Analysis -->
-            <div class="slide">
+            <div class="slide" data-methodology-stage="deployment">
                 <div class="slide-header">
                     <h2>📊 Detailed Performance Analysis & Results</h2>
                     <div class="slide-number">27/35</div>
@@ -6134,7 +6377,7 @@
                     <h2 style="color: #2c5aa0; font-size: 2em;">Thank You</h2>
                     <p style="font-size: 1.2em; color: #666; margin-top: 20px;">
                         <strong>Questions and Discussion</strong><br>
-                        Muhammad Toqeer Ali | PhD in Computer Science<br>
+                        Muhammad Toqeer Ali | PhD Candidate in Computer Science<br>
                         Università di Verona | October 2025
                     </p>
                 </div>
@@ -6247,6 +6490,9 @@
                     slideContent.style.animation = '';
                 }, 10);
             }
+
+                // ✅ ADD THIS LINE - Update methodology indicator
+            updateMethodologyIndicator();
         }
     
         // Toggle fullscreen
@@ -7512,9 +7758,83 @@
         });
 
 
+
+
+        // Add this function (if you don't have a showSlide function, add it after your existing navigation code)
+        // Update methodology indicator based on current slide
+        let methodologyTimeout = null; // Global variable to store timeout
+
+        function updateMethodologyIndicator() {
+            const floatingMethodology = document.getElementById('floatingMethodology');
+            
+            if (!floatingMethodology) return; // Exit if element doesn't exist
+            
+            // Clear any existing timeout
+            if (methodologyTimeout) {
+                clearTimeout(methodologyTimeout);
+                methodologyTimeout = null;
+            }
+            
+            // Get the active slide
+            const activeSlide = slides[currentSlideIndex];
+            
+            if (activeSlide) {
+                const methodologyStage = activeSlide.getAttribute('data-methodology-stage');
+                
+                if (methodologyStage) {
+                    // Show floating methodology indicator
+                    floatingMethodology.classList.add('visible');
+                    
+                    // Highlight the current stage
+                    const miniSteps = floatingMethodology.querySelectorAll('.methodology-mini-step');
+                    miniSteps.forEach(step => {
+                        const stepStage = step.getAttribute('data-stage');
+                        step.classList.toggle('active', stepStage === methodologyStage);
+                    });
+                    
+                    // Auto-hide after 3 seconds (3000 milliseconds)
+                    methodologyTimeout = setTimeout(() => {
+                        floatingMethodology.classList.remove('visible');
+                    }, 3000); // Change this number to adjust timing (2000 = 2 seconds, 3000 = 3 seconds)
+                    
+                } else {
+                    // Hide floating methodology indicator immediately if not a methodology slide
+                    floatingMethodology.classList.remove('visible');
+                }
+            }
+        }
+
+        // Keep methodology visible on hover
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingMethodology = document.getElementById('floatingMethodology');
+            
+            if (floatingMethodology) {
+                // When mouse enters, clear the auto-hide timeout
+                floatingMethodology.addEventListener('mouseenter', function() {
+                    if (methodologyTimeout) {
+                        clearTimeout(methodologyTimeout);
+                        methodologyTimeout = null;
+                    }
+                });
+                
+                // When mouse leaves, start auto-hide countdown again
+                floatingMethodology.addEventListener('mouseleave', function() {
+                    if (floatingMethodology.classList.contains('visible')) {
+                        methodologyTimeout = setTimeout(() => {
+                            floatingMethodology.classList.remove('visible');
+                        }, 2000); // Hide after 2 seconds when mouse leaves
+                    }
+                });
+            }
+        });
+
+        // Call this function whenever you change slides
+        // Add this line to your existing nextSlide() and prevSlide() functions:
+        updateMethodologyIndicator();
     </script>
 </body>
 </html> 
+
 
 
 
