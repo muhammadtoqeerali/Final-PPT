@@ -1,2061 +1,3694 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PhD Thesis Defense – Muhammad Toqeer Ali</title>
-<style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; background:#f0f2f5; color:#333; overflow:hidden; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhD Final Presentation - Muhammad Toqeer Ali</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* ── Logos ── */
-.logo-container { position:fixed; top:10px; left:20px; right:20px; display:flex; justify-content:space-between; align-items:center; z-index:1001; height:60px; }
-.university-logo { height:100px; width:auto; }
-.PNRR-logo { height:80px; width:auto; }
-.team-logo { height:100px; width:auto; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: white;
+            color: #333;
+            overflow: hidden;
+        }
 
-/* ── Slide shell ── */
-.presentation-container { width:100vw; height:100vh; display:flex; align-items:center; justify-content:center; }
-.slide { width:90vw; height:85vh; background:white; border-radius:15px; box-shadow:0 20px 40px rgba(0,0,0,.18); padding:35px 40px; display:none; animation:slideIn .6s ease-out; position:relative; overflow-y:auto; margin-top:70px; }
-.slide.active { display:block; }
-@keyframes slideIn { from{opacity:0;transform:translateX(40px)} to{opacity:1;transform:translateX(0)} }
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-/* ── Slide header ── */
-.slide-header { border-bottom:3px solid #8b0000; padding-bottom:12px; margin-bottom:22px; display:flex; align-items:center; justify-content:space-between; }
-.slide-header h2 { font-size:1.9em; color:#1a1a2e; font-weight:700; }
-.slide-number { background:#8b0000; color:white; padding:6px 14px; border-radius:20px; font-size:13px; font-weight:700; white-space:nowrap; }
-.section-tag { font-size:.72em; color:#8b0000; font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px; }
+        /* Logo styling */
+        .logo-container {
+            position: fixed;
+            top: 10px;
+            left: 20px;
+            right: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1001;
+            height: 60px;
+        }
 
-/* ── Typography helpers ── */
-h3 { font-size:1.25em; color:#1a1a2e; margin:16px 0 10px; }
-h4 { font-size:1.05em; color:#333; margin:10px 0 6px; }
+        .university-logo {
+            height: 100px;
+            width: auto;
+        }
 
-/* ── Boxes ── */
-.highlight-box { background:linear-gradient(135deg,#e3f2fd,#f3e5f5); border-left:5px solid #1a3a8a; padding:18px; margin:14px 0; border-radius:0 10px 10px 0; box-shadow:0 3px 8px rgba(0,0,0,.08); }
-.achievement-box { background:linear-gradient(135deg,#e8f5e8,#fff3e0); border-left:5px solid #2e7d32; padding:18px; margin:14px 0; border-radius:0 10px 10px 0; box-shadow:0 3px 8px rgba(0,0,0,.08); }
-.warning-box { background:#fff3e0; border-left:5px solid #f57c00; padding:18px; margin:14px 0; border-radius:0 10px 10px 0; }
-.dark-box { background:linear-gradient(135deg,#1a1a2e,#2c2c54); color:white; border-radius:12px; padding:20px; margin:14px 0; }
+        .team-logo {
+            height: 100px;
+            width: auto;
+        }
 
-/* ── Bullet points ── */
-.bullet-point { display:flex; align-items:flex-start; margin:10px 0; padding:8px; border-radius:8px; transition:background .3s; }
-.bullet-point:hover { background:#f5f5f5; }
-.bullet-icon { background:linear-gradient(135deg,#8b0000,#c62828); color:white; border-radius:50%; width:26px; height:26px; min-width:26px; display:flex; align-items:center; justify-content:center; margin-right:12px; font-weight:700; font-size:.8em; margin-top:2px; }
+        /* Adjust slide content to avoid logo overlap */
+        .slide {
+            margin-top: 70px;
+            height: calc(85vh - 70px);
+        }
 
-/* ── Metric cards ── */
-.metric-grid { display:flex; justify-content:space-around; gap:15px; flex-wrap:wrap; margin:16px 0; }
-.metric-card { text-align:center; padding:14px 20px; background:white; border:2px solid #e0e0e0; border-radius:12px; min-width:120px; box-shadow:0 2px 6px rgba(0,0,0,.07); }
-.metric-card.highlight { border-color:#8b0000; background:linear-gradient(135deg,#fff5f5,#fff); }
-.metric-number { font-size:2em; font-weight:800; color:#8b0000; }
-.metric-label { font-size:.82em; color:#666; margin-top:4px; }
+        .slide {
+            width: 90vw;
+            height: 85vh;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+            display: none;
+            animation: slideIn 0.8s ease-out;
+            position: relative;
+            overflow-y: auto;
+        }
 
-/* ── Tables ── */
-.data-table { width:100%; border-collapse:collapse; margin:14px 0; box-shadow:0 3px 8px rgba(0,0,0,.08); border-radius:10px; overflow:hidden; }
-.data-table th { background:linear-gradient(135deg,#1a1a2e,#8b0000); color:white; padding:12px 14px; text-align:left; font-size:.92em; }
-.data-table td { padding:10px 14px; border-bottom:1px solid #eee; font-size:.88em; transition:background .25s; }
-.data-table tr:hover td { background:#f9f5f5; }
-.data-table tr:last-child td { border-bottom:none; }
-.highlight-row td { background:linear-gradient(135deg,#fff5f5,#fff)!important; font-weight:700; color:#8b0000; }
+        .slide.active {
+            display: block;
+        }
 
-/* ── Flow steps ── */
-.flow-row { display:flex; justify-content:space-between; align-items:center; margin:18px 0; flex-wrap:wrap; gap:10px; }
-.flow-step { background:white; border:2px solid #1a3a8a; border-radius:12px; padding:14px 16px; flex:1; min-width:160px; text-align:center; transition:all .3s; }
-.flow-step:hover { transform:scale(1.04); box-shadow:0 6px 14px rgba(26,58,138,.2); }
-.flow-step h4 { color:#1a3a8a; margin:0 0 6px; font-size:.95em; }
-.flow-step p { font-size:.8em; color:#555; }
-.flow-arrow { font-size:1.6em; color:#8b0000; flex-shrink:0; }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
-/* ── Performance badges ── */
-.perf-badge { display:inline-block; background:linear-gradient(135deg,#1a3a8a,#8b0000); color:white; padding:10px 18px; border-radius:20px; margin:6px; font-size:.95em; font-weight:700; box-shadow:0 3px 8px rgba(0,0,0,.18); }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-/* ── TOC styles ── */
-.toc-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:20px; }
-.toc-card { background:linear-gradient(135deg,#f8f9fa,#edf0f4); border-radius:12px; padding:18px; border-left:5px solid #8b0000; transition:all .3s; cursor:pointer; position:relative; overflow:hidden; }
-.toc-card:hover { transform:translateY(-4px); box-shadow:0 8px 18px rgba(139,0,0,.15); }
-.toc-num { display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; background:#8b0000; color:white; border-radius:50%; font-weight:800; font-size:1.1em; margin-right:12px; flex-shrink:0; }
-.toc-title { display:flex; align-items:center; margin-bottom:8px; }
-.toc-title h3 { margin:0; font-size:1.1em; color:#1a1a2e; }
-.toc-sub { font-size:.85em; color:#666; margin-left:50px; }
+        .slide-content > * {
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
 
-/* ── Title slide ── */
-.title-slide { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:calc(85vh - 140px); text-align:center; }
-.title-badge { background:#8b0000; color:white; padding:6px 18px; border-radius:20px; font-size:.9em; font-weight:700; margin-bottom:18px; display:inline-block; }
-.title-main { font-size:2.8em; color:#1a1a2e; font-weight:800; line-height:1.25; max-width:850px; margin:10px auto; }
-.title-sub { font-size:1.3em; color:#555; margin:10px 0 24px; }
-.title-divider { width:120px; height:3px; background:linear-gradient(90deg,#8b0000,#1a3a8a); margin:18px auto; border-radius:2px; }
-.author-block { display:grid; grid-template-columns:1fr 1px 1fr; gap:24px; align-items:center; width:100%; max-width:700px; margin:20px auto 0; }
-.author-col { text-align:center; padding:0 10px; }
-.author-col .role { font-size:.85em; color:#888; text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px; }
-.author-col .name { font-size:1.1em; font-weight:700; color:#1a3a8a; }
-.author-col .sub-name { font-size:.9em; color:#555; }
-.author-divider { width:1px; background:#ccc; height:60px; }
-.footer-strip { position:absolute; bottom:20px; left:0; right:0; text-align:center; padding:16px; border-top:2px solid #eee; background:linear-gradient(to top,#fff,transparent); }
-.footer-strip .uni { font-size:1em; font-weight:700; color:#1a3a8a; }
-.footer-strip .dept { font-size:.85em; color:#666; }
+        .slide-content > *:nth-child(1) { animation-delay: 0.1s; }
+        .slide-content > *:nth-child(2) { animation-delay: 0.2s; }
+        .slide-content > *:nth-child(3) { animation-delay: 0.3s; }
+        .slide-content > *:nth-child(4) { animation-delay: 0.4s; }
+        .slide-content > *:nth-child(5) { animation-delay: 0.5s; }
 
-/* ── 2-col layout ── */
-.two-col { display:flex; gap:24px; margin:14px 0; }
-.two-col > * { flex:1; }
-.three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; margin:14px 0; }
+        .slide-header {
+            border-bottom: 3px solid #2c5aa0;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-/* ── Gap cards ── */
-.gap-card { background:white; border:2px solid #e0e0e0; border-radius:12px; padding:16px; box-shadow:0 2px 6px rgba(0,0,0,.07); }
-.gap-card .card-title { display:flex; align-items:center; gap:10px; font-weight:700; font-size:1.05em; color:#1a1a2e; margin-bottom:12px; padding-bottom:10px; border-bottom:1px solid #eee; }
-.gap-item { display:flex; align-items:flex-start; gap:10px; margin:8px 0; font-size:.88em; }
-.gap-icon { width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.75em; flex-shrink:0; margin-top:1px; }
-.gap-icon.red { background:#ffebee; color:#c62828; }
-.gap-icon.orange { background:#fff3e0; color:#e65100; }
-.gap-icon.blue { background:#e3f2fd; color:#1565c0; }
+        .slide-number {
+            background: #2c5aa0;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
 
-/* ── RQ cards ── */
-.rq-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:14px 0; }
-.rq-card { background:white; border:2px solid #e0e0e0; border-radius:12px; padding:16px; transition:all .3s; }
-.rq-card:hover { border-color:#8b0000; transform:translateY(-3px); box-shadow:0 6px 14px rgba(139,0,0,.12); }
-.rq-num { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:#1a3a8a; color:white; border-radius:8px; font-weight:800; margin-right:10px; font-size:.95em; }
-.rq-header { display:flex; align-items:center; margin-bottom:10px; }
-.rq-title { font-weight:700; color:#1a1a2e; font-size:1em; }
-.rq-question { font-style:italic; color:#444; font-size:.85em; border-left:3px solid #8b0000; padding-left:10px; margin:8px 0; line-height:1.5; }
-.rq-focus { font-size:.82em; color:#666; }
+        h1 {
+            font-size: 2.5em;
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-/* ── Dataset comparison ── */
-.dataset-badge { display:inline-flex; align-items:center; gap:6px; background:#fff5f5; border:1px solid #ffcdd2; color:#c62828; padding:4px 10px; border-radius:12px; font-size:.8em; font-weight:700; }
-.our-badge { background:#e8f5e8; border-color:#a5d6a7; color:#1b5e20; }
-.check { color:#2e7d32; font-weight:700; }
-.cross { color:#c62828; }
-.partial { color:#f57c00; }
+        h2 {
+            font-size: 2em;
+            color: #2c5aa0;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
 
-/* ── Hardware specs ── */
-.spec-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:14px 0; }
-.spec-box { background:linear-gradient(135deg,#f8f9fa,#e9ecef); border:2px solid #dee2e6; border-radius:12px; padding:16px; }
-.spec-box .spec-title { display:flex; align-items:center; gap:8px; font-weight:700; color:#1a1a2e; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid #dee2e6; font-size:1em; }
-.spec-row { display:flex; justify-content:space-between; align-items:center; margin:6px 0; font-size:.87em; }
-.spec-key { color:#555; }
-.spec-val { font-weight:700; color:#1a3a8a; font-family:monospace; background:#e8edf5; padding:2px 6px; border-radius:4px; }
+        h3 {
+            font-size: 1.4em;
+            color: #444;
+            margin: 20px 0 15px 0;
+        }
 
-/* ── Timeline / annotation ── */
-.phase-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:16px 0; }
-.phase-card { border-radius:12px; padding:14px; text-align:center; transition:all .3s; }
-.phase-card:hover { transform:translateY(-3px); }
-.phase-card .phase-icon { font-size:2em; margin-bottom:8px; }
-.phase-card .phase-label { font-weight:700; font-size:1em; margin-bottom:4px; }
-.phase-card .phase-desc { font-size:.78em; color:#555; }
-.phase-pre { background:#e8f5e8; border:2px solid #4caf50; }
-.phase-fall { background:#fff3e0; border:2px solid #ff9800; }
-.phase-impact { background:#ffebee; border:2px solid #f44336; }
-.phase-post { background:#e3f2fd; border:2px solid #2196f3; }
+        .university-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c5aa0;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
 
-/* ── LED sync ── */
-.led-row { display:flex; align-items:center; justify-content:center; gap:20px; margin:14px 0; }
-.led { padding:8px 20px; border-radius:25px; font-weight:700; font-size:.9em; text-align:center; }
-.led-red { background:#f44336; color:white; }
-.led-yellow { background:#ffeb3b; color:#333; }
-.led-green { background:#4caf50; color:white; }
+        .title-slide {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+        }
 
-/* ── CNN architecture ── */
-.cnn-layer-row { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin:12px 0; }
-.cnn-layer { text-align:center; padding:8px 12px; border-radius:8px; font-size:.8em; font-weight:700; flex:1; min-width:90px; }
-.layer-input { background:#e3f2fd; border:2px solid #1976d2; color:#1565c0; }
-.layer-conv { background:#e8f5e8; border:2px solid #388e3c; color:#1b5e20; }
-.layer-pool { background:#f3e5f5; border:2px solid #7b1fa2; color:#4a148c; }
-.layer-dense { background:#fff3e0; border:2px solid #f57c00; color:#e65100; }
-.layer-out { background:#ffebee; border:2px solid #c62828; color:#b71c1c; }
-.layer-arrow { font-size:1.3em; color:#8b0000; flex-shrink:0; }
+        .main-title {
+            font-size: 3em;
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
 
-/* ── Timing diagram ── */
-.timing-bar { position:relative; height:60px; background:#f5f5f5; border-radius:10px; margin:14px 0; overflow:hidden; border:1px solid #ddd; }
-.timing-segment { position:absolute; top:8px; height:44px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:.78em; font-weight:700; }
-.t-prefall { left:0; width:45%; background:linear-gradient(135deg,#e8f5e8,#c8e6c9); color:#1b5e20; }
-.t-falling { left:45%; width:27%; background:linear-gradient(135deg,#fff3e0,#ffe0b2); color:#e65100; }
-.t-margin { left:72%; width:28%; background:linear-gradient(135deg,#e3f2fd,#bbdefb); color:#1565c0; }
+        .subtitle {
+            font-size: 1.5em;
+            color: #666;
+            margin-bottom: 40px;
+        }
 
-/* ── Results table (full Ch5) ── */
-.results-table { width:100%; border-collapse:collapse; font-size:.78em; box-shadow:0 3px 10px rgba(0,0,0,.1); border-radius:10px; overflow:hidden; }
-.results-table th { background:#1a1a2e; color:white; padding:9px 8px; text-align:center; }
-.results-table th.section-head { background:#8b0000; }
-.results-table td { padding:8px; border-bottom:1px solid #eee; text-align:center; }
-.results-table td:first-child, .results-table td:nth-child(2) { text-align:left; font-weight:600; }
-.results-table tr:hover td { background:#f9f5f5; }
-.results-table .best-cell { color:#1b5e20; font-weight:800; background:#e8f5e8!important; }
-.results-table .aug-row td { background:linear-gradient(135deg,#fffde7,#fff)!important; }
+        .author-info {
+            font-size: 1.2em;
+            color: #444;
+            margin-bottom: 20px;
+        }
 
-/* ── Progression ── */
-.progression-row { display:flex; align-items:center; gap:0; margin:16px 0; }
-.prog-stage { flex:1; background:#f8f9fa; border:2px solid #dee2e6; border-radius:12px; padding:14px; text-align:center; transition:all .3s; }
-.prog-stage:hover { transform:scale(1.04); }
-.prog-stage.s1 { border-color:#ff9800; }
-.prog-stage.s2 { border-color:#2196f3; }
-.prog-stage.s3 { border-color:#4caf50; background:linear-gradient(135deg,#f0fff4,#fff); }
-.prog-score { font-size:1.8em; font-weight:800; }
-.prog-stage.s1 .prog-score { color:#f57c00; }
-.prog-stage.s2 .prog-score { color:#1565c0; }
-.prog-stage.s3 .prog-score { color:#1b5e20; }
-.prog-label { font-size:.82em; color:#555; margin-top:4px; }
-.prog-arrow { font-size:2em; color:#8b0000; padding:0 8px; flex-shrink:0; }
+        .author-info strong {
+            color: #2c5aa0;
+        }
 
-/* ── False alarm operational table ── */
-.fa-table { width:100%; border-collapse:collapse; border-radius:10px; overflow:hidden; box-shadow:0 3px 10px rgba(0,0,0,.1); }
-.fa-table th { background:#1a1a2e; color:white; padding:12px; text-align:center; font-size:.92em; }
-.fa-table td { padding:12px; border-bottom:1px solid #eee; text-align:center; font-size:.9em; }
-.fa-table .period { font-weight:700; color:#333; text-align:left; padding-left:16px; }
-.fa-table .cnn-val { color:#c62828; font-weight:700; font-size:1.05em; }
-.fa-table .rf-val { color:#1b5e20; font-weight:800; font-size:1.1em; }
-.fa-table .reduction { color:#1565c0; font-weight:700; }
-.fa-table .highlight-row td { background:linear-gradient(135deg,#e8f5e8,#fff)!important; }
-.big-impact { background:linear-gradient(135deg,#1a1a2e,#8b0000); color:white; border-radius:10px; padding:14px; text-align:center; margin:12px 0; font-size:1.05em; font-weight:700; }
+        .bullet-point {
+            display: flex;
+            align-items: flex-start;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
 
-/* ── Embedded resource table ── */
-.resource-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:14px 0; }
-.resource-box { background:white; border:2px solid #dee2e6; border-radius:12px; padding:16px; box-shadow:0 2px 8px rgba(0,0,0,.07); }
-.resource-box h4 { color:#1a1a2e; margin-bottom:12px; padding-bottom:8px; border-bottom:2px solid #dee2e6; font-size:.95em; }
-.res-row { display:flex; justify-content:space-between; align-items:center; margin:8px 0; padding:6px 0; border-bottom:1px solid #f0f0f0; }
-.res-label { font-size:.85em; color:#555; }
-.res-value { font-weight:800; font-family:monospace; padding:3px 8px; border-radius:5px; font-size:.9em; }
-.res-total { background:#e8f5e8; color:#1b5e20; border-top:2px solid #4caf50; }
-.res-limit { background:#fff3e0; color:#e65100; }
 
-/* ── Publications ── */
-.pub-card { background:white; border:2px solid #e0e0e0; border-radius:14px; padding:18px; margin:12px 0; box-shadow:0 3px 8px rgba(0,0,0,.07); transition:all .3s; }
-.pub-card:hover { transform:translateY(-3px); box-shadow:0 8px 18px rgba(0,0,0,.12); }
-.pub-badge { display:inline-flex; align-items:center; gap:6px; padding:4px 12px; border-radius:15px; font-size:.8em; font-weight:700; margin-bottom:10px; }
-.pub-badge.award { background:#fff8e1; color:#f9a825; border:1px solid #f9a825; }
-.pub-badge.journal { background:#e3f2fd; color:#1565c0; border:1px solid #1565c0; }
-.pub-badge.conference { background:#e8f5e8; color:#1b5e20; border:1px solid #1b5e20; }
-.pub-badge.review { background:#f3e5f5; color:#6a1b9a; border:1px solid #7b1fa2; }
-.pub-title { font-weight:700; color:#1a1a2e; font-size:.95em; margin-bottom:4px; }
-.pub-authors { font-size:.83em; color:#666; margin-bottom:3px; }
-.pub-venue { font-size:.82em; color:#8b0000; font-weight:600; }
+        /* Advanced Comment System Styles */
+        .floating-comment-btn {
+            position: fixed;
+            bottom: 400px;
+            right: 20px;
+            left: 90%;
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(255,107,107,0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-/* ── Collab cards ── */
-.collab-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:14px 0; }
-.collab-card { border-radius:14px; padding:18px; color:white; position:relative; overflow:hidden; transition:all .3s; }
-.collab-card:hover { transform:translateY(-3px); box-shadow:0 10px 24px rgba(0,0,0,.2); }
-.collab-card .top-bar { position:absolute; top:0; left:0; right:0; height:4px; }
-.collab-avatar { width:60px; height:60px; border-radius:50%; border:3px solid rgba(255,255,255,.8); background:center/cover no-repeat; flex-shrink:0; }
-.collab-info { display:flex; align-items:center; gap:14px; margin-bottom:12px; }
-.collab-name { font-size:1.1em; font-weight:700; }
-.collab-role { font-size:.82em; opacity:.85; }
-.collab-inst { font-size:.8em; opacity:.75; }
-.collab-bullet { font-size:.85em; opacity:.9; margin:5px 0; display:flex; align-items:center; gap:8px; }
+        .floating-comment-btn:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 12px 35px rgba(255,107,107,0.5);
+        }
+        .comment-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ff4757;
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
+            font-weight: bold;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
 
-/* ── Conclusion ── */
-.conclusion-card { background:white; border:2px solid #dee2e6; border-radius:12px; padding:18px; margin:10px 0; }
-.achievement-num { display:inline-flex; align-items:center; justify-content:center; width:34px; height:34px; background:#8b0000; color:white; border-radius:50%; font-weight:800; font-size:1em; margin-right:12px; flex-shrink:0; }
-.quant-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin:14px 0; }
-.quant-card { background:white; border:2px solid #dee2e6; border-radius:10px; padding:14px; text-align:center; }
-.quant-card .q-val { font-size:2em; font-weight:800; color:#8b0000; }
-.quant-card .q-label { font-size:.78em; color:#666; }
+        .comment-badge.show { display: flex; }
 
-/* ── Future directions ── */
-.future-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin:14px 0; }
-.future-card { background:#f8f9fa; border:2px solid #e0e0e0; border-radius:12px; padding:16px; transition:all .3s; position:relative; }
-.future-card:hover { transform:translateY(-3px); box-shadow:0 6px 14px rgba(0,0,0,.1); }
-.future-card .fc-tag { position:absolute; top:-10px; left:16px; padding:3px 12px; border-radius:20px; font-size:.75em; font-weight:700; color:white; }
+        .comment-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            z-index: 9999;
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
 
-/* ── References ── */
-.ref-item { display:flex; gap:12px; margin:10px 0; padding:10px; border-left:3px solid #8b0000; background:#fafafa; border-radius:0 6px 6px 0; }
-.ref-num { font-weight:800; color:#8b0000; min-width:30px; }
-.ref-text { font-size:.83em; color:#444; line-height:1.5; }
-.ref-text a { color:#1a3a8a; text-decoration:none; }
-.ref-text a:hover { text-decoration:underline; }
+        .comment-overlay.active { display: flex; }
 
-/* ── Navigation ── */
-.navigation { position:fixed; bottom:20px; left:50%; transform:translateX(-50%); display:flex; gap:12px; z-index:1000; }
-.nav-btn { background:linear-gradient(135deg,#8b0000,#1a3a8a); color:white; border:none; padding:11px 18px; border-radius:22px; cursor:pointer; font-size:15px; font-weight:700; transition:all .3s; box-shadow:0 4px 8px rgba(0,0,0,.2); }
-.nav-btn:hover { transform:translateY(-2px); box-shadow:0 6px 12px rgba(0,0,0,.3); }
-.nav-btn:disabled { background:#ccc; cursor:not-allowed; transform:none; }
-.slide-indicator { position:fixed; top:20px; right:20px; background:rgba(255,255,255,.92); padding:8px 18px; border-radius:18px; font-weight:700; color:#8b0000; backdrop-filter:blur(10px); font-size:.95em; z-index:1001; }
+        .comment-panel {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 500px;
+            max-width: 90vw;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+            animation: slideUp 0.4s ease;
+        }
 
-/* ── Comment system ── */
-.floating-comment-btn { position:fixed; bottom:80px; right:24px; width:58px; height:58px; background:linear-gradient(135deg,#8b0000,#c62828); border:none; border-radius:50%; cursor:pointer; font-size:22px; color:white; box-shadow:0 6px 18px rgba(139,0,0,.35); transition:all .3s; z-index:1000; display:flex; align-items:center; justify-content:center; }
-.floating-comment-btn:hover { transform:scale(1.1) translateY(-2px); }
-.comment-badge { position:absolute; top:-5px; right:-5px; background:#f44336; color:white; border-radius:50%; width:22px; height:22px; font-size:11px; font-weight:700; display:none; align-items:center; justify-content:center; }
-.comment-badge.show { display:flex; }
-.comment-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,.55); display:none; z-index:9999; backdrop-filter:blur(4px); align-items:center; justify-content:center; }
-.comment-overlay.active { display:flex; }
-.comment-panel { background:white; border-radius:18px; padding:26px; width:480px; max-width:92vw; max-height:80vh; overflow-y:auto; box-shadow:0 20px 50px rgba(0,0,0,.35); animation:slideUp .35s ease; }
-@keyframes slideUp { from{opacity:0;transform:translateY(50px) scale(.92)} to{opacity:1;transform:translateY(0) scale(1)} }
-.comment-panel h3 { color:#1a1a2e; font-size:1.3em; margin-bottom:16px; display:flex; align-items:center; justify-content:space-between; }
-.close-btn { background:#c62828; color:white; border:none; border-radius:50%; width:32px; height:32px; cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; }
-.comment-list { max-height:260px; overflow-y:auto; margin-bottom:16px; }
-.comment-item { background:#f8f9fa; border:1px solid #e0e0e0; border-radius:10px; padding:12px; margin-bottom:10px; border-left:4px solid #8b0000; transition:all .25s; }
-.comment-item:hover { background:#f0e8e8; transform:translateX(4px); }
-.comment-author { font-weight:700; color:#8b0000; margin-bottom:3px; }
-.comment-time { font-size:.8em; color:#888; margin-bottom:6px; }
-.comment-text { color:#444; line-height:1.5; font-size:.9em; }
-.comment-form { border-top:1px solid #eee; padding-top:16px; }
-.form-group { margin-bottom:12px; }
-.form-group label { display:block; margin-bottom:4px; color:#555; font-weight:600; font-size:.9em; }
-.form-group input, .form-group textarea { width:100%; padding:10px 14px; border:2px solid #e0e0e0; border-radius:8px; font-size:.9em; transition:all .3s; font-family:inherit; }
-.form-group input:focus, .form-group textarea:focus { outline:none; border-color:#8b0000; box-shadow:0 0 0 3px rgba(139,0,0,.1); }
-.form-group textarea { resize:vertical; min-height:72px; }
-.form-actions { display:flex; gap:10px; justify-content:flex-end; }
-.btn { padding:10px 22px; border:none; border-radius:7px; font-size:.88em; font-weight:700; cursor:pointer; transition:all .3s; }
-.btn-primary { background:#8b0000; color:white; }
-.btn-primary:hover { background:#6d0000; transform:translateY(-2px); }
-.btn-secondary { background:#6c757d; color:white; }
-.no-comments { text-align:center; color:#888; font-style:italic; padding:30px; background:#f8f9fa; border-radius:8px; }
-.admin-controls { position:fixed; top:420px; right:20px; background:rgba(255,255,255,.95); padding:14px; border-radius:14px; box-shadow:0 4px 18px rgba(0,0,0,.1); z-index:1000; min-width:190px; }
-.admin-controls h4 { margin-bottom:10px; color:#8b0000; font-size:.85em; }
-.toggle-switch { position:relative; display:inline-block; width:48px; height:22px; margin-right:8px; }
-.toggle-switch input { opacity:0; width:0; height:0; }
-.slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:#ccc; transition:.3s; border-radius:22px; }
-.slider:before { position:absolute; content:""; height:16px; width:16px; left:3px; bottom:3px; background:white; transition:.3s; border-radius:50%; }
-input:checked + .slider { background:#8b0000; }
-input:checked + .slider:before { transform:translateX(26px); }
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
 
-/* ── Interactive RF demo ── */
-.story-container { width:100%; height:calc(85vh - 160px); position:relative; display:flex; flex-direction:column; }
-.story-stage { flex:1; display:grid; grid-template-columns:1fr 1.3fr 1fr; gap:20px; height:calc(100% - 60px); }
-.section { background:linear-gradient(135deg,#f8f9fa,#e9ecef); border:2px solid #1a3a8a; border-radius:14px; padding:16px; position:relative; overflow:visible; box-shadow:0 3px 8px rgba(26,58,138,.1); }
-.section-title { font-size:1.2em; margin-bottom:14px; text-align:center; color:#1a1a2e; font-weight:700; border-bottom:2px solid #dee2e6; padding-bottom:8px; }
-.sample-data { display:flex; gap:14px; margin:16px 0; justify-content:center; }
-.data-point { width:80px; height:90px; background:linear-gradient(135deg,#e3f2fd,#f3e5f5); border:3px solid #1a3a8a; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:.88em; transition:all .5s; box-shadow:0 2px 6px rgba(26,58,138,.15); }
-.data-point.highlight { background:linear-gradient(135deg,#fff3e0,#ffebee); border-color:#8b0000; transform:scale(1.1); box-shadow:0 6px 14px rgba(139,0,0,.3); }
-.confidence-value { font-weight:800; color:#1a3a8a; font-size:1.1em; }
-.segment-label { font-size:.78em; color:#666; margin-top:4px; }
-.scenario-info { text-align:center; background:linear-gradient(135deg,#e8f4f8,#f3e5f5); border:1px solid #1a3a8a; padding:12px; border-radius:8px; margin:14px 0; font-size:.92em; }
-.calculation-display { background:linear-gradient(135deg,#f8f9fa,#ffffff); border:2px solid #dee2e6; border-radius:10px; padding:16px; margin:12px 0; font-family:'Courier New',monospace; font-size:.88em; height:calc(100% - 80px); overflow:visible; box-shadow:inset 0 2px 4px rgba(0,0,0,.06); }
-.calculation-step { margin:12px 0; opacity:0; transform:translateX(-14px); transition:all .55s ease; padding:8px; border-radius:6px; line-height:1.5; color:#333; }
-.calculation-step.visible { opacity:1; transform:translateX(0); }
-.calculation-step.highlight { background:linear-gradient(135deg,#fff3e0,#e8f5e8); border-left:4px solid #1a3a8a; padding-left:12px; box-shadow:0 2px 6px rgba(26,58,138,.1); }
-.formula { color:#1a3a8a; font-weight:700; font-size:1.05em; }
-.result-value { color:#8b0000; font-weight:700; font-size:1.1em; background:linear-gradient(135deg,#fff3e0,#ffebee); padding:2px 7px; border-radius:4px; }
-.feature-result { background:linear-gradient(135deg,#e8f4f8,#f3e5f5); border:2px solid #1a3a8a; border-radius:8px; padding:12px; margin:10px 0; text-align:center; transform:scale(0); transition:all .55s ease; box-shadow:0 2px 6px rgba(26,58,138,.08); }
-.feature-result.show { transform:scale(1); }
-.feature-result:hover { transform:scale(1.04); }
-.feature-name { font-size:.88em; color:#1a3a8a; font-weight:700; }
-.feature-value { font-size:1.5em; color:#8b0000; font-weight:800; margin:4px 0; }
-.feature-explanation { font-size:.76em; color:#666; }
-.final-decision { background:linear-gradient(135deg,#e8f4f8,#f3e5f5); border:3px solid #1a3a8a; border-radius:14px; padding:20px; margin:16px 0; text-align:center; transform:scale(0); transition:all .7s ease; box-shadow:0 4px 10px rgba(26,58,138,.15); }
-.final-decision.show { transform:scale(1); }
-.final-decision.falling { border-color:#8b0000; background:linear-gradient(135deg,#fff3e0,#ffebee); }
-.final-decision.activity { border-color:#2e7d32; background:linear-gradient(135deg,#e8f5e8,#f3e5f5); }
-.decision-label { font-size:1.1em; color:#1a3a8a; font-weight:700; margin-bottom:12px; }
-.decision-result { font-size:2.4em; font-weight:800; margin:12px 0; }
-.decision-confidence { font-size:1em; color:#666; margin-top:12px; }
-.progress-bar { width:100%; height:7px; background:#e0e0e0; border-radius:4px; overflow:hidden; border:1px solid #1a3a8a; }
-.progress-fill { height:100%; background:linear-gradient(90deg,#8b0000,#1a3a8a); width:0; transition:width .7s ease; }
-.control-panel { position:absolute; bottom:10px; left:30%; transform:translateX(-50%); display:flex; gap:12px; z-index:300; }
-.math-character { position:absolute; top:12px; right:12px; width:44px; height:44px; background:linear-gradient(135deg,#1a3a8a,#8b0000); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.3em; transition:all .7s ease; z-index:10; box-shadow:0 3px 8px rgba(26,58,138,.25); }
-.math-character.working { animation:spin 1.8s linear infinite; }
-@keyframes spin { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
-.decision-rules { background:linear-gradient(135deg,#f8f9fa,#e8f4f8); border:2px solid #1a3a8a; border-radius:8px; padding:10px; margin:12px 0; font-size:.76em; }
-.rule-item { display:flex; align-items:center; margin:5px 0; padding:5px 7px; border-radius:5px; }
-.rule-item.falling-rule { background:rgba(139,0,0,.08); border-left:3px solid #8b0000; }
-.rule-item.activity-rule { background:rgba(46,125,50,.08); border-left:3px solid #2e7d32; }
-.rule-item.key-insight { background:rgba(26,58,138,.08); border-left:3px solid #1a3a8a; }
-.rule-label { font-weight:700; min-width:70px; color:#333; font-size:.83em; }
-.rule-formula { font-family:'Courier New',monospace; background:rgba(255,255,255,.7); padding:2px 5px; border-radius:4px; margin:0 6px; color:#1a3a8a; font-weight:700; flex:1; }
-.rule-description { color:#666; font-style:italic; font-size:.72em; min-width:90px; }
-.control-btn { background:linear-gradient(135deg,#8b0000,#1a3a8a); border:none; padding:10px 20px; border-radius:22px; color:white; font-weight:700; cursor:pointer; transition:all .3s; font-size:.92em; box-shadow:0 3px 8px rgba(26,58,138,.25); }
-.control-btn:hover { transform:translateY(-2px); box-shadow:0 5px 12px rgba(26,58,138,.35); }
+        .comment-panel h3 {
+            color: #2c5aa0;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-/* ── 5-fold augmentation viewer ── */
-.method-btn { padding:10px 22px; border:2px solid #e0e0e0; border-radius:22px; background:white; color:#64748b; cursor:pointer; font-weight:600; font-size:.88em; transition:all .3s; display:inline-flex; align-items:center; gap:6px; }
-.method-btn:hover { transform:translateY(-2px); box-shadow:0 4px 10px rgba(0,0,0,.12); }
-.method-btn.active { border-color:#8b0000; background:#8b0000; color:white; }
-.method-btn[data-method="gan"].active { border-color:#f97316; background:#f97316; }
-.method-btn[data-method="hybrid"].active { border-color:#7c3aed; background:#7c3aed; }
-.stats-overview { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-bottom:18px; }
-.stat-card { background:linear-gradient(135deg,#f8fafc,#f1f5f9); border:1px solid #e0e0e0; border-radius:8px; padding:10px 14px; text-align:center; position:relative; overflow:hidden; }
-.stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg,#8b0000,#1a3a8a); }
-.stat-card.synthetic-highlight { background:linear-gradient(135deg,#f0fdf4,#dcfce7); border-color:#22c55e; }
-.stat-card.synthetic-highlight::before { background:linear-gradient(90deg,#22c55e,#16a34a); }
-.stat-value { font-size:1.3em; font-weight:700; color:#1e293b; margin-bottom:3px; }
-.stat-label { color:#64748b; font-size:.72em; font-weight:600; text-transform:uppercase; }
-.synthetic-value { color:#16a34a!important; font-weight:800!important; }
-.content-grid { display:grid; grid-template-columns:2fr 1fr; gap:24px; }
-.folds-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:14px; }
-.fold-card { background:white; border:1px solid #e0e0e0; border-radius:10px; padding:14px; transition:all .3s; }
-.fold-card:hover { transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.12); }
-.fold-header { background:#f1f5f9; padding:7px 10px; border-radius:7px; text-align:center; font-weight:600; color:#334155; margin-bottom:10px; }
-.subject-info { background:#dbeafe; color:#1d4ed8; padding:5px 7px; border-radius:5px; font-size:.78em; text-align:center; margin-bottom:10px; }
-.data-section { display:flex; flex-direction:column; gap:7px; }
-.before-section, .after-section { padding:8px; border-radius:7px; }
-.before-section { background:#fef2f2; border-left:3px solid #ef4444; }
-.after-section { background:#f0fdf4; border-left:3px solid #22c55e; }
-.section-title { font-size:.72em; font-weight:700; margin-bottom:5px; text-transform:uppercase; }
-.before-section .section-title { color:#dc2626; }
-.after-section .section-title { color:#16a34a; }
-.data-row { display:flex; justify-content:space-between; align-items:center; margin:2px 0; font-size:.78em; }
-.data-label { color:#475569; font-weight:500; }
-.data-value { font-weight:600; padding:1px 5px; border-radius:3px; font-size:.88em; }
-.activity-value { background:#dbeafe; color:#1d4ed8; }
-.falling-value { background:#fecaca; color:#dc2626; }
-.total-value { background:#dcfce7; color:#16a34a; }
-.ratio-value { background:#f3e8ff; color:#7c3aed; }
-.details-panel { background:linear-gradient(135deg,#f8fafc,#f1f5f9); border:1px solid #e0e0e0; border-radius:10px; padding:14px; height:fit-content; margin-top:50px; }
-.details-panel h2 { color:white; margin:-14px -14px 12px; font-size:.95em; font-weight:700; text-align:center; padding:8px 14px; background:linear-gradient(135deg,#8b0000,#1a3a8a); border-radius:8px 8px 0 0; }
-.config-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-.model-params, .metrics-section { background:white; border:1px solid #e0e0e0; border-radius:7px; padding:9px; }
-.model-params h3, .metrics-section h3 { color:#374151; font-size:.78em; margin-bottom:5px; font-weight:700; text-align:center; }
-.param-row, .metric-item { display:flex; justify-content:space-between; align-items:center; margin:2px 0; padding:1px 0; font-size:.7em; border-bottom:1px solid #f1f5f9; }
-.param-row:last-child, .metric-item:last-child { border-bottom:none; }
-.param-label, .metric-name { color:#6b7280; font-weight:500; }
-.param-value, .metric-value { font-weight:700; font-family:monospace; background:#f1f5f9; padding:1px 3px; border-radius:2px; font-size:.88em; }
+        .close-btn {
+            background: #ff4757;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
 
-/* ── Pipeline animation ── */
-.pipeline-container { position:relative; width:100%; height:calc(100% - 90px); overflow:visible; background:linear-gradient(135deg,#f8f9fa,#e9ecef); border-radius:14px; padding:12px; z-index:1; }
-.data-packet { position:absolute; top:50px; left:50px; width:76px; height:76px; background:linear-gradient(135deg,#8b0000,#c62828); border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; font-weight:700; box-shadow:0 4px 14px rgba(139,0,0,.35); opacity:0; transform:scale(0); transition:all .75s ease; z-index:200; }
-.data-packet.active { opacity:1; transform:scale(1); }
-.data-packet.moving { transition:all 1.4s cubic-bezier(.25,.46,.45,.94); }
-.packet-icon { font-size:1.4em; margin-bottom:2px; }
-.packet-label { font-size:.68em; text-align:center; }
-.pipeline-stage { position:absolute; background:white; border:2px solid #1a3a8a; border-radius:14px; padding:14px; box-shadow:0 4px 10px rgba(26,58,138,.1); opacity:0; transform:translateY(28px); transition:all .75s ease; z-index:10; }
-.pipeline-stage.active { opacity:1; transform:translateY(0); }
-.pipeline-stage.highlight { border-color:#8b0000; box-shadow:0 0 22px rgba(139,0,0,.5); transform:scale(1.04); }
-.stage-1 { top:28px; left:28px; width:210px; height:185px; }
-.stage-2 { top:28px; left:355px; width:270px; height:185px; }
-.stage-3 { top:28px; left:640px; width:560px; height:185px; }
-.stage-4 { top:28px; left:1215px; width:310px; height:185px; }
-.stage-5 { top:370px; left:580px; width:380px; height:195px; }
-.stage-header { text-align:center; margin-bottom:12px; border-bottom:2px solid #dee2e6; padding-bottom:7px; }
-.stage-header h3 { font-size:1.05em; color:#1a1a2e; margin:0; }
-.stage-content { display:flex; flex-direction:column; align-items:center; height:calc(100% - 46px); }
-.body-icon { font-size:2.6em; color:#1a3a8a; }
-.sensor-position { position:absolute; top:10px; right:-8px; font-size:1.1em; animation:sensorPulse 2s infinite; }
-@keyframes sensorPulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.6;transform:scale(1.2)} }
-.data-streams { display:flex; gap:12px; margin:8px 0; }
-.stream { display:flex; flex-direction:column; align-items:center; padding:7px; background:#f8f9fa; border-radius:7px; border:1px solid #dee2e6; }
-.stream-label { font-size:.76em; font-weight:700; color:#1a3a8a; margin-bottom:4px; }
-.stream-waves { width:56px; height:18px; background:linear-gradient(90deg,#8b0000,#1a3a8a); border-radius:3px; animation:waveFlow 1.4s infinite; }
-@keyframes waveFlow { 0%,100%{opacity:.6} 50%{opacity:1} }
-.processing-chain { display:flex; align-items:center; gap:8px; margin:12px 0; }
-.process-box { display:flex; flex-direction:column; align-items:center; padding:9px; background:linear-gradient(135deg,#e3f2fd,#f3e5f5); border:2px solid #1a3a8a; border-radius:9px; min-width:76px; text-align:center; }
-.box-icon { font-size:1.3em; margin-bottom:4px; }
-.box-label { font-size:.76em; font-weight:700; color:#1a3a8a; }
-.box-detail { font-size:.66em; color:#666; margin-top:2px; }
-.arrow { font-size:1.3em; color:#8b0000; font-weight:700; }
-.s3-card { border-radius:10px; padding:9px; color:white; text-align:center; font-size:.82rem; font-weight:700; display:flex; flex-direction:column; justify-content:center; align-items:center; position:relative; }
-.s3-sub { font-size:.7rem; font-weight:400; margin-top:2px; }
-.pills { display:flex; flex-wrap:wrap; gap:5px; justify-content:center; margin-top:5px; }
-.pill { background:rgba(255,255,255,.22); border:1px solid rgba(255,255,255,.5); padding:2px 7px; border-radius:999px; font-size:.68rem; font-weight:600; }
-.cv { background:linear-gradient(180deg,#ffb74d,#fb8c00); }
-.aug { background:linear-gradient(180deg,#64b5f6,#1976d2); }
-.adv { background:linear-gradient(180deg,#b39ddb,#7e57c2); }
-.trn { background:linear-gradient(180deg,#81c784,#43a047); }
-.stage3-row { max-width:100%; margin:0 auto; border:2px solid #1a3a8a; border-radius:14px; background:#fff; box-shadow:0 6px 16px rgba(0,0,0,.07); padding:12px 16px; }
-.stage3-row .hdr { text-align:center; font-weight:800; color:#1a1a2e; margin-bottom:10px; font-size:1rem; }
-.stage3-row .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; position:relative; }
-.stage3-note { font-size:.7rem; color:#2e7d32; background:#e8f5e9; border:1px solid #c8e6c9; padding:3px 7px; border-radius:7px; display:inline-block; margin:5px auto 0; }
-.s3-card:not(:last-child)::before { content:""; position:absolute; top:50%; right:calc(-12px / 2 - 12px); width:calc(12px / 2 + 12px); height:2px; background:rgba(0,0,0,.2); transform:translateY(-50%); pointer-events:none; z-index:2; }
-.s3-card:not(:last-child)::after { content:""; position:absolute; top:50%; right:calc(-12px / 2 - 4px); width:9px; height:9px; border-right:3px solid rgba(0,0,0,.35); border-top:3px solid rgba(0,0,0,.35); transform:translateY(-50%) rotate(45deg); pointer-events:none; z-index:2; }
-.cnn-outputs { text-align:center; padding:4px; background:#e8f5e8; border:2px solid #4caf50; border-radius:6px; min-width:48px; max-width:58px; }
-.outputs-title { font-size:.58em; font-weight:700; color:#4caf50; margin-bottom:2px; }
-.model-outputs { display:flex; flex-direction:column; gap:1px; }
-.fold-output { background:#4caf50; color:white; padding:1px 2px; border-radius:1px; font-size:.5em; font-weight:700; }
-.prob-processing { text-align:center; padding:4px; background:#e3f2fd; border:2px solid #2196f3; border-radius:6px; min-width:48px; max-width:58px; }
-.prob-title { font-size:.58em; font-weight:700; color:#2196f3; margin-bottom:2px; }
-.prob-values { display:flex; gap:2px; justify-content:center; }
-.prob-val { background:#2196f3; color:white; padding:2px 4px; border-radius:2px; font-size:.58em; font-weight:700; }
-.feature-extraction { text-align:center; padding:4px; background:#f3e5f5; border:2px solid #9c27b0; border-radius:6px; max-width:98px; min-width:88px; }
-.feature-title { font-size:.58em; font-weight:700; color:#9c27b0; margin-bottom:2px; }
-.feature-list { display:flex; flex-direction:column; gap:0; }
-.feature { font-size:.5em; color:#9c27b0; font-weight:500; text-align:left; padding:0 1px; }
-.rf-training-block { text-align:center; padding:4px; background:#fff3e0; border:2px solid #ff9800; border-radius:6px; min-width:58px; max-width:68px; }
-.rf-title { font-size:.58em; font-weight:700; color:#ff9800; margin-bottom:2px; }
-.rf-icon { font-size:.95em; margin-bottom:2px; }
-.rf-cv { font-size:.54em; color:#ff9800; margin:1px 0; font-weight:700; }
-.rf-output { font-size:.58em; color:#ff9800; font-weight:700; margin-top:1px; }
-.event-pipeline { display:flex; align-items:center; gap:4px; margin:6px 0; flex-wrap:wrap; justify-content:center; }
-.stm32-chip { text-align:center; padding:13px; background:linear-gradient(135deg,#1a1a2e,#8b0000); color:white; border-radius:14px; box-shadow:0 4px 10px rgba(26,26,46,.3); }
-.chip-icon { font-size:1.8em; margin-bottom:4px; }
-.chip-label { font-size:.88em; font-weight:700; }
-.deployment-chain { display:flex; flex-direction:column; align-items:center; gap:12px; margin:12px 0; }
-.deployment-flow { display:flex; align-items:center; gap:7px; }
-.flow-step { background:#e3f2fd; border:1px solid #1a3a8a; color:#1a3a8a; padding:7px 11px; border-radius:7px; font-size:.78em; font-weight:700; }
-.flow-step.decision { background:linear-gradient(135deg,#2e7d32,#1b5e20); color:white; border-color:#4caf50; }
-.flow-arrow { font-size:1.1em; color:#8b0000; font-weight:700; }
-.latency-info { text-align:center; padding:9px; background:#fff3e0; border:2px solid #ff9800; border-radius:9px; }
-.latency-value { font-size:.95em; font-weight:700; color:#e65100; margin-bottom:2px; }
-.latency-label { font-size:.78em; color:#666; }
-.stage-params { display:flex; gap:8px; margin-top:8px; flex-wrap:wrap; justify-content:center; }
-.param { background:#1a3a8a; color:white; padding:3px 7px; border-radius:5px; font-size:.68em; font-weight:700; }
-.animation-controls { position:absolute; bottom:18px; right:18px; display:flex; gap:10px; z-index:300; }
+        .close-btn:hover {
+            background: #ff3742;
+            transform: scale(1.1);
+        }
 
-/* ── Figure placeholder ── */
-.figure-placeholder { border:2px solid #dee2e6; padding:16px; margin:12px 0; text-align:center; background:#f8f9fa; border-radius:10px; }
-.figure-placeholder img { max-width:100%; height:auto; border-radius:6px; }
-.figure-caption { text-align:center; font-style:italic; font-size:.82em; color:#666; margin:6px 0 14px; }
+        .comment-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
 
-/* ── Print ── */
-@media print { body{background:white!important;overflow:visible!important} .slide{display:block!important;width:100%!important;height:auto!important;page-break-after:always;box-shadow:none!important;border:1px solid #ccc} .navigation,.slide-indicator,.admin-controls,.floating-comment-btn,.comment-overlay{display:none!important} }
-</style>
+        .comment-item {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            border-left: 4px solid #2c5aa0;
+        }
+
+        .comment-item:hover {
+            background: #e8f4f8;
+            transform: translateX(5px);
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 5px;
+        }
+
+        .comment-time {
+            font-size: 0.85em;
+            color: #6c757d;
+            margin-bottom: 8px;
+        }
+
+        .comment-text {
+            color: #495057;
+            line-height: 1.5;
+        }
+
+        .comment-form {
+            border-top: 1px solid #e9ecef;
+            padding-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #495057;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2c5aa0;
+            box-shadow: 0 0 0 3px rgba(44,90,160,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: #2c5aa0;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1e3f70;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+            transform: translateY(-2px);
+        }
+
+        .admin-controls {
+            position: fixed;
+            top: 400px;
+            left: 1650px;
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            min-width: 200px;
+        }
+
+        .admin-controls h4 {
+            margin-bottom: 10px;
+            color: #2c5aa0;
+            font-size: 14px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #2c5aa0;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .no-comments {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            padding: 40px 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        /* Hide comments in presentation mode */
+        .presentation-mode .admin-controls,
+        .presentation-mode .floating-comment-btn {
+            display: none !important;
+        }
+
+        .comments-disabled .floating-comment-btn {
+            display: none !important;
+        }
+
+        .bullet-point:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+            transition: all 0.3s ease;
+        }
+
+        .bullet-icon {
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e3f2fd, #f3e5f5);
+            border-left: 5px solid #2c5aa0;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .achievement-box {
+            background: linear-gradient(135deg, #e8f5e8, #fff3e0);
+            border-left: 5px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .performance-metric {
+            display: inline-block;
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 25px;
+            margin: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .performance-metric:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .methodology-flow {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .flow-step {
+            background: white;
+            border: 3px solid #2c5aa0;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .flow-step:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(44,90,160,0.3);
+        }
+
+        .flow-step::after {
+            content: "→";
+            position: absolute;
+            right: -25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #2c5aa0;
+            font-weight: bold;
+        }
+
+        .flow-step:last-child::after {
+            display: none;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.9);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #2c5aa0;
+            backdrop-filter: blur(10px);
+        }
+
+        .timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #2c5aa0, #764ba2);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 20px 0 20px 80px;
+            margin: 20px 0;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 18px;
+            top: 25px;
+            width: 24px;
+            height: 24px;
+            background: #2c5aa0;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px #2c5aa0;
+        }
+
+        .timeline-year {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c5aa0;
+            margin-bottom: 10px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.1em;
+        }
+
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.3s ease;
+        }
+
+        .comparison-table tr:hover td {
+            background-color: #f8f9fa;
+        }
+
+        .impact-metric {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .metric-number {
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #2c5aa0, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .metric-label {
+            font-size: 1.2em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .conclusion-highlight {
+            background: linear-gradient(135deg, #fff3e0, #e8f5e8);
+            border: 2px solid #4caf50;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conclusion-highlight::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(76,175,80,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .publication-card {
+            background: white;
+            border: 2px solid #2c5aa0;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .publication-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .award-badge {
+            background: linear-gradient(135deg, #ffd700, #ffed4a);
+            color: #8b6914;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px 0;
+            border: 2px solid #f1c40f;
+        }
+
+        /* Citation styles */
+        .citation, cite {
+            color: #2c5aa0;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 2px 4px;
+            border-radius: 3px;
+            transition: background-color 0.3s ease;
+        }
+
+        .citation:hover, cite:hover {
+            background-color: #e8f4f8;
+            text-decoration: underline;
+        }
+
+        /* NEW CSS FOR TOC GRID - ADD THIS */
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+
+        .toc-section {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .toc-section h3 {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #2c5aa0;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+
+        .toc-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        /* Figure improvements */
+        .figure-placeholder {
+            border: 2px solid #2c5aa0;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            background-color: #f8f9fa;
+            font-weight: bold;
+            border-radius: 10px;
+        }
+
+        .figure-placeholder img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #2c5aa0;
+            border-radius: 5px;
+        }
+
+        .figure-caption {
+            text-align: center;
+            font-style: italic;
+            font-size: 11pt;
+            margin: 10px 0 20px 0;
+        }
+
+
+        /* Print styles for handouts */
+        @media print {
+            body {
+                background: white !important;
+                overflow: visible !important;
+            }
+            
+            .slide {
+                display: block !important;
+                width: 100% !important;
+                height: auto !important;
+                page-break-after: always;
+                box-shadow: none !important;
+                border: 1px solid #ccc;
+                margin-bottom: 20px;
+            }
+            
+            .navigation, .slide-indicator, .admin-controls, .floating-comment-btn, .comment-overlay {
+                display: none !important;
+            }
+            
+            .slide-header {
+                border-bottom: 2px solid #2c5aa0 !important;
+            }
+            
+            h1, h2, h3 {
+                color: #000 !important;
+            }
+            
+            .bullet-icon {
+                background: #2c5aa0 !important;
+                color: white !important;
+            }
+            
+            .performance-metric {
+                background: #f0f0f0 !important;
+                color: #000 !important;
+                border: 1px solid #ccc !important;
+            }
+        }
+
+        /* Presentation mode styles */
+        .presentation-mode .navigation {
+            transition: opacity 0.3s ease;
+        }
+
+        .presentation-mode .slide-indicator {
+            transition: opacity 0.3s ease;
+        }
+
+        /* Enhanced animations */
+        .conclusion-slide .conclusion-highlight {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide {
+                width: 98vw;
+                height: 95vh;
+                padding: 20px;
+            }
+            
+            .navigation {
+                bottom: 10px;
+                gap: 10px;
+            }
+            
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .main-title {
+                font-size: 2em !important;
+            }
+            
+            .methodology-flow {
+                flex-direction: column;
+            }
+            
+            .flow-step {
+                margin: 5px;
+            }
+            
+            .impact-metric {
+                margin: 5px;
+                padding: 10px 15px;
+                font-size: 1em;
+            }
+
+            .floating-comment-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 20px;
+                bottom: 80px;
+                right: 20px;
+            }
+            
+            .admin-controls {
+                top: 10px;
+                left: 10px;
+                padding: 10px;
+                min-width: 150px;
+            }
+
+            .comment-panel {
+                width: 95vw;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .slide {
+                width: 95vw;
+                height: 90vh;
+                padding: 30px;
+            }
+            
+            .main-title {
+                font-size: 2.5em;
+            }
+            
+            .methodology-flow {
+                flex-direction: column;
+            }
+            
+            .flow-step::after {
+                content: "↓";
+                right: 50%;
+                bottom: -25px;
+                top: auto;
+                transform: translateX(50%);
+            }
+        }
+    </style>
 </head>
 <body>
 
-<div class="logo-container">
-  <img src="./university-logo.png" alt="Università di Verona" class="university-logo">
-  <img src="./team-logo.png" alt="ISD Team Logo" class="team-logo">
-  <img src="./PNRR.png" alt="Italia PNRR" class="PNRR-logo">
-</div>
-
-<div class="admin-controls">
-  <h4>💬 Comment System</h4>
-  <label class="toggle-switch"><input type="checkbox" id="enableComments" checked onchange="toggleCommentsSystem()"><span class="slider"></span></label>
-  <span style="font-size:.85em">Enable Comments</span><br><br>
-  <div style="display:flex;gap:10px">
-    <button class="btn btn-secondary" onclick="exportAllComments()" style="font-size:10px;padding:5px 12px">📁 Export</button>
-    <button class="btn btn-secondary" onclick="clearAllComments()" style="font-size:10px;padding:5px 10px;background:#dc3545">🗑️ Clear</button>
-  </div>
-</div>
-
-<div class="presentation-container">
-  <div class="slide-indicator">Slide <span id="currentSlide">1</span> of <span id="totalSlides">30</span></div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 1 – TITLE
-════════════════════════════════════════════════════════════════ -->
-<div class="slide active">
-  <div class="title-slide">
-    <div class="title-badge">PhD THESIS DEFENSE</div>
-    <h1 class="title-main">Real-Time Pre-Impact Fall Detection<br>in Wearable Systems</h1>
-    <p class="title-sub">Lightweight Deep Learning Architectures for Embedded Deployment</p>
-    <div class="title-divider"></div>
-    <div class="author-block">
-      <div class="author-col">
-        <div class="role">Candidate</div>
-        <div class="name">Muhammad Toqeer Ali</div>
-      </div>
-      <div class="author-divider"></div>
-      <div class="author-col">
-        <div class="role">Supervision</div>
-        <div class="name">Prof. Graziano Pravadelli</div>
-        <div class="sub-name">Co-Supervisor: Prof. Florenc Demrozi</div>
-      </div>
+    <div class="logo-container">
+        <img src="./university-logo.png" alt="Università di Verona" class="university-logo">
+        <img src="./team-logo.png" alt="ISD Team Logo" class="team-logo">
     </div>
-    <div style="margin-top:22px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <span style="background:#f5f5f5;border:2px solid #dee2e6;padding:7px 18px;border-radius:14px;font-size:.88em;color:#1a3a8a;font-weight:600">📅 XXXVIII Cycle (2022–2025)</span>
-      <span style="background:#f5f5f5;border:2px solid #dee2e6;padding:7px 18px;border-radius:14px;font-size:.88em;color:#8b0000;font-weight:600">🏆 DATE 2025 Best Paper Award</span>
-    </div>
-    <div class="footer-strip">
-      <div class="uni">UNIVERSITÀ DI VERONA</div>
-      <div class="dept">Department of Computer Science &nbsp;|&nbsp; October 2025</div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 2 – TABLE OF CONTENTS
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>📋 Presentation Overview</h2><div class="slide-number">2/30</div></div>
-  <div class="toc-grid">
-    <div class="toc-card"><div class="toc-title"><span class="toc-num">1</span><h3>Research Context &amp; Motivation</h3></div><div class="toc-sub">The fall detection challenge and research gaps</div></div>
-    <div class="toc-card"><div class="toc-title"><span class="toc-num">2</span><h3>Research Objectives &amp; Questions</h3></div><div class="toc-sub">Four guiding research questions</div></div>
-    <div class="toc-card"><div class="toc-title"><span class="toc-num">3</span><h3>Contribution 1: Dataset Development</h3></div><div class="toc-sub">UNIVRFall — construction-specific falls &amp; worksite data</div></div>
-    <div class="toc-card"><div class="toc-title"><span class="toc-num">4</span><h3>Contribution 2: Lightweight CNN</h3></div><div class="toc-sub">Embedded deployment on STM32 microcontrollers</div></div>
-    <div class="toc-card"><div class="toc-title"><span class="toc-num">5</span><h3>Contribution 3: Advanced Pipeline</h3></div><div class="toc-sub">Generative augmentation &amp; hierarchical classification</div></div>
-    <div class="toc-card"><div class="toc-title"><span class="toc-num">6</span><h3>Performance Results &amp; Validation</h3></div><div class="toc-sub">From 86.69% to 99.5% F1-score</div></div>
-    <div class="toc-card"><div class="toc-title"><span class="toc-num">7</span><h3>Industry Impact &amp; Publications</h3></div><div class="toc-sub">DATE Best Paper Award &amp; commercial deployment</div></div>
-    <div class="toc-card"><div class="toc-title"><span class="toc-num">8</span><h3>Conclusions &amp; Future Directions</h3></div><div class="toc-sub">Key achievements and research outlook</div></div>
-  </div>
-  <div class="dark-box" style="text-align:center;margin-top:16px">
-    <h3 style="color:white;margin:0;font-size:1.15em">🎯 Core Thesis: Sophisticated deep learning can operate effectively on resource-constrained wearable devices when efficiency considerations guide design from initial conception.</h3>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 3 – RESEARCH CONTEXT & MOTIVATION
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>1. Research Context &amp; Motivation</h2><div class="slide-number">3/30</div></div>
-  <div class="section-tag">The Fall Detection Challenge</div>
-  <div class="three-col" style="margin:14px 0">
-    <div class="metric-card highlight">
-      <div class="metric-number">16%</div>
-      <div class="metric-label">of non-fatal workplace injuries are falls (US, 2022)</div>
-      <div style="font-size:.78em;color:#8b0000;margin-top:6px;font-weight:700">865 fatalities annually</div>
-    </div>
-    <div class="metric-card highlight">
-      <div class="metric-number">3M</div>
-      <div class="metric-label">emergency department visits per year (elderly)</div>
-      <div style="font-size:.78em;color:#8b0000;margin-top:6px;font-weight:700">$50 billion annual cost</div>
-    </div>
-    <div class="metric-card highlight">
-      <div class="metric-number">1.5B</div>
-      <div class="metric-label">people aged 65+ by 2050 (+105%)</div>
-      <div style="font-size:.78em;color:#8b0000;margin-top:6px;font-weight:700">Rapidly aging population</div>
-    </div>
-  </div>
-  <div class="two-col">
-    <div style="background:#fff5f5;border:2px solid #f44336;border-radius:12px;padding:18px">
-      <h3 style="color:#c62828;margin-bottom:12px">❌ Post-Impact Detection (Traditional)</h3>
-      <p style="font-size:.9em;color:#444;line-height:1.6">Reactive approach — alerts after fall occurs. System detects the ground impact event. <strong>Cannot prevent impact injuries.</strong> Response begins only after patient is already on the ground.</p>
-      <div class="bullet-point" style="margin-top:12px"><div class="bullet-icon" style="background:#c62828">!</div><div>No injury prevention capability</div></div>
-      <div class="bullet-point"><div class="bullet-icon" style="background:#c62828">!</div><div>Post-event emergency response only</div></div>
-    </div>
-    <div style="background:#f0fff4;border:2px solid #4caf50;border-radius:12px;padding:18px">
-      <h3 style="color:#1b5e20;margin-bottom:12px">✅ Pre-Impact Detection (This Thesis)</h3>
-      <p style="font-size:.9em;color:#444;line-height:1.6">Proactive approach — detects fall <strong>before ground contact</strong>. Enables protective device activation during the critical falling phase, preventing or reducing injury.</p>
-      <div class="bullet-point" style="margin-top:12px"><div class="bullet-icon" style="background:#2e7d32">✓</div><div>Wearable airbags reduce hip impact by <strong>60–80%</strong></div></div>
-      <div class="bullet-point"><div class="bullet-icon" style="background:#2e7d32">✓</div><div>150–250ms safety margin for device activation</div></div>
-    </div>
-  </div>
-  <div class="highlight-box"><strong>🔑 Key Insight:</strong> Wearable airbag systems can reduce hip impact forces by 60–80% when deployed during the pre-impact phase — but only if the detection system acts before ground contact.</div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 4 – RESEARCH GAPS
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>1. Research Gaps &amp; Motivation</h2><div class="slide-number">4/30</div></div>
-  <div class="three-col">
-    <div class="gap-card">
-      <div class="card-title"><span style="font-size:1.4em">📊</span> Dataset Limitations</div>
-      <div class="gap-item"><div class="gap-icon red">✕</div><div><strong>Limited Scenario Coverage</strong><br><span style="font-size:.85em;color:#555">No construction-specific elevation falls (ladders, scaffolds) in existing benchmarks</span></div></div>
-      <div class="gap-item"><div class="gap-icon red">✕</div><div><strong>Laboratory-Only Data</strong><br><span style="font-size:.85em;color:#555">No naturalistic operational recordings capturing real workplace movement patterns</span></div></div>
-      <div class="gap-item"><div class="gap-icon red">✕</div><div><strong>Severe Class Imbalance</strong><br><span style="font-size:.85em;color:#555">Falls constitute &lt;3% of data, undermining model training reliability</span></div></div>
-    </div>
-    <div class="gap-card">
-      <div class="card-title"><span style="font-size:1.4em">⚗️</span> Methodological Limitations</div>
-      <div class="gap-item"><div class="gap-icon orange">!</div><div><strong>Timing Constraint Violations</strong><br><span style="font-size:.85em;color:#555">Many approaches use 500–1000ms windows — insufficient time for device activation</span></div></div>
-      <div class="gap-item"><div class="gap-icon orange">!</div><div><strong>Unrealistic Training</strong><br><span style="font-size:.85em;color:#555">Models trained on complete falls including impact signatures — unavailable in real deployment</span></div></div>
-      <div class="gap-item"><div class="gap-icon orange">!</div><div><strong>Inadequate Augmentation</strong><br><span style="font-size:.85em;color:#555">Simple augmentation insufficient; generative approaches unexplored</span></div></div>
-    </div>
-    <div class="gap-card">
-      <div class="card-title"><span style="font-size:1.4em">💾</span> Embedded Deployment Challenges</div>
-      <div class="gap-item"><div class="gap-icon blue">?</div><div><strong>No MCU Validation</strong><br><span style="font-size:.85em;color:#555">Most research evaluates on desktop/cloud without embedded hardware testing</span></div></div>
-      <div class="gap-item"><div class="gap-icon blue">?</div><div><strong>Insufficient Efficiency Analysis</strong><br><span style="font-size:.85em;color:#555">Limited characterization of memory, inference time, power consumption</span></div></div>
-      <div class="gap-item"><div class="gap-icon blue">?</div><div><strong>Field Validation Absence</strong><br><span style="font-size:.85em;color:#555">Laboratory results without real-world construction site testing</span></div></div>
-    </div>
-  </div>
-  <div class="dark-box" style="margin-top:16px">
-    <strong>Research Motivation:</strong> This thesis addresses these critical gaps through systematic dataset development, lightweight architecture design, and real-world validation — bridging the gap between academic research and deployable embedded safety systems.
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 5 – RESEARCH QUESTIONS
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>2. Research Objectives &amp; Questions</h2><div class="slide-number">5/30</div></div>
-  <div class="rq-grid">
-    <div class="rq-card"><div class="rq-header"><span class="rq-num">RQ1</span><span class="rq-title">Dataset Development for Robust Pre-Impact Detection</span></div><div class="rq-question">"How can comprehensive datasets encompassing diverse fall scenarios be developed to support robust pre-impact detection model training?"</div><div class="rq-focus">→ Construction-specific elevation falls, naturalistic workplace recordings, benchmark integration</div></div>
-    <div class="rq-card"><div class="rq-header"><span class="rq-num">RQ2</span><span class="rq-title">Embedded Deployment on Resource-Constrained Devices</span></div><div class="rq-question">"How can pre-impact fall detection be achieved on resource-constrained embedded microcontrollers suitable for wearable devices?"</div><div class="rq-focus">→ Lightweight CNN architecture, STM32 deployment, real-time inference &lt;5ms</div></div>
-    <div class="rq-card"><div class="rq-header"><span class="rq-num">RQ3</span><span class="rq-title">Addressing Class Imbalance Through Data Augmentation</span></div><div class="rq-question">"How can severe class imbalance between fall and non-fall data be effectively addressed to improve detection reliability?"</div><div class="rq-focus">→ Generative models (VAE, CT-GAN, hybrid) for realistic fall synthesis</div></div>
-    <div class="rq-card"><div class="rq-header"><span class="rq-num">RQ4</span><span class="rq-title">Hierarchical Classification for Enhanced Reliability</span></div><div class="rq-question">"How can hierarchical classification strategies enhance fall detection performance beyond single-stage segment classification?"</div><div class="rq-focus">→ Random Forest event-level aggregation, temporal confidence patterns</div></div>
-  </div>
-  <div class="three-col" style="margin-top:14px">
-    <div style="background:linear-gradient(135deg,#e3f2fd,#fff);border:2px solid #1565c0;border-radius:12px;padding:14px;text-align:center"><div style="font-size:1.6em;margin-bottom:6px">💻</div><h4 style="color:#1565c0;margin-bottom:6px">Technical Goal</h4><p style="font-size:.82em;color:#555">Design lightweight DL architectures achieving high accuracy within strict microcontroller constraints</p></div>
-    <div style="background:linear-gradient(135deg,#f3e5f5,#fff);border:2px solid #7b1fa2;border-radius:12px;padding:14px;text-align:center"><div style="font-size:1.6em;margin-bottom:6px">🔬</div><h4 style="color:#7b1fa2;margin-bottom:6px">Methodological Goal</h4><p style="font-size:.82em;color:#555">Develop comprehensive datasets and evaluation protocols emphasizing practical reliability</p></div>
-    <div style="background:linear-gradient(135deg,#e8f5e8,#fff);border:2px solid #2e7d32;border-radius:12px;padding:14px;text-align:center"><div style="font-size:1.6em;margin-bottom:6px">🏭</div><h4 style="color:#2e7d32;margin-bottom:6px">Translational Goal</h4><p style="font-size:.82em;color:#555">Establish methodologies for industry adoption and demonstrate real-world deployment readiness</p></div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 6 – CONTRIBUTION 1: DATASET COMPARISON
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>3. Contribution 1 — Dataset Development</h2><div class="slide-number">6/30</div></div>
-  <div class="section-tag">Comparison with Existing Benchmarks</div>
-  <table class="data-table" style="margin:14px 0">
-    <tr><th>Dataset</th><th>Subjects</th><th>ADLs</th><th>Falls</th><th>Work Tasks</th><th>Worksite Data</th><th>Elevation Falls</th></tr>
-    <tr><td>KFall [2]</td><td>32</td><td>21</td><td>15</td><td class="cross">✕</td><td class="cross">✕</td><td class="cross">✕</td></tr>
-    <tr><td>SisFall [3]</td><td>38</td><td>19</td><td>15</td><td class="cross">✕</td><td class="cross">✕</td><td class="cross">✕</td></tr>
-    <tr><td>MobiAct [4]</td><td>66</td><td>9</td><td>4</td><td class="cross">✕</td><td class="cross">✕</td><td class="cross">✕</td></tr>
-    <tr><td>FARSEEING [5]</td><td>15</td><td>—</td><td>Real</td><td class="cross">✕</td><td class="check">✓</td><td class="cross">✕</td></tr>
-    <tr class="highlight-row"><td>🏆 UNIVRFall <em>(Ours)</em></td><td><strong>29 + 10</strong></td><td><strong>24</strong></td><td><strong>21</strong></td><td class="check">✓</td><td class="check">✓*</td><td class="check">✓ (6 types)</td></tr>
-  </table>
-  <p style="font-size:.82em;color:#666;margin-bottom:14px">* Including data from 10 workers from a real construction site</p>
-  <div class="three-col">
-    <div class="achievement-box" style="margin:0">
-      <h4 style="color:#1b5e20">🏗️ Unique Elevation Falls</h4>
-      <p style="font-size:.85em">6 construction-specific elevation fall types including <strong>ladder falls, scaffold falls, and backward falls from height</strong> — scenarios absent from all prior benchmarks.</p>
-    </div>
-    <div class="highlight-box" style="margin:0">
-      <h4 style="color:#1a3a8a">🤖 AutoML Benchmark</h4>
-      <p style="font-size:.85em">Extreme class imbalance (2.22% falls) combined with hardware constraints makes this dataset ideal for <strong>neural architecture search and model compression research</strong>.</p>
-    </div>
-    <div style="background:linear-gradient(135deg,#f3e5f5,#fff);border-left:5px solid #7b1fa2;padding:14px;border-radius:0 10px 10px 0;box-shadow:0 3px 8px rgba(0,0,0,.08)">
-      <h4 style="color:#7b1fa2">🔗 KFall Integration</h4>
-      <p style="font-size:.85em">Designed following KFall structure for direct integration, creating a combined resource of <strong>61+ participants</strong> with standardized preprocessing. Dataset: <a href="https://zenodo.org/record/18346755" style="color:#8b0000">zenodo.org/record/18346755</a></p>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 7 – HARDWARE SYSTEM
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>3. Smart Safety Jacket &amp; Sensing System</h2><div class="slide-number">7/30</div></div>
-  <div class="two-col" style="margin:14px 0">
-    <div>
-      <div class="figure-placeholder">
-        <img src="./hardware_stm32.png" alt="STM32 Sensor Board" style="max-height:260px">
-        <p style="font-size:.8em;color:#888;margin-top:8px">STM32-Based Sensor Board &amp; Safety Jacket</p>
-      </div>
-      <div class="figure-caption">Figure 1: Custom STM32F722RET6-based sensor board worn at lower back (L1–L2) integrated into the smart safety jacket (Protechto s.r.l.).</div>
-    </div>
-    <div>
-      <div class="spec-grid">
-        <div class="spec-box">
-          <div class="spec-title">💾 Microcontroller</div>
-          <div class="spec-row"><span class="spec-key">Device</span><span class="spec-val">STM32F722RET6</span></div>
-          <div class="spec-row"><span class="spec-key">Core</span><span class="spec-val">ARM Cortex-M7</span></div>
-          <div class="spec-row"><span class="spec-key">Clock</span><span class="spec-val">216 MHz</span></div>
-          <div class="spec-row"><span class="spec-key">Flash</span><span class="spec-val">512 KB</span></div>
-          <div class="spec-row"><span class="spec-key">SRAM</span><span class="spec-val">256 KB</span></div>
+    
+        <!-- Admin Controls -->
+    <div class="admin-controls">
+        <h4>💬 Comment System</h4>
+        <label class="toggle-switch">
+            <input type="checkbox" id="enableComments" checked onchange="toggleCommentsSystem()">
+            <span class="slider"></span>
+        </label>
+        <span>Enable Comments</span>
+        <br><br>
+        <div style="display: flex; gap: 15px;">
+            <button class="btn btn-secondary" onclick="exportAllComments()" style="font-size: 11px; padding: 6px 20px;">
+                📁 Export
+            </button>
+            <button class="btn btn-secondary" onclick="clearAllComments()" style="font-size: 11px; padding: 6px 10px; background: #dc3545;">
+                🗑️ Clear
+            </button>
         </div>
-        <div class="spec-box">
-          <div class="spec-title">📡 Accelerometer</div>
-          <div class="spec-row"><span class="spec-key">Device</span><span class="spec-val">LIS3DH</span></div>
-          <div class="spec-row"><span class="spec-key">Range</span><span class="spec-val">±16g</span></div>
-          <div class="spec-row"><span class="spec-key">Resolution</span><span class="spec-val">1mg</span></div>
-          <div class="spec-row"><span class="spec-key">Axes</span><span class="spec-val">Tri-axial MEMS</span></div>
-          <div class="spec-row"><span class="spec-key">Rate</span><span class="spec-val">100 Hz</span></div>
+    </div>
+
+    <div class="presentation-container">
+        <div class="slide-indicator">
+            Slide <span id="currentSlide">1</span> of <span id="totalSlides">31</span>
         </div>
-        <div class="spec-box">
-          <div class="spec-title">🌀 Gyroscope</div>
-          <div class="spec-row"><span class="spec-key">Device</span><span class="spec-val">LSM6DS3</span></div>
-          <div class="spec-row"><span class="spec-key">Range</span><span class="spec-val">±2000 dps</span></div>
-          <div class="spec-row"><span class="spec-key">Resolution</span><span class="spec-val">0.07 dps</span></div>
-          <div class="spec-row"><span class="spec-key">Axes</span><span class="spec-val">Tri-axial</span></div>
-          <div class="spec-row"><span class="spec-key">Rate</span><span class="spec-val">100 Hz</span></div>
+
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="slide-content title-slide">
+                <div class="university-header">
+                    UNIVERSITÀ DI VERONA<br>
+                    Department of Engineering for Innovation Medicine<br>
+                    PhD Program in Computer Science
+                </div>
+                <h1 class="main-title">Assistive Solutions for Frail People</h1>
+                <div class="subtitle">From Sleep Monitoring to Pre-Impact Fall Detection<br>A Complete PhD Journey</div>
+                <div class="author-info">
+                    <strong>Author:</strong> Muhammad Toqeer Ali<br>
+                    <strong>Supervisor:</strong> Prof. Graziano Pravadelli<br>
+                    <strong>Co-Supervisor:</strong> Dr. Florenc Demrozi<br>
+                    <strong>Academic Year:</strong> 2022-2025
+                </div>
+                <div style="margin-top: 30px; font-size: 1.1em; color: #2c5aa0; font-weight: bold;">
+                    September 2025
+                </div>
+            </div>
         </div>
-        <div class="spec-box">
-          <div class="spec-title">🦺 Safety Integration</div>
-          <div class="spec-row"><span class="spec-key">Placement</span><span class="spec-val">L1–L2 vertebrae</span></div>
-          <div class="spec-row"><span class="spec-key">Channels</span><span class="spec-val">6-channel IMU</span></div>
-          <div class="spec-row"><span class="spec-key">Airbag</span><span class="spec-val">Pre-impact deploy</span></div>
-          <div class="spec-row"><span class="spec-key">Partner</span><span class="spec-val">Protechto s.r.l.</span></div>
+
+<!-- Updated Table of Contents with Correct Slide Alignment -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>📚 Table of Contents</h2>
+                <div class="slide-number">2/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="toc-grid">
+                    <div class="toc-section">
+                        <h3><div class="toc-icon">🎯</div>Foundation & Goals</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">3</div>
+                            <div>PhD Goals & PNRR Alignment</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">4</div>
+                            <div>Research Evolution Timeline</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">5</div>
+                            <div>Strategic Pivot Justification</div>
+                        </div>
+                    </div>
+                    
+                    <div class="toc-section">
+                        <h3><div class="toc-icon">📚</div>Year 1 (2022-2023)</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">6</div>
+                            <div>Systematic Literature Review</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">7</div>
+                            <div>PRISMA Flow Diagram</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">8</div>
+                            <div>IEEE Access Publication</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">9</div>
+                            <div>Technology Domain Analysis</div>
+                        </div>
+                    </div>
+                    
+                    <div class="toc-section">
+                        <h3><div class="toc-icon">🎯</div>Year 2 (2023-2024)</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">10</div>
+                            <div>Strategic Pivot to Fall Detection</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">11-13</div>
+                            <div>Fall Stages & Pre-Impact Innovation</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">14-16</div>
+                            <div>Lightweight CNN Development</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">17-19</div>
+                            <div>Implementation & Results</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">19</div>
+                            <div>DATE 2025 Best Paper Award</div>
+                        </div>
+                    </div>
+                    
+                    <div class="toc-section">
+                        <h3><div class="toc-icon">🚧</div>Year 2→3 Transition</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">20</div>
+                            <div>Real-World Challenge Discovery</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">21</div>
+                            <div>Field Testing Issues Analysis</div>
+                        </div>
+                    </div>
+                    
+                    <div class="toc-section">
+                        <h3><div class="toc-icon">🚀</div>Year 3 (2024-2025)</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">22</div>
+                            <div>Updated Methodology Pipeline</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">23-24</div>
+                            <div>Advanced Data Augmentation</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">25-26</div>
+                            <div>Event-Level Classification</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">27</div>
+                            <div>Breakthrough Performance Results</div>
+                        </div>
+                    </div>
+                    
+                    <div class="toc-section">
+                        <h3><div class="toc-icon">🌍</div>Collaboration & Impact</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">28</div>
+                            <div>International Collaboration Network</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">29</div>
+                            <div>Publications and Recognition</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">30</div>
+                            <div>Conclusion & Mission Accomplished</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">31</div>
+                            <div>Thank You & Questions</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box" style="text-align: center;">
+                    <h3>🎯 Journey Outcome: From Research Foundation to Commercial-Ready Technology</h3>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="achievement-box" style="margin-top:12px">
-        <strong>Sensor Placement:</strong> Positioned at lower back (vertebrae L1–L2) capturing whole-body dynamics with anatomically-aligned coordinate system for optimal fall signature capture.
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 8 – DATA COLLECTION PROTOCOL
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>3. Data Collection Protocol</h2><div class="slide-number">8/30</div></div>
-  <div class="two-col">
-    <div>
-      <h3 style="color:#1a3a8a;border-left:4px solid #1a3a8a;padding-left:10px">🔬 1. Controlled Laboratory</h3>
-      <div class="bullet-point"><div class="bullet-icon">👥</div><div><strong>Participants:</strong> 29 healthy volunteers (25M / 4F), age 23.6 ± 6.2 years</div></div>
-      <div class="bullet-point"><div class="bullet-icon">⏱️</div><div><strong>Duration:</strong> Standardized 45-minute protocol per participant</div></div>
-      <div class="bullet-point"><div class="bullet-icon">🏃</div><div><strong>Activities:</strong> 23 ADLs + 21 fall types in randomized order</div></div>
-      <div class="bullet-point"><div class="bullet-icon">🛡️</div><div><strong>Safety:</strong> Falls onto 15cm foam padding; 100fps video with LED sync</div></div>
-      <div style="background:#e3f2fd;border-radius:8px;padding:12px;margin-top:10px;font-size:.85em">
-        <strong style="color:#1565c0">Construction-Specific ADLs Added:</strong><br>
-        Task 43: Climb up/down stairs &nbsp;|&nbsp; Task 44: Walk slowly &amp; jump over obstacle
-      </div>
-      <h3 style="color:#8b0000;border-left:4px solid #8b0000;padding-left:10px;margin-top:16px">🏗️ Unique Elevation Falls (Tasks 37–42)</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.82em">
-        <div style="background:#ffebee;border-radius:6px;padding:8px"><strong>37–38:</strong> Backward fall (slow &amp; quick)</div>
-        <div style="background:#ffebee;border-radius:6px;padding:8px"><strong>39–40:</strong> Forward/Backward fall from height</div>
-        <div style="background:#ffebee;border-radius:6px;padding:8px"><strong>41:</strong> Ladder fall (climbing up)</div>
-        <div style="background:#ffebee;border-radius:6px;padding:8px"><strong>42:</strong> Ladder fall (climbing down)</div>
-      </div>
-    </div>
-    <div>
-      <h3 style="color:#2e7d32;border-left:4px solid #2e7d32;padding-left:10px">🏗️ 2. Real Construction Site</h3>
-      <div class="bullet-point"><div class="bullet-icon" style="background:#2e7d32">👷</div><div><strong>Participants:</strong> 10 workers during normal work shifts</div></div>
-      <div class="bullet-point"><div class="bullet-icon" style="background:#2e7d32">📊</div><div><strong>Recording:</strong> 0.8 to 11.5 hours per session (Task ID 88)</div></div>
-      <div class="bullet-point"><div class="bullet-icon" style="background:#2e7d32">🔧</div><div><strong>Activities:</strong> Scaffold transport, heavy lifting, material climbing, equipment operation</div></div>
-      <div class="bullet-point"><div class="bullet-icon" style="background:#2e7d32">🔒</div><div><strong>Privacy:</strong> Only sensor data recorded (no video/audio); identities anonymized</div></div>
-      <div class="figure-placeholder" style="margin-top:12px">
-        <img src="./Dataset_collection.png" alt="Data Collection" style="max-height:220px">
-      </div>
-      <div class="figure-caption">Figure 2: Participants during controlled data collection sessions including ADLs and fall simulations.</div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 9 – DATASET STATISTICS
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>3. Dataset Statistics &amp; Fall Duration Analysis</h2><div class="slide-number">9/30</div></div>
-  <div class="two-col">
-    <div>
-      <h3>📊 Recording Time Distribution</h3>
-      <table class="data-table">
-        <tr><th>Environment</th><th>Duration</th><th>Share</th></tr>
-        <tr><td>Controlled Lab (29 participants)</td><td><strong>3.41 h</strong></td><td>7.41%</td></tr>
-        <tr style="padding-left:20px"><td>&nbsp;&nbsp;Activities (23 tasks)</td><td>2.35 h</td><td>5.10%</td></tr>
-        <tr><td>&nbsp;&nbsp;Falls (21 types)</td><td>1.06 h</td><td>2.30%</td></tr>
-        <tr><td>Construction Site (10 workers)</td><td><strong>42.64 h</strong></td><td>92.59%</td></tr>
-        <tr class="highlight-row"><td><strong>Total Dataset</strong></td><td><strong>46.05 h</strong></td><td>100%</td></tr>
-      </table>
-      <div class="warning-box" style="margin-top:12px">
-        <strong>⚠️ Class Imbalance Challenge:</strong> Actual falling time represents only <strong>0.16%</strong> of the whole dataset (lab + worksite), and <strong>2.22%</strong> in controlled lab settings — reflecting real-world conditions where falls are rare events.
-      </div>
-      <div class="metric-grid" style="margin-top:12px">
-        <div class="metric-card highlight"><div class="metric-number" style="font-size:1.4em">573</div><div class="metric-label">Total fall recordings</div></div>
-        <div class="metric-card highlight"><div class="metric-number" style="font-size:1.4em">131:1</div><div class="metric-label">Activity:fall ratio (full dataset)</div></div>
-      </div>
-    </div>
-    <div>
-      <h3>⏱️ Fall Duration Distribution (573 Falls)</h3>
-      <div class="figure-placeholder">
-        <img src="./fall_duration_chart.png" alt="Fall Duration Distribution" style="max-height:200px">
-        <p style="font-size:.8em;color:#888;margin-top:6px">Fall duration distribution chart</p>
-      </div>
-      <div class="figure-caption">Figure 3: Fall duration distribution showing temporal characteristics of both elevation and ground-level falls.</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
-        <div class="spec-box"><div class="spec-title">📏 Duration Stats</div>
-          <div class="spec-row"><span class="spec-key">Mean</span><span class="spec-val">476.7 ms</span></div>
-          <div class="spec-row"><span class="spec-key">Range</span><span class="spec-val">150–1200 ms</span></div>
-          <div class="spec-row"><span class="spec-key">Std Dev</span><span class="spec-val">183.9 ms</span></div>
+        <!-- Slide 3: PhD Goals and PNRR Alignment -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>PhD Goals & PNRR Alignment</h2>
+                <div class="slide-number">3/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="highlight-box">
+                    <h3>🎯 Primary PhD Objective (2022)</h3>
+                    <p>Define and implement assistive home automation solutions and virtual coaching tools based on wearable systems and IoT for Parkinson's patients and elderly populations.</p>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+                    <div style="flex: 1;">
+                        <h3 style="color: #2c5aa0;">🇮🇹 PNRR Mission Alignment</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">1</div>
+                            <div><strong>Mission 1:</strong> Digital Transformation through IoT & AI</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">5</div>
+                            <div><strong>Mission 5:</strong> Social Inclusion for aging populations</div>
+                        </div>
+                        <div style="font-size: 12px; color: #666; margin-top: 10px; font-style: italic;">
+                            *Note: Missions 2-4 address different domains (environment, infrastructure, education) not directly relevant to this research
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="color: #2c5aa0;">🎯 Initial Target Applications</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🏠</div>
+                            <div><strong>Home Monitoring:</strong> Assistive automation solutions</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">😴</div>
+                            <div><strong>Sleep Monitoring:</strong> Parkinson's patient care</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🚨</div>
+                            <div><strong>Fall Detection:</strong> Emergency response systems</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="achievement-box">
+                    <h3>💭 Research Philosophy</h3>
+                    <p>Maintain core objectives while adapting technical approaches based on practical constraints and emerging opportunities</p>
+                </div>
+            </div>
         </div>
-        <div class="spec-box"><div class="spec-title">🏗️ Elevation vs. Ground</div>
-          <div class="spec-row"><span class="spec-key">Elevation falls</span><span class="spec-val">700–1000 ms</span></div>
-          <div class="spec-row"><span class="spec-key">Ground-level</span><span class="spec-val">300–600 ms</span></div>
-          <div class="spec-row"><span class="spec-key">Reaction time</span><span class="spec-val">More margin</span></div>
+
+        <!-- Slide 4: Research Evolution Timeline -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Research Evolution Timeline</h2>
+                <div class="slide-number">4/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-year">2022-2023: Foundation Year</div>
+                        <p><strong>Literature Review:</strong> Analyzed 2,459 papers on ICT-based Alzheimer's care solutions <cite>[1]</cite></p>
+                        <p><strong>Publication:</strong> IEEE Access survey paper establishing field overview</p>
+                        <p><strong>Technical Exploration:</strong> Initial sleep monitoring system development using BAN devices</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-year">2023-2024: Strategic Pivot</div>
+                        <p><strong>Direction Change:</strong> Transitioned from sleep monitoring to fall detection</p>
+                        <p><strong>Achievement:</strong> 86.69% F1-score with lightweight CNN on STM32 <cite>[2]</cite></p>
+                        <p><strong>Recognition:</strong> DATE 2025 Best Paper Award</p>
+                    </div>
+                
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-year">2024-2025: Real-World Challenges & Breakthrough</div>
+                        <p><strong>Challenge Identified:</strong> Year 2 field testing revealed false alarms from sudden construction movements</p>
+                        <p><strong>Systematic Solutions:</strong> New construction dataset + Prof. Fadi collaboration (Norway) + Event-level classification</p>
+                        <p><strong>Final Success:</strong> 99.56% F1-score with real-world validation + IEEE Sensors manuscript ready <cite>[4]</cite></p>
+                    </div>
+
+                </div>
+                
+                <div style="display: flex; justify-content: space-around; margin: 30px 0;">
+                    <div class="performance-metric">
+                        <div class="performance-metric">Literature Foundation</div>
+                        <div class="performance-metric">2,459 Papers</div>
+                    </div>
+                    <div class="performance-metric">
+                        <div class="performance-metric">Strategic Success</div>
+                        <div class="performance-metric">Sleep→Fall Detection</div>
+                    </div>
+                    <div class="performance-metric">
+                        <div class="performance-metric">Final Performance</div>
+                        <div class="performance-metric">99.56% F1-Score</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 10 – TEMPORAL ANNOTATION
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>3. Temporal Annotation &amp; Synchronization</h2><div class="slide-number">10/30</div></div>
-  <h3>Four Fall Phases</h3>
-  <div class="phase-grid">
-    <div class="phase-card phase-pre"><div class="phase-icon">🟢</div><div class="phase-label">Pre-Fall Phase</div><div class="phase-desc">Normal daily activities before fall onset (Frame &lt; 241)</div></div>
-    <div class="phase-card phase-fall"><div class="phase-icon">🟡</div><div class="phase-label">Falling Phase</div><div class="phase-desc">Unrecoverable free-fall from onset to impact (Frame 241–313)</div></div>
-    <div class="phase-card phase-impact"><div class="phase-icon">🔴</div><div class="phase-label">Impact Phase</div><div class="phase-desc">Ground contact moment (Frame 313) — our detection must precede this</div></div>
-    <div class="phase-card phase-post"><div class="phase-icon">🔵</div><div class="phase-label">Post-Fall Phase</div><div class="phase-desc">Recovery movements after impact (Frame &gt; 313)</div></div>
-  </div>
-  <div class="figure-placeholder" style="margin:14px 0">
-    <img src="./falling-overview.png" alt="Fall Phases" style="max-height:200px">
-  </div>
-  <div class="figure-caption">Figure 4: Illustration of the four fall phases with corresponding acceleration patterns and the pre-impact detection window targeted by this thesis.</div>
-  <h3>💡 LED Synchronization Protocol</h3>
-  <p style="font-size:.9em;margin-bottom:10px">Three high-brightness LEDs execute a programmed sequence for precise temporal alignment between 100fps video and 100Hz IMU data:</p>
-  <div class="led-row">
-    <div class="led led-red">🔴 RED — 500 ms</div>
-    <div style="font-size:1.5em;color:#8b0000">→</div>
-    <div class="led led-yellow">🟡 YELLOW — 250 ms</div>
-    <div style="font-size:1.5em;color:#8b0000">→</div>
-    <div class="led led-green">🟢 GREEN — 250 ms</div>
-  </div>
-  <div class="highlight-box" style="margin-top:12px">Bit transitions <strong>0→4→1</strong> encoded in sensor data enable frame-level synchronization, ensuring precise temporal labels for each fall event down to 10ms resolution.</div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 11 – DATASET DEMO VIDEO
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>3. Dataset Collection — Video Demonstration</h2><div class="slide-number">11/30</div></div>
-  <div class="highlight-box" style="text-align:center"><h3>📽️ Collection Process: From Lab to Construction Site</h3></div>
-  <div style="position:relative;width:100%;max-width:840px;margin:14px auto;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.3)">
-    <video id="dataVideo" controls style="width:100%;height:auto;display:block" poster="./thumbnail.jpeg" preload="metadata">
-      <source src="./documentry.MP4" type="video/mp4">
-    </video>
-    <div id="dataPlayBtn" onclick="document.getElementById('dataVideo').play();this.style.display='none'" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;background:linear-gradient(135deg,#8b0000,#1a3a8a);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.4)"><div style="width:0;height:0;border-left:22px solid white;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:5px"></div></div>
-  </div>
-  <div class="two-col" style="margin-top:14px">
-    <div class="achievement-box">
-      <h4>📹 Video Content Includes</h4>
-      <div class="bullet-point"><div class="bullet-icon">🔬</div><div>Laboratory setup, safety measures, and foam padding protocol</div></div>
-      <div class="bullet-point"><div class="bullet-icon">🏃</div><div>Participants performing ADLs and simulated fall scenarios</div></div>
-      <div class="bullet-point"><div class="bullet-icon">🏗️</div><div>Elevation-specific falls: ladder and scaffold scenarios</div></div>
-      <div class="bullet-point"><div class="bullet-icon">💡</div><div>LED synchronization system in operation</div></div>
-    </div>
-    <div class="highlight-box">
-      <h4>📊 Collection Summary</h4>
-      <div class="bullet-point"><div class="bullet-icon">👥</div><div><strong>39 subjects total</strong> in controlled environment (29 lab + 10 site workers)</div></div>
-      <div class="bullet-point"><div class="bullet-icon">⏱️</div><div><strong>46.05 hours</strong> of sensor recordings collected</div></div>
-      <div class="bullet-point"><div class="bullet-icon">🎯</div><div><strong>573 fall events</strong> annotated with frame-level precision</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 12 – CONTRIBUTION 2: CONFIG A
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>4. Contribution 2 — Lightweight CNN</h2><div class="slide-number">12/30</div></div>
-  <div class="section-tag">Evaluation Configuration A — Controlled Environment</div>
-  <div class="two-col" style="margin:14px 0">
-    <div>
-      <div class="dark-box">
-        <h3 style="color:white;margin-bottom:12px">⚙️ Configuration A Setup</h3>
-        <div class="bullet-point" style="color:white"><div class="bullet-icon" style="background:#c62828">📊</div><div><strong>61 laboratory participants:</strong> 32 from KFall + 29 from UNIVRFall (Tasks 01–44)</div></div>
-        <div class="bullet-point" style="color:white"><div class="bullet-icon" style="background:#c62828">🪟</div><div><strong>400ms windows</strong> with 50% overlap; final 150ms before impact excluded</div></div>
-        <div class="bullet-point" style="color:white"><div class="bullet-icon" style="background:#c62828">🔄</div><div><strong>5-fold subject-independent cross-validation</strong></div></div>
-        <div class="bullet-point" style="color:white"><div class="bullet-icon" style="background:#c62828">🎯</div><div><strong>Purpose:</strong> Architecture validation for embedded deployment</div></div>
-      </div>
-      <div class="metric-grid" style="margin-top:14px">
-        <div class="metric-card"><div class="metric-number" style="font-size:1.6em">242,738</div><div class="metric-label">Non-falling windows (96.4%)</div></div>
-        <div class="metric-card highlight"><div class="metric-number" style="font-size:1.6em">9,105</div><div class="metric-label">Falling windows (3.6%)</div></div>
-      </div>
-      <div class="achievement-box" style="margin-top:12px">
-        <strong>Why 150ms exclusion?</strong> The final 150ms before impact contains ground-contact signatures that are not available in real deployment — excluding them ensures the model learns only pre-impact features.
-      </div>
-    </div>
-    <div>
-      <h3>⏱️ Pre-Impact Timing Budget</h3>
-      <div class="timing-bar">
-        <div class="timing-segment t-prefall">Pre-Fall (stable activity)</div>
-        <div class="timing-segment t-falling">Falling Phase (~300ms)</div>
-        <div class="timing-segment t-margin">Safety Margin</div>
-      </div>
-      <div style="display:flex;justify-content:space-between;font-size:.78em;color:#666;margin-bottom:14px">
-        <span>0 ms</span><span>400ms detection window</span><span>500–700ms impact</span>
-      </div>
-      <table class="data-table">
-        <tr><th>Fall Duration</th><th>Decision Latency</th><th>Available Safety Margin</th></tr>
-        <tr><td>500 ms (short fall)</td><td>400 ms</td><td style="color:#2e7d32;font-weight:700">93 ms</td></tr>
-        <tr><td>600 ms (typical fall)</td><td>400 ms</td><td style="color:#2e7d32;font-weight:700">193 ms</td></tr>
-        <tr class="highlight-row"><td>700 ms (elevation fall)</td><td>400 ms</td><td style="color:#2e7d32;font-weight:700">293 ms</td></tr>
-      </table>
-      <div class="highlight-box" style="margin-top:12px">
-        <strong>Design Constraint:</strong> Airbag inflation requires ~150ms. The system must detect and decide within 400ms to leave sufficient activation time.
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 13 – CNN THREE-BRANCH ARCHITECTURE
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>4. CNN Architecture &amp; Embedded Optimization</h2><div class="slide-number">13/30</div></div>
-  <div class="two-col">
-    <div>
-      <h3>🧠 Three-Branch Architecture</h3>
-      <p style="font-size:.85em;color:#555;margin-bottom:10px">Input: <strong>40×9 matrix</strong> (400ms @ 100Hz, 9 channels: 3-axis acc + 3-axis gyro + 3 Euler angles)</p>
-      <div style="display:flex;flex-direction:column;gap:8px">
-        <div style="display:flex;gap:8px">
-          <div style="flex:1;background:#e3f2fd;border:2px solid #1565c0;border-radius:8px;padding:10px;text-align:center;font-size:.82em"><strong style="color:#1565c0">Acc Branch</strong><br>3-axis ACC<br>Conv1D + MaxPool</div>
-          <div style="flex:1;background:#e8f5e8;border:2px solid #2e7d32;border-radius:8px;padding:10px;text-align:center;font-size:.82em"><strong style="color:#2e7d32">Gyro Branch</strong><br>3-axis GYRO<br>Conv1D + MaxPool</div>
-          <div style="flex:1;background:#f3e5f5;border:2px solid #7b1fa2;border-radius:8px;padding:10px;text-align:center;font-size:.82em"><strong style="color:#7b1fa2">Euler Branch</strong><br>Roll/Pitch/Yaw<br>Conv1D + MaxPool</div>
+        <!-- Slide 5: Strategic Pivot Justification -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Strategic Pivot: Sleep Monitoring → Fall Detection</h2>
+                <div class="slide-number">5/31</div>
+            </div>
+            <div class="slide-content">
+                <div style="display: flex; justify-content: space-between; gap: 30px;">
+                    <div style="flex: 1;">
+                        <h3 style="color: #d32f2f;">❌ Sleep Monitoring Challenges</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">!</div>
+                            <div>Multi-modal sensor complexity (EEG, EOG)</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">!</div>
+                            <div>Clinical validation requirements</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">!</div>
+                            <div>Regulatory compliance complexity</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">!</div>
+                            <div>Limited patient access</div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3 style="color: #4caf50;">✓ Fall Detection Advantages</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">✓</div>
+                            <div>Leverages existing BAN expertise</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">✓</div>
+                            <div>Manageable validation requirements</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">✓</div>
+                            <div>Multiple application domains</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">✓</div>
+                            <div>Industry partnership alignment</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box" style="margin-top: 30px;">
+                    <h3>🎯 Strategic Decision</h3>
+                    <p>Maintaining core objective of assistive solutions for frail populations while adapting technical approach to available resources and practical deployment considerations.</p>
+                </div>
+            </div>
         </div>
-        <div style="text-align:center;font-size:1.5em;color:#8b0000">↓ Concatenate</div>
-        <div style="background:#fff3e0;border:2px solid #f57c00;border-radius:8px;padding:10px;text-align:center;font-size:.85em"><strong style="color:#e65100">Feature Concatenation</strong> → Dense(64) + ReLU → Dense(32) + ReLU</div>
-        <div style="text-align:center;font-size:1.5em;color:#8b0000">↓</div>
-        <div style="background:#ffebee;border:2px solid #c62828;border-radius:8px;padding:10px;text-align:center;font-size:.85em"><strong style="color:#c62828">Sigmoid Output</strong>: Activity (0) vs Falling (1)</div>
-      </div>
-    </div>
-    <div>
-      <h3>⚡ INT8 Quantization for STM32</h3>
-      <table class="data-table">
-        <tr><th>Metric</th><th>Float32</th><th>INT8 (Deployed)</th></tr>
-        <tr><td>Flash Memory</td><td>268.12 KB</td><td style="color:#2e7d32;font-weight:700">67.03 KB</td></tr>
-        <tr><td>RAM Usage</td><td>67.47 KB</td><td style="color:#2e7d32;font-weight:700">16.87 KB</td></tr>
-        <tr><td>Inference Time</td><td>~16 ms</td><td style="color:#2e7d32;font-weight:700">4 ms ± 3 ms</td></tr>
-        <tr class="highlight-row"><td>Flash Utilization</td><td>—</td><td style="color:#2e7d32;font-weight:700">26.2% of 256KB</td></tr>
-      </table>
-      <div class="three-col" style="margin-top:12px;gap:8px">
-        <div class="metric-card highlight"><div class="metric-number" style="font-size:1.5em">67 KB</div><div class="metric-label">Flash usage</div></div>
-        <div class="metric-card highlight"><div class="metric-number" style="font-size:1.5em">17 KB</div><div class="metric-label">RAM usage</div></div>
-        <div class="metric-card highlight"><div class="metric-number" style="font-size:1.5em">4 ms</div><div class="metric-label">Inference time</div></div>
-      </div>
-      <div class="achievement-box" style="margin-top:10px">
-        <strong>Parallel sensor processing + short windows + INT8 quantization</strong> keep memory and latency within strict STM32 bounds while maintaining classification performance.
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 14 – CONTRIBUTION 2 RESULTS
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>4. Contribution 2 — Results &amp; Validation</h2><div class="slide-number">14/30</div></div>
-  <div class="section-tag">Configuration A — 5-Fold Subject-Independent Cross-Validation</div>
-  <div class="metric-grid" style="margin:16px 0">
-    <div class="metric-card highlight"><div class="metric-number">86.69%</div><div class="metric-label">Segment-level F1-score</div></div>
-    <div class="metric-card highlight"><div class="metric-number">89.32%</div><div class="metric-label">Precision</div></div>
-    <div class="metric-card highlight"><div class="metric-number">84.26%</div><div class="metric-label">Recall</div></div>
-    <div class="metric-card highlight"><div class="metric-number">4 ms</div><div class="metric-label">STM32 inference time</div></div>
-  </div>
-  <div class="two-col">
-    <div>
-      <h3>📊 Embedded Deployment Summary</h3>
-      <table class="data-table">
-        <tr><th>Component</th><th>Flash</th><th>RAM</th><th>Inference</th></tr>
-        <tr><td>CNN (INT8)</td><td>67.03 KB</td><td>16.87 KB</td><td>4 ms</td></tr>
-        <tr><td>STM32 Limit</td><td>256 KB</td><td>256 KB</td><td>—</td></tr>
-        <tr class="highlight-row"><td><strong>Utilization</strong></td><td style="color:#2e7d32">26.2%</td><td style="color:#2e7d32">6.6%</td><td style="color:#2e7d32">✓ 4 ms</td></tr>
-      </table>
-      <div class="achievement-box" style="margin-top:12px">
-        <strong>✅ Proof of Feasibility:</strong> First practical demonstration of pre-impact fall detection running entirely on an STM32 ARM Cortex-M7 microcontroller in real time.
-      </div>
-    </div>
-    <div>
-      <h3>⚠️ Event-Level False Alarm Analysis</h3>
-      <div style="background:#fff3e0;border-radius:12px;padding:16px;border:2px solid #f57c00">
-        <div style="display:flex;justify-content:space-around;margin-bottom:12px">
-          <div style="text-align:center"><div style="font-size:1.8em;font-weight:800;color:#c62828">4.17%</div><div style="font-size:.82em;color:#555">False Negatives (missed falls)</div></div>
-          <div style="text-align:center"><div style="font-size:1.8em;font-weight:800;color:#e65100">2.04%</div><div style="font-size:.82em;color:#555">False Positives (false alarms)</div></div>
+        <!-- YEAR 1 DETAILED SLIDES START HERE -->
+
+        <!-- Slide 6: Year 1 Overview -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>📚 Year 1 (2022-2023): Foundation & Discovery</h2>
+                <div class="slide-number">6/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="year-section">
+                    <h3>🎯 Year 1 Mission: Building Comprehensive Foundations</h3>
+                    <p>Establish deep domain knowledge in assistive technologies while exploring initial technical approaches for neurodegenerative disease monitoring</p>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+                    <div style="flex: 1;">
+                        <h3>📖 Systematic Literature Review</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🔍</div>
+                            <div><strong>PRISMA Methodology:</strong> Rigorous systematic approach</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📊</div>
+                            <div><strong>Scope:</strong> ICT solutions for Alzheimer's Disease care</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🌐</div>
+                            <div><strong>Multi-database Search:</strong> IEEE, ACM, Scopus, PubMed, WoS</div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3>🔬 Technical Exploration</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🛠️</div>
+                            <div><strong>BAN Enhancement:</strong> Body Area Network upgrades</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">😴</div>
+                            <div><strong>Sleep Monitoring:</strong> Parkinson's patient focus</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚡</div>
+                            <div><strong>Multi-modal Sensors:</strong> EEG, EOG integration</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-around; margin: 30px 0;">
+                    <div class="impact-metric">
+                        <div class="metric-number">2,459</div>
+                        <div class="metric-label">Papers Analyzed</div>
+                    </div>
+                    <div class="impact-metric">
+                        <div class="metric-number">8</div>
+                        <div class="metric-label">Technology Domains</div>
+                    </div>
+                    <div class="impact-metric">
+                        <div class="metric-number">46</div>
+                        <div class="metric-label">Final Studies Selected</div>
+                    </div>
+                    <div class="impact-metric">
+                        <div class="metric-number">6</div>
+                        <div class="metric-label">Months Intensive Work</div>
+                    </div>
+                </div>
+                
+                <div class="achievement-box">
+                    <h3>🎯 Key Outcome: Research Gap Identification</h3>
+                    <p><strong>Critical Finding:</strong> Most existing solutions were reactive rather than proactive, focusing on post-incident response instead of prevention—this insight directly shaped the subsequent fall detection research direction.</p>
+                </div>
+            </div>
         </div>
-        <p style="font-size:.85em;color:#555;line-height:1.5">At 2.04% false positive rate, this projects to <strong>~29 false alarms per 8-hour shift</strong> — unacceptable for practical construction site deployment.</p>
-      </div>
-      <div class="warning-box" style="margin-top:10px">
-        <strong>Chapter 5 Objective:</strong> Reduce missed falls and false alarms without losing embedded feasibility. This motivates the advanced pipeline with generative augmentation and event-level classification.
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 15 – CONTRIBUTION 3: CONFIG B
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>5. Contribution 3 — Advanced Detection Pipeline</h2><div class="slide-number">15/30</div></div>
-  <div class="section-tag">Configuration B — Realistic Deployment-Oriented Evaluation</div>
-  <div class="two-col" style="margin:14px 0">
-    <div>
-      <div class="dark-box">
-        <h3 style="color:white;margin-bottom:12px">⚙️ Configuration B Setup</h3>
-        <div class="bullet-point" style="color:white"><div class="bullet-icon" style="background:#c62828">👥</div><div><strong>71 total subjects:</strong> 61 lab participants + 10 construction workers (Task 88 added)</div></div>
-        <div class="bullet-point" style="color:white"><div class="bullet-icon" style="background:#c62828">🪟</div><div><strong>300ms windows</strong> with 50% overlap — shorter to support two-stage event recognition</div></div>
-        <div class="bullet-point" style="color:white"><div class="bullet-icon" style="background:#c62828">🔄</div><div>Same <strong>5-fold subject-independent</strong> validation protocol</div></div>
-        <div class="bullet-point" style="color:white"><div class="bullet-icon" style="background:#c62828">🎯</div><div><strong>Deployment-oriented:</strong> Real naturalistic activity patterns included</div></div>
-      </div>
-    </div>
-    <div>
-      <h3>📊 Configuration B Statistics</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-        <div class="metric-card highlight"><div class="metric-number" style="font-size:1.6em">57.14h</div><div class="metric-label">Total duration (3,428.4 min)</div></div>
-        <div class="metric-card highlight"><div class="metric-number" style="font-size:1.6em">24.52</div><div class="metric-label">Minutes of true falling phase</div></div>
-        <div class="metric-card highlight"><div class="metric-number" style="font-size:1.6em">131:1</div><div class="metric-label">Activity-to-fall ratio</div></div>
-        <div class="metric-card highlight"><div class="metric-number" style="font-size:1.6em">300ms</div><div class="metric-label">Window size</div></div>
-      </div>
-    </div>
-  </div>
-  <div class="two-col" style="margin-top:10px">
-    <div class="achievement-box">
-      <h4>🆚 Config A vs. Config B</h4>
-      <table class="data-table" style="margin:8px 0">
-        <tr><th>Aspect</th><th>Config A (Ch. 4)</th><th>Config B (Ch. 5)</th></tr>
-        <tr><td>Subjects</td><td>61 (lab)</td><td><strong>71 (lab + worksite)</strong></td></tr>
-        <tr><td>Window size</td><td>400 ms</td><td><strong>300 ms</strong></td></tr>
-        <tr><td>Imbalance ratio</td><td>~27:1</td><td><strong>131:1</strong></td></tr>
-        <tr><td>Purpose</td><td>Architecture validation</td><td><strong>Deployment readiness</strong></td></tr>
-      </table>
-    </div>
-    <div class="highlight-box">
-      <h4>🔑 Key Design Decisions</h4>
-      <div class="bullet-point"><div class="bullet-icon">⏱️</div><div><strong>300ms windows:</strong> Two consecutive windows give 450ms decision latency, leaving 150–250ms for airbag activation</div></div>
-      <div class="bullet-point"><div class="bullet-icon">🏗️</div><div><strong>Task 88 inclusion:</strong> Real worksite data is the major source of false alarms — must be in training</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 16 – ADVANCED PIPELINE METHODOLOGY
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>5. Chapter 5 — Methodology with Generative Augmentation</h2><div class="slide-number">16/30</div></div>
-  <div class="figure-placeholder">
-    <img src="./meth.jpg" alt="Advanced Methodology Pipeline" style="max-height:200px">
-  </div>
-  <div class="figure-caption">Figure 5: Advanced two-stage pipeline — preprocessing → generative augmentation (VAE/CT-GAN/Hybrid) → CNN segment classifier → Random Forest event-level aggregation → STM32 deployment.</div>
-  <div class="flow-row">
-    <div class="flow-step"><h4>① Preprocess Config B</h4><p>5Hz low-pass filter, z-score norm, 300ms windows, 50% overlap</p></div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step"><h4>② Augment Falls</h4><p>VAE (2×), CT-GAN (2×), Hybrid VAE+GAN (2×+1×) synthetic minority samples</p></div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step"><h4>③ Reuse Ch.4 CNN</h4><p>Lightweight CNN as segment-level classifier on augmented data</p></div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step"><h4>④ RF Event-Level</h4><p>Random Forest aggregates confidence patterns from M=2 consecutive windows</p></div>
-  </div>
-  <div class="three-col" style="margin-top:14px">
-    <div style="background:#e3f2fd;border:2px solid #1565c0;border-radius:12px;padding:14px">
-      <h4 style="color:#1565c0;margin-bottom:10px">🧠 VAE Augmentation</h4>
-      <p style="font-size:.83em">Variational Autoencoder learns latent space. <strong>2× synthetic fall samples</strong> generated per fold. Quality: low FID (57.54 avg), smooth generation.</p>
-    </div>
-    <div style="background:#f3e5f5;border:2px solid #7b1fa2;border-radius:12px;padding:14px">
-      <h4 style="color:#7b1fa2;margin-bottom:10px">⚡ CT-GAN Augmentation</h4>
-      <p style="font-size:.83em">Conditional Tabular GAN with adversarial training. <strong>2× synthetic fall samples</strong> generated per fold. Higher diversity but higher FID (350.15 avg).</p>
-    </div>
-    <div style="background:#e8f5e8;border:2px solid #2e7d32;border-radius:12px;padding:14px">
-      <h4 style="color:#2e7d32;margin-bottom:10px">🔄 Hybrid VAE+GAN</h4>
-      <p style="font-size:.83em">Combines both: <strong>2× VAE + 1× GAN = 3×</strong> synthetic per fold. Balances generation quality and diversity for maximum coverage.</p>
-    </div>
-  </div>
-  <div class="achievement-box" style="margin-top:10px">
-    <strong>Key Message:</strong> Same embedded CNN backbone from Chapter 4, with stronger training data (generative augmentation) and smarter event-level decision making (Random Forest) — no increase in deployment cost.
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 17 – RF INTERACTIVE DEMO
-════════════════════════════════════════════════════════════════ -->
-<div class="slide" data-methodology-stage="training">
-  <div class="slide-header"><h2>5. Random Forest Decision Process: Live Demonstration</h2><div class="slide-number">17/30</div></div>
-  <div class="story-stage">
-    <div class="section">
-      <div class="math-character" id="mathChar">🤖</div>
-      <h3 class="section-title">📊 CNN Confidence Inputs</h3>
-      <div class="scenario-info" id="scenarioInfo"><strong>Scenario:</strong> <span id="scenarioName">Late Fall Detection</span></div>
-      <div class="sample-data">
-        <div class="data-point" id="segment1"><div class="confidence-value" id="p1Value">p₁=0.3</div><div class="segment-label">300ms</div></div>
-        <div class="data-point" id="segment2"><div class="confidence-value" id="p2Value">p₂=0.8</div><div class="segment-label">300ms</div></div>
-      </div>
-      <div class="progress-container"><div style="font-size:.82em;color:#555;margin-bottom:4px">Calculation Progress:</div><div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div></div>
-      <div class="decision-rules">
-        <h4 style="color:#1a3a8a;font-size:.9em;margin-bottom:8px;text-align:center">🌳 RF Feature Rules</h4>
-        <div class="rule-item key-insight"><div class="rule-label">μ, max:</div><div class="rule-formula">Mean & peak prob</div><div class="rule-description">Level of confidence</div></div>
-        <div class="rule-item falling-rule"><div class="rule-label">q₀.₅, q₀.₇:</div><div class="rule-formula">Fraction ≥ threshold</div><div class="rule-description">Sustained confidence</div></div>
-        <div class="rule-item activity-rule"><div class="rule-label">π, c:</div><div class="rule-formula">Peak pos & crossings</div><div class="rule-description">Temporal dynamics</div></div>
-      </div>
-    </div>
-    <div class="section">
-      <h3 class="section-title">⚡ Live Feature Extraction</h3>
-      <div class="calculation-display" id="calculations">
-        <div class="calculation-step" id="step1"><span class="formula">φ₁ = μ =</span> (1/M) × Σ pᵢ</div>
-        <div class="calculation-step" id="step2">μ = (<span id="calc_p1">0.3</span> + <span id="calc_p2">0.8</span>)/2 = <span class="result-value" id="result_phi1">0.55</span></div>
-        <div class="calculation-step" id="step3"><span class="formula">φ₂ = max =</span> max(p₁, p₂)</div>
-        <div class="calculation-step" id="step4">max = <span class="result-value" id="result_phi2">0.80</span></div>
-        <div class="calculation-step" id="step5"><span class="formula">φ₃ = π =</span> (argmax pᵢ) / M</div>
-        <div class="calculation-step" id="step6">π = <span id="peak_pos">2</span>/2 = <span class="result-value" id="result_phi3">1.0</span></div>
-        <div class="calculation-step" id="step7"><span class="formula">φ₄ = q₀.₅ =</span> count(pᵢ≥0.5)/M</div>
-        <div class="calculation-step" id="step8">q₀.₅ = <span id="count_05">1</span>/2 = <span class="result-value" id="result_phi4">0.5</span></div>
-        <div class="calculation-step" id="step9"><span class="formula">φ₅ = q₀.₇ =</span> count(pᵢ≥0.7)/M</div>
-        <div class="calculation-step" id="step10">q₀.₇ = <span id="count_07">1</span>/2 = <span class="result-value" id="result_phi5">0.5</span></div>
-        <div class="calculation-step" id="step11"><span class="formula">φ₆ = c =</span> Up-crossings @ 0.5</div>
-        <div class="calculation-step" id="step12">c = <span id="cross_05">1</span>/(M-1) = <span class="result-value" id="result_phi6">1.0</span></div>
-      </div>
-    </div>
-    <div class="section">
-      <h3 class="section-title">🎯 Features → RF Decision</h3>
-      <div id="featureResults">
-        <div class="feature-result" id="result1"><div class="feature-name">φ₁ — μ (Mean)</div><div class="feature-value" id="display_phi1">0.55</div></div>
-        <div class="feature-result" id="result2"><div class="feature-name">φ₂ — max (Peak)</div><div class="feature-value" id="display_phi2">0.80</div></div>
-        <div class="feature-result" id="result3"><div class="feature-name">φ₃ — π (Peak Pos)</div><div class="feature-value" id="display_phi3">1.0</div></div>
-        <div class="feature-result" id="result4"><div class="feature-name">φ₄ — q₀.₅</div><div class="feature-value" id="display_phi4">0.5</div></div>
-        <div class="feature-result" id="result5"><div class="feature-name">φ₅ — q₀.₇</div><div class="feature-value" id="display_phi5">0.5</div></div>
-        <div class="feature-result" id="result6"><div class="feature-name">φ₆ — c (crossings)</div><div class="feature-value" id="display_phi6">1.0</div></div>
-      </div>
-      <div class="final-decision" id="finalDecision">
-        <div class="decision-label">🌳 Random Forest Decision:</div>
-        <div class="decision-result" id="decisionText">FALLING</div>
-        <div class="decision-confidence" id="decisionConfidence">Confidence: 89%</div>
-        <div style="font-size:.8em;margin-top:8px;color:#1a3a8a" id="decisionReason">Strong up-crossing pattern detected</div>
-      </div>
-    </div>
-  </div>
-  <div class="control-panel">
-    <button class="control-btn" onclick="startStory()">▶️ Calculate</button>
-    <button class="control-btn" onclick="resetStory()">🔄 Reset</button>
-    <button class="control-btn" onclick="changeData()">🎲 New Scenario</button>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 18 – 5-FOLD AUGMENTATION ANALYSIS
-════════════════════════════════════════════════════════════════ -->
-<div class="slide" data-methodology-stage="augmentation">
-  <div class="slide-header"><h2>5. 5-Fold Cross-Validation Augmentation Analysis</h2><div class="slide-number">18/30</div></div>
-  <div style="display:flex;gap:10px;margin-bottom:14px;justify-content:center">
-    <button class="method-btn active" data-method="vae">🧠 VAE</button>
-    <button class="method-btn" data-method="gan">⚡ CT-GAN</button>
-    <button class="method-btn" data-method="hybrid">🔄 VAE+GAN Hybrid</button>
-  </div>
-  <div class="stats-overview">
-    <div class="stat-card"><div class="stat-value" id="totalSubjects">71</div><div class="stat-label">Total Subjects</div></div>
-    <div class="stat-card"><div class="stat-value" id="totalActivity">2,947,168</div><div class="stat-label">Activity Segments</div></div>
-    <div class="stat-card"><div class="stat-value" id="totalFalls">31,752</div><div class="stat-label">Original Falls</div></div>
-    <div class="stat-card synthetic-highlight"><div class="stat-value synthetic-value" id="avgSynthetic">+63,504</div><div class="stat-label">Avg Synthetic Added</div></div>
-  </div>
-  <div class="content-grid">
-    <div><h2 style="margin-bottom:14px;color:#1a1a2e;font-size:1.2em">5-Fold Results — Configuration B</h2><div class="folds-grid" id="foldsContainer"></div></div>
-    <div class="details-panel"><h2 id="methodTitle">VAE Configuration</h2><div class="config-row"><div class="model-params"><h3>Model Parameters</h3><div id="modelParams"></div></div><div class="metrics-section"><h3>Generation Quality</h3><div id="performanceMetrics"></div></div></div></div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 19 – FULL RESULTS TABLE
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>5. Chapter 5 — Complete Results Table</h2><div class="slide-number">19/30</div></div>
-  <div class="section-tag">Segment- and Event-Level CNN Performance — Configuration B, 300ms windows, 50% overlap</div>
-  <div style="overflow-x:auto;margin-top:12px">
-    <table class="results-table">
-      <thead>
-        <tr>
-          <th rowspan="2" style="width:90px">Aug.</th>
-          <th rowspan="2" style="width:70px">Class</th>
-          <th colspan="4" class="section-head">Segment-Level CNN</th>
-          <th colspan="4" class="section-head">Event-Level (Threshold)</th>
-          <th colspan="4" class="section-head">Event-Level (Random Forest)</th>
-        </tr>
-        <tr>
-          <th>Acc.</th><th>Prec.</th><th>Rec.</th><th>F1</th>
-          <th>Acc.</th><th>Prec.</th><th>Rec.</th><th>F1</th>
-          <th>Acc.</th><th>Prec.</th><th>Rec.</th><th>F1</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td rowspan="2">Baseline</td><td>Activity</td><td>99.96</td><td>99.80</td><td>99.96</td><td>99.88</td><td>98.82</td><td>87.19</td><td>98.82</td><td>92.64</td><td>99.85</td><td>99.41</td><td>99.85</td><td>99.63</td></tr>
-        <tr><td>Falling</td><td>73.40</td><td>92.55</td><td>73.40</td><td>81.87</td><td>83.17</td><td>98.38</td><td>83.17</td><td>90.14</td><td class="best-cell">99.32</td><td class="best-cell">99.83</td><td class="best-cell">99.32</td><td class="best-cell">99.57</td></tr>
-        <tr class="aug-row"><td rowspan="2">VAE</td><td>Activity</td><td>99.96</td><td>99.83</td><td>99.94</td><td>99.88</td><td>98.62</td><td>88.79</td><td>98.62</td><td>93.44</td><td>99.91</td><td>99.21</td><td>99.91</td><td>99.56</td></tr>
-        <tr class="aug-row"><td>Falling</td><td>73.40</td><td>90.38</td><td>77.20</td><td>83.27</td><td>85.56</td><td>98.16</td><td>85.56</td><td>91.43</td><td class="best-cell">99.08</td><td class="best-cell">99.90</td><td class="best-cell">99.08</td><td class="best-cell">99.49</td></tr>
-        <tr><td rowspan="2">GAN</td><td>Activity</td><td>99.94</td><td>99.82</td><td>99.94</td><td>99.88</td><td>98.65</td><td>88.65</td><td>98.65</td><td>93.38</td><td>99.94</td><td>99.09</td><td>99.94</td><td>99.52</td></tr>
-        <tr><td>Falling</td><td>76.38</td><td>91.02</td><td>76.38</td><td>83.06</td><td>85.35</td><td>98.19</td><td>85.35</td><td>91.32</td><td class="best-cell">98.94</td><td class="best-cell">99.93</td><td class="best-cell">98.94</td><td class="best-cell">99.43</td></tr>
-        <tr class="aug-row"><td rowspan="2">Hybrid</td><td>Activity</td><td>99.93</td><td>99.83</td><td>99.93</td><td>99.88</td><td>98.50</td><td>89.13</td><td>98.50</td><td>93.58</td><td>99.94</td><td>99.18</td><td>99.94</td><td>99.56</td></tr>
-        <tr class="aug-row"><td>Falling</td><td>78.82</td><td>89.81</td><td>77.82</td><td>83.39</td><td>86.07</td><td>98.02</td><td>86.07</td><td>91.66</td><td class="best-cell">99.04</td><td class="best-cell">99.93</td><td class="best-cell">99.04</td><td class="best-cell">99.49</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p style="font-size:.78em;color:#555;text-align:center;margin-top:6px">"Threshold" = Th=2 consecutive fall segments rule; "RF" = M=2 Random Forest on segment outputs.</p>
-  <div class="metric-grid" style="margin-top:12px">
-    <div class="metric-card highlight"><div class="metric-number">99.57%</div><div class="metric-label">Best RF Falling F1 (Baseline)</div></div>
-    <div class="metric-card highlight"><div class="metric-number">99.93%</div><div class="metric-label">Best Precision (GAN+RF)</div></div>
-    <div class="metric-card highlight"><div class="metric-number">99.04%</div><div class="metric-label">Best Recall (Hybrid RF)</div></div>
-    <div class="metric-card highlight"><div class="metric-number">4.5 ms</div><div class="metric-label">Total inference (CNN+RF)</div></div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 20 – PERFORMANCE PROGRESSION
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>6. Performance Results — From Good to Exceptional</h2><div class="slide-number">20/30</div></div>
-  <div class="section-tag">Three-Stage Performance Evolution</div>
-  <div class="progression-row" style="margin:20px 0">
-    <div class="prog-stage s1">
-      <div style="font-size:.82em;font-weight:700;color:#f57c00;margin-bottom:6px">Stage 1: Segment-Level CNN</div>
-      <div class="prog-score">81–83%</div>
-      <div class="prog-label">Falling F1-Score</div>
-      <div style="font-size:.8em;color:#666;margin-top:8px">73–78% Recall</div>
-    </div>
-    <div class="prog-arrow">+</div>
-    <div class="prog-stage s2">
-      <div style="font-size:.82em;font-weight:700;color:#1565c0;margin-bottom:6px">Stage 2: + Threshold Aggregation</div>
-      <div class="prog-score">90–92%</div>
-      <div class="prog-label">Falling F1-Score</div>
-      <div style="font-size:.8em;color:#666;margin-top:8px">83–86% Recall</div>
-    </div>
-    <div class="prog-arrow">+</div>
-    <div class="prog-stage s3">
-      <div style="font-size:.82em;font-weight:700;color:#1b5e20;margin-bottom:6px">Stage 3: + Random Forest</div>
-      <div class="prog-score">99.43–99.57%</div>
-      <div class="prog-label">Falling F1-Score</div>
-      <div style="font-size:.8em;color:#555;margin-top:8px">98.94–99.32% Recall</div>
-    </div>
-  </div>
-  <div class="two-col">
-    <div>
-      <h3>📈 Key Performance Achievements</h3>
-      <table class="data-table">
-        <tr><th>Metric</th><th>Chapter 4 (CNN)</th><th>Chapter 5 (CNN+RF)</th></tr>
-        <tr><td>Falling F1-Score</td><td>86.69%</td><td class="best-cell">99.43–99.57%</td></tr>
-        <tr><td>False Negatives</td><td>4.17%</td><td class="best-cell">&lt;1%</td></tr>
-        <tr><td>False Positives</td><td>2.04%</td><td class="best-cell">~0.06%</td></tr>
-        <tr><td>Precision</td><td>89.32%</td><td class="best-cell">99.9%</td></tr>
-        <tr><td>Total Inference</td><td>4 ms</td><td class="best-cell">4.5 ms</td></tr>
-      </table>
-    </div>
-    <div>
-      <h3>🔑 Why Random Forest Transforms Performance</h3>
-      <div class="achievement-box">
-        <div class="bullet-point"><div class="bullet-icon">🧠</div><div><strong>Temporal intelligence:</strong> Learns whether high confidence is sustained (real fall) or transient (false alarm)</div></div>
-        <div class="bullet-point"><div class="bullet-icon">🎯</div><div><strong>Borderline disambiguation:</strong> 6-feature vector captures subtle confidence dynamics invisible to simple thresholds</div></div>
-        <div class="bullet-point"><div class="bullet-icon">⚡</div><div><strong>Negligible cost:</strong> Only +0.5ms inference, +31KB flash — preserves embedded feasibility</div></div>
-      </div>
-      <div class="perf-badge">False Alarm Reduction: 97%</div>
-      <div class="perf-badge">Event F1-Score: 99.5%</div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 21 – OPERATIONAL JACKET PERFORMANCE
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>6. Operational Jacket Performance — False Alarms in Practical Use</h2><div class="slide-number">21/30</div></div>
-  <table class="fa-table" style="margin:16px 0">
-    <tr><th>Time Period</th><th>CNN Only (Ch.4)</th><th>CNN + RF (Ch.5)</th><th>Reduction</th><th></th></tr>
-    <tr><td class="period">8-hour work shift</td><td class="cnn-val">~29</td><td class="rf-val">~1</td><td class="reduction">96.6% ↓</td><td>🟢</td></tr>
-    <tr><td class="period">24 hours</td><td class="cnn-val">~88</td><td class="rf-val">~3</td><td class="reduction">96.6% ↓</td><td>🟢</td></tr>
-    <tr><td class="period">5-day work week</td><td class="cnn-val">~441</td><td class="rf-val">~13</td><td class="reduction">97.1% ↓</td><td>🟢</td></tr>
-    <tr class="highlight-row"><td class="period">22-day work month</td><td class="cnn-val">~1,939</td><td class="rf-val">~57</td><td class="reduction">97.0% ↓</td><td>🏆</td></tr>
-  </table>
-  <div class="big-impact">💡 Monthly Effect: About 33× fewer disruptions to worker workflow (from ~1,939 to ~57)</div>
-  <div class="two-col" style="margin-top:14px">
-    <div class="achievement-box">
-      <h4>🏭 Real-World Impact</h4>
-      <div class="bullet-point"><div class="bullet-icon">👷</div><div><strong>Worker acceptance:</strong> 1 false alarm per shift vs 29 — practical for daily construction use</div></div>
-      <div class="bullet-point"><div class="bullet-icon">💰</div><div><strong>Commercial viability:</strong> Low false alarm rate is critical for market adoption</div></div>
-      <div class="bullet-point"><div class="bullet-icon">🔋</div><div><strong>Battery life:</strong> Fewer unnecessary activations preserve airbag gas cartridge</div></div>
-    </div>
-    <div class="highlight-box">
-      <h4>📊 Safety Margin Preserved</h4>
-      <div class="spec-box" style="margin-top:10px">
-        <div class="spec-title">⏱️ End-to-End Timing</div>
-        <div class="spec-row"><span class="spec-key">Typical fall duration</span><span class="spec-val">500–700 ms</span></div>
-        <div class="spec-row"><span class="spec-key">Decision latency</span><span class="spec-val">450 ms</span></div>
-        <div class="spec-row"><span class="spec-key">Device activation</span><span class="spec-val">150 ms</span></div>
-        <div class="spec-row"><span class="spec-key" style="font-weight:700;color:#1b5e20">Available margin</span><span class="spec-val" style="background:#e8f5e8;color:#1b5e20">150–250 ms ✓</span></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 22 – EMBEDDED DEPLOYMENT VALIDATION
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>6. Embedded Deployment Validation</h2><div class="slide-number">22/30</div></div>
-  <div class="two-col">
-    <div>
-      <h3>💾 STM32F722RET6 Resource Utilization</h3>
-      <table class="data-table">
-        <tr><th>Component</th><th>Flash (KB)</th><th>RAM (KB)</th><th>Inference (ms)</th></tr>
-        <tr><td>CNN (INT8)</td><td>58.51</td><td>15.00</td><td>4.0</td></tr>
-        <tr><td>Random Forest</td><td>31.20</td><td>2.00</td><td>0.5</td></tr>
-        <tr class="highlight-row"><td><strong>Total</strong></td><td><strong>89.71</strong></td><td><strong>17.00</strong></td><td><strong>4.5</strong></td></tr>
-        <tr><td>STM32F722 Limit</td><td>256.00</td><td>256.00</td><td>—</td></tr>
-        <tr><td style="color:#2e7d32;font-weight:700">Utilization (%)</td><td style="color:#2e7d32;font-weight:700">35.0%</td><td style="color:#2e7d32;font-weight:700">6.6%</td><td style="color:#2e7d32;font-weight:700">✓</td></tr>
-      </table>
-      <div class="resource-grid" style="margin-top:14px">
-        <div class="resource-box"><h4>CNN Resources</h4>
-          <div class="res-row"><span class="res-label">Flash</span><span class="res-value" style="background:#e3f2fd;color:#1565c0">58.51 KB</span></div>
-          <div class="res-row"><span class="res-label">RAM</span><span class="res-value" style="background:#e3f2fd;color:#1565c0">15 KB</span></div>
-          <div class="res-row res-total"><span class="res-label">of 256KB</span><span class="res-value res-total">22.9%</span></div>
+        <!-- Slide 7: PRISMA Flow Diagram -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>📊 PRISMA Systematic Review Process</h2>
+                <div class="slide-number">7/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="figure-placeholder">
+                    <img src="./prisma.png" alt="PRISMA Flow Diagram" width="600" height="600">
+                </div>
+                <div class="figure-caption">Figure 1: PRISMA flow diagram illustrating the systematic screening process from 2,459 initial records through duplicate removal, title/abstract screening, and full-text evaluation to the final selection of 46 relevant studies <cite>[1]</cite>.</div>
+                
+                <div class="methodology-flow" style="margin-top: 30px;">
+                    <div class="flow-step">
+                        <h3>📚 Initial Search</h3>
+                        <p><strong>2,459 Records</strong><br>Multi-database query<br>Jan 2015 - Mar 2023</p>
+                    </div>
+                    <div class="flow-step">
+                        <h3>🔍 Duplicate Removal</h3>
+                        <p><strong>2,180 Unique</strong><br>Automated + Manual<br>Quality screening</p>
+                    </div>
+                    <div class="flow-step">
+                        <h3>📖 Full-Text Review</h3>
+                        <p><strong>46 Selected</strong><br>Inclusion criteria<br>Quality assessment</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>🎯 Inclusion Criteria Applied</h3>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">✓</div>
+                        <div>Focus on Alzheimer's disease (title, keywords, or abstract mention)</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">✓</div>
+                        <div>Published in English with full-text availability</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">✓</div>
+                        <div>Original research (excluding reviews and editorials)</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">✓</div>
+                        <div>ICT-based technological intervention or solution</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="resource-box"><h4>RF Resources</h4>
-          <div class="res-row"><span class="res-label">Flash</span><span class="res-value" style="background:#fff3e0;color:#e65100">31.20 KB</span></div>
-          <div class="res-row"><span class="res-label">RAM</span><span class="res-value" style="background:#fff3e0;color:#e65100">2 KB</span></div>
-          <div class="res-row res-total"><span class="res-label">of 256KB</span><span class="res-value res-total">12.2%</span></div>
+
+        <!-- Slide 8: Technology Domain Analysis -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>🔬 Eight Technology Domains Framework</h2>
+                <div class="slide-number">8/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="figure-placeholder">
+                    <img src="./surveyp.png" alt="Technology Domain Distribution" width="600" height="500">
+                </div>
+                <div class="figure-caption">Figure 2: Overview of the systematic survey structure exploring technological innovations across eight major domains in Alzheimer's care, showing the comprehensive approach to technology categorization <cite>[1]</cite>.</div>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0;">
+                    <div class="highlight-box">
+                        <h4>🏥 Healthcare-Focused Domains</h4>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📱</div>
+                            <div><strong>Telemedicine & E-Health:</strong> Remote monitoring and consultation systems</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🏠</div>
+                            <div><strong>Smart Environments:</strong> Ambient assisted living solutions</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🩺</div>
+                            <div><strong>Internet of Medical Things:</strong> Connected medical devices</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">👤</div>
+                            <div><strong>Personalized Assistive Solutions:</strong> Adaptive care systems</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-box">
+                        <h4>💻 Technology-Focused Domains</h4>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🌐</div>
+                            <div><strong>Internet of Things (IoT):</strong> Connected device networks</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📡</div>
+                            <div><strong>Wearable & Environmental Sensors:</strong> Multi-modal sensing</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🎥</div>
+                            <div><strong>Audio/Video Processing:</strong> Behavioral analysis systems</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">💾</div>
+                            <div><strong>Digital Platforms:</strong> Software architectures and data management</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div>
-      <h3>⏱️ Timing Performance</h3>
-      <table class="data-table">
-        <tr><th>Stage</th><th>Latency</th></tr>
-        <tr><td>CNN Inference</td><td style="color:#1b5e20;font-weight:700">4.0 ms</td></tr>
-        <tr><td>Random Forest</td><td style="color:#1b5e20;font-weight:700">0.5 ms</td></tr>
-        <tr class="highlight-row"><td><strong>Total Inference</strong></td><td style="color:#1b5e20;font-weight:700"><strong>4.5 ms</strong></td></tr>
-        <tr><td><strong>Decision Latency</strong></td><td style="color:#8b0000;font-weight:700"><strong>450 ms</strong> (two 300ms windows, 50% overlap)</td></tr>
-      </table>
-      <div class="dark-box" style="margin-top:14px">
-        <h4 style="color:#ffd700;margin-bottom:10px">⚡ Safety Margin Analysis</h4>
-        <div style="display:flex;justify-content:space-between;margin:6px 0;font-size:.88em"><span>Typical fall duration:</span><span style="font-weight:700">500–700 ms</span></div>
-        <div style="display:flex;justify-content:space-between;margin:6px 0;font-size:.88em"><span>Decision latency:</span><span style="font-weight:700">450 ms</span></div>
-        <div style="display:flex;justify-content:space-between;margin:6px 0;font-size:.88em"><span>Device activation:</span><span style="font-weight:700">150 ms</span></div>
-        <div style="border-top:1px solid rgba(255,255,255,.3);margin-top:8px;padding-top:8px;display:flex;justify-content:space-between;font-size:.9em"><span style="color:#ffd700;font-weight:700">Available safety margin:</span><span style="color:#90ee90;font-weight:800">150–250 ms ✓</span></div>
-      </div>
-      <div class="achievement-box" style="margin-top:12px">
-        <strong>Chapter 5 improves reliability without breaking the budget</strong> — same or better performance at only 35% Flash and 6.6% RAM utilization.
-      </div>
-    </div>
-  </div>
-</div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 23 – SMART AIRBAG JACKET
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>6. Smart Airbag Jacket in Action</h2><div class="slide-number">23/30</div></div>
-  <div class="figure-placeholder" style="border:2px dashed #8b0000">
-    <img src="./jacket_photos.png" alt="Smart Safety Jacket in Action" style="max-height:280px">
-    <p style="font-size:.8em;color:#888;margin-top:8px">Smart safety jacket worn by participants during elevation fall scenarios</p>
-  </div>
-  <div class="figure-caption">Figure 6: Smart safety jacket (Protechto s.r.l.) in action — participant on ladder (left), scaffold scenario (center), fall simulation with airbag deployment (right).</div>
-  <div class="two-col" style="margin-top:14px">
-    <div class="highlight-box">
-      <h4>🎬 Video Content Includes</h4>
-      <div class="bullet-point"><div class="bullet-icon">🎯</div><div>Real-time fall detection triggering on STM32</div></div>
-      <div class="bullet-point"><div class="bullet-icon">💨</div><div>Pre-impact airbag deployment <strong>before ground contact</strong></div></div>
-      <div class="bullet-point"><div class="bullet-icon">🛡️</div><div>Protective cushioning coverage of hip and torso</div></div>
-    </div>
-    <div class="dark-box">
-      <h4 style="color:#ffd700;margin-bottom:10px">⚡ Critical Timing Requirement</h4>
-      <p style="font-size:.88em;line-height:1.6">The system must detect the fall and trigger airbag deployment <strong>within the pre-impact window</strong>, providing full protection before ground contact. Our 450ms decision latency + 150ms activation = <strong>600ms total</strong>, matching the pre-impact phase of typical falls.</p>
-    </div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 24 – PIPELINE ANIMATION
-════════════════════════════════════════════════════════════════ -->
-<div class="slide" data-methodology-stage="deployment">
-  <div class="slide-header"><h2>5. Complete Methodology Pipeline — Chapter 5</h2><div class="slide-number">24/30</div></div>
-  <div class="pipeline-container">
-    <div class="data-packet" id="dataPacket"><div class="packet-icon">📊</div><div class="packet-label">IMU Data</div></div>
-    <div class="pipeline-stage stage-1" id="stage1">
-      <div class="stage-header"><h3>📡 Stage 1: Raw Data</h3></div>
-      <div class="stage-content">
-        <div class="human-body"><div class="body-icon">👤</div><div class="sensor-position">📱</div></div>
-        <div class="data-streams">
-          <div class="stream"><span class="stream-label">ACC</span><div class="stream-waves"></div></div>
-          <div class="stream"><span class="stream-label">GYRO</span><div class="stream-waves"></div></div>
+        <!-- Slide 9: Sensing Technology Analysis -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>📡 Sensing Technology Categorization</h2>
+                <div class="slide-number">9/31</div>
+            </div>
+            <div class="slide-content">
+                <table class="comparison-table">
+                    <tr>
+                        <th>Sensing Technology</th>
+                        <th>Key Applications</th>
+                        <th>Advantages</th>
+                        <th>Limitations</th>
+                        <th>Usage Frequency</th>
+                    </tr>
+                    <tr style="background-color: #e8f5e8;">
+                        <td><strong>Inertial Sensors</strong><br><small>Accelerometers, Gyroscopes, Magnetometers</small></td>
+                        <td>Activity recognition, fall detection, gait analysis</td>
+                        <td>Non-invasive, wearable, continuous monitoring</td>
+                        <td>Motion artifacts, calibration requirements</td>
+                        <td><span style="color: #4caf50; font-weight: bold;">High (65%)</span></td>
+                    </tr>
+                    <tr style="background-color: #fff3e0;">
+                        <td><strong>Physiological Sensors</strong><br><small>Heart rate, Blood pressure, SpO2</small></td>
+                        <td>Vital signs monitoring, health status assessment</td>
+                        <td>Direct health indicators, clinical relevance</td>
+                        <td>Comfort issues, skin irritation, accuracy</td>
+                        <td><span style="color: #ff9800; font-weight: bold;">Medium (45%)</span></td>
+                    </tr>
+                    <tr style="background-color: #e3f2fd;">
+                        <td><strong>Environmental Sensors</strong><br><small>Pressure, Temperature, Light, GPS</small></td>
+                        <td>Context awareness, location tracking, safety</td>
+                        <td>Ambient monitoring, privacy-preserving</td>
+                        <td>Installation complexity, coverage limitations</td>
+                        <td><span style="color: #2196f3; font-weight: bold;">Medium (35%)</span></td>
+                    </tr>
+                    <tr style="background-color: #f3e5f5;">
+                        <td><strong>Video/Audio Processing</strong><br><small>Computer vision, Speech analysis</small></td>
+                        <td>Behavior analysis, emergency detection</td>
+                        <td>Rich information content, visual confirmation</td>
+                        <td>Privacy concerns, computational complexity</td>
+                        <td><span style="color: #9c27b0; font-weight: bold;">Low (25%)</span></td>
+                    </tr>
+                </table>
+                
+                <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+                    <div class="highlight-box" style="flex: 1;">
+                        <h3>🎯 Key Finding: Inertial Sensor Dominance</h3>
+                        <p>Accelerometer and gyroscope sensors emerged as the most promising technology for practical deployment due to their non-invasive nature and proven effectiveness in movement-related applications.</p>
+                    </div>
+                    
+                    <div class="achievement-box" style="flex: 1;">
+                        <h3>💡 Strategic Insight</h3>
+                        <p>This analysis directly informed our decision to focus on inertial sensors for fall detection, leveraging the technology with highest deployment success rates and user acceptance.</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="stage-params"><div class="param">Fs=100Hz</div><div class="param">6-ch IMU</div></div>
-      </div>
-    </div>
-    <div class="pipeline-stage stage-2" id="stage2">
-      <div class="stage-header"><h3>🔧 Stage 2: Signal Processing</h3></div>
-      <div class="stage-content">
-        <div class="processing-chain">
-          <div class="process-box"><div class="box-icon">📈</div><div class="box-label">LPF 5Hz</div></div>
-          <div class="arrow">→</div>
-          <div class="process-box"><div class="box-icon">⚖️</div><div class="box-label">Z-Score</div></div>
-          <div class="arrow">→</div>
-          <div class="process-box"><div class="box-icon">🪟</div><div class="box-label">300ms</div><div class="box-detail">50% overlap</div></div>
+
+        <!-- Slide 10: Key Research Gaps Identified -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>🔍 Critical Research Gaps Discovered</h2>
+                <div class="slide-number">10/31</div>
+            </div>
+            <div class="slide-content">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin: 30px 0;">
+                    <div class="highlight-box">
+                        <h3>🚫 Limited Real-World Deployment</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚠️</div>
+                            <div><strong>Finding:</strong> 78% of solutions remained at prototype stage</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📊</div>
+                            <div><strong>Impact:</strong> Lack of authentic deployment validation</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🎯</div>
+                            <div><strong>Opportunity:</strong> Real-world testing needed for practical solutions</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-box">
+                        <h3>🔄 Reactive vs. Proactive Approaches</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚡</div>
+                            <div><strong>Current State:</strong> 85% focus on post-incident detection</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🚀</div>
+                            <div><strong>Gap:</strong> Lack of preventive/predictive capabilities</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">💡</div>
+                            <div><strong>Innovation:</strong> Pre-impact detection potential identified</div>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h3>🧩 Technology Fragmentation</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📱</div>
+                            <div><strong>Issue:</strong> Isolated solutions addressing single symptoms</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🔗</div>
+                            <div><strong>Need:</strong> Integrated, holistic approaches</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🎯</div>
+                            <div><strong>Solution:</strong> Comprehensive BAN-based systems</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-box">
+                        <h3>⚖️ Class Imbalance Challenges</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📊</div>
+                            <div><strong>Problem:</strong> Severe imbalance in safety-critical data</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🧠</div>
+                            <div><strong>Impact:</strong> ML training difficulties in fall detection</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">💡</div>
+                            <div><strong>Future Focus:</strong> Advanced augmentation techniques needed</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conclusion-highlight">
+                    <h2 style="margin-bottom: 15px;">🎯 Strategic Research Direction Established</h2>
+                    <p style="font-size: 1.2em;">These gap findings directly shaped our pivot toward proactive fall detection systems with real-world deployment validation—addressing the most critical unmet needs identified in the literature.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="pipeline-stage stage-3" id="stage3">
-      <div class="stage3-row" id="stage3Row">
-        <div class="hdr">🧠 Stage 3: Segment-Level CNN Training</div>
-        <div class="grid">
-          <div class="s3-card cv"><div>5-Fold Subject CV</div><div class="s3-sub">Train/Val/Test splits</div></div>
-          <div class="s3-card aug"><div>Data Augmentation</div><div class="pills"><span class="pill">Time Warp</span><span class="pill">Slice</span></div></div>
-          <div class="s3-card adv"><div>Generative Sampling</div><div class="pills"><span class="pill">VAE</span><span class="pill">CT-GAN</span><span class="pill">Hybrid</span></div></div>
-          <div class="s3-card trn"><div>Lightweight 1D-CNN</div><div class="s3-sub">Class-weighted CE</div></div>
+
+        <!-- Slide 11: IEEE Access Survey Publication -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>📄 Major Publication Achievement</h2>
+                <div class="slide-number">11/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="publication-card" style="margin-bottom: 30px;">
+                    <h3>📚 IEEE Open Access Journal Publication</h3>
+                    <p><strong>Title:</strong> "ICT-Based Solutions for Alzheimer's Disease Care: A Systematic Review" <cite>[1]</cite></p>
+                    <div style="display: flex; justify-content: space-between; gap: 30px; margin: 20px 0;">
+                        <div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">📅</div>
+                                <div><strong>Published:</strong> January 19, 2024</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🔗</div>
+                                <div><strong>DOI:</strong> 10.1109/ACCESS.2024.3358348</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🌐</div>
+                                <div><strong>Access:</strong> Open Access (freely available globally)</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">📊</div>
+                                <div><strong>Scope:</strong> 2,459 papers → 46 selected studies</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">⏱️</div>
+                                <div><strong>Duration:</strong> 6 months intensive analysis</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🎯</div>
+                                <div><strong>Impact:</strong> Foundation reference for assistive tech</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="figure-placeholder">
+                    <img src="./survey.png" alt="IEEE Access Survey Paper" width="600" height="700">
+                </div>
+                <div class="figure-caption">Figure 3: The published IEEE Access survey paper representing the major first year contribution, establishing comprehensive foundations for ICT-based neurodegenerative disease care research and achieving significant academic impact <cite>[1]</cite>.</div>
+                
+                <div class="achievement-box">
+                    <h3>🌟 Unique Survey Contributions</h3>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">🔄</div>
+                        <div><strong>Holistic Coverage:</strong> First comprehensive analysis across multiple ICT domains simultaneously</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">📐</div>
+                        <div><strong>Multi-Parameter Analysis:</strong> Technology type, deployment context, validation methodology integrated</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">🎯</div>
+                        <div><strong>Gap Identification:</strong> Systematic evidence-based recommendations for future research priorities</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="stage3-note">5 best fold checkpoints feed into Stage 4.</div>
-    </div>
-    <div class="pipeline-stage stage-4" id="stage4">
-      <div class="stage-header"><h3>🌳 Stage 4: Event-Level RF</h3></div>
-      <div class="stage-content">
-        <div class="event-pipeline">
-          <div class="cnn-outputs"><div class="outputs-title">CNN (×5)</div><div class="model-outputs"><div class="fold-output">F1</div><div class="fold-output">F2</div><div class="fold-output">F3</div><div class="fold-output">F4</div><div class="fold-output">F5</div></div></div>
-          <div class="arrow">→</div>
-          <div class="prob-processing"><div class="prob-title">M=2</div><div class="prob-values"><span class="prob-val">p₁</span><span class="prob-val">p₂</span></div></div>
-          <div class="arrow">→</div>
-          <div class="feature-extraction"><div class="feature-title">6D Features</div><div class="feature-list"><div class="feature">μ, max, π</div><div class="feature">q₀.₅, q₀.₇, c</div></div></div>
-          <div class="arrow">→</div>
-          <div class="rf-training-block"><div class="rf-title">RF Train</div><div class="rf-icon">🌲🌲</div><div class="rf-cv">5-fold OOF</div></div>
+
+        <!-- Slide 12: Original BAN Architecture -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>🛠️ Sleep Monitoring: Original BAN Foundation</h2>
+                <div class="slide-number">12/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="figure-placeholder">
+                    <img src="./7.png" alt="Original BAN Architecture" width="600" height="400">
+                </div>
+                <div class="figure-caption">Figure 4: The original Body Area Network architecture developed by the research group, showing sensor integration, wireless communication, and data processing capabilities that provided the foundation for proposed enhancements <cite>[3]</cite>.</div>
+                
+                <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+                    <div class="highlight-box" style="flex: 1;">
+                        <h3>⚡ Existing Capabilities</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📡</div>
+                            <div><strong>Sensors:</strong> 3-axis accelerometer, gyroscope, compass</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📶</div>
+                            <div><strong>Communication:</strong> Bluetooth Low Energy (BLE) transmission</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📊</div>
+                            <div><strong>Processing:</strong> Real-time movement detection algorithms</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🔋</div>
+                            <div><strong>Power:</strong> Optimized for extended wearable operation</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-box" style="flex: 1;">
+                        <h3>🎯 Sleep Monitoring Requirements</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🧠</div>
+                            <div><strong>EEG Integration:</strong> Brain activity monitoring for sleep stages</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">👁️</div>
+                            <div><strong>EOG Sensors:</strong> Eye movement detection for REM identification</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">💪</div>
+                            <div><strong>EMG Addition:</strong> Muscle activity assessment for disorders</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚕️</div>
+                            <div><strong>Clinical Grade:</strong> Medical device compliance needed</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="pipeline-stage stage-5" id="stage5">
-      <div class="stage-header"><h3>⚡ Stage 5: STM32 Deployment</h3></div>
-      <div class="stage-content">
-        <div class="deployment-chain">
-          <div class="stm32-chip"><div class="chip-icon">💾</div><div class="chip-label">STM32F722RET6</div></div>
-          <div class="deployment-flow"><div class="flow-step">IMU</div><div class="flow-arrow">→</div><div class="flow-step">CNN</div><div class="flow-arrow">→</div><div class="flow-step">6D Feat</div><div class="flow-arrow">→</div><div class="flow-step">RF</div><div class="flow-arrow">→</div><div class="flow-step decision">Decision</div></div>
-          <div class="latency-info"><div class="latency-value">⏱️ 450 ms ± 5ms</div><div class="latency-label">Decision Latency</div></div>
+
+        <!-- Slide 13: Enhanced BAN Architecture for Sleep -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>🔬 Sleep Monitoring: Enhanced BAN Design</h2>
+                <div class="slide-number">13/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="figure-placeholder">
+                    <img src="./9.jpg" alt="Enhanced BAN Architecture" width="600" height="400">
+                </div>
+                <div class="figure-caption">Figure 5: The proposed enhanced Body Area Network architecture for sleep monitoring, integrating EEG, and EOG sensors with existing motion sensors for comprehensive physiological monitoring in Parkinson's patients.</div>
+                
+                <div class="methodology-flow" style="margin: 30px 0;">
+                    <div class="flow-step">
+                        <h3>📡 Multi-Modal Sensing</h3>
+                        <p><strong>Physiological Integration</strong><br>EEG + EOG<br>Clinical-grade acquisition</p>
+                    </div>
+                    <div class="flow-step">
+                        <h3>🔄 Enhanced Processing</h3>
+                        <p><strong>Advanced Analytics</strong><br>Sleep stage classification<br>Disorder detection</p>
+                    </div>
+                    <div class="flow-step">
+                        <h3>📱 Smart Aggregation</h3>
+                        <p><strong>Integrated Node</strong><br>Real-time analysis<br>Reduced latency</p>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin: 30px 0;">
+                    <div class="achievement-box">
+                        <h3>✨ Proposed Enhancements</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🧠</div>
+                            <div><strong>EEG Array:</strong> Multi-channel brain activity monitoring</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">👁️</div>
+                            <div><strong>Dual EOG:</strong> Left/right eye movement tracking</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">💪</div>
+                            <div><strong>Chin EMG:</strong> Muscle tone assessment for REM sleep</div>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <h3>⚠️ Implementation Challenges</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🔧</div>
+                            <div><strong>Complexity:</strong> Multi-modal sensor fusion difficulties</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚕️</div>
+                            <div><strong>Validation:</strong> Clinical testing and medical compliance</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⏰</div>
+                            <div><strong>Timeline:</strong> PhD completion schedule constraints</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conclusion-highlight" style="background: linear-gradient(135deg, #ffebee, #fce4ec);">
+                    <h2>🎯 Strategic Decision Point</h2>
+                    <p>While technically fascinating, the enhanced sleep monitoring system exceeded PhD scope constraints. This realization prompted systematic evaluation of alternative approaches, leading to the successful fall detection pivot.</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="animation-controls">
-      <button class="control-btn" onclick="startPipelineAnimation()">▶️ Animate</button>
-      <button class="control-btn" onclick="resetPipelineAnimation()">🔄 Reset</button>
-    </div>
-  </div>
-</div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 25 – PUBLICATIONS & INDUSTRY IMPACT
-════════════════════════════════════════════════════════════════ -->
+        <!-- YEAR 2 DETAILED SLIDES START HERE -->
+
+        <!-- Slide 14: Year 2 Overview & Strategic Pivot -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>🎯 Year 2 (2023-2024): Strategic Innovation</h2>
+                <div class="slide-number">14/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="year-section">
+                    <h3>🔄 Year 2 Mission: From Sleep Monitoring to Fall Detection Excellence</h3>
+                    <p>Execute strategic pivot while maintaining alignment with assistive care objectives, developing breakthrough embedded AI solutions for safety applications</p>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+                    <div style="flex: 1;">
+                        <h3>🎯 Strategic Pivot Execution</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🔄</div>
+                            <div><strong>Direction Change:</strong> Sleep monitoring → Fall detection</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚡</div>
+                            <div><strong>Innovation Focus:</strong> Pre-impact detection capability</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🤝</div>
+                            <div><strong>Industry Alignment:</strong> Protechto s.r.l. partnership</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🎯</div>
+                            <div><strong>Objective:</strong> Proactive safety vs. reactive detection</div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3>🧠 Technical Innovation</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">💻</div>
+                            <div><strong>Lightweight CNN:</strong> STM32-optimized architecture</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚡</div>
+                            <div><strong>Real-time Processing:</strong> Sub-500ms decision latency</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📊</div>
+                            <div><strong>Dataset Integration:</strong> KFall + Custom collection</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🎯</div>
+                            <div><strong>Embedded Deployment:</strong> Microcontroller validation</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-around; margin: 30px 0;">
+                    <div class="impact-metric">
+                        <div class="metric-number">86.69%</div>
+                        <div class="metric-label">F1-Score Achieved</div>
+                    </div>
+                    <div class="impact-metric">
+                        <div class="metric-number">400ms</div>
+                        <div class="metric-label">Decision Latency</div>
+                    </div>
+                    <div class="impact-metric">
+                        <div class="metric-number">61</div>
+                        <div class="metric-label">Total Subjects</div>
+                    </div>
+                    <div class="impact-metric">
+                        <div class="metric-number">🏆</div>
+                        <div class="metric-label">Best Paper Award</div>
+                    </div>
+                </div>
+                
+                <div class="achievement-box">
+                    <h3>🎯 Year 2 Breakthrough: Pre-Impact Detection</h3>
+                    <p><strong>Revolutionary Approach:</strong> First practical implementation of pre-impact fall detection on embedded microcontrollers, enabling protective device activation before ground contact occurs—transforming from reactive to proactive safety systems.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Fall Stages Explained -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>📊 Four Stages of Fall: Pre-Impact Innovation</h2>
+                <div class="slide-number">15/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="figure-placeholder">
+                    <img src="./falling-overview.png" alt="Fall Stages" width="750" height="500">
+                </div>
+                <div class="figure-caption">Figure 6: Abstract view of PhD work showing fall stages: Pre-fall (stable), Critical (loss of balance), Impact (ground contact), and Post-fall (recovery), with corresponding acceleration patterns highlighting the critical pre-impact detection window <cite>[2]</cite>.</div>
+                
+                <div class="methodology-flow" style="margin: 30px 0;">
+                    <div class="flow-step" style="background: #e8f5e8;">
+                        <h3>🟢 Pre-Fall Stage</h3>
+                        <p><strong>Normal Activities</strong><br>Stable acceleration<br>Baseline patterns</p>
+                    </div>
+                    <div class="flow-step" style="background: #fff3e0;">
+                        <h3>🟡 Critical Stage</h3>
+                        <p><strong>Loss of Balance</strong><br>Sudden acceleration<br>⚡ Detection Window</p>
+                    </div>
+                    <div class="flow-step" style="background: #ffebee;">
+                        <h3>🔴 Impact Stage</h3>
+                        <p><strong>Ground Contact</strong><br>High impact forces<br>Traditional detection</p>
+                    </div>
+                    <div class="flow-step" style="background: #f3e5f5;">
+                        <h3>🟣 Post-Fall</h3>
+                        <p><strong>After Impact</strong><br>Recovery/stillness<br>Emergency response</p>
+                    </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+                    <div class="highlight-box" style="flex: 1;">
+                        <h3>🎯 Innovation: Pre-Impact Detection</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚡</div>
+                            <div><strong>Target Window:</strong> Critical stage (300-400ms)</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🛡️</div>
+                            <div><strong>Prevention Goal:</strong> Activate protection before impact</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🚀</div>
+                            <div><strong>Advantage:</strong> Injury prevention vs. detection</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-box" style="flex: 1;">
+                        <h3>⚙️ Technical Challenge</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⏱️</div>
+                            <div><strong>Time Constraint:</strong> < 500ms decision required</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🎯</div>
+                            <div><strong>Accuracy Need:</strong> Minimize false positives</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">💻</div>
+                            <div><strong>Embedded Deploy:</strong> Resource-constrained systems</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conclusion-highlight">
+                    <h2>💡 Paradigm Shift: Prevention over Detection</h2>
+                    <p>Traditional fall detection systems react after impact occurs. Our pre-impact approach enables proactive protection, potentially preventing injuries rather than simply detecting them after occurrence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 16: Overall Methodology Development -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>🔬 Year 2 Methodology Framework</h2>
+                <div class="slide-number">16/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="figure-placeholder">
+                    <img src="./AdBAN.jpg" alt="Methodology Framework" width="750" height="400">
+                </div>
+                <div class="figure-caption">Figure 7: Complete methodology of pre-impact fall detection showing the integrated pipeline from data acquisition through preprocessing, CNN model training and testing, to final optimization and deployment on STM32 microcontrollers <cite>[2]</cite>.</div>
+                
+                <div class="methodology-flow" style="margin: 30px 0;">
+                    <div class="flow-step">
+                        <h3>📊 Data Acquisition</h3>
+                        <p><strong>Multi-Source Collection</strong><br>KFall dataset + Custom<br>6-channel IMU data</p>
+                    </div>
+                    <div class="flow-step">
+                        <h3>🔄 Preprocessing</h3>
+                        <p><strong>Signal Optimization</strong><br>400ms windows<br>Normalization pipeline</p>
+                    </div>
+                    <div class="flow-step">
+                        <h3>🧠 CNN Training</h3>
+                        <p><strong>Lightweight Architecture</strong><br>Embedded-optimized<br>Binary classification</p>
+                    </div>
+                    <div class="flow-step">
+                        <h3>⚡ STM32 Deploy</h3>
+                        <p><strong>Real-time Operation</strong><br>67KB flash usage<br>4ms inference time</p>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin: 30px 0;">
+                    <div class="highlight-box">
+                        <h3>📡 Data Collection Strategy</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🌐</div>
+                            <div><strong>KFall Integration:</strong> 32 subjects, 21 ADL + 15 fall types</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🎯</div>
+                            <div><strong>Custom Collection:</strong> 29 subjects, construction-focused scenarios</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📱</div>
+                            <div><strong>Synchronization:</strong> LED-smartphone video alignment</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚡</div>
+                            <div><strong>Sampling Rate:</strong> 100Hz for optimal motion capture</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-box">
+                        <h3>🧠 CNN Architecture Innovation</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">💻</div>
+                            <div><strong>Input Design:</strong> [40 × 6] for 400ms IMU windows</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🔧</div>
+                            <div><strong>Layer Structure:</strong> Conv1D + MaxPool + Dense progression</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🎯</div>
+                            <div><strong>Optimization:</strong> Dropout regularization for overfitting prevention</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚡</div>
+                            <div><strong>Output:</strong> Binary classification with confidence scoring</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: CNN Architecture Details -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>🧠 Lightweight CNN Architecture Design</h2>
+                <div class="slide-number">17/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="highlight-box">
+                    <h3>⚡ STM32 Microcontroller Constraints</h3>
+                    <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #d32f2f;">⚠️</div>
+                            <div><strong>Flash Memory</strong><br>< 256KB limit</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #d32f2f;">⚠️</div>
+                            <div><strong>RAM Usage</strong><br>< 256KB limit</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #d32f2f;">⚠️</div>
+                            <div><strong>Processing Speed</strong><br>< 10ms inference</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <div style="font-size: 2em; color: #d32f2f;">⚠️</div>
+                            <div><strong>Power Consumption</strong><br>Battery operation</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <table class="comparison-table">
+                    <tr>
+                        <th>Layer Type</th>
+                        <th>Configuration</th>
+                        <th>Input → Output</th>
+                        <th>Parameters</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr style="background-color: #e8f4f8;">
+                        <td><strong>Input Layer</strong></td>
+                        <td>[40 × 6] IMU windows</td>
+                        <td>Raw sensor data</td>
+                        <td>0</td>
+                        <td>400ms 6-channel input</td>
+                    </tr>
+                    <tr style="background-color: #f3e5f5;">
+                        <td><strong>Conv1D Layer 1</strong></td>
+                        <td>64 filters, kernel=4</td>
+                        <td>[40×6] → [27×64]</td>
+                        <td>1,600</td>
+                        <td>Feature extraction</td>
+                    </tr>
+                    <tr style="background-color: #e8f5e8;">
+                        <td><strong>MaxPool1D + Dropout</strong></td>
+                        <td>Pool=2, dropout=0.1</td>
+                        <td>[27×64] → [13×64]</td>
+                        <td>0</td>
+                        <td>Dimensionality reduction</td>
+                    </tr>
+                    <tr style="background-color: #fff3e0;">
+                        <td><strong>Conv1D Layer 2</strong></td>
+                        <td>64 filters, kernel=4</td>
+                        <td>[13×64] → [10×64]</td>
+                        <td>16,384</td>
+                        <td>Higher-level features</td>
+                    </tr>
+                    <tr style="background-color: #e3f2fd;">
+                        <td><strong>MaxPool1D + Dropout</strong></td>
+                        <td>Pool=2, dropout=0.4</td>
+                        <td>[10×64] → [5×64]</td>
+                        <td>0</td>
+                        <td>Final dimension reduction</td>
+                    </tr>
+                    <tr style="background-color: #f3e5f5;">
+                        <td><strong>Dense Layer</strong></td>
+                        <td>320→128 with PReLU</td>
+                        <td>[320] → [128]</td>
+                        <td>41,088</td>
+                        <td>Classification preparation</td>
+                    </tr>
+                    <tr style="background-color: #e8f5e8;">
+                        <td><strong>Output Layer</strong></td>
+                        <td>128→2 with Softmax</td>
+                        <td>[128] → [2]</td>
+                        <td>258</td>
+                        <td>Binary fall/activity</td>
+                    </tr>
+                </table>
+                
+                <div style="display: flex; justify-content: space-around; margin: 30px 0;">
+                    <div class="performance-metric" style="background: linear-gradient(135deg, #4caf50, #2e7d32);">67.03 KB Flash</div>
+                    <div class="performance-metric" style="background: linear-gradient(135deg, #2196f3, #1565c0);">16.87 KB RAM</div>
+                    <div class="performance-metric" style="background: linear-gradient(135deg, #ff9800, #f57c00);">4ms ± 3ms Inference</div>
+                    <div class="performance-metric" style="background: linear-gradient(135deg, #9c27b0, #6a1b9a);">59,330 Total Params</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Year 2 Results & Performance -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>📊 Year 2 Performance Results</h2>
+                <div class="slide-number">18/31</div>
+            </div>
+            <div class="slide-content">
+                <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+                    <div style="flex: 1;">
+                        <h3>🎯 Classification Performance</h3>
+                        <div class="impact-metric">
+                            <div class="metric-number">86.69%</div>
+                            <div class="metric-label">F1-Score Achievement</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">✅</div>
+                            <div><strong>Overall Accuracy:</strong> 98.28%</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚠️</div>
+                            <div><strong>False Positive Rate:</strong> 2.04%</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">❌</div>
+                            <div><strong>False Negative Rate:</strong> 4.17%</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📊</div>
+                            <div><strong>Validation Method:</strong> Subject-independent cross-validation</div>
+                        </div>
+                    </div>
+                    
+                    <div style="flex: 1;">
+                        <h3>⚡ Real-Time Performance</h3>
+                        <div class="impact-metric">
+                            <div class="metric-number">400ms</div>
+                            <div class="metric-label">Decision Latency</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🚀</div>
+                            <div><strong>Processing Window:</strong> 400ms segments</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚡</div>
+                            <div><strong>CNN Inference:</strong> 4ms ± 3ms per segment</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🛡️</div>
+                            <div><strong>Protection Window:</strong> 150ms for airbag activation</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🔋</div>
+                            <div><strong>Power Efficiency:</strong> Extended battery operation</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <table class="comparison-table">
+                    <tr>
+                        <th>Metric Category</th>
+                        <th>Year 2 Achievement</th>
+                        <th>Industry Standard</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr style="background-color: #e8f5e8;">
+                        <td><strong>F1-Score</strong></td>
+                        <td>86.69%</td>
+                        <td>80-85% typical</td>
+                        <td><span style="color: #4caf50; font-weight: bold;">✓ Exceeds</span></td>
+                    </tr>
+                    <tr style="background-color: #e3f2fd;">
+                        <td><strong>Response Time</strong></td>
+                        <td>400ms total latency</td>
+                        <td>500-1000ms typical</td>
+                        <td><span style="color: #4caf50; font-weight: bold;">✓ Superior</span></td>
+                    </tr>
+                    <tr style="background-color: #fff3e0;">
+                        <td><strong>Embedded Deployment</strong></td>
+                        <td>STM32 successful</td>
+                        <td>Limited demonstrations</td>
+                        <td><span style="color: #4caf50; font-weight: bold;">✓ First Practical</span></td>
+                    </tr>
+                    <tr style="background-color: #f3e5f5;">
+                        <td><strong>Resource Usage</strong></td>
+                        <td>67KB flash, 17KB RAM</td>
+                        <td>High resource requirements</td>
+                        <td><span style="color: #4caf50; font-weight: bold;">✓ Optimized</span></td>
+                    </tr>
+                </table>
+                
+                <div class="achievement-box">
+                    <h3>🎯 Year 2 Proof-of-Concept Success</h3>
+                    <p><strong>Foundation Established:</strong> 86.69% F1-score with 400ms latency proved the feasibility of pre-impact fall detection on embedded systems, setting the stage for advanced improvements in Year 3.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 19: DATE 2025 Best Paper Award -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>🏆 DATE 2025 Best Paper Award Achievement</h2>
+                <div class="slide-number">19/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="publication-card" style="background: linear-gradient(135deg, #fff3e0, #fffde7);">
+                    <div class="award-badge" style="font-size: 1.2em; margin-bottom: 20px;">🏆 DATE 2025 Best Paper Award Winner</div>
+                    <h3>📄 "A Lightweight CNN for Real-Time Pre-Impact Fall Detection" <cite>[2]</cite></h3>
+                    <p><strong>Authors:</strong> Cristian Turetta, Muhammad Toqeer Ali, Florenc Demrozi, Graziano Pravadelli</p>
+                    <p><strong>Conference:</strong> Design, Automation and Test in Europe (DATE) 2025</p>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+                    <div class="highlight-box" style="flex: 1;">
+                        <h3>🌟 Award Recognition Criteria</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">💡</div>
+                            <div><strong>Technical Innovation:</strong> First practical pre-impact detection on microcontrollers</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🎯</div>
+                            <div><strong>Practical Impact:</strong> Real-world embedded deployment demonstration</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🔬</div>
+                            <div><strong>Methodological Excellence:</strong> Rigorous validation and performance benchmarking</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🚀</div>
+                            <div><strong>Deployment Feasibility:</strong> Complete STM32 implementation proof</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-box" style="flex: 1;">
+                        <h3>🎯 Distinguishing Innovations</h3>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🧠</div>
+                            <div><strong>Lightweight Architecture:</strong> 67KB flash, 17KB RAM optimization</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⚡</div>
+                            <div><strong>Real-Time Performance:</strong> 4ms inference, 400ms total latency</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📊</div>
+                            <div><strong>Comprehensive Dataset:</strong> KFall + custom construction scenarios</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🤝</div>
+                            <div><strong>Industry Integration:</strong> Protechto safety equipment compatibility</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="conclusion-highlight">
+                    <h2>🏆 International Recognition Achievement</h2>
+                    <p>The DATE 2025 Best Paper Award validated our innovative approach to embedded AI for safety applications, establishing credibility and visibility within the global research community while proving the practical viability of pre-impact fall detection systems.</p>
+                </div>
+            </div>
+        </div>
+
+
+<!-- New Slide: Year 2 Real-World Challenge Discovery -->
 <div class="slide">
-  <div class="slide-header"><h2>7. Research Dissemination &amp; Real-World Impact</h2><div class="slide-number">25/30</div></div>
-  <div class="two-col">
-    <div>
-      <h3>🏅 Peer-Reviewed Publications</h3>
-      <div class="pub-card">
-        <div class="pub-badge award">🏆 DATE 2025 — Best Paper Award</div>
-        <div class="pub-title">"A Lightweight CNN for Real-Time Pre-Impact Fall Detection"</div>
-        <div class="pub-authors">C. Turetta, M. T. Ali, F. Demrozi, G. Pravadelli</div>
-        <div class="pub-venue">Design, Automation &amp; Test in Europe (DATE), 2025</div>
-      </div>
-      <div class="pub-card">
-        <div class="pub-badge journal">📖 IEEE Access (2024)</div>
-        <div class="pub-title">"ICT-Based Solutions for Alzheimer's Disease Care: A Systematic Review"</div>
-        <div class="pub-authors">M. T. Ali, C. Turetta, F. Demrozi, G. Pravadelli</div>
-        <div class="pub-venue">IEEE Access, vol. 12, pp. 13952–13980, Jan. 2024</div>
-      </div>
-      <div class="pub-card">
-        <div class="pub-badge review">🔬 IEEE Sensors (Under Review)</div>
-        <div class="pub-title">"Exploring Generative Data Augmentation for Real-Time Pre-Impact Fall Detection"</div>
-        <div class="pub-authors">M. T. Ali et al.</div>
-        <div class="pub-venue">IEEE Sensors Journal, 2025</div>
-      </div>
-      <div class="pub-card">
-        <div class="pub-badge conference">🎓 CoMoRe-AI @ IEEE PerCom 2026</div>
-        <div class="pub-title">"IMU-based pre-impact, impact, and post-impact fall detection dataset"</div>
-        <div class="pub-authors">M. T. Ali et al.</div>
-        <div class="pub-venue">IEEE PerCom Workshop (CoMoRe-AI), 2026 &nbsp;|&nbsp; Dataset: <a href="https://zenodo.org/record/18346755" style="color:#8b0000">zenodo.org/record/18346755</a></div>
-      </div>
+    <div class="slide-header">
+        <h2>🚧 Year 2→3 Transition: Real-World Challenge Discovery</h2>
+        <div class="slide-number">20/31</div>
     </div>
-    <div>
-      <h3>🏭 Industry Collaboration</h3>
-      <div class="figure-placeholder" style="max-height:120px;padding:14px">
-        <img src="./protechto_logo.png" alt="Protechto s.r.l." style="max-height:80px">
-        <p style="font-size:.82em;color:#888;margin-top:6px">(Insert Protechto collaboration photo)</p>
-      </div>
-      <div style="background:#f0fff4;border:2px solid #4caf50;border-radius:12px;padding:16px;margin-top:10px">
-        <h4 style="color:#1b5e20;margin-bottom:10px">Protechto s.r.l. Partnership</h4>
-        <p style="font-size:.85em;color:#444;margin-bottom:10px">Leading manufacturer of smart safety jackets for construction environments</p>
-        <div class="bullet-point"><div class="bullet-icon" style="background:#2e7d32">✓</div><div>Detection pipeline <strong>integrated into commercial platform</strong></div></div>
-        <div class="bullet-point"><div class="bullet-icon" style="background:#2e7d32">✓</div><div>Wearable airbag platform <strong>operating across Europe</strong></div></div>
-        <div class="bullet-point"><div class="bullet-icon" style="background:#2e7d32">✓</div><div>Real-world validation during extended work activities</div></div>
-      </div>
-      <div class="dark-box" style="margin-top:12px;text-align:center">
-        <strong>Impact:</strong> Successful translation from academic research to practical safety systems protecting workers in high-risk occupational contexts
-      </div>
+    <div class="slide-content">
+        <div class="highlight-box" style="background-color: #fff3e0; border-left: 4px solid #ff9800;">
+            <h3>⚠️ Critical Issue Discovered During Field Testing</h3>
+            <p><strong>Problem:</strong> 86.69% F1-score worked well in controlled settings, but real construction site deployment revealed significant false alarms from sudden movements and jerky motions typical in construction work.</p>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+            <div style="flex: 1;">
+                <h3 style="color: #d32f2f;">❌ Year 2 Field Testing Issues</h3>
+                <div class="bullet-point">
+                    <div class="bullet-icon">!</div>
+                    <div>False alarms from sudden jerky movements</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">!</div>
+                    <div>Construction-specific activities misclassified</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">!</div>
+                    <div>Worker feedback: too many false positives</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">!</div>
+                    <div>Gap between lab performance vs. field reality</div>
+                </div>
+            </div>
+            
+            <div style="flex: 1;">
+                <h3 style="color: #2c5aa0;">🎯 Year 3 Solution Strategy</h3>
+                <div class="bullet-point">
+                    <div class="bullet-icon">✓</div>
+                    <div>Collect new construction site dataset</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">✓</div>
+                    <div>Add problematic activities in controlled environment</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">✓</div>
+                    <div>Collaborate with Prof. Fadi (Norway) for augmentation</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">✓</div>
+                    <div>Develop event-level classification methods</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="achievement-box">
+            <h3>🔄 Research Pivot Justification</h3>
+            <p><strong>Learning:</strong> Real-world deployment is the ultimate test. Lab success doesn't guarantee field success. The false alarm issue became our Year 3 research focus, leading to breakthrough improvements and authentic commercial viability.</p>
+        </div>
     </div>
-  </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 26 – INTERNATIONAL COLLABORATION
-════════════════════════════════════════════════════════════════ -->
+        <!-- Slide 14: Year 3 Visual - Advanced Pipeline -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Advanced Fall Detection Pipeline</h2>
+                <div class="slide-number">21/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="figure-placeholder">
+                    <img src="./FallingPaperDateAssets-2-new.png" alt="Advanced Fall Detection Pipeline" width="750" height="400">
+                </div>
+                <div class="figure-caption">Figure 8: Complete advanced fall detection pipeline illustrating fall stages with acceleration profiles, the integrated methodology from segment-level CNN through VAE/GAN augmentation to event-level Random Forest classification, culminating in smart safety jacket deployment for protective device activation <cite>[4]</cite>.</div>
+                
+                <div class="methodology-flow" style="margin-top: 20px;">
+                    <div class="flow-step">
+                        <h3>📊 Data Input</h3>
+                        <p>300ms Windows<br>6-channel IMU<br>100Hz sampling</p>
+                    </div>
+                    <div class="flow-step">
+                        <h3>🧠 CNN Analysis</h3>
+                        <p>Segment-Level<br>Lightweight arch<br>Confidence output</p>
+                    </div>
+                    <div class="flow-step">
+                        <h3>🌳 RF Aggregation</h3>
+                        <p>Event-Level<br>Random Forest<br>Final decision</p>
+                    </div>
+                    <div class="flow-step">
+                        <h3>⚡ Response</h3>
+                        <p>450ms Total<br>Safety activation<br>Protection deploy</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- Slide 1: Year 3 Updated Methodology Pipeline -->
+        <div class="slide active">
+            <div class="slide-header">
+                <h2>🔬 Year 3: Updated Methodology Pipeline</h2>
+                <div class="slide-number">22/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="figure-placeholder">
+                    <img src="./methodology.png" alt="Advanced Fall Detection Pipeline" width="750" height="400">
+                </div>
+                <div class="figure-caption">Figure 9:
+                    Advanced methodology pipeline showing: Data Acquisition (STM32 + 6-channel IMU) → Data Preprocessing (Low-pass filter, segmentation) → Model Training with Data Augmentation (VAE, GAN, VAE-GAN) → AI Model Training (CNN + Event-Level Random Forest) → Model Optimization (Quantization) → Deployment on STM32/Smart Safety Jacket
+                </div>
+                
+                <div class="methodology-flow">
+                    <div class="flow-step">
+                        <h4>📊 Data Acquisition</h4>
+                        <p>STM32F722RE<br>6-channel IMU<br>100Hz sampling<br>Multi-environment</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>🔄 Data Preprocessing</h4>
+                        <p>Low-pass filter 5Hz<br>300ms windows<br>50% overlap<br>Normalization</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>🎯 Data Augmentation</h4>
+                        <p>VAE Generation<br>GAN Synthesis<br>VAE-GAN Hybrid<br>Quality Control</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>🧠 AI Model Training</h4>
+                        <p>Segment-CNN<br>Event-RF<br>5-fold CV<br>Subject-independent</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>⚡ Model Optimization</h4>
+                        <p>Quantization<br>STM32 Deploy<br>Real-time<br>Safety Jacket</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>🔄 Key Methodology Enhancements from Year 2</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                        <div>
+                            <h4>📈 Dataset Expansion</h4>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🏗️</div>
+                                <div><strong>Construction Site Data:</strong> Real-world occupational activities</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">📊</div>
+                                <div><strong>Extended Collection:</strong> 480+ hours authentic data</div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4>🎯 Advanced Processing</h4>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🧬</div>
+                                <div><strong>Generative Augmentation:</strong> VAE/GAN for class balance</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🌳</div>
+                                <div><strong>Event-Level Intelligence:</strong> Random Forest aggregation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="year-section">
+                    <h3>🎯 Pipeline Innovation Impact</h3>
+                    <p>The updated methodology addresses <strong>class imbalance (131:1 ratio)</strong> through targeted augmentation and replaces simple threshold-based aggregation with <strong>intelligent Random Forest event-level classification</strong>, achieving breakthrough 99.56% F1-score performance.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Slide 2: Dataset Class Imbalance & Augmentation Strategy -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>⚖️ Dataset Class Imbalance Challenge & Augmentation Strategy</h2>
+                <div class="slide-number">23/31</div>
+            </div>
+            <div class="slide-content">
+                <div style="display: flex; gap: 30px; margin: 30px 0;">
+                    <div style="flex: 1;">
+                        <div class="figure-placeholder">
+                            <img src="./overall_class_count.png" alt="Advanced Fall Detection Pipeline" width="750" height="400">
+                        </div>
+                        <div class="figure-caption">Figure 10:
+                            Class distribution showing extreme imbalance: 99.24% activity vs. 0.76% falling segments, highlighting the critical need for targeted augmentation approaches.
+                        </div>
+                        
+                        <div class="performance-metric" style="background: #ffebee; border-color: #f44336;">
+                            <div class="metric-number" style="color: #f44336;">131:1</div>
+                            <div class="metric-label">Activity to Fall Ratio</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>🧬 Advanced Augmentation Strategy Implementation</h3>
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                        <div style="background: #e3f2fd; border: 2px solid #1976d2; border-radius: 10px; padding: 15px;">
+                            <h4 style="color: #1976d2; margin-bottom: 10px;">🧠 VAE Approach</h4>
+                            <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
+                                <div class="bullet-icon" style="background: #1976d2;">✓</div>
+                                <div><strong>Probabilistic:</strong> Latent space learning</div>
+                            </div>
+                            <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
+                                <div class="bullet-icon" style="background: #1976d2;">🔧</div>
+                                <div><strong>Quality Control:</strong> Reconstruction error filtering</div>
+                            </div>
+                            <p style="margin: 10px 0; font-size: 0.9em;"><strong>Result:</strong> 99.49% F1-score</p>
+                        </div>
+                        
+                        <div style="background: #e8f5e8; border: 2px solid #388e3c; border-radius: 10px; padding: 15px;">
+                            <h4 style="color: #388e3c; margin-bottom: 10px;">⚡ GAN/TimeGAN</h4>
+                            <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
+                                <div class="bullet-icon" style="background: #388e3c;">🎭</div>
+                                <div><strong>Adversarial:</strong> Temporal pattern synthesis</div>
+                            </div>
+                            <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
+                                <div class="bullet-icon" style="background: #388e3c;">⏱️</div>
+                                <div><strong>Temporal Coherence:</strong> Realistic dynamics</div>
+                            </div>
+                            <p style="margin: 10px 0; font-size: 0.9em;"><strong>Result:</strong> 99.43% F1-score</p>
+                        </div>
+                        
+                        <div style="background: #fff3e0; border: 2px solid #f57c00; border-radius: 10px; padding: 15px;">
+                            <h4 style="color: #f57c00; margin-bottom: 10px;">🔄 VAE-GAN Hybrid</h4>
+                            <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
+                                <div class="bullet-icon" style="background: #f57c00;">🤝</div>
+                                <div><strong>Combined:</strong> Best of both approaches</div>
+                            </div>
+                            <div class="bullet-point" style="background: transparent; padding: 5px 0; border: none;">
+                                <div class="bullet-icon" style="background: #f57c00;">📏</div>
+                                <div><strong>Controlled:</strong> Equal synthetic mixing</div>
+                            </div>
+                            <p style="margin: 10px 0; font-size: 0.9em;"><strong>Result:</strong> 99.49% F1-score</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="year-section">
+                    <h3>💡 Key Insight: Controlled Quality over Quantity</h3>
+                    <p>All three augmentation strategies achieved statistically indistinguishable performance (~99.5% F1-score). The success demonstrates that <strong>controlled, high-quality synthetic data generation with volume restrictions (1×-2× multipliers)</strong> is more critical than the specific generative modeling approach used.</p>
+                </div>
+            </div>
+        </div>
+
 <div class="slide">
-  <div class="slide-header"><h2>7. International Research Collaboration</h2><div class="slide-number">26/30</div></div>
-  <div class="collab-grid">
-    <div class="collab-card" style="background:linear-gradient(145deg,#1e3c72,#2a5298)"><div class="top-bar" style="background:linear-gradient(90deg,#3b82f6,#1d4ed8)"></div>
-      <div class="collab-info">
-        <div class="collab-avatar" style="background-image:url('./Graziano.JPG')"></div>
-        <div><div class="collab-name">🇮🇹 Prof. Graziano Pravadelli</div><div class="collab-role">PhD Supervisor</div><div class="collab-inst">University of Verona, Italy</div></div>
-      </div>
-      <div class="collab-bullet">🎓 Exceptional PhD supervision &amp; strategic guidance</div>
-      <div class="collab-bullet">🔬 IoT systems &amp; assistive technologies leader</div>
+    <div class="slide-header">
+        <h2>🏗️ Dataset Collection & Validation</h2>
+        <div class="slide-number">24/31</div>
     </div>
-    <div class="collab-card" style="background:linear-gradient(145deg,#065f46,#047857)"><div class="top-bar" style="background:linear-gradient(90deg,#10b981,#047857)"></div>
-      <div class="collab-info">
-        <div class="collab-avatar" style="background-image:url('./florenc.jpg')"></div>
-        <div><div class="collab-name">🇳🇴 Prof. Florenc Demrozi</div><div class="collab-role">Co-Supervisor</div><div class="collab-inst">University of Stavanger, Norway</div></div>
-      </div>
-      <div class="collab-bullet">🔬 Biomedical Engineering expertise</div>
-      <div class="collab-bullet">📊 Sensor application specialization</div>
+    <div class="slide-content">
+        <div class="figure-placeholder">
+            <img src="./Dataset_collection.png" alt="Construction Site Data Collection" width="750" height="400">
+        </div>
+        <div class="figure-caption">Figure 9: Participants engaged in various activities during the self-collected dataset acquisition sessions in controlled settings.</div>
+        
+        <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+            <div style="flex: 1;">
+                <h3>🎯 Problem-Focused Collection</h3>
+                <div class="bullet-point">
+                    <div class="bullet-icon">⚠️</div>
+                    <div><strong>Target Activities:</strong> Jerky movements causing Year 2 false alarms</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">🔧</div>
+                    <div><strong>Enhanced Hardware:</strong> Improved PCB design based on field feedback</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">📱</div>
+                    <div><strong>Mobile Control:</strong> Autonomous operation without cables</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">🔋</div>
+                    <div><strong>Extended Battery:</strong> Full shift operation capability</div>
+                </div>
+            </div>
+                    <div style="flex: 1;">
+                        <h3>📈 Collection Results</h3>
+                        <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+                            <div class="impact-metric">
+                                <div class="metric-number">480+</div>
+                                <div class="metric-label">Hours Authentic Data</div>
+                            </div>
+                            <div class="impact-metric">
+                                <div class="metric-number">29+</div>
+                                <div class="metric-label">Total Participants</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+                            <div class="impact-metric">
+                                <div class="metric-number">44</div>
+                                <div class="metric-label">Total Activity Types</div>
+                            </div>
+                            <div class="impact-metric">
+                                <div class="metric-number">36</div>
+                                <div class="metric-label">Fall Types Combined</div>
+                            </div>
+                        </div>
+                    </div>
+        </div>
+                <div class="achievement-box" style="margin-top: 30px;">
+                    <h3>💼 Year 3 Dataset Enhancement Impact</h3>
+                    <p><strong>Problem-Driven Collection:</strong> Extended construction-site recordings captured natural stumbles, slips, and near-falls occurring spontaneously, providing realistic borderline cases that addressed Year 2 false alarm issues. Combined with KFall dataset, this created comprehensive coverage spanning 61 total subjects with authentic occupational movement patterns.</p>
+                </div>
     </div>
-    <div class="collab-card" style="background:linear-gradient(145deg,#7c2d12,#9a3412)"><div class="top-bar" style="background:linear-gradient(90deg,#ea580c,#c2410c)"></div>
-      <div class="collab-info">
-        <div class="collab-avatar" style="background-image:url('./macho.jpg')"></div>
-        <div><div class="collab-name">🇳🇴 Dr. Fadi Al Machot</div><div class="collab-role">Research Collaborator</div><div class="collab-inst">Norwegian Univ. Life Sciences</div></div>
-      </div>
-      <div class="collab-bullet">🧠 Advanced Machine Learning &amp; generative models</div>
-      <div class="collab-bullet">🎯 Augmentation strategy expertise</div>
-    </div>
-    <div class="collab-card" style="background:linear-gradient(145deg,#581c87,#6b21a8)"><div class="top-bar" style="background:linear-gradient(90deg,#a855f7,#7e22ce)"></div>
-      <div class="collab-info">
-        <div class="collab-avatar" style="background-image:url('./cristian .jpeg')"></div>
-        <div><div class="collab-name">🇮🇹 Cristian Turetta</div><div class="collab-role">Technical Collaborator</div><div class="collab-inst">University of Verona, Italy</div></div>
-      </div>
-      <div class="collab-bullet">⚡ Embedded systems implementation</div>
-      <div class="collab-bullet">🛠️ DATE 2025 Best Paper co-author</div>
-    </div>
-  </div>
-  <div style="background:linear-gradient(145deg,#115e59,#0f766e);border-radius:14px;padding:20px;color:white;margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:16px">
-    <div>
-      <h4 style="color:#ffd700;margin-bottom:12px">📋 PhD Committee Members</h4>
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px">
-        <div class="collab-avatar" style="width:48px;height:48px;background-image:url('./nicola.jpg')"></div>
-        <div><div style="font-weight:700;font-size:.95em">Prof. Nicola Bombieri</div><div style="font-size:.82em;opacity:.8">University of Verona — Parallel Computing, GPU, Heterogeneous Architectures</div></div>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px">
-        <div class="collab-avatar" style="width:48px;height:48px;background-image:url('./stefano.jpg')"></div>
-        <div><div style="font-weight:700;font-size:.95em">Prof. Stefano Tamburin</div><div style="font-size:.82em;opacity:.8">University of Verona — Movement Disorders, Clinical Neurophysiology</div></div>
-      </div>
-    </div>
-    <div style="border-left:1px solid rgba(255,255,255,.25);padding-left:16px;display:flex;align-items:center">
-      <p style="font-style:italic;color:#d1fae5;font-size:.92em;line-height:1.6">"Grateful for the dedicated oversight, insightful evaluations, and valuable recommendations from the committee that shaped this research journey."</p>
-    </div>
-  </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 27 – CONCLUSIONS
-════════════════════════════════════════════════════════════════ -->
+            <!-- Slide 3: From Threshold-Based to Random Forest Intelligence -->
+            <div class="slide">
+                <div class="slide-header">
+                    <h2>🌳 From Threshold-Based to Random Forest Intelligence</h2>
+                    <div class="slide-number">25/31</div>
+                </div>
+                <div class="slide-content">
+                    <div class="problem-solution-grid">
+                        <div class="problem-box">
+                            <h4>⚠️ Threshold-Based Limitations</h4>
+                            <div class="bullet-point" style="background: transparent; border: none; padding: 5px 0;">
+                                <div class="bullet-icon" style="background: #f44336;">❌</div>
+                                <div><strong>Rigid Rule:</strong> Simple M=2 consecutive segments</div>
+                            </div>
+                            <div class="bullet-point" style="background: transparent; border: none; padding: 5px 0;">
+                                <div class="bullet-icon" style="background: #f44336;">🚫</div>
+                                <div><strong>Complex Movements:</strong> Cannot handle borderline cases</div>
+                            </div>
+                            <div class="bullet-point" style="background: transparent; border: none; padding: 5px 0;">
+                                <div class="bullet-icon" style="background: #f44336;">⚡</div>
+                                <div><strong>False Alarms:</strong> High rate during construction work</div>
+                            </div>
+                            <div class="bullet-point" style="background: transparent; border: none; padding: 5px 0;">
+                                <div class="bullet-icon" style="background: #f44336;">🎯</div>
+                                <div><strong>Static Approach:</strong> No learning from patterns</div>
+                            </div>
+                            
+                            <div class="figure-placeholder" style="background: #ffebee; border-color: #f44336; margin: 15px 0; padding: 15px;">
+                                <strong>Algorithm 1: Option A (Threshold)</strong><br>
+                                if c ≥ 1 then Event ← Fall<br>
+                                else Event ← Activity
+                            </div>
+                        </div>
+                        
+                        <div class="solution-box">
+                            <h4>✅ Random Forest Advantages</h4>
+                            <div class="bullet-point" style="background: transparent; border: none; padding: 5px 0;">
+                                <div class="bullet-icon" style="background: #4caf50;">🧠</div>
+                                <div><strong>Supervised Learning:</strong> Learns from training data</div>
+                            </div>
+                            <div class="bullet-point" style="background: transparent; border: none; padding: 5px 0;">
+                                <div class="bullet-icon" style="background: #4caf50;">📊</div>
+                                <div><strong>Confidence Dynamics:</strong> Uses CNN probability patterns</div>
+                            </div>
+                            <div class="bullet-point" style="background: transparent; border: none; padding: 5px 0;">
+                                <div class="bullet-icon" style="background: #4caf50;">🎯</div>
+                                <div><strong>Robust Decisions:</strong> Handles complex motion patterns</div>
+                            </div>
+                            <div class="bullet-point" style="background: transparent; border: none; padding: 5px 0;">
+                                <div class="bullet-icon" style="background: #4caf50;">⚡</div>
+                                <div><strong>Fast Inference:</strong> Negligible computational overhead</div>
+                            </div>
+                            
+                            <div class="figure-placeholder" style="background: #e8f5e8; border-color: #4caf50; margin: 15px 0; padding: 15px;">
+                                <strong>Algorithm 1: Option B (Random Forest)</strong><br>
+                                6D feature vector from M=2 segments<br>
+                                Ensemble decision with majority voting
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3>📈 Performance Comparison Results</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Approach</th>
+                                <th>Falling F1-Score</th>
+                                <th>Activity F1-Score</th>
+                                <th>Overall Accuracy</th>
+                                <th>Decision Complexity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="threshold-bad">
+                                <td><strong>Threshold-Based (M=2)</strong></td>
+                                <td>95.2%</td>
+                                <td>97.8%</td>
+                                <td>96.5%</td>
+                                <td>Static Rule</td>
+                            </tr>
+                            <tr class="rf-good">
+                                <td><strong>Random Forest (M=2)</strong></td>
+                                <td><strong>99.57%</strong></td>
+                                <td><strong>99.63%</strong></td>
+                                <td><strong>99.85%</strong></td>
+                                <td>Learned Patterns</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Improvement</strong></td>
+                                <td><strong>+4.37%</strong></td>
+                                <td><strong>+1.83%</strong></td>
+                                <td><strong>+3.35%</strong></td>
+                                <td>Intelligent Decision</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="highlight-box">
+                        <h3>🔍 Why Random Forest Works for Fall Detection</h3>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                            <div>
+                                <h4>📊 Technical Advantages</h4>
+                                <div class="bullet-point">
+                                    <div class="bullet-icon">🎯</div>
+                                    <div><strong>Pattern Recognition:</strong> Learns confidence dynamics from CNN outputs</div>
+                                </div>
+                                <div class="bullet-point">
+                                    <div class="bullet-icon">🌳</div>
+                                    <div><strong>Ensemble Robustness:</strong> Multiple decision trees reduce overfitting</div>
+                                </div>
+                                <div class="bullet-point">
+                                    <div class="bullet-icon">⚡</div>
+                                    <div><strong>Real-time Ready:</strong> Fast inference suitable for embedded systems</div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>🏗️ Real-world Impact</h4>
+                                <div class="bullet-point">
+                                    <div class="bullet-icon">🛡️</div>
+                                    <div><strong>False Alarm Reduction:</strong> Better discrimination of complex work movements</div>
+                                </div>
+                                <div class="bullet-point">
+                                    <div class="bullet-icon">🎯</div>
+                                    <div><strong>Borderline Cases:</strong> Intelligent handling of ambiguous situations</div>
+                                </div>
+                                <div class="bullet-point">
+                                    <div class="bullet-icon">⏱️</div>
+                                    <div><strong>Temporal Intelligence:</strong> Considers short-term prediction sequences</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="year-section">
+                        <h3>🎯 Event-Level Classification Revolution</h3>
+                        <p>Replacing threshold-based aggregation with Random Forest classification represents a <strong>paradigm shift from rule-based to learning-based event detection</strong>. This innovation enables the system to achieve 99.5%+ F1-scores while maintaining real-time performance constraints essential for pre-impact safety device activation.</p>
+                    </div>
+                </div>
+            </div>
+        <!-- Slide 17: Performance Benchmarking -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Performance Benchmarking & Comparison</h2>
+                <div class="slide-number">26/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="highlight-box">
+                    <h3>🏆 State-of-the-Art Achievement</h3>
+                    <p>Our approach establishes new performance benchmarks while maintaining embedded deployment feasibility <cite>[4]</cite></p>
+                </div>
+                
+                <table class="comparison-table">
+                    <tr>
+                        <th>Achievement Category</th>
+                        <th>Previous Best</th>
+                        <th>This Work</th>
+                        <th>Improvement</th>
+                        <th>Significance</th>
+                    </tr>
+                    <tr style="background-color: #e8f5e8;">
+                        <td><strong>Detection Accuracy</strong></td>
+                        <td>98.79% F1-score</td>
+                        <td><strong>99.56% F1-score</strong></td>
+                        <td>+0.77%</td>
+                        <td>New SOTA performance</td>
+                    </tr>
+                    <tr style="background-color: #e8f5e8;">
+                        <td><strong>Response Time</strong></td>
+                        <td>500-1000ms typical</td>
+                        <td><strong>450ms ± 5ms</strong></td>
+                        <td>-50ms+</td>
+                        <td>Fastest protective response</td>
+                    </tr>
+                    <tr style="background-color: #e8f5e8;">
+                        <td><strong>Embedded Deploy</strong></td>
+                        <td>Limited demos</td>
+                        <td><strong>Complete STM32</strong></td>
+                        <td>100%</td>
+                        <td>First comprehensive solution</td>
+                    </tr>
+                    <tr style="background-color: #e8f5e8;">
+                        <td><strong>Real-World Testing</strong></td>
+                        <td>Laboratory only</td>
+                        <td><strong>Construction sites</strong></td>
+                        <td>New domain</td>
+                        <td>First authentic validation</td>
+                    </tr>
+                </table>
+                
+                <div style="display: flex; justify-content: space-between; margin: 30px 0;">
+                    <div class="achievement-box" style="flex: 1; margin: 10px;">
+                        <h3>📊 Year-over-Year Progress</h3>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.5em; color: #2c5aa0;">86.69% → 99.56%</div>
+                            <div style="color: #4caf50; font-weight: bold;">+12.87% improvement</div>
+                        </div>
+                    </div>
+                    
+                    <div class="achievement-box" style="flex: 1; margin: 10px;">
+                        <h3>⚡ Consistent Performance</h3>
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.5em; color: #2c5aa0;">< 1% std dev</div>
+                            <div style="color: #4caf50; font-weight: bold;">Robust generalization</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Year 3 Overview & Breakthrough -->
 <div class="slide">
-  <div class="slide-header"><h2>8. Key Achievements &amp; Research Outlook</h2><div class="slide-number">27/30</div></div>
-  <div class="two-col">
-    <div>
-      <h3>✅ Key Achievements</h3>
-      <div class="conclusion-card">
-        <div style="display:flex;align-items:center;margin-bottom:8px"><span class="achievement-num">1</span><h4 style="margin:0">Sophisticated DL on Microcontrollers</h4></div>
-        <p style="font-size:.88em;color:#555;line-height:1.5">Demonstrated that deep learning operates effectively on resource-constrained devices when efficiency considerations guide design from initial conception. 89.71KB total, 4.5ms inference.</p>
-      </div>
-      <div class="conclusion-card" style="margin-top:10px">
-        <div style="display:flex;align-items:center;margin-bottom:8px"><span class="achievement-num">2</span><h4 style="margin:0">Safety-Critical Reliability</h4></div>
-        <p style="font-size:.88em;color:#555;line-height:1.5">Achieved <strong>99.5% event-level F1-score</strong> with <strong>&lt;1% false negatives</strong> — meeting stringent safety-critical deployment requirements for construction environments.</p>
-      </div>
-      <div class="conclusion-card" style="margin-top:10px">
-        <div style="display:flex;align-items:center;margin-bottom:8px"><span class="achievement-num">3</span><h4 style="margin:0">Bridging Research &amp; Deployment</h4></div>
-        <p style="font-size:.88em;color:#555;line-height:1.5">Established methodologies for industry adoption with commercial deployment validating real-world readiness. <strong>97% false alarm reduction</strong> enables practical worker acceptance.</p>
-      </div>
+    <div class="slide-header">
+        <h2>🚀 Year 3 (2024-2025): Breakthrough Performance</h2>
+        <div class="slide-number">27/31</div>
     </div>
-    <div>
-      <h3>🎯 Quantitative Outcomes</h3>
-      <div class="quant-grid">
-        <div class="quant-card"><div class="q-val">99.5%</div><div class="q-label">Event F1-Score</div></div>
-        <div class="quant-card"><div class="q-val">99.9%</div><div class="q-label">Precision</div></div>
-        <div class="quant-card"><div class="q-val">97%</div><div class="q-label">False Alarm ↓</div></div>
-        <div class="quant-card"><div class="q-val">4.5ms</div><div class="q-label">Inference Time</div></div>
-      </div>
-      <div class="dark-box" style="margin-top:12px;text-align:center">
-        <h4 style="color:#ffd700;margin-bottom:10px">Research Philosophy</h4>
-        <p style="font-style:italic;line-height:1.6;font-size:.92em">"Sophisticated machine learning operates effectively within severe wearable device constraints when efficiency considerations guide design from initial conception."</p>
-      </div>
-      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-        <div class="perf-badge" style="font-size:.82em">🏆 DATE 2025 Best Paper</div>
-        <div class="perf-badge" style="font-size:.82em">📊 3 Publications</div>
-        <div class="perf-badge" style="font-size:.82em">🏭 Commercial Deploy</div>
-        <div class="perf-badge" style="font-size:.82em">📦 Public Dataset</div>
-      </div>
+    <div class="slide-content">
+        <div class="year-section">
+            <h3>🔧 Year 3 Mission: From Field Problems to Breakthrough Solutions</h3>
+            <p>Address real-world false alarm issues discovered during Year 2 field testing through systematic dataset enhancement, international collaboration, and advanced methodological innovations</p>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; gap: 30px; margin: 30px 0;">
+            <div style="flex: 1;">
+                <h3>🚧 Problem-Driven Research</h3>
+                <div class="bullet-point">
+                    <div class="bullet-icon">📊</div>
+                    <div><strong>New Dataset Collection:</strong> Construction site + controlled environment</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">🤝</div>
+                    <div><strong>Prof. Fadi Collaboration:</strong> Norway expertise in data augmentation</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">🎯</div>
+                    <div><strong>Advanced Augmentation:</strong> VAE, GAN, and hybrid approaches</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">⚡</div>
+                    <div><strong>Event-Level Methods:</strong> Threshold-based vs. Random Forest</div>
+                </div>
+            </div>
+            
+            <div style="flex: 1;">
+                <h3>🏆 Breakthrough Results</h3>
+                <div class="impact-metric">
+                    <div class="metric-number">99.56%</div>
+                    <div class="metric-label">F1-Score Achievement</div>
+                </div>
+                <div style="text-align: center; margin: 15px 0;">
+                    <div style="color: #4caf50; font-size: 1.8em; font-weight: bold;">+12.87% Improvement</div>
+                    <div style="color: #666; font-size: 1.1em;">False alarms: 2.04% → 0.06%</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">📄</div>
+                    <div><strong>IEEE Sensors Manuscript:</strong> Ready for submission</div>
+                </div>
+                <div class="bullet-point">
+                    <div class="bullet-icon">💻</div>
+                    <div><strong>STM32 Implementation:</strong> 450ms decision latency</div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="display: flex; justify-content: space-around; margin: 30px 0;">
+            <div class="performance-metric" style="background: linear-gradient(135deg, #4caf50, #2e7d32);">
+                <div>Solution: 99.56% F1-Score</div>
+            </div>
+            <div class="performance-metric" style="background: linear-gradient(135deg, #2196f3, #1565c0);">
+                <div>Method: Event-Level Classification</div>
+            </div>
+            <div class="performance-metric" style="background: linear-gradient(135deg, #9c27b0, #6a1b9a);">
+                <div>Data: 480+ Hours Real-World</div>
+            </div>
+            <div class="performance-metric" style="background: linear-gradient(135deg, #ff9800, #f57c00);">
+                <div>Output: IEEE Sensors Ready</div>
+            </div>
+        </div>
+        
+        <div class="achievement-box">
+            <h3>🎯 Year 3 Revolutionary Advancement</h3>
+            <p><strong>Problem-to-Solution Journey:</strong> Real-world false alarm issues drove systematic improvements through enhanced datasets, Prof. Fadi's augmentation expertise, event-level classification innovation, and comprehensive validation. Result: deployment-ready technology with 99.56% accuracy and IEEE Sensors manuscript completion.</p>
+        </div>
     </div>
-  </div>
 </div>
+        <!-- Slide 18: International Collaboration -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>International Collaboration Network</h2>
+                <div class="slide-number">28/31</div>
+            </div>
+            <div class="slide-content">
+                <div style="display: flex; justify-content: space-between; gap: 30px; margin-bottom: 30px;">
+                    <div class="publication-card" style="flex: 1;">
+                        <h3>🇳🇴 University of Stavanger</h3>
+                        <p><strong>Dr. Florenc Demrozi</strong> <cite>[5]</cite></p>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🔬</div>
+                            <div>Biomedical Engineering expertise</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">📊</div>
+                            <div>Sensor application specialization</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🤝</div>
+                            <div>Joint methodology development</div>
+                        </div>
+                    </div>
+                    
+                    <div class="publication-card" style="flex: 1;">
+                        <h3>🇳🇴 Norwegian Univ. Life Sciences</h3>
+                        <p><strong>Dr. Fadi Al Machot</strong> <cite>[6]</cite></p>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🧠</div>
+                            <div>Advanced Machine Learning</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">🎯</div>
+                            <div>Generative modeling expertise</div>
+                        </div>
+                        <div class="bullet-point">
+                            <div class="bullet-icon">⏱️</div>
+                            <div>Time-series classification</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="achievement-box">
+                    <h3>🌍 Global Impact Network</h3>
+                    <p><strong>Multi-country expertise</strong> enabled breakthrough performance improvements and established foundations for continued international research collaboration beyond PhD completion.</p>
+                </div>
+            </div>
+        </div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 28 – FUTURE DIRECTIONS
-════════════════════════════════════════════════════════════════ -->
+        <!-- Slide 19: Publications and Recognition -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Publications and Academic Recognition</h2>
+                <div class="slide-number">29/31</div>
+            </div>
+            <div class="slide-content">
+                <div class="publication-card">
+                    <h3>📚 Survey Publication - IEEE Access (2024)</h3>
+                    <p><strong>"ICT-Based Solutions for Alzheimer's Disease Care: A Systematic Review" <cite>[1]</cite></strong></p>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">📊</div>
+                        <div><strong>Scope:</strong> Analyzed 2,459 papers across 8 technology domains</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">🌟</div>
+                        <div><strong>Impact:</strong> Comprehensive foundation for assistive technology research</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">🔗</div>
+                        <div><strong>Citation:</strong> DOI: 10.1109/ACCESS.2024.3358348</div>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <div class="award-badge">🏆 DATE 2025 Best Paper Award</div>
+                    <h3>🎯 Conference Publication - DATE 2025</h3>
+                    <p><strong>"A Lightweight CNN for Real-Time Pre-Impact Fall Detection" <cite>[2]</cite></strong></p>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">⚡</div>
+                        <div><strong>Achievement:</strong> 86.69% F1-score with STM32 embedded deployment</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">🏅</div>
+                        <div><strong>Recognition:</strong> Technical excellence and practical impact</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">💡</div>
+                        <div><strong>Innovation:</strong> First practical pre-impact detection on microcontrollers</div>
+                    </div>
+                </div>
+                
+                <div class="publication-card">
+                    <h3>📖 Journal Submission - IEEE Sensors (manuscript ready)</h3>
+                    <p><strong>"A Lightweight CNN for Real-Time Pre-Impact Fall Detection (Extended Version)" <cite>[4]</cite></strong></p>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">🚀</div>
+                        <div><strong>Breakthrough:</strong> 99.56% F1-score through event-level classification</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">🏗️</div>
+                        <div><strong>Validation:</strong> Comprehensive construction site deployment results</div>
+                    </div>
+                    <div class="bullet-point">
+                        <div class="bullet-icon">🤝</div>
+                        <div><strong>Collaboration:</strong> International co-authors from Norway</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Conclusion -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>Conclusion</h2>
+                <div class="slide-number">30/31</div>
+            </div>
+            <div class="slide-content conclusion-slide">
+                <div class="conclusion-highlight">
+                    <h1 style="font-size: 2.5em; margin-bottom: 20px;">Mission Accomplished</h1>
+                    <p style="font-size: 1.3em; line-height: 1.6;">From initial ambitious goals through strategic adaptation to significant breakthroughs in pre-impact fall detection systems</p>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; gap: 30px; margin: 40px 0;">
+                    <div class="achievement-box" style="flex: 1;">
+                        <h3>🎯 Original Objectives</h3>
+                        <div style="text-align: center; font-size: 3em; color: #4caf50;">✓</div>
+                        <p><strong>ACHIEVED:</strong> Assistive solutions for frail populations with IoT-based monitoring systems</p>
+                    </div>
+                    
+                    <div class="achievement-box" style="flex: 1;">
+                        <h3>📈 Performance Targets</h3>
+                        <div style="text-align: center; font-size: 3em; color: #4caf50;">✓</div>
+                        <p><strong>EXCEEDED:</strong> 99.56% F1-score surpasses 90% original goal</p>
+                    </div>
+                    
+                    <div class="achievement-box" style="flex: 1;">
+                        <h3>🏭 Practical Impact</h3>
+                        <div style="text-align: center; font-size: 3em; color: #4caf50;">✓</div>
+                        <p><strong>DEMONSTRATED:</strong> Real-world deployment with commercial viability</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <h3>🏆 Key Success Factors</h3>
+                    <div style="display: flex; justify-content: space-between; gap: 20px;">
+                        <div style="flex: 1;">
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🔄</div>
+                                <div><strong>Strategic Adaptability:</strong> Flexible approach while maintaining core objectives</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">💡</div>
+                                <div><strong>Technical Innovation:</strong> Novel event-level classification methodology</div>
+                            </div>
+                        </div>
+                        <div style="flex: 1;">
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🤝</div>
+                                <div><strong>Collaborative Approach:</strong> International partnerships and industry engagement</div>
+                            </div>
+                            <div class="bullet-point">
+                                <div class="bullet-icon">🎨</div>
+                                <div><strong>Persistent Excellence:</strong> Continuous refinement and validation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="text-align: center; margin: 40px 0;">
+                    <h2 style="color: #2c5aa0; font-size: 2em;">Thank You</h2>
+                    <p style="font-size: 1.2em; color: #666; margin-top: 20px;">
+                        <strong>Questions and Discussion</strong><br>
+                        Muhammad Toqeer Ali | PhD in Computer Science<br>
+                        Università di Verona | September 2025
+                    </p>
+                </div>
+                
+                <div style="display: flex; justify-content: center; gap: 20px; margin-top: 30px;">
+                    <div class="performance-metric">Assistive Technology Innovation</div>
+                    <div class="performance-metric">Real-World Impact</div>
+                    <div class="performance-metric">Future Ready Solutions</div>
+                </div>
+            </div>
+        </div>
+
+<!-- References Slide -->
 <div class="slide">
-  <div class="slide-header"><h2>8. Future Research Directions</h2><div class="slide-number">28/30</div></div>
-  <div class="future-grid">
-    <div class="future-card" style="border-color:#4caf50"><div class="fc-tag" style="background:#4caf50">👥 POPULATION</div><h4 style="margin-top:8px;color:#1b5e20">Population Diversity</h4><p style="font-size:.85em;color:#555;margin-top:6px">Validation with elderly populations (primary at-risk group) and diverse deployment contexts — healthcare, industrial, sports. Current dataset focuses on young, healthy volunteers.</p></div>
-    <div class="future-card" style="border-color:#f44336"><div class="fc-tag" style="background:#f44336">⚡ RARE EVENTS</div><h4 style="margin-top:8px;color:#c62828">Rare Event Categories</h4><p style="font-size:.85em;color:#555;margin-top:6px">Address elevation falls (4–8% miss rate) through targeted data collection or few-shot learning. Ladder and scaffold falls remain challenging due to limited training examples.</p></div>
-    <div class="future-card" style="border-color:#2196f3"><div class="fc-tag" style="background:#2196f3">🧠 ARCHITECTURES</div><h4 style="margin-top:8px;color:#1565c0">Advanced Architectures</h4><p style="font-size:.85em;color:#555;margin-top:6px">TCN (Temporal Convolutional Networks), attention mechanisms, and neural architecture search with hardware-aware optimization for better accuracy-efficiency trade-offs.</p></div>
-    <div class="future-card" style="border-color:#9c27b0"><div class="fc-tag" style="background:#9c27b0">🔗 INTEGRATION</div><h4 style="margin-top:8px;color:#6a1b9a">System Integration</h4><p style="font-size:.85em;color:#555;margin-top:6px">Power optimization for 24-hour monitoring, user interface design for worker feedback, domain-specific protocol integration with construction site safety management systems.</p></div>
-  </div>
-  <div class="two-col" style="margin-top:14px">
-    <div class="highlight-box">
-      <h4>📅 Immediate Plans (Next 3 months)</h4>
-      <div class="bullet-point"><div class="bullet-icon">📝</div><div><strong>IEEE Sensors manuscript</strong> — finalize and submit</div></div>
-      <div class="bullet-point"><div class="bullet-icon">📚</div><div><strong>PhD thesis writing</strong> — complete dissertation by December 2025</div></div>
-      <div class="bullet-point"><div class="bullet-icon">📦</div><div><strong>Dataset publication</strong> — full release on Zenodo with documentation</div></div>
+    <div class="slide-header">
+        <h2>References</h2>
+        <div class="slide-number">31/31</div>
     </div>
-    <div class="achievement-box">
-      <h4>🌍 Broader Research Vision</h4>
-      <div class="bullet-point"><div class="bullet-icon">🏗️</div><div>Expand to other high-risk industries: mining, manufacturing, logistics</div></div>
-      <div class="bullet-point"><div class="bullet-icon">🧓</div><div>Adapt for elderly care: home monitoring, assisted living facilities</div></div>
-      <div class="bullet-point"><div class="bullet-icon">🏥</div><div>Clinical validation with neurological patients (Parkinson's, MS)</div></div>
+    <div class="slide-content">
+        <div style="font-size: 12px; line-height: 1.4; columns: 1; column-gap: 30px;">
+            
+            <div style="margin-bottom: 10px;">
+                <strong>[1]</strong> Muhammad Toqeer Ali, Cristian Turetta, Florenc Demrozi, and Graziano Pravadelli, "ICT-Based Solutions for Alzheimer's Disease Care: A Systematic Review," IEEE Access, vol. 12, pp. 13952-13980, 2024, doi: 10.1109/ACCESS.2024.3358348.
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <strong>[2]</strong> C. Turetta, Muhammad Toqeer Ali, F. Demrozi, and G. Pravadelli, "A Lightweight CNN for Real-Time Pre-Impact Fall Detection," in Design, Automation and Test in Europe Conference (DATE), 2025, pp. 1-6. (Best Paper Award)
+            </div>
+            
+            <div style="margin-bottom: 10px;">
+                <strong>[3]</strong> F. Demrozi, C. Turetta, and G. Pravadelli, "A low-power BAN for motor tasks assessment," in 2018 IEEE International Conference on Communications Workshops (ICC Workshops), 2018, pp. 1-6.
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <strong>[4]</strong> Muhammad Toqeer Ali, C. Turetta, F. Demrozi, F. Al Machot, and G. Pravadelli, "A Lightweight CNN for Real-Time Pre-Impact Fall Detection (Extended Version)," IEEE Sensors Journal, 2025. (Manuscript)
+            </div>
+            
+
+            <div style="margin-bottom: 10px;">
+                <strong>[5]</strong> Dr. Florenc Demrozi, University of Stavanger, Norway - Biomedical Engineering and Sensor Applications. 
+                <a href="https://scholar.google.com/citations?user=gF5XNDIAAAAJ&hl=it" target="_blank" style="color: #2c5aa0; text-decoration: none;">
+                    [Google Scholar Profile]
+                </a>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <strong>[6]</strong> Dr. Fadi Al Machot, Norwegian University of Life Sciences - Machine Learning and Data Augmentation. 
+                <a href="https://scholar.google.com/citations?user=5ivk5WQAAAAJ&hl=en" target="_blank" style="color: #2c5aa0; text-decoration: none;">
+                    [Google Scholar Profile]
+                </a>
+            </div>
+            
+        </div>
+        
+        <div class="highlight-box" style="margin-top: 30px;">
+            <h3>📊 Publication Impact Summary</h3>
+            <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+                <div style="text-align: center;">
+                    <div style="font-size: 2em; color: #2c5aa0; font-weight: bold;">3</div>
+                    <div>Major Publications</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2em; color: #2c5aa0; font-weight: bold;">1</div>
+                    <div>Best Paper Award</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2em; color: #2c5aa0; font-weight: bold;">2,459</div>
+                    <div>Papers Analyzed</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 2em; color: #2c5aa0; font-weight: bold;">2</div>
+                    <div>Countries Collaborated</div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 29 – REFERENCES
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="slide-header"><h2>References</h2><div class="slide-number">29/30</div></div>
-  <div class="ref-item"><div class="ref-num">[1]</div><div class="ref-text">U.S. Bureau of Labor Statistics, "Injuries, Illnesses, and Fatalities (IIF)," 2022. Available: <a href="https://www.bls.gov/iif/" target="_blank">https://www.bls.gov/iif/</a></div></div>
-  <div class="ref-item"><div class="ref-num">[2]</div><div class="ref-text">X. Yu, J. Jang et al., "A large-scale open motion dataset (KFall) and benchmark algorithms for detecting pre-impact fall of the elderly using wearable inertial sensors," Frontiers in Aging Neuroscience, vol. 13, p. 692865, 2021.</div></div>
-  <div class="ref-item"><div class="ref-num">[3]</div><div class="ref-text">A. Sucerquia, J. D. López, and J. F. Vargas-Bonilla, "SisFall: A fall and movement dataset," Sensors, vol. 17, no. 1, p. 198, 2017.</div></div>
-  <div class="ref-item"><div class="ref-num">[4]</div><div class="ref-text">G. Vavoulas, C. Chatzaki et al., "The MobiAct dataset: Recognition of activities of daily living using smartphones," in Proc. ICT4AWE, 2016, pp. 143–151.</div></div>
-  <div class="ref-item"><div class="ref-num">[5]</div><div class="ref-text">J. Klenk, L. Schwickert et al., "The FARSEEING real-world fall repository," European Review of Aging and Physical Activity, vol. 13, p. 8, 2016.</div></div>
-  <div class="ref-item"><div class="ref-num">[6]</div><div class="ref-text">C. Turetta, M. T. Ali, F. Demrozi, G. Pravadelli, "A lightweight CNN for real-time pre-impact fall detection," in Proc. DATE, 2025, pp. 1–7. <strong>(Best Paper Award)</strong></div></div>
-  <div class="ref-item"><div class="ref-num">[7]</div><div class="ref-text">M. T. Ali, C. Turetta, F. Demrozi, F. Al Machot, G. Pravadelli, "Exploring Generative Data Augmentation for Real-Time Pre-Impact Fall Detection," IEEE Sensors Journal, 2025. (Under Review)</div></div>
-  <div class="ref-item"><div class="ref-num">[8]</div><div class="ref-text">M. T. Ali et al., "IMU-based pre-impact, impact, and post-impact fall detection dataset," CoMoRe-AI @ IEEE PerCom, 2026. Dataset: <a href="https://zenodo.org/record/18346755" target="_blank" style="color:#8b0000">zenodo.org/record/18346755</a></div></div>
-  <div class="ref-item"><div class="ref-num">[9]</div><div class="ref-text">M. T. Ali, C. Turetta, F. Demrozi, G. Pravadelli, "ICT-Based Solutions for Alzheimer's Disease Care: A Systematic Review," IEEE Access, vol. 12, pp. 13952–13980, 2024. DOI: 10.1109/ACCESS.2024.3358348</div></div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════════════
-     SLIDE 30 – THANK YOU
-════════════════════════════════════════════════════════════════ -->
-<div class="slide">
-  <div class="title-slide" style="justify-content:center">
-    <div style="text-align:center;padding:40px">
-      <div style="font-size:4em;margin-bottom:16px">🎓</div>
-      <h1 style="font-size:3em;color:#1a1a2e;margin-bottom:16px">Thank You</h1>
-      <div class="title-divider"></div>
-      <h2 style="font-size:1.6em;color:#8b0000;margin:18px 0">Questions &amp; Discussion</h2>
-      <div style="margin:24px 0;font-size:1.1em;color:#555;line-height:1.8">
-        <strong style="color:#1a3a8a">Muhammad Toqeer Ali</strong><br>PhD Candidate, University of Verona<br>
-        Department of Computer Science | XXXVIII Cycle
-      </div>
-      <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:20px">
-        <div class="perf-badge">🏆 DATE 2025 Best Paper</div>
-        <div class="perf-badge">📊 99.5% F1-Score</div>
-        <div class="perf-badge">💾 89KB on STM32</div>
-        <div class="perf-badge">📦 Dataset: zenodo.org/record/18346755</div>
-      </div>
-      <div style="margin-top:28px;padding:18px;background:#f8f9fa;border-radius:12px;border:2px solid #dee2e6;max-width:700px;margin:28px auto 0">
-        <p style="font-size:1em;color:#555;font-style:italic;line-height:1.7">"Sophisticated machine learning operates effectively within severe wearable device constraints when efficiency considerations guide design from initial conception."</p>
-      </div>
     </div>
-  </div>
-</div>
 
-</div><!-- end presentation-container -->
+   <!-- Floating Comment Button -->
+    <button class="floating-comment-btn" id="commentBtn" onclick="openCommentPanel()">
+        💬
+        <span class="comment-badge" id="commentBadge">0</span>
+    </button>
 
-<!-- ── Floating comment button ── -->
-<button class="floating-comment-btn" id="commentBtn" onclick="openCommentPanel()">
-  💬<span class="comment-badge" id="commentBadge">0</span>
-</button>
+    <!-- Comment Panel Overlay -->
+    <div class="comment-overlay" id="commentOverlay" onclick="closeCommentPanel(event)">
+        <div class="comment-panel" onclick="event.stopPropagation()">
+            <h3>
+                Comments for Slide <span id="currentSlideNum">1</span>
+                <button class="close-btn" onclick="closeCommentPanel()">&times;</button>
+            </h3>
+            
+            <div class="comment-list" id="commentList">
+                <div class="no-comments">
+                    No comments yet. Be the first to add feedback!
+                </div>
+            </div>
 
-<!-- ── Comment overlay ── -->
-<div class="comment-overlay" id="commentOverlay" onclick="closeCommentPanel(event)">
-  <div class="comment-panel" onclick="event.stopPropagation()">
-    <h3>Comments — Slide <span id="currentSlideNum">1</span><button class="close-btn" onclick="closeCommentPanel()">&times;</button></h3>
-    <div class="comment-list" id="commentList"><div class="no-comments">No comments yet. Be the first to add feedback!</div></div>
-    <div class="comment-form">
-      <div class="form-group"><label>Your Name:</label><input type="text" id="authorName" placeholder="Enter your name" maxlength="50"></div>
-      <div class="form-group"><label>Comment:</label><textarea id="commentText" placeholder="Share your feedback or suggestions..." maxlength="500"></textarea></div>
-      <div class="form-actions"><button class="btn btn-secondary" onclick="closeCommentPanel()">Cancel</button><button class="btn btn-primary" onclick="addComment()">Add Comment</button></div>
+            <div class="comment-form">
+                <div class="form-group">
+                    <label for="authorName">Your Name:</label>
+                    <input type="text" id="authorName" placeholder="Enter your name" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="commentText">Your Comment:</label>
+                    <textarea id="commentText" placeholder="Share your feedback or suggestions..." maxlength="500"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button class="btn btn-secondary" onclick="closeCommentPanel()">Cancel</button>
+                    <button class="btn btn-primary" onclick="addComment()">Add Comment</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-<!-- ── Navigation ── -->
-<div class="navigation">
-  <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">◀ Previous</button>
-  <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next ▶</button>
-  <button class="nav-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
-</div>
+    <!-- Navigation Controls -->
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">◀ Previous</button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next ▶</button>
+        <button class="nav-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
+    </div>
 
-<script>
-// ── Core navigation ──────────────────────────────────────────────
-let currentSlideIndex = 0;
-let comments = {};
-let commentsEnabled = true;
-const slides = document.querySelectorAll('.slide');
-const totalSlides = slides.length;
-
-function initPresentation() {
-  document.getElementById('totalSlides').textContent = totalSlides;
-  updateSlideDisplay();
-  loadCommentsFromStorage();
-}
-
-function changeSlide(dir) {
-  const n = currentSlideIndex + dir;
-  if (n >= 0 && n < totalSlides) { currentSlideIndex = n; updateSlideDisplay(); }
-}
-
-function updateSlideDisplay() {
-  slides.forEach(s => s.classList.remove('active'));
-  slides[currentSlideIndex].classList.add('active');
-  document.getElementById('currentSlide').textContent = currentSlideIndex + 1;
-  document.getElementById('prevBtn').disabled = currentSlideIndex === 0;
-  document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides - 1;
-  updateCommentBadge();
-  // Pause any playing video when navigating
-  document.querySelectorAll('video').forEach(v => { if (!v.paused) v.pause(); });
-}
-
-function toggleFullscreen() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
-    const nav = document.querySelector('.navigation'), si = document.querySelector('.slide-indicator');
-    if (nav) nav.style.display = 'none';
-    if (si) si.style.display = 'none';
-  } else {
-    document.exitFullscreen();
-    const nav = document.querySelector('.navigation'), si = document.querySelector('.slide-indicator');
-    if (nav) nav.style.display = 'flex';
-    if (si) si.style.display = 'block';
-  }
-}
-
-document.addEventListener('fullscreenchange', () => {
-  const nav = document.querySelector('.navigation'), si = document.querySelector('.slide-indicator');
-  if (!document.fullscreenElement) {
-    if (nav) nav.style.display = 'flex';
-    if (si) si.style.display = 'block';
-  }
-});
-
-document.addEventListener('keydown', e => {
-  if (document.getElementById('commentOverlay').classList.contains('active')) { if (e.key === 'Escape') closeCommentPanel(); return; }
-  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); changeSlide(1); }
-  else if (e.key === 'ArrowLeft') { e.preventDefault(); changeSlide(-1); }
-  else if (e.key === 'f' || e.key === 'F11') { e.preventDefault(); toggleFullscreen(); }
-  else if (e.key === 'c' || e.key === 'C') { e.preventDefault(); openCommentPanel(); }
-});
-
-// ── Comment system ────────────────────────────────────────────────
-function toggleCommentsSystem() {
-  commentsEnabled = document.getElementById('enableComments').checked;
-  document.body.classList.toggle('comments-disabled', !commentsEnabled);
-  if (!commentsEnabled) closeCommentPanel();
-}
-function openCommentPanel() {
-  if (!commentsEnabled) return;
-  document.getElementById('commentOverlay').classList.add('active');
-  document.getElementById('currentSlideNum').textContent = currentSlideIndex + 1;
-  loadCommentsForCurrentSlide();
-  document.getElementById('authorName').value = '';
-  document.getElementById('commentText').value = '';
-}
-function closeCommentPanel(event) {
-  if (event && event.target !== event.currentTarget) return;
-  document.getElementById('commentOverlay').classList.remove('active');
-}
-function loadCommentsForCurrentSlide() {
-  const list = document.getElementById('commentList');
-  const sc = comments[currentSlideIndex] || [];
-  if (!sc.length) { list.innerHTML = '<div class="no-comments">No comments yet. Be the first to add feedback!</div>'; return; }
-  list.innerHTML = sc.map((c, i) => `<div class="comment-item"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div style="flex:1"><div class="comment-author">${escapeHtml(c.author)}</div><div class="comment-time">${c.timestamp}</div><div class="comment-text">${escapeHtml(c.text)}</div></div><button onclick="deleteComment(${i})" style="background:#c62828;color:white;border:none;border-radius:50%;width:24px;height:24px;cursor:pointer;font-size:12px;margin-left:8px">×</button></div></div>`).join('');
-}
-async function deleteComment(i) {
-  if (confirm('Delete this comment?')) {
-    comments[currentSlideIndex].splice(i, 1);
-    if (!comments[currentSlideIndex].length) delete comments[currentSlideIndex];
-    await saveCommentsToStorage();
-    loadCommentsForCurrentSlide();
-    updateCommentBadge();
-  }
-}
-async function addComment() {
-  const author = document.getElementById('authorName').value.trim();
-  const text = document.getElementById('commentText').value.trim();
-  if (!author || !text) { showNotification('Please fill in both name and comment!', 'warning'); return; }
-  if (!comments[currentSlideIndex]) comments[currentSlideIndex] = [];
-  comments[currentSlideIndex].push({ author, text, timestamp: new Date().toLocaleString(), slideIndex: currentSlideIndex });
-  await saveCommentsToStorage();
-  loadCommentsForCurrentSlide();
-  updateCommentBadge();
-  document.getElementById('authorName').value = '';
-  document.getElementById('commentText').value = '';
-  showNotification('Comment added!', 'success');
-}
-function updateCommentBadge() {
-  const total = Object.values(comments).reduce((s, a) => s + a.length, 0);
-  const b = document.getElementById('commentBadge');
-  b.textContent = total; b.classList.toggle('show', total > 0);
-}
-function exportAllComments() {
-  if (!Object.keys(comments).length) { showNotification('No comments to export!', 'warning'); return; }
-  const blob = new Blob([JSON.stringify({ title: document.title, exportDate: new Date().toISOString(), comments }, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `comments-${new Date().toISOString().split('T')[0]}.json`;
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  showNotification('Comments exported!', 'success');
-}
-async function clearAllComments() {
-  if (confirm('Delete all comments? This cannot be undone.')) {
-    comments = {}; await saveCommentsToStorage(); loadCommentsForCurrentSlide(); updateCommentBadge();
-    showNotification('All comments cleared!', 'success');
-  }
-}
-async function loadCommentsFromStorage() {
-  try {
-    const r = await fetch('https://final-ppt.vercel.app/api/comments');
-    if (r.ok) { const d = await r.json(); comments = d.comments || {}; updateCommentBadge(); }
-  } catch { comments = {}; updateCommentBadge(); }
-}
-async function saveCommentsToStorage() {
-  try {
-    await fetch('https://final-ppt.vercel.app/api/comments', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ comments }) });
-  } catch { localStorage.setItem('presentationComments', JSON.stringify(comments)); }
-}
-setInterval(async () => {
-  await loadCommentsFromStorage();
-  if (document.getElementById('commentOverlay').classList.contains('active')) loadCommentsForCurrentSlide();
-}, 30000);
-function escapeHtml(t) { const d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
-function showNotification(msg, type='info') {
-  const n = document.createElement('div');
-  n.style.cssText = `position:fixed;top:20px;left:50%;transform:translateX(-50%);background:${type==='success'?'#2e7d32':type==='warning'?'#f57c00':'#1a3a8a'};color:white;padding:13px 22px;border-radius:22px;font-weight:600;z-index:10000;box-shadow:0 4px 12px rgba(0,0,0,.3)`;
-  n.textContent = msg; document.body.appendChild(n);
-  setTimeout(() => { if (document.body.contains(n)) document.body.removeChild(n); }, 3000);
-}
-
-// ── RF Interactive Demo ──────────────────────────────────────────
-let currentStep = 0, storyRunning = false, currentFeatures = {};
-const sampleDataSets = [
-  { p1:0.3, p2:0.8, scenario:"Late Fall Detection", expected:"FALLING", confidence:89, reason:"Strong up-crossing pattern detected" },
-  { p1:0.9, p2:0.2, scenario:"Early Jerk (False Alarm)", expected:"ACTIVITY", confidence:78, reason:"Peak too early — likely a sudden work movement" },
-  { p1:0.7, p2:0.95, scenario:"Strong Fall Pattern", expected:"FALLING", confidence:94, reason:"High & rising confidence indicates fall" },
-  { p1:0.2, p2:0.4, scenario:"Normal Activity", expected:"ACTIVITY", confidence:91, reason:"Low confidence throughout — normal movement" },
-  { p1:0.1, p2:0.9, scenario:"Sudden Impact Fall", expected:"FALLING", confidence:87, reason:"Dramatic confidence increase confirms fall" }
-];
-let currentDataSet = 0;
-
-function calculateFeatures(p1, p2) {
-  return {
-    phi1: ((p1 + p2) / 2).toFixed(2),
-    phi2: Math.max(p1, p2).toFixed(2),
-    phi3: (p2 > p1 ? 1.0 : 0.5).toFixed(1),
-    phi4: (((p1>=0.5?1:0)+(p2>=0.5?1:0))/2).toFixed(1),
-    phi5: (((p1>=0.7?1:0)+(p2>=0.7?1:0))/2).toFixed(1),
-    phi6: ((p1<0.5 && p2>=0.5)?1.0:0.0).toFixed(1)
-  };
-}
-function updateCalculations(data) {
-  const f = calculateFeatures(data.p1, data.p2);
-  document.getElementById('calc_p1').textContent = data.p1;
-  document.getElementById('calc_p2').textContent = data.p2;
-  document.getElementById('result_phi1').textContent = f.phi1;
-  document.getElementById('result_phi2').textContent = f.phi2;
-  document.getElementById('peak_pos').textContent = data.p2 > data.p1 ? '2' : '1';
-  document.getElementById('result_phi3').textContent = f.phi3;
-  document.getElementById('count_05').textContent = Math.round(parseFloat(f.phi4)*2);
-  document.getElementById('result_phi4').textContent = f.phi4;
-  document.getElementById('count_07').textContent = Math.round(parseFloat(f.phi5)*2);
-  document.getElementById('result_phi5').textContent = f.phi5;
-  document.getElementById('cross_05').textContent = (data.p1<0.5 && data.p2>=0.5)?1:0;
-  document.getElementById('result_phi6').textContent = f.phi6;
-  ['phi1','phi2','phi3','phi4','phi5','phi6'].forEach((k,i) => document.getElementById('display_'+k).textContent = f['phi'+(i+1)]);
-}
-function startStory() {
-  if (storyRunning) return;
-  storyRunning = true; currentStep = 0;
-  document.getElementById('mathChar').classList.add('working');
-  animateStory();
-}
-function animateStory() {
-  const steps = [
-    () => { document.getElementById('segment1').classList.add('highlight'); document.getElementById('segment2').classList.add('highlight'); updateProgress(10); },
-    () => showSteps(1,2), () => showSteps(3,4), () => showSteps(5,6),
-    () => showSteps(7,8), () => showSteps(9,10), () => showSteps(11,12),
-    () => { document.querySelectorAll('.feature-result').forEach((r,i) => setTimeout(()=>r.classList.add('show'),i*180)); updateProgress(85); },
-    () => {
-      const data = sampleDataSets[currentDataSet];
-      const d = document.getElementById('finalDecision');
-      d.classList.remove('falling','activity'); d.classList.add(data.expected.toLowerCase());
-      document.getElementById('decisionText').textContent = data.expected;
-      document.getElementById('decisionText').style.color = data.expected==='FALLING'?'#8b0000':'#2e7d32';
-      document.getElementById('decisionConfidence').textContent = `Confidence: ${data.confidence}%`;
-      document.getElementById('decisionReason').textContent = data.reason;
-      d.classList.add('show'); updateProgress(100);
-    },
-    () => { document.getElementById('mathChar').classList.remove('working'); document.getElementById('mathChar').innerHTML='✅'; setTimeout(()=>{storyRunning=false;document.getElementById('mathChar').innerHTML='🤖';},2000); }
-  ];
-  if (currentStep < steps.length) { steps[currentStep](); currentStep++; setTimeout(animateStory, 1700); }
-}
-function showSteps(s1, s2) {
-  document.getElementById(`step${s1}`).classList.add('visible');
-  setTimeout(() => document.getElementById(`step${s2}`).classList.add('visible','highlight'), 550);
-  updateProgress(10 + currentStep*10);
-}
-function updateProgress(p) { document.getElementById('progressFill').style.width = p + '%'; }
-function resetStory() {
-  storyRunning = false; currentStep = 0;
-  document.querySelectorAll('.calculation-step').forEach(s => s.classList.remove('visible','highlight'));
-  document.querySelectorAll('.feature-result').forEach(r => r.classList.remove('show'));
-  document.querySelectorAll('.data-point').forEach(p => p.classList.remove('highlight'));
-  document.getElementById('finalDecision').classList.remove('show','falling','activity');
-  document.getElementById('mathChar').classList.remove('working'); document.getElementById('mathChar').innerHTML='🤖';
-  updateProgress(0);
-}
-function changeData() {
-  currentDataSet = (currentDataSet+1) % sampleDataSets.length;
-  const d = sampleDataSets[currentDataSet];
-  document.getElementById('p1Value').textContent = `p₁=${d.p1}`;
-  document.getElementById('p2Value').textContent = `p₂=${d.p2}`;
-  document.getElementById('scenarioName').textContent = d.scenario;
-  updateCalculations(d);
-  resetStory();
-}
-
-// ── 5-Fold Augmentation Viewer ───────────────────────────────────
-const augmentationData = {
-  vae: {
-    name:"VAE", title:"VAE Configuration", color:"#8b0000",
-    folds:[
-      {activity:588646,original:6662,synthetic:13324,total:33310,ratio:"17.7:1",beforeRatio:"88.3:1"},
-      {activity:660284,original:6516,synthetic:13032,total:32580,ratio:"20.3:1",beforeRatio:"101.3:1"},
-      {activity:578530,original:6346,synthetic:12692,total:31730,ratio:"18.2:1",beforeRatio:"91.2:1"},
-      {activity:893222,original:5933,synthetic:11866,total:29665,ratio:"30.1:1",beforeRatio:"150.5:1"},
-      {activity:517556,original:6295,synthetic:12590,total:31475,ratio:"16.4:1",beforeRatio:"82.2:1"}
-    ],
-    totalActivity:"3,238,238",totalFalls:"31,752",avgSynthetic:"+63,504",
-    params:{"Model Params":"59.7K","Model Size":"0.239 MB","Architecture":"CNN + VAE","Batch Size":"128","Learning Rate":"0.001079","Latent Dim":"32"},
-    metrics:{"Avg MMD":"0.004374","Avg FID":"57.54","MMD Range":"0.004-0.006","FID Range":"47.3-73.0","Gen Ratio":"2:1","Quality":"Smooth/Stable"}
-  },
-  gan: {
-    name:"CT-GAN", title:"CT-GAN Configuration", color:"#f97316",
-    folds:[
-      {activity:588646,original:6662,synthetic:6595,total:26581,ratio:"22.1:1",beforeRatio:"88.3:1"},
-      {activity:660284,original:6516,synthetic:6448,total:25996,ratio:"25.4:1",beforeRatio:"101.3:1"},
-      {activity:578530,original:6346,synthetic:6272,total:25310,ratio:"22.9:1",beforeRatio:"91.2:1"},
-      {activity:893222,original:5933,synthetic:5873,total:23672,ratio:"37.7:1",beforeRatio:"150.5:1"},
-      {activity:517556,original:6295,synthetic:6232,total:25117,ratio:"20.6:1",beforeRatio:"82.2:1"}
-    ],
-    totalActivity:"3,238,238",totalFalls:"31,752",avgSynthetic:"+31,420",
-    params:{"Model Params":"59.7K","Model Size":"0.239 MB","Architecture":"CNN + CT-GAN","Batch Size":"128","Learning Rate":"0.001079","GAN Type":"Conditional Tabular"},
-    metrics:{"Avg MMD":"0.705657","Avg FID":"350.15","MMD Range":"0.41-1.00","FID Range":"335-383","Gen Ratio":"~1:1","Quality":"High Diversity"}
-  },
-  hybrid: {
-    name:"VAE+GAN Hybrid", title:"VAE+GAN Hybrid Configuration", color:"#7c3aed",
-    folds:[
-      {activity:588646,original:6662,synthetic:33310,total:39972,ratio:"14.7:1",beforeRatio:"88.3:1"},
-      {activity:660284,original:6516,synthetic:32580,total:39096,ratio:"16.9:1",beforeRatio:"101.3:1"},
-      {activity:578530,original:6346,synthetic:31730,total:38076,ratio:"15.2:1",beforeRatio:"91.2:1"},
-      {activity:893222,original:5933,synthetic:29665,total:35598,ratio:"25.1:1",beforeRatio:"150.5:1"},
-      {activity:517556,original:6295,synthetic:31475,total:37770,ratio:"13.7:1",beforeRatio:"82.2:1"}
-    ],
-    totalActivity:"3,238,238",totalFalls:"31,752",avgSynthetic:"+158,760",
-    params:{"Model Params":"59.7K","Model Size":"0.239 MB","Architecture":"CNN+VAE+CT-GAN","Batch Size":"128","Learning Rate":"0.001079","Strategy":"2×VAE + 1×GAN"},
-    metrics:{"VAE MMD":"0.005940","GAN MMD":"0.705657","VAE FID":"78.38","GAN FID":"350.15","Gen Ratio":"3:1","Quality":"Balanced"}
-  }
-};
-let currentMethod = 'vae';
-
-function initAugViewer() {
-  createFoldCards();
-  updateAugDisplay();
-  document.querySelectorAll('.method-btn').forEach(b => b.addEventListener('click', function() {
-    const m = this.getAttribute('data-method');
-    if (m && m !== currentMethod) { currentMethod = m; updateAugDisplay(); animateFolds(); }
-  }));
-}
-function createFoldCards() {
-  const c = document.getElementById('foldsContainer'); if (!c) return;
-  c.innerHTML = '';
-  for (let i=1;i<=5;i++) {
-    const d = document.createElement('div'); d.className='fold-card';
-    d.innerHTML = `<div class="fold-header">📁 Fold ${i}</div><div class="subject-info">Train:44 | Val:12 | Test:15</div><div class="data-section"><div class="before-section"><div class="section-title">⚠ Before Aug.</div><div class="data-row"><span class="data-label">Activity:</span><span class="data-value activity-value" data-activity="${i}">—</span></div><div class="data-row"><span class="data-label">Falls:</span><span class="data-value falling-value" data-before-falling="${i}">—</span></div><div class="data-row"><span class="data-label">Ratio:</span><span class="data-value ratio-value" data-before-ratio="${i}">—</span></div></div><div class="after-section"><div class="section-title">✅ After Aug.</div><div class="data-row"><span class="data-label">Original:</span><span class="data-value falling-value" data-original="${i}">—</span></div><div class="data-row"><span class="data-label">Synthetic:</span><span class="data-value" style="background:#fed7aa;color:#ea580c" data-synthetic="${i}">—</span></div><div class="data-row"><span class="data-label">Total:</span><span class="data-value total-value" data-total="${i}">—</span></div><div class="data-row"><span class="data-label">Ratio:</span><span class="data-value ratio-value" data-after-ratio="${i}">—</span></div></div></div>`;
-    c.appendChild(d);
-  }
-}
-function updateAugDisplay() {
-  const d = augmentationData[currentMethod]; if (!d) return;
-  document.getElementById('totalSubjects').textContent='71';
-  document.getElementById('totalActivity').textContent=d.totalActivity;
-  document.getElementById('totalFalls').textContent=d.totalFalls;
-  document.getElementById('avgSynthetic').textContent=d.avgSynthetic;
-  document.getElementById('methodTitle').textContent=d.title;
-  const pm = document.getElementById('modelParams'); pm.innerHTML='';
-  Object.entries(d.params).forEach(([k,v]) => { const r=document.createElement('div'); r.className='param-row'; r.innerHTML=`<span class="param-label">${k}</span><span class="param-value">${v}</span>`; pm.appendChild(r); });
-  const perf = document.getElementById('performanceMetrics'); perf.innerHTML='';
-  Object.entries(d.metrics).forEach(([k,v]) => { const r=document.createElement('div'); r.className='metric-item'; r.innerHTML=`<span class="metric-name">${k}</span><span class="metric-value">${v}</span>`; perf.appendChild(r); });
-  d.folds.forEach((fold,idx) => {
-    const i=idx+1;
-    const set = (sel,val) => { const el=document.querySelector(`[${sel}="${i}"]`); if(el) el.textContent=val; };
-    set('data-activity', fold.activity.toLocaleString());
-    set('data-before-falling', fold.original.toLocaleString());
-    set('data-before-ratio', fold.beforeRatio);
-    set('data-original', fold.original.toLocaleString());
-    set('data-synthetic', `+${fold.synthetic.toLocaleString()}`);
-    set('data-total', fold.total.toLocaleString());
-    set('data-after-ratio', fold.ratio);
-  });
-  document.querySelectorAll('.method-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-method')===currentMethod));
-}
-function animateFolds() {
-  document.querySelectorAll('.fold-card').forEach((c,i) => {
-    setTimeout(() => { c.style.transform='scale(1.03)'; setTimeout(()=>c.style.transform='',500); }, i*120);
-  });
-}
-
-// ── Pipeline Animation ────────────────────────────────────────────
-let pipelineActive = false, pipelineTimeouts = [];
-function startPipelineAnimation() {
-  if (pipelineActive) return;
-  pipelineActive = true; resetPipelineAnimation();
-  const dp = document.getElementById('dataPacket');
-  const activate = (id, x, y, delay, hl_ms=2000) => {
-    pipelineTimeouts.push(setTimeout(() => {
-      if (dp) { dp.style.left=x+'px'; dp.style.top=y+'px'; }
-      const s = document.getElementById(id); if (s) { s.classList.add('active','highlight'); setTimeout(()=>s.classList.remove('highlight'), hl_ms); }
-    }, delay));
-  };
-  if (dp) { dp.classList.add('active'); dp.style.left='50px'; dp.style.top='50px'; }
-  activate('stage1',50,50,600); activate('stage2',360,50,3000);
-  activate('stage3',650,50,5500); activate('stage4',1220,50,9000);
-  activate('stage5',590,370,11500);
-  pipelineTimeouts.push(setTimeout(() => {
-    if (dp) { dp.style.background='linear-gradient(135deg,#2e7d32,#1b5e20)'; dp.querySelector('.packet-icon').textContent='✅'; dp.querySelector('.packet-label').textContent='Decision'; }
-    pipelineActive=false;
-  }, 14000));
-}
-function resetPipelineAnimation() {
-  pipelineTimeouts.forEach(t=>clearTimeout(t)); pipelineTimeouts=[];
-  const dp = document.getElementById('dataPacket');
-  if (dp) { dp.classList.remove('active'); dp.style.left='50px'; dp.style.top='50px'; dp.style.background='linear-gradient(135deg,#8b0000,#c62828)'; const pi=dp.querySelector('.packet-icon'),pl=dp.querySelector('.packet-label'); if(pi)pi.textContent='📊'; if(pl)pl.textContent='IMU Data'; }
-  document.querySelectorAll('.pipeline-stage').forEach(s=>s.classList.remove('active','highlight'));
-  pipelineActive=false;
-}
-
-// ── Initialize everything ─────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
-  initPresentation();
-  updateCalculations(sampleDataSets[0]);
-  initAugViewer();
-});
-</script>
+    <script>
+        // Global variables
+        let currentSlideIndex = 0;
+        let comments = {}; // Store comments by slide index
+        let commentsEnabled = true;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+    
+        // Initialize the presentation
+        function initPresentation() {
+            document.getElementById('totalSlides').textContent = totalSlides;
+            updateSlideDisplay();
+            updateCommentBadge();
+            
+            // Load saved comments from Vercel API
+            loadCommentsFromStorage();
+        }
+    
+        // Navigate to specific slide
+        function goToSlide(index) {
+            if (index >= 0 && index < totalSlides) {
+                currentSlideIndex = index;
+                updateSlideDisplay();
+            }
+        }
+    
+        // Previous slide
+        function changeSlide(direction) {
+            const newIndex = currentSlideIndex + direction;
+            if (newIndex >= 0 && newIndex < totalSlides) {
+                currentSlideIndex = newIndex;
+                updateSlideDisplay();
+            }
+        }
+    
+        // Update slide display
+        function updateSlideDisplay() {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[currentSlideIndex].classList.add('active');
+            
+            // Update slide counter
+            document.getElementById('currentSlide').textContent = currentSlideIndex + 1;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlideIndex === 0;
+            document.getElementById('nextBtn').disabled = currentSlideIndex === totalSlides - 1;
+            
+            // Update comment badge
+            updateCommentBadge();
+            
+            // Trigger animations for slide content
+            const slideContent = slides[currentSlideIndex].querySelector('.slide-content');
+            if (slideContent) {
+                slideContent.style.animation = 'none';
+                setTimeout(() => {
+                    slideContent.style.animation = '';
+                }, 10);
+            }
+        }
+    
+        // Toggle fullscreen
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+                document.body.classList.add('presentation-mode');
+            } else {
+                document.exitFullscreen();
+                document.body.classList.remove('presentation-mode');
+            }
+        }
+    
+        // Toggle comments system
+        function toggleCommentsSystem() {
+            const enabled = document.getElementById('enableComments').checked;
+            commentsEnabled = enabled;
+            
+            if (enabled) {
+                document.body.classList.remove('comments-disabled');
+            } else {
+                document.body.classList.add('comments-disabled');
+                closeCommentPanel();
+            }
+        }
+    
+        // Open comment panel
+        function openCommentPanel() {
+            if (!commentsEnabled) return;
+            
+            document.getElementById('commentOverlay').classList.add('active');
+            document.getElementById('currentSlideNum').textContent = currentSlideIndex + 1;
+            loadCommentsForCurrentSlide();
+            
+            // Clear form
+            document.getElementById('authorName').value = '';
+            document.getElementById('commentText').value = '';
+        }
+    
+        // Close comment panel
+        function closeCommentPanel(event) {
+            if (event && event.target !== event.currentTarget) return;
+            document.getElementById('commentOverlay').classList.remove('active');
+        }
+    
+        // Load comments for current slide
+        function loadCommentsForCurrentSlide() {
+            console.log('=== LOAD COMMENTS FOR SLIDE DEBUG ===');
+            console.log('Current slide index:', currentSlideIndex);
+            console.log('All comments:', comments);
+            
+            const commentList = document.getElementById('commentList');
+            const slideComments = comments[currentSlideIndex] || [];
+            
+            console.log('Comments for this slide:', slideComments);
+            
+            if (slideComments.length === 0) {
+                commentList.innerHTML = '<div class="no-comments">No comments yet. Be the first to add feedback!</div>';
+                console.log('No comments found, showing default message');
+                return;
+            }
+            
+            let html = '';
+            slideComments.forEach((comment, index) => {
+                html += `
+                    <div class="comment-item">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <div style="flex: 1;">
+                                <div class="comment-author">${escapeHtml(comment.author)}</div>
+                                <div class="comment-time">${comment.timestamp}</div>
+                                <div class="comment-text">${escapeHtml(comment.text)}</div>
+                            </div>
+                            <button onclick="deleteComment(${index})" style="background: #ff4757; color: white; border: none; border-radius: 50%; width: 25px; height: 25px; cursor: pointer; font-size: 12px; margin-left: 10px;">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            console.log('Generated HTML:', html);
+            commentList.innerHTML = html;
+        }
+        
+        // Add this new function
+        async function deleteComment(commentIndex) {
+            if (confirm('Delete this comment?')) {
+                comments[currentSlideIndex].splice(commentIndex, 1);
+                
+                // If no comments left for this slide, remove the slide key
+                if (comments[currentSlideIndex].length === 0) {
+                    delete comments[currentSlideIndex];
+                }
+                
+                await saveCommentsToStorage();
+                loadCommentsForCurrentSlide();
+                updateCommentBadge();
+                showNotification('Comment deleted!', 'success');
+            }
+        }
+    
+        // Add new comment
+        async function addComment() {
+            console.log('=== ADD COMMENT DEBUG ===');
+            const author = document.getElementById('authorName').value.trim();
+            const text = document.getElementById('commentText').value.trim();
+            
+            console.log('Author:', author, 'Text:', text);
+            
+            if (!author || !text) {
+                showNotification('Please fill in both your name and comment!', 'warning');
+                return;
+            }
+            
+            // Initialize comments array for this slide if needed
+            if (!comments[currentSlideIndex]) {
+                comments[currentSlideIndex] = [];
+            }
+            
+            // Create comment object
+            const comment = {
+                author: author,
+                text: text,
+                timestamp: new Date().toLocaleString(),
+                slideIndex: currentSlideIndex
+            };
+            
+            console.log('Created comment:', comment);
+            console.log('Current slide index:', currentSlideIndex);
+            
+            // Add comment
+            comments[currentSlideIndex].push(comment);
+            
+            console.log('Comments after adding:', comments);
+            
+            // Save to Vercel API
+            await saveCommentsToStorage();
+            
+            // Update displays immediately
+            loadCommentsForCurrentSlide();
+            updateCommentBadge();
+            
+            // Clear form
+            document.getElementById('authorName').value = '';
+            document.getElementById('commentText').value = '';
+            
+            // Show success feedback
+            showNotification('Comment added successfully!', 'success');
+        }
+        
+        // Update comment badge
+        function updateCommentBadge() {
+            let totalComments = 0;
+            Object.values(comments).forEach(slideComments => {
+                totalComments += slideComments.length;
+            });
+            
+            const badge = document.getElementById('commentBadge');
+            if (totalComments > 0) {
+                badge.textContent = totalComments;
+                badge.classList.add('show');
+            } else {
+                badge.classList.remove('show');
+            }
+        }
+    
+        // Export all comments
+        function exportAllComments() {
+            if (Object.keys(comments).length === 0) {
+                showNotification('No comments to export!', 'warning');
+                return;
+            }
+            
+            const exportData = {
+                presentationTitle: document.title,
+                exportDate: new Date().toISOString(),
+                totalSlides: totalSlides,
+                comments: comments,
+                summary: {
+                    totalComments: Object.values(comments).reduce((sum, arr) => sum + arr.length, 0),
+                    slidesWithComments: Object.keys(comments).length
+                }
+            };
+            
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `presentation-comments-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showNotification('Comments exported successfully!', 'success');
+        }
+    
+        // Clear all comments
+        async function clearAllComments() {
+            if (confirm('Are you sure you want to delete all comments? This action cannot be undone.')) {
+                comments = {};
+                await saveCommentsToStorage();
+                loadCommentsForCurrentSlide();
+                updateCommentBadge();
+                showNotification('All comments cleared!', 'success');
+            }
+        }
+    
+        // Load comments from Vercel API
+        // Load comments from Vercel API - FIXED for MongoDB
+        async function loadCommentsFromStorage() {
+            console.log('=== LOAD COMMENTS FROM API DEBUG ===');
+            try {
+                const response = await fetch('https://final-ppt.vercel.app/api/comments');
+                console.log('API response status:', response.status);
+        
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('API response data:', data);
+                    
+                    // Handle both MongoDB format (with _id) and regular format
+                    comments = data.comments || {};
+                    console.log('Comments loaded:', comments);
+                    
+                    updateCommentBadge();
+                    console.log('Comments loaded from Vercel API successfully');
+                    
+                    // If comment panel is open, refresh the display
+                    if (document.getElementById('commentOverlay').classList.contains('active')) {
+                        loadCommentsForCurrentSlide();
+                    }
+                } else {
+                    throw new Error('Failed to load comments');
+                }
+            } catch (error) {
+                console.error('Error loading comments:', error);
+                showNotification('Could not load comments from server', 'warning');
+                
+                // Fallback to empty comments
+                comments = {};
+                updateCommentBadge();
+            }
+        }
+        // Save comments to Vercel API
+        async function saveCommentsToStorage() {
+            console.log('=== SAVE COMMENTS DEBUG ===');
+            console.log('Saving comments to API:', comments);
+            try {
+                const response = await fetch('https://final-ppt.vercel.app/api/comments', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ comments: comments })
+                });
+                
+                console.log('Save response status:', response.status);
+                
+                if (response.ok) {
+                    const result = await response.json();
+                    console.log('Comments saved to Vercel:', result);
+                    showNotification('Comments saved and shared with everyone!', 'success');
+                } else {
+                    console.error('Save failed with status:', response.status);
+                    throw new Error('Failed to save comments');
+                }
+            } catch (error) {
+                console.error('Error saving comments:', error);
+                showNotification('Could not save comments to server', 'error');
+                
+                // Fallback to local storage
+                localStorage.setItem('presentationComments', JSON.stringify(comments));
+                showNotification('Comments saved locally as backup', 'warning');
+            }
+        }
+        // Auto-refresh comments every 30 seconds to see others' comments
+        // FIXED: Remove the conflicting condition
+        setInterval(async () => {
+            console.log('Auto-refreshing comments...');
+            await loadCommentsFromStorage();
+            
+            // If comment panel is open, refresh the display
+            if (document.getElementById('commentOverlay').classList.contains('active')) {
+                loadCommentsForCurrentSlide();
+            }
+        }, 30000);
+    
+        // Utility function to escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    
+        // Show notification
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${type === 'success' ? '#28a745' : type === 'warning' ? '#ffc107' : type === 'error' ? '#dc3545' : '#007bff'};
+                color: ${type === 'warning' ? '#000' : 'white'};
+                padding: 15px 25px;
+                border-radius: 25px;
+                font-weight: 600;
+                z-index: 10000;
+                animation: slideDown 0.3s ease;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideUp 0.3s ease';
+                setTimeout(() => {
+                    if (document.body.contains(notification)) {
+                        document.body.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+    
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('commentOverlay').classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeCommentPanel();
+                }
+                return;
+            }
+            
+            switch(e.key) {
+                case 'ArrowRight':
+                case ' ':
+                    e.preventDefault();
+                    changeSlide(1);
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    changeSlide(-1);
+                    break;
+                case 'f':
+                case 'F11':
+                    e.preventDefault();
+                    toggleFullscreen();
+                    break;
+                case 'c':
+                case 'C':
+                    e.preventDefault();
+                    openCommentPanel();
+                    break;
+            }
+        });
+    
+        // Auto-hide navigation in fullscreen
+        let navigationTimeout;
+        const navigation = document.querySelector('.navigation');
+        const slideIndicator = document.querySelector('.slide-indicator');
+    
+        function resetNavigationTimeout() {
+            clearTimeout(navigationTimeout);
+            if (navigation) navigation.style.opacity = '1';
+            if (slideIndicator) slideIndicator.style.opacity = '1';
+            
+            navigationTimeout = setTimeout(() => {
+                if (document.fullscreenElement) {
+                    if (navigation) navigation.style.opacity = '0.3';
+                    if (slideIndicator) slideIndicator.style.opacity = '0.3';
+                }
+            }, 3000);
+        }
+    
+        document.addEventListener('mousemove', resetNavigationTimeout);
+        document.addEventListener('keydown', resetNavigationTimeout);
+        document.addEventListener('touchstart', resetNavigationTimeout);
+    
+        // Handle fullscreen change
+        document.addEventListener('fullscreenchange', function() {
+            if (document.fullscreenElement) {
+                document.body.classList.add('presentation-mode');
+            } else {
+                document.body.classList.remove('presentation-mode');
+                if (navigation) navigation.style.opacity = '1';
+                if (slideIndicator) slideIndicator.style.opacity = '1';
+            }
+        });
+    
+        // Initiali
+        document.addEventListener('DOMContentLoaded', initPresentation);
+    
+        // Add CSS animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateX(-50%) translateY(-100%); }
+                to { transform: translateX(-50%) translateY(0); }
+            }
+            @keyframes slideUp {
+                from { transform: translateX(-50%) translateY(0); }
+                to { transform: translateX(-50%) translateY(-100%); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
-</html>
+</html> 
